@@ -79,9 +79,12 @@ def main():
     print("Saving results")
     print("=" * 50)
 
-    # Save benchmark results as JSON
+    # Save benchmark results as JSON (skip internal metrics)
     benchmark_json = {}
     for name, res in results.items():
+        if name.startswith('__'):
+            # Internal metrics (continuous monitoring) — save separately
+            continue
         entry = {
             'method': res['method'],
             'iAUC': float(res['iAUC']) if not np.isnan(res['iAUC']) else None,
@@ -99,6 +102,19 @@ def main():
             entry['landmark_details'] = res['landmark_details']
 
         benchmark_json[name] = entry
+
+    # Save continuous monitoring metrics separately
+    if '__continuous_monitoring__' in results:
+        cm = results['__continuous_monitoring__']
+        benchmark_json['_continuous_monitoring'] = {
+            'landmark_times': cm['landmark_times'],
+            'lm_week_aucs': [float(a) for a in cm['lm_week_aucs']],
+            'between_lm_aucs': [float(a) for a in cm['between_lm_aucs']],
+            'mean_lead_time_weeks': cm['mean_lead_time_weeks'],
+            'median_lead_time_weeks': cm['median_lead_time_weeks'],
+            'n_leading_subjects': cm['n_leading_subjects'],
+            'coverage_gap_pct': cm['coverage_gap_pct'],
+        }
 
     # Add DGP info
     benchmark_json['_metadata'] = {
@@ -146,7 +162,8 @@ def main():
         # --- Fig 2: iAUC comparison bar chart ---
         fig, ax = plt.subplots(figsize=(8, 5))
 
-        methods = list(results.keys())
+        # Only include the 4 benchmark methods (skip internal keys)
+        methods = [k for k in results.keys() if not k.startswith('__')]
         iAUCs = [results[m]['iAUC'] for m in methods]
         ci_lowers = [results[m]['ci_95'][0] if 'ci_95' in results[m] else np.nan for m in methods]
         ci_uppers = [results[m]['ci_95'][1] if 'ci_95' in results[m] else np.nan for m in methods]

@@ -197,6 +197,76 @@ def marginal_multiple_imputation(particles: np.ndarray,
     return eta_m
 
 
+def trajectory_multiple_imputation(particles: np.ndarray,
+                                    weights: np.ndarray,
+                                    M: int = 5,
+                                    seed: int = 42) -> np.ndarray:
+    """
+    Trajectory-level multiple imputation from filtered posterior.
+    
+    KEY FIX: At each time t, draw ONE particle (not mean of Np).
+    This preserves full posterior variance, preventing attenuation
+    bias in downstream Cox regression.
+    
+    Each imputed trajectory is a valid random draw from p(theta_t | y_{1:t}).
+    With M such trajectories, between-imputation variance B > 0,
+    and Rubin's rules properly account for measurement uncertainty.
+    
+    Reference: Rubin (1987), "Multiple Imputation for Nonresponse";
+    Doucet & Johansen (2011), "A Tutorial on Particle Filtering".
+    
+    Args:
+        particles: (T, n_particles) for one subject
+        weights: (T, n_particles) normalized weights
+        M: number of imputed trajectories
+        seed: random seed
+    
+    Returns:
+        eta_m: (M, T) imputed trajectories
+    """
+    rng = np.random.RandomState(seed)
+    T, Np = particles.shape
+    eta_m = np.zeros((M, T))
+    
+    for m in range(M):
+        for t in range(T):
+            j = rng.choice(Np, p=weights[t])
+            eta_m[m, t] = particles[t, j]
+    
+    return eta_m
+
+
+def trajectory_mi_all_subjects(particles_all: np.ndarray,
+                                weights_all: np.ndarray,
+                                M: int = 5,
+                                seed: int = 42) -> list:
+    """
+    Generate MI trajectories for all subjects.
+    
+    Args:
+        particles_all: (T, N, n_particles)
+        weights_all: (T, N, n_particles)
+        M: number of imputed trajectories
+        seed: random seed
+    
+    Returns:
+        eta_m_list: list of M arrays, each (T, N)
+    """
+    T, N, Np = particles_all.shape
+    eta_m_list = []
+    
+    for m in range(M):
+        rng = np.random.RandomState(seed + m)
+        eta_m = np.zeros((T, N))
+        for i in range(N):
+            for t in range(T):
+                j = rng.choice(Np, p=weights_all[t, i])
+                eta_m[t, i] = particles_all[t, i, j]
+        eta_m_list.append(eta_m)
+    
+    return eta_m_list
+
+
 if __name__ == "__main__":
     # Quick test with simulated data
     from simulate_data import simulate, DGPParams

@@ -222,13 +222,14 @@ def fit_with_multiple_imputation(
     var_X_list = []
 
     for m in range(M):
-        # Construct imputed eta via marginal resampling
+        # Construct imputed eta via trajectory-level MI
+        # KEY FIX: draw ONE particle per (t,i), not mean of Np
+        # This preserves posterior variance -> prevents Cox attenuation
         eta_imputed = np.zeros((T, N))
         for i in range(N):
             for t in range(T):
-                idx = rng.choice(Np, size=Np, replace=True,
-                                p=weights_all[t, i])
-                eta_imputed[t, i] = particles_all[t, i, idx].mean()
+                j = rng.choice(Np, p=weights_all[t, i])
+                eta_imputed[t, i] = particles_all[t, i, j]
 
         start, stop, events, eta_vals, X_vals = prepare_counting_process_data(
             event_times, event_indicators, eta_imputed, X, max_time)

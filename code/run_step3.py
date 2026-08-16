@@ -71,8 +71,10 @@ def main():
     print(f"\nUsing: beta_eta = {beta_eta:.4f}, beta_X = {beta_X}")
 
     # =========================================================================
-    # 2. LAYER 3: COST-SENSITIVE DECISION RULE
+    # 2. LAYER 3: COST-SENSITIVE DECISION RULE (posterior mean probabilities)
     # =========================================================================
+    # Probabilities use posterior mean eta; Cox coefficients (beta_eta, beta_X)
+    # are already MI-fitted, so uncertainty is correctly propagated.
     layer3_results = run_layer3(data, eta_all, beta_eta, beta_X, delta_t=4)
 
     # =========================================================================

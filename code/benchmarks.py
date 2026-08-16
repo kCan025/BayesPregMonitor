@@ -218,7 +218,7 @@ def bootstrap_auc_ci(
 # BENCHMARK 1: STATIC COX (baseline covariates only)
 # =============================================================================
 
-def static_cox_benchmark(data: SimulatedData) -> Dict:
+def static_cox_benchmark(data: SimulatedData, eval_times: List[int] = None) -> Dict:
     from time_varying_cox import fit_cox_model
 
     N = len(data.event_times)
@@ -255,7 +255,8 @@ def static_cox_benchmark(data: SimulatedData) -> Dict:
 
     # Compute time-dependent AUC
     auc_result = time_dependent_auc(
-        data.event_times, data.event_indicators, risk_scores)
+        data.event_times, data.event_indicators, risk_scores,
+        eval_times=eval_times)
 
     # Bootstrap CI
     rng = np.random.RandomState(42)
@@ -265,7 +266,7 @@ def static_cox_benchmark(data: SimulatedData) -> Dict:
         idx = rng.choice(N, size=N, replace=True)
         auc_b = time_dependent_auc(
             data.event_times[idx], data.event_indicators[idx],
-            risk_scores[idx])
+            risk_scores[idx], eval_times=eval_times)
         if not np.isnan(auc_b['iAUC']):
             iAUCs.append(auc_b['iAUC'])
 
@@ -313,69 +314,38 @@ def landmarking_benchmark(
     if landmark_times is None:
         landmark_times = [20, 28, 32]
 
-    landmark_aucs = []
-    landmark_details = []
-
-    for t_L in landmark_times:
-        t_end = t_L + delta_t
-
-        # Cases: event in (t_L, t_L + delta_t]
-        case_mask = ((data.event_times > t_L) &
-                     (data.event_times <= t_end) &
-                     (data.event_indicators == 1))
-
-        # Controls: survived past t_L + delta_t
-        control_mask = data.event_times > t_end
-
-        # Risk scores at landmark time (1-indexed: week t_L -> index t_L-1)
-        t_idx = min(t_L, eta_all.shape[0])
-        scores_at_landmark = eta_all[t_idx - 1, :]
-
-        # AUC for this landmark
-        case_scores = scores_at_landmark[case_mask]
-        control_scores = scores_at_landmark[control_mask]
-
-        n_cases = len(case_scores)
-        n_controls = len(control_scores)
-
-        if n_cases > 0 and n_controls > 0:
-            concordant = sum(np.sum(cs > control_scores) for cs in case_scores)
-            tied = sum(np.sum(cs == control_scores) for cs in case_scores)
-            auc = (concordant + 0.5 * tied) / (n_cases * n_controls)
-        else:
-            auc = np.nan
-
-        landmark_aucs.append(auc)
-        landmark_details.append({
-            'landmark': t_L,
-            'n_cases': n_cases,
-            'n_controls': n_controls,
-            'AUC': auc
-        })
-
-        print(f"  Landmark t={t_L}w: cases={n_cases}, controls={n_controls}, AUC={auc:.4f}")
-
-    # Average AUC across landmarks
-    valid_aucs = [a for a in landmark_aucs if not np.isnan(a)]
-    avg_auc = np.mean(valid_aucs) if valid_aucs else np.nan
-
-    # Use eta_all as risk scores for time-dependent AUC (already 40 weeks)
+    # Use eta_all as risk scores (PF posterior mean — no Cox adjustment)
     risk_scores_tv = eta_all.copy()  # (T, N)
 
-    # Compute overall time-dependent AUC using landmark-style evaluation
+    # Compute time-dependent AUC at landmarks (primary iAUC, pair-weighted)
     auc_result = time_dependent_auc(
         data.event_times, data.event_indicators, risk_scores_tv,
         eval_times=landmark_times, delta_t=delta_t)
 
+    # Per-landmark case/control counts for diagnostics
+    landmark_aucs = []
+    landmark_details = []
     print(f"\n--- Landmarking ---")
-    print(f"  Landmark AUCs: {[f'{a:.4f}' for a in landmark_aucs]}")
-    print(f"  Average landmark AUC: {avg_auc:.4f}")
-    print(f"  iAUC (at landmarks): {auc_result['iAUC']:.4f}")
+    for t_L in landmark_times:
+        t_end = t_L + delta_t
+        case_mask = ((data.event_times > t_L) &
+                     (data.event_times <= t_end) &
+                     (data.event_indicators == 1))
+        control_mask = data.event_times > t_end
+        n_cases = int(case_mask.sum())
+        n_controls = int(control_mask.sum())
+        print(f"  Landmark t={t_L}w: cases={n_cases}, controls={n_controls}")
+        landmark_details.append({
+            'landmark': t_L,
+            'n_cases': n_cases,
+            'n_controls': n_controls,
+        })
+
+    print(f"  iAUC (at landmarks, pair-weighted): {auc_result['iAUC']:.4f}")
 
     return {
         'landmark_aucs': landmark_aucs,
         'landmark_details': landmark_details,
-        'avg_auc': avg_auc,
         'auc_result': auc_result,
         'risk_scores': risk_scores_tv,
         'iAUC': auc_result['iAUC'],
@@ -406,7 +376,8 @@ def downsample_observations(Y: np.ndarray, interval: int = 4) -> np.ndarray:
 
 def low_freq_pipeline_benchmark(
     data: SimulatedData,
-    interval: int = 4
+    interval: int = 4,
+    eval_times: List[int] = None
 ) -> Dict:
     """
     Run the same PF + Cox pipeline on downsampled (4-weekly) data.
@@ -466,7 +437,8 @@ def low_freq_pipeline_benchmark(
 
     # 5. Compute time-dependent AUC
     auc_result = time_dependent_auc(
-        data.event_times, data.event_indicators, eta_interp)
+        data.event_times, data.event_indicators, eta_interp,
+        eval_times=eval_times)
 
     # Bootstrap CI
     rng = np.random.RandomState(42)
@@ -476,7 +448,7 @@ def low_freq_pipeline_benchmark(
         idx = rng.choice(N, size=N, replace=True)
         auc_b = time_dependent_auc(
             data.event_times[idx], data.event_indicators[idx],
-            eta_interp[:, idx])
+            eta_interp[:, idx], eval_times=eval_times)
         if not np.isnan(auc_b['iAUC']):
             iAUCs.append(auc_b['iAUC'])
 
@@ -504,23 +476,45 @@ def low_freq_pipeline_benchmark(
 
 def high_freq_pipeline_benchmark(
     data: SimulatedData,
-    eta_all: np.ndarray
+    eta_all: np.ndarray,
+    particles_all: np.ndarray = None,
+    weights_all: np.ndarray = None,
+    M_mi: int = 5,
+    eval_times: List[int] = None
 ) -> Dict:
     """
-    Compute time-dependent AUC for the high-frequency PF + Cox pipeline.
+    Full high-freq pipeline: PF -> MI Cox -> risk score -> AUC.
 
-    Uses the eta trajectories from Step 1.
+    Risk score = beta_eta * eta(t) + beta_X' * (X - X_bar), incorporating
+    both the latent state trajectory and baseline covariate adjustment.
+    This differentiates HF from Landmarking, which uses raw eta only.
 
-    Returns:
-        dict with AUC results
+    MI (M=5) propagates PF uncertainty into Cox coefficients.
     """
     print(f"\n--- High-Freq PF + Cox (OUR METHOD) ---")
 
-    # Compute time-dependent AUC using eta as time-varying risk score
-    auc_result = time_dependent_auc(
-        data.event_times, data.event_indicators, eta_all)
+    from scipy.stats import pearsonr
+    r, _ = pearsonr(data.theta.flatten(), eta_all.flatten())
+    print(f"  PF correlation: r = {r:.4f}")
 
-    # Bootstrap CI
+    # ---- MI Cox: propagate PF uncertainty into coefficients ----
+    from time_varying_cox import fit_with_multiple_imputation
+    mi_result = fit_with_multiple_imputation(
+        data.event_times, data.event_indicators,
+        particles_all, weights_all, data.X, M=M_mi)
+    beta_eta = mi_result['beta_eta']
+    beta_X = mi_result['beta_X']
+
+    # ---- Construct Cox risk score: z(t) = beta_eta*eta(t) + beta_X'*(X-Xbar) ----
+    X_centered = data.X - data.X.mean(axis=0)
+    risk_score = beta_eta * eta_all + (X_centered @ beta_X)[None, :]  # (T, N)
+
+    # ---- Primary AUC: Cox risk score ----
+    auc_result = time_dependent_auc(
+        data.event_times, data.event_indicators, risk_score,
+        eval_times=eval_times)
+
+    # Bootstrap 95% CI
     rng = np.random.RandomState(42)
     N = len(data.event_times)
     iAUCs = []
@@ -528,27 +522,48 @@ def high_freq_pipeline_benchmark(
         idx = rng.choice(N, size=N, replace=True)
         auc_b = time_dependent_auc(
             data.event_times[idx], data.event_indicators[idx],
-            eta_all[:, idx])
+            risk_score[:, idx], eval_times=eval_times)
         if not np.isnan(auc_b['iAUC']):
             iAUCs.append(auc_b['iAUC'])
 
     ci_lower = np.percentile(iAUCs, 2.5) if iAUCs else np.nan
     ci_upper = np.percentile(iAUCs, 97.5) if iAUCs else np.nan
 
-    # Correlation
-    from scipy.stats import pearsonr
-    r, _ = pearsonr(data.theta.flatten(), eta_all.flatten())
-
-    print(f"  PF correlation: r = {r:.4f}")
-    print(f"  iAUC = {auc_result['iAUC']:.4f} "
+    tag = f" at landmarks {eval_times}" if eval_times else ""
+    print(f"  iAUC (Cox risk score{tag}) = {auc_result['iAUC']:.4f} "
           f"[95% CI: {ci_lower:.4f}, {ci_upper:.4f}]")
+    print(f"  beta_eta={beta_eta:.4f}, beta_X={beta_X}")
+
+    # ---- Supplementary: MI trajectory AUC variability ----
+    # Uses same Cox coefficients, but eta_m trajectories vary -> shows PF uncertainty
+    eta_m_list = None
+    if particles_all is not None and weights_all is not None and M_mi >= 2:
+        from bootstrap_pf import trajectory_mi_all_subjects
+        eta_m_list = trajectory_mi_all_subjects(particles_all, weights_all, M=M_mi, seed=42)
+
+        mi_aucs = []
+        for eta_m in eta_m_list:
+            rs_m = beta_eta * eta_m + (X_centered @ beta_X)[None, :]
+            auc_m = time_dependent_auc(
+                data.event_times, data.event_indicators, rs_m,
+                eval_times=eval_times)
+            if not np.isnan(auc_m['iAUC']):
+                mi_aucs.append(auc_m['iAUC'])
+
+        if mi_aucs:
+            print(f"  [Supplementary] MI-pooled iAUC (M={M_mi}): "
+                  f"{np.mean(mi_aucs):.4f} (SD={np.std(mi_aucs, ddof=1):.4f})")
 
     return {
         'auc_result': auc_result,
         'iAUC': auc_result['iAUC'],
         'ci_95': (ci_lower, ci_upper),
         'correlation_r': r,
-        'method': 'High-Freq PF+Cox'
+        'beta_eta': beta_eta,
+        'beta_X': beta_X,
+        'method': 'High-Freq PF+Cox',
+        'eta_m_list': eta_m_list,
+        'eval_times': eval_times,
     }
 
 
@@ -565,6 +580,8 @@ def print_comparison_table(results: Dict):
     print("-" * 75)
 
     for name, res in results.items():
+        if name.startswith('__'):  # skip internal metrics
+            continue
         iAUC = res['iAUC']
         if 'ci_95' in res and not np.isnan(res['ci_95'][0]):
             ci_str = f"[{res['ci_95'][0]:.3f}, {res['ci_95'][1]:.3f}]"
@@ -575,7 +592,7 @@ def print_comparison_table(results: Dict):
     print("-" * 75)
 
     # Compute improvement over best baseline
-    methods = list(results.keys())
+    methods = [k for k in results.keys() if not k.startswith('__')]
     our_method = [m for m in methods if 'High-Freq' in m]
     baselines = [m for m in methods if 'High-Freq' not in m]
 
@@ -586,39 +603,172 @@ def print_comparison_table(results: Dict):
         print(f"\nImprovement over best baseline: +{improvement:.1f}%")
 
 
+# =============================================================================
+# CONTINUOUS MONITORING METRICS (HF's unique value proposition)
+# =============================================================================
+
+def continuous_monitoring_metrics(
+    data: SimulatedData,
+    eta_all: np.ndarray,
+    eval_times: List[int] = None,
+    delta_t: int = 4
+) -> Dict:
+    """
+    Quantify High-Freq's unique advantage: continuous risk updating
+    between clinic visits, and earlier detection of high-risk subjects.
+
+    Key metrics:
+    1. Weekly AUC trajectory: HF provides a valid risk score every week,
+       while LM only scores at discrete landmarks.
+    2. Detection lead time: for subjects who eventually experience the
+       event, how many weeks earlier does HF flag them as high-risk
+       compared to the nearest landmark assessment?
+    3. Coverage gap: fraction of event-window weeks where LM has no
+       score but HF does.
+
+    Args:
+        data: SimulatedData
+        eta_all: (T, N) weekly risk scores from PF
+        eval_times: landmark times (default [20, 28, 32])
+        delta_t: prediction window
+
+    Returns:
+        dict with continuous monitoring metrics
+    """
+    if eval_times is None:
+        eval_times = [20, 28, 32]
+
+    T, N = eta_all.shape
+
+    # ---- 1. Weekly AUC trajectory ----
+    # Compute AUC at every week from 12 to 36 (where data supports it)
+    weekly_eval = list(range(12, 37))
+    weekly_aucs = []
+    for t in weekly_eval:
+        auc_t, n_cases, n_controls = incident_dynamic_auc_single(
+            data.event_times, data.event_indicators,
+            eta_all[t - 1, :], t, delta_t)
+        if not np.isnan(auc_t) and n_cases >= 2 and n_controls >= 2:
+            weekly_aucs.append({'time': t, 'auc': auc_t,
+                                'n_cases': n_cases, 'n_controls': n_controls})
+
+    # AUC at landmark vs between landmarks
+    landmark_set = set(eval_times)
+    lm_aucs = [w['auc'] for w in weekly_aucs if w['time'] in landmark_set]
+    between_lm_aucs = [w['auc'] for w in weekly_aucs
+                       if w['time'] not in landmark_set
+                       and min(eval_times) <= w['time'] <= max(eval_times)]
+
+    # ---- 2. Detection lead time ----
+    # For each event subject: find earliest week where they exceed a
+    # risk threshold (median of event subjects at that week), compare
+    # to nearest landmark
+    threshold_prob = 0.5  # use median as threshold
+    event_mask = data.event_indicators == 1
+    event_indices = np.where(event_mask)[0]
+
+    lead_times = []
+    for i in event_indices:
+        event_time = int(data.event_times[i])
+        # Find earliest week where this subject's eta exceeds median
+        # among all subjects at that week
+        flagged_week = None
+        for t in range(12, min(event_time, T) + 1):
+            eta_t = eta_all[t - 1, :]
+            threshold = np.median(eta_t)
+            if eta_all[t - 1, i] > threshold:
+                flagged_week = t
+                break
+
+        if flagged_week is not None:
+            # Compare to nearest landmark BEFORE the flagged week
+            nearest_lm_before = max([lm for lm in eval_times if lm <= flagged_week],
+                                    default=None)
+            if nearest_lm_before is not None:
+                lead_times.append(flagged_week - nearest_lm_before)
+
+    mean_lead_time = np.mean(lead_times) if lead_times else 0.0
+    median_lead_time = np.median(lead_times) if lead_times else 0.0
+
+    # ---- 3. Coverage gap ----
+    # Weeks in [min(eval_times), max(eval_times)] NOT covered by landmarks
+    all_weeks_range = list(range(min(eval_times), max(eval_times) + 1))
+    uncovered = [w for w in all_weeks_range if w not in landmark_set]
+    coverage_gap_pct = len(uncovered) / len(all_weeks_range) * 100
+
+    # ---- Print summary ----
+    print(f"\n{'='*60}")
+    print("CONTINUOUS MONITORING ADVANTAGE (High-Freq vs Landmarking)")
+    print(f"{'='*60}")
+    print(f"  Landmark times: {eval_times}")
+    print(f"  Weeks in landmark range: {len(all_weeks_range)}")
+    print(f"  Weeks covered by LM: {len(eval_times)}")
+    print(f"  Weeks LM is silent: {len(uncovered)} ({coverage_gap_pct:.0f}%)")
+    print(f"\n  Weekly AUC at landmarks:     "
+          f"{np.mean(lm_aucs):.4f} (n={len(lm_aucs)})" if lm_aucs else
+          "  Weekly AUC at landmarks:     N/A")
+    print(f"  Weekly AUC between landmarks: "
+          f"{np.mean(between_lm_aucs):.4f} (n={len(between_lm_aucs)})"
+          if between_lm_aucs else
+          "  Weekly AUC between landmarks: N/A")
+    print(f"\n  Detection lead time (event subjects flagged early):")
+    print(f"    Mean: {mean_lead_time:.1f} weeks")
+    print(f"    Median: {median_lead_time:.1f} weeks")
+    print(f"    n subjects: {len(lead_times)}")
+
+    return {
+        'weekly_aucs': weekly_aucs,
+        'lm_week_aucs': lm_aucs,
+        'between_lm_aucs': between_lm_aucs,
+        'mean_lead_time_weeks': float(mean_lead_time),
+        'median_lead_time_weeks': float(median_lead_time),
+        'n_leading_subjects': len(lead_times),
+        'coverage_gap_pct': coverage_gap_pct,
+        'landmark_times': eval_times,
+    }
+
+
 def run_all_benchmarks(
     data: SimulatedData,
     eta_all: np.ndarray,
     particles_all: np.ndarray = None,
-    weights_all: np.ndarray = None
+    weights_all: np.ndarray = None,
+    M_mi: int = 5
 ) -> Dict:
     """
     Run all benchmark methods and return comparison.
 
-    Args:
-        data: SimulatedData from Step 1
-        eta_all: (T, N) filtered risk scores from Step 1
-        particles_all: (T, N, n_particles) from Step 1 (optional)
-        weights_all: (T, N, n_particles) from Step 1 (optional)
-
-    Returns:
-        dict with results for each method
+    Fair comparison: all methods evaluated at the SAME landmark times
+    [20, 28, 32].  Additionally, continuous monitoring metrics quantify
+    High-Freq's unique value between landmarks.
     """
+    # Unified evaluation times for fair comparison
+    landmark_times = [20, 28, 32]
     results = {}
 
     # 1. High-freq pipeline (our method)
-    results['High-Freq PF+Cox'] = high_freq_pipeline_benchmark(data, eta_all)
+    results['High-Freq PF+Cox'] = high_freq_pipeline_benchmark(
+        data, eta_all, particles_all, weights_all, M_mi=M_mi,
+        eval_times=landmark_times)
 
     # 2. Static Cox (baseline only)
-    results['Static Cox'] = static_cox_benchmark(data)
+    results['Static Cox'] = static_cox_benchmark(data, eval_times=landmark_times)
 
-    # 3. Landmarking
-    results['Landmarking'] = landmarking_benchmark(data, eta_all)
+    # 3. Landmarking (already uses [20, 28, 32] by default)
+    results['Landmarking'] = landmarking_benchmark(
+        data, eta_all, landmark_times=landmark_times)
 
     # 4. Low-freq pipeline
-    results['Low-Freq PF+Cox'] = low_freq_pipeline_benchmark(data, interval=4)
+    results['Low-Freq PF+Cox'] = low_freq_pipeline_benchmark(
+        data, interval=4, eval_times=landmark_times)
 
-    # Print comparison
+    # Print fair comparison table
     print_comparison_table(results)
+
+    # 5. Continuous monitoring metrics (HF's unique advantage)
+    cm_metrics = continuous_monitoring_metrics(
+        data, eta_all, eval_times=landmark_times)
+
+    results['__continuous_monitoring__'] = cm_metrics
 
     return results

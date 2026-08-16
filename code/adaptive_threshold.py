@@ -343,7 +343,8 @@ def run_layer3(
     eta_all: np.ndarray,
     beta_eta: float,
     beta_X: np.ndarray,
-    delta_t: int = 4
+    delta_t: int = 4,
+    eta_m_list: list = None  # NEW: list of M (T,N) MI trajectories
 ) -> Dict:
     """
     Complete Layer 3 pipeline.
@@ -354,6 +355,7 @@ def run_layer3(
         beta_eta: fitted Cox coefficient for eta
         beta_X: (2,) fitted Cox coefficients for X
         delta_t: prediction window (weeks)
+        eta_m_list: optional list of M (T,N) MI trajectories for pooled probabilities
 
     Returns:
         dict with all Layer 3 results
@@ -371,10 +373,22 @@ def run_layer3(
 
     # 2. Compute conditional event probabilities
     print("\n--- Computing conditional event probabilities ---")
-    prob_event = compute_conditional_probability(
-        eta_all, data.X, beta_eta, beta_X,
-        eval_times=eval_times, delta_t=delta_t,
-        baseline_hazard=baseline_hazard)
+    if eta_m_list is not None:
+        # MI-pooled probabilities: compute for each trajectory, then average
+        prob_events = []
+        for eta_m in eta_m_list:
+            pe_m = compute_conditional_probability(
+                eta_m, data.X, beta_eta, beta_X,
+                eval_times=eval_times, delta_t=delta_t,
+                baseline_hazard=baseline_hazard)
+            prob_events.append(pe_m)
+        prob_event = np.mean(prob_events, axis=0)
+        print(f"  Using MI-pooled probabilities (M={len(eta_m_list)})")
+    else:
+        prob_event = compute_conditional_probability(
+            eta_all, data.X, beta_eta, beta_X,
+            eval_times=eval_times, delta_t=delta_t,
+            baseline_hazard=baseline_hazard)
 
     print(f"  Prob range: [{prob_event.min():.4f}, {prob_event.max():.4f}]")
     print(f"  Prob mean at t=20: {prob_event[19, :].mean():.4f}")

@@ -31,11 +31,13 @@ from benchmarks import (time_dependent_auc, static_cox_benchmark,
 from time_varying_cox import prepare_counting_process_data, fit_cox_model
 
 
-def run_landmarking_auc_only(data, eta_all, landmark_times=[20, 28, 32], delta_t=4):
+def run_landmarking_auc_only(data, eta_all, landmark_times=[20, 28, 32],
+                              delta_t=4, min_pairs=5):
     """
     Lightweight landmarking AUC computation.
     Uses eta (PF-estimated state) at landmark times -- FAIR comparison
     with High-Freq (both use estimated eta, not true theta).
+    min_pairs matches time_dependent_auc default for consistency.
     """
     aucs = []
     for t_L in landmark_times:
@@ -51,7 +53,7 @@ def run_landmarking_auc_only(data, eta_all, landmark_times=[20, 28, 32], delta_t
         n_cases = case_mask.sum()
         n_controls = control_mask.sum()
 
-        if n_cases >= 2 and n_controls >= 2:
+        if n_cases >= min_pairs and n_controls >= min_pairs:
             cs = scores[case_mask]
             ct = scores[control_mask]
             conc = sum(np.sum(c > ct) for c in cs)
@@ -75,22 +77,61 @@ def run_one_iter(seed, interval=4):
         Sigma_eps=data.params.Sigma_eps,
         n_particles=100
     )
-    eta_all, _, _ = pf.filter_all(data.Y)
+    eta_all, particles_all, weights_all = pf.filter_all(data.Y)
 
     from scipy.stats import pearsonr
     r, _ = pearsonr(data.theta.flatten(), eta_all.flatten())
     result['pf_r'] = r
 
-    # 3. High-Freq PF + Cox: time-dependent AUC
+    # 3. High-Freq PF + Cox: full pipeline — Cox risk score -> AUC
+    landmark_times = [20, 28, 32]
     try:
-        auc_hf = time_dependent_auc(data.event_times, data.event_indicators, eta_all)
+        from time_varying_cox import fit_with_multiple_imputation
+        mi_cox = fit_with_multiple_imputation(
+            data.event_times, data.event_indicators,
+            particles_all, weights_all, data.X, M=5)
+        beta_eta = mi_cox['beta_eta']
+        beta_X = mi_cox['beta_X']
+        result['cox_beta_eta'] = beta_eta
+
+        # Cox risk score: z(t) = beta_eta*eta(t) + beta_X'*(X - Xbar)
+        X_centered = data.X - data.X.mean(axis=0)
+        risk_score = beta_eta * eta_all + (X_centered @ beta_X)[None, :]
+
+        auc_hf = time_dependent_auc(
+            data.event_times, data.event_indicators, risk_score,
+            eval_times=landmark_times)
         result['iAUC_highfreq'] = auc_hf['iAUC']
+
+        # Lead time: for event subjects, earliest week flagged above median
+        # relative to nearest prior landmark
+        lead_times_list = []
+        event_indices = np.where(data.event_indicators == 1)[0]
+        for i in event_indices:
+            event_time = int(data.event_times[i])
+            flagged_week = None
+            for t in range(12, min(event_time, data.params.T_weeks) + 1):
+                eta_t = eta_all[t - 1, :]
+                threshold = np.median(eta_t)
+                if eta_all[t - 1, i] > threshold:
+                    flagged_week = t
+                    break
+            if flagged_week is not None:
+                lms_before = [lm for lm in landmark_times if lm <= flagged_week]
+                if lms_before:
+                    nearest_lm = max(lms_before)
+                    lead_times_list.append(flagged_week - nearest_lm)
+        result['mean_lead_time'] = np.mean(lead_times_list) if lead_times_list else np.nan
+        result['n_lead_subjects'] = len(lead_times_list)
     except Exception:
         result['iAUC_highfreq'] = np.nan
+        result['cox_beta_eta'] = np.nan
+        result['mean_lead_time'] = np.nan
+        result['n_lead_subjects'] = 0
 
     # 4. Static Cox (baseline only)
     try:
-        res_sc = static_cox_benchmark(data)
+        res_sc = static_cox_benchmark(data, eval_times=landmark_times)
         result['iAUC_static'] = res_sc['iAUC']
     except Exception:
         result['iAUC_static'] = np.nan
@@ -118,7 +159,7 @@ def run_one_iter(seed, interval=4):
         start, stop, events, eta_vals, X_vals = prepare_counting_process_data(
             data.event_times, data.event_indicators, eta_down, data.X)
         cox_res = fit_cox_model(start, stop, events, eta_vals, X_vals)
-        result['cox_beta_eta'] = cox_res['beta_eta']
+        result['cox_beta_eta_lowfreq'] = cox_res['beta_eta']
 
         # Interpolate to weekly grid
         T_full = data.params.T_weeks
@@ -130,11 +171,13 @@ def run_one_iter(seed, interval=4):
             t_e = ds_indices[j + 1] if j + 1 < T_ds else T_full
             eta_interp[t_s:t_e, :] = eta_down[j, :]
 
-        auc_lf = time_dependent_auc(data.event_times, data.event_indicators, eta_interp)
+        auc_lf = time_dependent_auc(
+            data.event_times, data.event_indicators, eta_interp,
+            eval_times=landmark_times)
         result['iAUC_lowfreq'] = auc_lf['iAUC']
     except Exception:
         result['iAUC_lowfreq'] = np.nan
-        result['cox_beta_eta'] = np.nan
+        result['cox_beta_eta_lowfreq'] = np.nan
 
     return result
 
@@ -299,6 +342,20 @@ def main():
               f"SD={np.std(pf_rs):.4f}")
 
     # =========================================================================
+    # DETECTION LEAD TIME (continuous monitoring advantage)
+    # =========================================================================
+    lead_times_mc = [r['mean_lead_time'] for r in all_results
+                     if not np.isnan(r.get('mean_lead_time', np.nan))]
+    lead_n = [r['n_lead_subjects'] for r in all_results
+              if r.get('n_lead_subjects', 0) > 0]
+    if lead_times_mc:
+        print(f"\n--- Detection Lead Time (weeks ahead of nearest landmark) ---")
+        print(f"  Mean lead time: {np.mean(lead_times_mc):.1f} +/- "
+              f"{np.std(lead_times_mc):.1f} weeks (n={len(lead_times_mc)} MC reps)")
+        print(f"  Avg flagged subjects per replicate: "
+              f"{np.mean(lead_n):.1f}")
+
+    # =========================================================================
     # LANDMARK INDIVIDUAL AUCs
     # =========================================================================
     all_lm20 = [r['landmark_aucs'][0] for r in all_results
@@ -351,6 +408,12 @@ def main():
         'pf_recovery': {
             'mean_r': float(np.mean(pf_rs)) if pf_rs else None,
             'sd_r': float(np.std(pf_rs)) if pf_rs else None,
+        },
+        'lead_time': {
+            'mean_weeks': float(np.mean(lead_times_mc)) if lead_times_mc else None,
+            'sd_weeks': float(np.std(lead_times_mc)) if lead_times_mc else None,
+            'n_valid_reps': int(len(lead_times_mc)),
+            'avg_flagged_subjects': float(np.mean(lead_n)) if lead_n else None,
         },
         'landmark_individual': {
             't20_mean': float(np.mean(all_lm20)) if all_lm20 else None,
