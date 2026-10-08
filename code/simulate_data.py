@@ -65,11 +65,16 @@ def generate_baseline_covariates(N: int, seed: int = 42) -> np.ndarray:
 
 
 def generate_latent_trajectories(N: int, T: int, sigma2_omega: float,
-                                  seed: int = 42) -> np.ndarray:
+                                  seed: int = 42, mode: str = "linear",
+                                  nonlinear_amp: float = 0.08) -> np.ndarray:
     """
-    Generate latent risk state theta_i(t) as Gaussian random walk.
-    theta_i(0) ~ N(0, 0.1)
-    theta_i(t) = theta_i(t-1) + omega_i(t),  omega_i(t) ~ N(0, sigma2_omega)
+    Generate latent risk state theta_i(t).
+
+    mode="linear":   Gaussian random walk theta_t = theta_{t-1} + omega_t
+    mode="nonlinear": random walk + sin perturbation
+                      theta_t = theta_{t-1} + amp * sin(theta_{t-1}) + omega_t
+    Nonlinear amplitude is small so the perturbation is a mild misspecification,
+    not a qualitative change in dynamics.
 
     Returns:
         theta: np.ndarray, shape (T, N)
@@ -78,7 +83,11 @@ def generate_latent_trajectories(N: int, T: int, sigma2_omega: float,
     theta = np.zeros((T, N))
     theta[0, :] = rng.normal(0, np.sqrt(0.1), N)
     for t in range(1, T):
-        theta[t, :] = theta[t - 1, :] + rng.normal(0, np.sqrt(sigma2_omega), N)
+        omega = rng.normal(0, np.sqrt(sigma2_omega), N)
+        if mode == "nonlinear":
+            theta[t, :] = theta[t - 1, :] + nonlinear_amp * np.sin(theta[t - 1, :]) + omega
+        else:
+            theta[t, :] = theta[t - 1, :] + omega
     return theta
 
 
@@ -87,6 +96,7 @@ def generate_observations(theta: np.ndarray, alpha: np.ndarray,
                           seed: int = 42) -> np.ndarray:
     """
     Generate 4-dim wearable observations y_i(t) = alpha * theta_i(t) + eps_i(t).
+    eps ~ N(0, Sigma_eps).
 
     Returns:
         Y: np.ndarray, shape (T, N, 4) -- wearable data
@@ -98,6 +108,38 @@ def generate_observations(theta: np.ndarray, alpha: np.ndarray,
     sigma_eps = np.sqrt(np.diag(Sigma_eps))  # (D,)
     for d in range(D):
         Y[:, :, d] = alpha[d] * theta + rng.normal(0, sigma_eps[d], (T, N))
+    return Y
+
+
+def generate_observations_heavy_tail(theta: np.ndarray, alpha: np.ndarray,
+                                     Sigma_eps: np.ndarray, df: float = 3.0,
+                                     seed: int = 42) -> np.ndarray:
+    """
+    Generate observations with heavy-tailed (Student-t) noise.
+    Noise variance is scaled so that Var(eps_d) matches Sigma_eps[d,d] exactly,
+    i.e. each dimension is sigma_d * t(df) / sqrt(df/(df-2)).
+
+    This is a model misspecification scenario: the Bootstrap PF assumes Gaussian
+    likelihood but the true emissions have heavier tails.
+
+    Args:
+        theta: (T, N) latent states
+        alpha: (D,) observation loadings
+        Sigma_eps: (D, D) diagonal noise covariance (target variance)
+        df: degrees of freedom for t-distribution (default 3, moderately heavy)
+        seed: random seed
+
+    Returns:
+        Y: np.ndarray, shape (T, N, D)
+    """
+    rng = np.random.RandomState(seed)
+    T, N = theta.shape
+    D = len(alpha)
+    Y = np.zeros((T, N, D))
+    sigma_eps = np.sqrt(np.diag(Sigma_eps))               # (D,) target std
+    scale = sigma_eps * np.sqrt((df - 2.0) / df)          # scale to match target variance
+    for d in range(D):
+        Y[:, :, d] = alpha[d] * theta + rng.standard_t(df, size=(T, N)) * scale[d]
     return Y
 
 
@@ -204,24 +246,42 @@ class SimulatedData:
         print(f"Observations shape: {self.Y.shape}")
 
 
-def simulate(seed: int = 42) -> SimulatedData:
-    """Run full simulation pipeline."""
+def simulate(seed: int = 42, theta_mode: str = "linear",
+             obs_noise: str = "gaussian", heavy_tail_df: float = 3.0,
+             verbose: bool = True) -> SimulatedData:
+    """
+    Run full simulation pipeline.
+
+    Args:
+        seed: random seed
+        theta_mode: "linear" (Gaussian random walk) or "nonlinear" (sin perturbation)
+        obs_noise: "gaussian" or "heavy_tail" (Student-t)
+        heavy_tail_df: degrees of freedom for heavy-tailed noise
+        verbose: if True, print summary (set False for batch MC runs)
+    """
     params = DGPParams()
-    print("=" * 60)
-    print("Simulating maternal risk data (DGP v3.4)")
-    print("=" * 60)
+    if verbose:
+        print("=" * 60)
+        print(f"Simulating maternal risk data (DGP v3.4, {theta_mode}/{obs_noise})")
+        print("=" * 60)
 
     # 1. Baseline covariates
     X = generate_baseline_covariates(params.N, seed=seed)
 
     # 2. Latent trajectories
     theta = generate_latent_trajectories(params.N, params.T_weeks,
-                                          params.sigma2_omega, seed=seed)
+                                          params.sigma2_omega, seed=seed,
+                                          mode=theta_mode)
 
     # 3. Observations
-    Y = generate_observations(theta, params.alpha, params.Sigma_eps, seed=seed)
+    if obs_noise == "heavy_tail":
+        Y = generate_observations_heavy_tail(theta, params.alpha,
+                                             params.Sigma_eps, df=heavy_tail_df,
+                                             seed=seed)
+    else:
+        Y = generate_observations(theta, params.alpha, params.Sigma_eps, seed=seed)
 
-    # 4. Event times
+    # 4. Event times — based on the (possibly nonlinear) true theta
     event_times, event_indicators = generate_event_times(
         theta, X, params, seed=seed)
 
@@ -231,7 +291,8 @@ def simulate(seed: int = 42) -> SimulatedData:
         event_indicators=event_indicators,
         params=params
     )
-    data.summary()
+    if verbose:
+        data.summary()
     return data
 
 

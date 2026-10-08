@@ -63,7 +63,8 @@ class BootstrapPF:
 
     def filter_subject(self, Y_i: np.ndarray,
                        prior_mean: float = 0.0,
-                       prior_var: float = 0.1) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                       prior_var: float = 0.1,
+                       seed=None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Run Bootstrap PF for a single subject.
 
@@ -76,15 +77,20 @@ class BootstrapPF:
             eta: (T,) filtered posterior mean eta_i(t) = E[theta_i(t)|y_{1:t}]
             particles: (T, n_particles) all particle states
             weights: (T, n_particles) normalized weights at each time
+
+        Side effect:
+            self._last_ess: (T,) pre-resampling ESS trace for this subject.
+            Use for particle degeneracy diagnostics (pre-resampling = worst case).
         """
         T = Y_i.shape[0]
         Np = self.n_particles
-        rng = np.random.RandomState()
+        rng = np.random.RandomState(seed)
 
         # Storage
         particles = np.zeros((T, Np))
         weights = np.zeros((T, Np))
         eta = np.zeros(T)
+        ess_history = np.zeros(T)          # pre-resampling ESS at each time
 
         # Initialize particles from prior
         theta_p = rng.normal(prior_mean, np.sqrt(prior_var), Np)
@@ -103,21 +109,26 @@ class BootstrapPF:
             log_w = log_w - max_log - np.log(np.sum(np.exp(log_w - max_log)))
             w = np.exp(log_w)
 
+            # --- Record ESS BEFORE resampling (worst-case diagnostic) ---
+            ess_history[t] = self._effective_sample_size(w)
+
             # Store
             particles[t] = theta_p
             weights[t] = w
             eta[t] = np.sum(w * theta_p)
 
             # --- Resample (systematic resampling) ---
-            if self._effective_sample_size(w) < Np / 2:
+            if ess_history[t] < Np / 2:
                 theta_p = self._systematic_resample(theta_p, w, rng)
                 w = np.ones(Np) / Np
 
+        self._last_ess = ess_history   # (T,) — for caller to inspect
         return eta, particles, weights
 
     def filter_all(self, Y: np.ndarray,
                    prior_mean: float = 0.0,
-                   prior_var: float = 0.1) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                   prior_var: float = 0.1,
+                   seed=None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Run Bootstrap PF for all subjects.
 
@@ -128,19 +139,29 @@ class BootstrapPF:
             eta_all: (T, N) filtered posterior means
             particles_all: (T, N, n_particles) particles
             weights_all: (T, N, n_particles) weights
+
+        Side effect:
+            self.ess_all: (T, N) pre-resampling ESS across subjects and times.
+            Use for diagnostics: np.median(ess_all) or np.percentile(ess_all, 5)
+            to assess overall particle health.
         """
         T, N, D = Y.shape
         eta_all = np.zeros((T, N))
         particles_all = np.zeros((T, N, self.n_particles))
         weights_all = np.zeros((T, N, self.n_particles))
+        ess_all = np.zeros((T, N))
 
         for i in range(N):
+            subject_seed = None if seed is None else seed + i
             eta, parts, wts = self.filter_subject(Y[:, i, :],
-                                                 prior_mean, prior_var)
+                                                 prior_mean, prior_var,
+                                                 seed=subject_seed)
             eta_all[:, i] = eta
             particles_all[:, i, :] = parts
             weights_all[:, i, :] = wts
+            ess_all[:, i] = self._last_ess      # (T,) per subject
 
+        self.ess_all = ess_all                    # (T, N) — diagnostics
         return eta_all, particles_all, weights_all
 
     @staticmethod

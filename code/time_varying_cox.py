@@ -206,7 +206,8 @@ def fit_with_multiple_imputation(
     weights_all: np.ndarray,
     X: np.ndarray,
     M: int = 5,
-    max_time: int = 40
+    max_time: int = 40,
+    seed: int = 42
 ) -> dict:
     """
     Fit time-varying Cox model with marginal multiple imputation.
@@ -214,7 +215,7 @@ def fit_with_multiple_imputation(
     """
     T, N, Np = particles_all.shape
     p_X = X.shape[1]
-    rng = np.random.RandomState(42)
+    rng = np.random.RandomState(seed)
 
     beta_eta_list = []
     beta_X_list = []

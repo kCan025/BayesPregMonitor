@@ -401,7 +401,7 @@ def low_freq_pipeline_benchmark(
         n_particles=100
     )
 
-    eta_down, particles_down, weights_down = pf.filter_all(Y_down)
+    eta_down, particles_down, weights_down = pf.filter_all(Y_down, seed=42)
     print(f"  PF on downsampled data completed")
 
     # Correlation check
