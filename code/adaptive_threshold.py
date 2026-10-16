@@ -212,13 +212,18 @@ def sweep_cost_ratios(
     eval_times: Optional[np.ndarray] = None
 ) -> Dict:
     """
-    Sweep cost ratios to trace the cost-benefit frontier.
+    Sweep cost ratios for decision curve visualization.
+
+    NOTE: Does NOT select an 'optimal' cost ratio — that is a clinical
+    prior, not a data-optimized parameter (Bugfix #3). Returns the full
+    frontier for the decision-maker to inspect, along with treat-all
+    and treat-none reference lines.
 
     Args:
         cost_ratios: array of C_FP/C_FN ratios
 
     Returns:
-        dict with frontier data and optimal cost ratio
+        dict with frontier data and reference lines
     """
     if cost_ratios is None:
         cost_ratios = np.logspace(-2, 2, 30)  # 0.01 to 100
@@ -232,15 +237,18 @@ def sweep_cost_ratios(
         results.append(res)
 
     net_benefits = [r['net_benefit'] for r in results]
-    opt_idx = np.argmax(net_benefits)
+
+    # Reference lines for decision curve
+    N_total = len(event_times)
+    n_events = int(np.sum(event_indicators))
+    treat_all_nb = n_events / N_total
 
     return {
         'frontier': results,
         'cost_ratios': cost_ratios.tolist(),
         'net_benefits': net_benefits,
-        'optimal_cost_ratio': float(cost_ratios[opt_idx]),
-        'max_net_benefit': net_benefits[opt_idx],
-        'optimal_result': results[opt_idx]
+        'treat_all_nb': treat_all_nb,
+        'treat_none_nb': 0.0,
     }
 
 
@@ -293,11 +301,14 @@ def compare_decision_strategies(
         cost_ratio=base_cost_ratio, delta_t=delta_t, eval_times=eval_times)
     strategies['Cost-sensitive (balanced)'] = res_balanced
 
-    # Optimal cost-sensitive from sweep
+    # Cost-sensitive sweep for decision curve (Bugfix #3: no 'optimal' selection)
     sweep_result = sweep_cost_ratios(
         prob_event, event_times, event_indicators,
         delta_t=delta_t, eval_times=eval_times)
-    strategies['Cost-sensitive (optimal)'] = sweep_result['optimal_result']
+    # Evaluate at a clinically motivated cost ratio (1.0 = equal FP/FN cost)
+    strategies['Cost-sensitive (clinical prior)'] = cost_sensitive_threshold(
+        prob_event, event_times, event_indicators,
+        cost_ratio=base_cost_ratio, delta_t=delta_t, eval_times=eval_times)
 
     # Treat all / none, computed at base_cost_ratio
     N = len(event_times)
@@ -394,17 +405,15 @@ def run_layer3(
     print(f"  Prob mean at t=20: {prob_event[19, :].mean():.4f}")
     print(f"  Prob mean at t=30: {prob_event[29, :].mean():.4f}")
 
-    # 3. Sweep cost ratios
-    print("\n--- Sweeping cost ratios ---")
+    # 3. Sweep cost ratios (Bugfix #3: decision curve, no 'optimal' selection)
+    print("\n--- Sweeping cost ratios (decision curve) ---")
     sweep_result = sweep_cost_ratios(
         prob_event, data.event_times, data.event_indicators,
         delta_t=delta_t, eval_times=eval_times)
 
-    opt_cr = sweep_result['optimal_cost_ratio']
-    opt_d = opt_cr / (1 + opt_cr)
-    print(f"  Optimal cost ratio: {opt_cr:.3f}")
-    print(f"  Corresponding d*: {opt_d:.3f}")
-    print(f"  Max net benefit: {sweep_result['max_net_benefit']:.4f}")
+    print(f"  Frontier: {len(sweep_result['cost_ratios'])} cost ratios")
+    print(f"  Treat-all NB: {sweep_result['treat_all_nb']:.4f}")
+    print(f"  Treat-none NB: {sweep_result['treat_none_nb']:.4f}")
 
     # 4. Compare strategies at base_cost_ratio = 1.0
     print("\n--- Comparing decision strategies (base cost ratio = 1.0) ---")
@@ -418,9 +427,8 @@ def run_layer3(
         nb = res.get('net_benefit', np.nan)
         print(f"  {name:<30} Sens={sens:.3f}  Spec={spec:.3f}  NB={nb:.4f}")
 
-    # 5. Net benefit improvement vs data-adaptive fixed threshold
-    nb_optimal = comparison['strategies']['Cost-sensitive (optimal)']['net_benefit']
-    # Compare against median-probability threshold (the most "reasonable" fixed rule)
+    # 5. Compare clinical-prior cost-sensitive vs fixed thresholds
+    nb_cs = comparison['strategies']['Cost-sensitive (clinical prior)']['net_benefit']
     median_key = [k for k in comparison['strategies'].keys() if 'Median' in k]
     if median_key:
         nb_fixed = comparison['strategies'][median_key[0]]['net_benefit']
@@ -430,13 +438,12 @@ def run_layer3(
         ref_label = 'N/A'
 
     if abs(nb_fixed) > 1e-10:
-        harm_reduction = (nb_optimal - nb_fixed) / abs(nb_fixed) * 100
-        print(f"\n  Net benefit improvement (optimal vs {ref_label}): {harm_reduction:+.1f}%")
-    elif nb_optimal > 0:
-        print(f"\n  Net benefit: optimal={nb_optimal:.4f} vs {ref_label}={nb_fixed:.4f}")
-        print(f"  (Fixed threshold NB≈0; optimal achieves positive NB)")
+        harm_reduction = (nb_cs - nb_fixed) / abs(nb_fixed) * 100
+        print(f"\n  Net benefit (clinical prior vs {ref_label}): {harm_reduction:+.1f}%")
+    elif nb_cs > 0:
+        print(f"\n  Net benefit: clinical_prior={nb_cs:.4f} vs {ref_label}={nb_fixed:.4f}")
     else:
-        print(f"\n  Net benefit: optimal={nb_optimal:.4f} (no improvement over fixed)")
+        print(f"\n  Net benefit: clinical_prior={nb_cs:.4f} (no improvement over fixed)")
 
     return {
         'prob_event': prob_event,

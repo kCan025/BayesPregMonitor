@@ -88,14 +88,12 @@ def main():
         'delta_t': 4,
         'beta_eta': float(beta_eta),
         'beta_X': beta_X.tolist(),
-        'optimal_cost_ratio': float(layer3_results['sweep_result']['optimal_cost_ratio']),
-        'optimal_d_star': float(layer3_results['sweep_result']['optimal_cost_ratio'] /
-                                (1 + layer3_results['sweep_result']['optimal_cost_ratio'])),
-        'max_net_benefit': float(layer3_results['sweep_result']['max_net_benefit']),
         'harm_reduction_pct': float(layer3_results['harm_reduction_pct']),
         'cost_benefit_frontier': {
             'cost_ratios': [float(cr) for cr in layer3_results['sweep_result']['cost_ratios']],
             'net_benefits': [float(nb) for nb in layer3_results['sweep_result']['net_benefits']],
+            'treat_all_nb': float(layer3_results['sweep_result']['treat_all_nb']),
+            'treat_none_nb': float(layer3_results['sweep_result']['treat_none_nb']),
         },
         'strategy_comparison': {}
     }
@@ -147,9 +145,7 @@ def main():
         net_benefits = layer3_results['sweep_result']['net_benefits']
 
         ax.semilogx(cost_ratios, net_benefits, 'b-', linewidth=2)
-        ax.axvline(layer3_results['sweep_result']['optimal_cost_ratio'],
-                  color='red', linestyle='--', linewidth=1, alpha=0.7,
-                  label=f'Optimal CR={layer3_results["sweep_result"]["optimal_cost_ratio"]:.2f}')
+        # Bugfix #3: no 'optimal' marker — cost ratio is a clinical prior
 
         # Mark fixed thresholds
         for cr_fixed, label in [(0.1/0.9, 'd*=0.1'), (0.3/0.7, 'd*=0.3'),

@@ -300,56 +300,147 @@ def landmarking_benchmark(
     delta_t: int = 4
 ) -> Dict:
     """
-    Landmark analysis at specified time points.
+    True landmark analysis with independent Cox refitting at each landmark.
 
     At each landmark t_L:
       1. Restrict to subjects at risk at t_L (T_i > t_L)
-      2. Predictor: eta_i(t_L) (current risk score)
-      3. Outcome: event in (t_L, t_L + delta_t]
-      4. Compute AUC for this binary classification
+      2. Refit Cox independently using eta(t_L) + baseline covariates
+      3. Predict event in (t_L, t_L + delta_t]
+      4. Risk score held constant until next landmark (discrete monitoring)
 
-    Returns:
-        dict with per-landmark AUCs, average AUC, and risk scores
+    This is an independent baseline — does not reuse HF pipeline's Cox
+    coefficients. The shared component (PF eta trajectory) is by paired
+    design; the Cox layer is refit independently at each landmark.
+
+    Key difference from HF:
+      - HF: updates risk score weekly (continuous monitoring)
+      - LM: updates risk score only at landmark times (discrete monitoring)
+
+    Bugfix #2: previously used eta_all.copy() directly, making HF and LM
+    nearly identical (Spearman 0.998).
     """
+    from lifelines import CoxPHFitter
+    import pandas as pd
+
     if landmark_times is None:
         landmark_times = [20, 28, 32]
 
-    # Use eta_all as risk scores (PF posterior mean — no Cox adjustment)
-    risk_scores_tv = eta_all.copy()  # (T, N)
+    T, N = eta_all.shape
 
-    # Compute time-dependent AUC at landmarks (primary iAUC, pair-weighted)
-    auc_result = time_dependent_auc(
-        data.event_times, data.event_indicators, risk_scores_tv,
-        eval_times=landmark_times, delta_t=delta_t)
+    # Risk scores: held constant between landmarks (discrete monitoring)
+    risk_scores_lm = np.zeros((T, N))
 
-    # Per-landmark case/control counts for diagnostics
     landmark_aucs = []
     landmark_details = []
-    print(f"\n--- Landmarking ---")
+
+    print(f"\n--- Landmarking (true refit) ---")
+
     for t_L in landmark_times:
+        t_idx = min(t_L - 1, T - 1)  # 0-indexed
         t_end = t_L + delta_t
-        case_mask = ((data.event_times > t_L) &
-                     (data.event_times <= t_end) &
-                     (data.event_indicators == 1))
-        control_mask = data.event_times > t_end
-        n_cases = int(case_mask.sum())
-        n_controls = int(control_mask.sum())
-        print(f"  Landmark t={t_L}w: cases={n_cases}, controls={n_controls}")
-        landmark_details.append({
-            'landmark': t_L,
-            'n_cases': n_cases,
-            'n_controls': n_controls,
+
+        # Subjects at risk at t_L
+        at_risk = data.event_times > t_L
+        n_at_risk = int(at_risk.sum())
+
+        if n_at_risk < 20:
+            print(f"  Landmark t={t_L}w: only {n_at_risk} at risk, skipping")
+            landmark_details.append({
+                'landmark': t_L, 'n_at_risk': n_at_risk,
+                'n_cases': 0, 'n_controls': 0, 'auc': np.nan,
+                'coxfit': 'skipped'
+            })
+            continue
+
+        # Landmark outcome
+        event_in_window = (
+            (data.event_times[at_risk] > t_L) &
+            (data.event_times[at_risk] <= t_end) &
+            (data.event_indicators[at_risk] == 1)
+        )
+        n_cases = int(event_in_window.sum())
+        survived_window = data.event_times[at_risk] > t_end
+        n_controls = int(survived_window.sum())
+
+        # Build landmark dataset for Cox refit
+        obs_time = np.maximum(
+            np.minimum(data.event_times[at_risk], t_end) - t_L, 0.01)
+        lm_df = pd.DataFrame({
+            'eta': eta_all[t_idx, at_risk],
+            'age': data.X[at_risk, 0],
+            'bmi': data.X[at_risk, 1],
+            'duration': obs_time,
+            'event': event_in_window.astype(int),
         })
 
-    print(f"  iAUC (at landmarks, pair-weighted): {auc_result['iAUC']:.4f}")
+        coxfit_status = 'ok'
+        pred_risk = np.zeros(N)
+
+        if n_cases < 5:
+            coxfit_status = 'fallback_eta (too few events)'
+            pred_risk = eta_all[t_idx, :].copy()
+        else:
+            try:
+                cph = CoxPHFitter()
+                cph.fit(lm_df, duration_col='duration',
+                        event_col='event',
+                        formula='eta + age + bmi')
+                full_df = pd.DataFrame({
+                    'eta': eta_all[t_idx, :],
+                    'age': data.X[:, 0],
+                    'bmi': data.X[:, 1],
+                })
+                pred_risk = cph.predict_partial_hazard(full_df).values
+            except Exception as e:
+                coxfit_status = f'failed: {e}'
+                pred_risk = eta_all[t_idx, :].copy()
+
+        # Fill risk scores from t_L until next landmark (or end)
+        next_lm = min(
+            [lm for lm in landmark_times if lm > t_L] + [T + 1])
+        for t in range(t_L, min(next_lm, T + 1)):
+            if t - 1 < T:
+                risk_scores_lm[t - 1, :] = pred_risk
+
+        # Per-landmark AUC
+        if n_cases > 0 and n_controls > 0:
+            from sklearn.metrics import roc_auc_score
+            case_controls = event_in_window | survived_window
+            y_true = event_in_window[case_controls].astype(int)
+            y_score = pred_risk[at_risk][case_controls]
+            try:
+                auc = roc_auc_score(y_true, y_score)
+            except Exception:
+                auc = np.nan
+        else:
+            auc = np.nan
+
+        landmark_aucs.append(auc)
+        landmark_details.append({
+            'landmark': t_L, 'n_at_risk': n_at_risk,
+            'n_cases': n_cases, 'n_controls': n_controls,
+            'auc': auc, 'coxfit': coxfit_status
+        })
+        print(f"  Landmark t={t_L}w: at_risk={n_at_risk}, "
+              f"cases={n_cases}, controls={n_controls}, "
+              f"AUC={auc:.4f}, cox={coxfit_status}")
+
+    # Compute iAUC at landmark evaluation times (pair-weighted)
+    auc_result = time_dependent_auc(
+        data.event_times, data.event_indicators, risk_scores_lm,
+        eval_times=landmark_times, delta_t=delta_t)
+
+    print(f"  iAUC (at landmarks, pair-weighted): "
+          f"{auc_result['iAUC']:.4f}")
 
     return {
         'landmark_aucs': landmark_aucs,
         'landmark_details': landmark_details,
         'auc_result': auc_result,
-        'risk_scores': risk_scores_tv,
+        'risk_scores': risk_scores_lm,
         'iAUC': auc_result['iAUC'],
-        'method': 'Landmarking'
+        'method': 'Landmarking (refit)',
+        'landmark_times': landmark_times,
     }
 
 

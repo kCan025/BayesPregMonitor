@@ -268,22 +268,23 @@ def simulate(seed: int = 42, theta_mode: str = "linear",
     # 1. Baseline covariates
     X = generate_baseline_covariates(params.N, seed=seed)
 
-    # 2. Latent trajectories
+    # 2. Latent trajectories (independent random stream — Bugfix #1)
     theta = generate_latent_trajectories(params.N, params.T_weeks,
-                                          params.sigma2_omega, seed=seed,
+                                          params.sigma2_omega, seed=seed + 1,
                                           mode=theta_mode)
 
-    # 3. Observations
+    # 3. Observations (independent random stream — Bugfix #1)
     if obs_noise == "heavy_tail":
         Y = generate_observations_heavy_tail(theta, params.alpha,
                                              params.Sigma_eps, df=heavy_tail_df,
-                                             seed=seed)
+                                             seed=seed + 2)
     else:
-        Y = generate_observations(theta, params.alpha, params.Sigma_eps, seed=seed)
+        Y = generate_observations(theta, params.alpha, params.Sigma_eps,
+                                  seed=seed + 2)
 
-    # 4. Event times — based on the (possibly nonlinear) true theta
+    # 4. Event times (independent random stream — Bugfix #1)
     event_times, event_indicators = generate_event_times(
-        theta, X, params, seed=seed)
+        theta, X, params, seed=seed + 3)
 
     data = SimulatedData(
         theta=theta, Y=Y, X=X,
