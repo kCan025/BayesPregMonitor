@@ -1,85 +1,126 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191110102MACQD9K64018705
+    ProduceID: 1329787388049676_0/project_7668539694338130210-files/BayesPregMonitor/README.md
+    ReservedCode1: ""
+    ContentPropagator: 001191110102MACQD9K64028705
+    PropagateID: 1329787388049676#1792596307777
+    ReservedCode2: ""
+---
 # BayesPregMonitor
 
-**A Bayesian Pipeline for Dynamic Maternal Risk Monitoring: From Wearables to Cost-Sensitive Decisions**
+Bayesian Particle Filter + Time-Varying Cox Model for Dynamic Maternal Risk Monitoring.
 
-Three-layer computational framework that translates high-frequency wearable data into real-time clinical intervention decisions for prenatal monitoring.
+A simulation-based framework for comparing **continuous monitoring** (high-frequency particle filter + time-varying Cox) against **discrete landmark-based monitoring**, using a paired design that isolates the effect of monitoring cadence.
 
-## Framework
+---
 
-```
-Layer 1: Bootstrap Particle Filter
-  - Latent risk state θ_i(t) as Gaussian random walk
-  - 4 wearable signals (HRV, sleep, activity, mood) as linear Gaussian emissions
-  - Output: scalar dynamic risk score η_i(t)
-  - Marginal MI (M=5) propagates filtering uncertainty
-       |
-       v
-Layer 2: Extended Cox Proportional Hazards
-  - η_i(t) as time-varying covariate + baseline covariates X_i
-  - Counting process format (start, stop, event)
-  - Rubin's rules for MI pooling
-       |
-       v
-Layer 3: Cost-Sensitive Decision Rule
-  - P(T <= t+Δt | T > t, H_i(t)) = 1 - S(t+Δt)/S(t)
-  - Threshold d* = C_FP / (C_FP + C_FN)
-  - Cost-benefit frontier via ratio sweeping
-```
+## ⚠️ Post-NISS Update: Bug Fixes (v1.1-bugfix)
 
-## DGP Parameters (v3.3)
+After presenting at [NISS S3 Ingram Olkin Forum](https://www.niss.org/events/s3-ingram-olkin-forum-challenges-modeling-and-analyzing-maternal-health-data) (Oct 15–16, 2026), a code review by [@Osakazuha](https://github.com/Osakazuha) identified three issues. All three have been fixed in the `v1.1-bugfix` tag. The NISS poster shows pre-fix numbers.
 
-| Parameter | Symbol | Value | Description |
-|-----------|--------|-------|-------------|
-| State noise variance | σ²_ω | 0.04 | Controls latent trajectory smoothness |
-| Observation loadings | α | (1.0, -0.8, -0.6, -0.7)' | 4-dim wearable linear mapping |
-| Observation noise cov | Σ_ε | diag(0.25, 0.16, 0.36, 0.09) | Diagonal noise matrix |
-| Risk-hazard link | γ | 0.5 | Latent state to event hazard |
-| Weibull shape | k | 1.2 | Baseline hazard time-variation |
-| Weibull scale | λ | 0.008 | Baseline hazard level |
-| Baseline effects | β | (0.03, 0.05)' | Age and BMI effects |
+| Bug | File | Severity | Fix |
+|-----|------|----------|-----|
+| #1: Same seed across all DGP generators | `simulate_data.py` | High | Independent seeds per generator (`seed`, `seed+1`, `seed+2`, `seed+3`) |
+| #2: Landmarking copies PF eta instead of refitting Cox | `benchmarks.py` | Critical | True landmarking with `lifelines.CoxPHFitter` refit at each landmark time |
+| #3: Cost-ratio argmax always picks minimum | `adaptive_threshold.py` | Medium | Removed optimization; standard decision curve with treat-all/treat-none references |
 
-## Running
+### Post-fix MC results (4 scenarios × 80 reps)
 
-```bash
-# Step 1: Data generation + Bootstrap PF + Time-varying Cox
-cd code
-python run_step1.py
+| Scenario | HF iAUC | LM iAUC | HF-LM diff | Wilcoxon p |
+|----------|---------|---------|------------|------------|
+| Baseline (linear + Gaussian) | 0.7173 | 0.7127 | +0.0045 | 0.008 ** |
+| Heavy-tail (linear + t(3)) | 0.7158 | 0.7120 | +0.0038 | 0.026 * |
+| Nonlinear (nonlinear + Gaussian) | 0.8352 | 0.8338 | +0.0014 | 0.086 |
+| Combined (nonlinear + t(3)) | 0.8352 | 0.8339 | +0.0013 | 0.189 |
 
-# Individual modules
-python simulate_data.py        # Generate synthetic data
-python bootstrap_pf.py         # Run particle filter
-python time_varying_cox.py     # Fit Cox models (naive + MI)
-python plot_fig1.py            # Generate Figure 1
-```
+**Key findings:**
+- Direction (HF ≥ LM) holds in all 4 scenarios.
+- Statistical significance holds under **linear dynamics** (p < 0.05) but not under **nonlinear dynamics**.
+- The gap shrinkage under nonlinear dynamics is consistent with a **ceiling effect**: more complex trajectories improve PF tracking accuracy (r: 0.978 → 0.993), pushing both methods toward their performance ceiling.
+- Static Cox drops to ~0.53 (near chance) and no longer varies across scenarios — the old ~0.60–0.69 values were an artifact of Bug #1 (age/BMI acting as theta₀ proxy).
+
+Full details in [BUGFIX_PLAN.md](./BUGFIX_PLAN.md).
+
+---
 
 ## Project Structure
 
 ```
 BayesPregMonitor/
-├── README.md
 ├── code/
-│   ├── simulate_data.py         # DGP: N=500 subjects, 4 signals + event times
-│   ├── bootstrap_pf.py          # Layer 1: Bootstrap PF + marginal MI
-│   ├── time_varying_cox.py      # Layer 2: Extended Cox with counting process
-│   ├── adaptive_threshold.py    # Layer 3: Cost-sensitive decision rule
-│   ├── benchmarks.py            # Static Cox, Landmarking, JMbayes2
-│   ├── plot_fig1.py             # Visualization
-│   ├── run_step1.py             # Main pipeline (Steps 1-2)
-│   └── requirements.txt
-├── figures/                     # Generated figures
-└── results/                     # Saved results (JSON, NPZ)
+│   ├── simulate_data.py        # Data generation process (4 scenarios)
+│   ├── bootstrap_pf.py         # Bootstrap particle filter (Np=100)
+│   ├── benchmarks.py           # Static Cox, landmarking, low-freq benchmarks
+│   ├── adaptive_threshold.py   # Decision layer + cost-sensitive threshold + DCA
+│   ├── run_step12.py           # Layer 1+2: PF + Cox pipeline
+│   ├── run_step3.py            # Layer 3: Decision analysis
+│   ├── run_monte_carlo.py      # Full MC simulation (4 scenarios)
+│   └── plot_figures.py         # Visualization
+├── results/                    # MC output (JSON)
+├── figures/                    # Plots
+├── BUGFIX_PLAN.md              # Detailed bug analysis + fix plan
+└── ISSUE_REPLY_DRAFT.md        # GitHub issue reply draft
 ```
 
-## Design Notes
+---
 
-- **Marginal MI approximation**: At each time point, weighted resampling from the filtered posterior produces M=5 imputed trajectories. This is computationally tractable but does not account for temporal dependence in the joint smoothing distribution. Future: backward simulation.
-- **Fair comparison**: To isolate data-frequency effects from methodological advantage, wearables are downsampled to 4-week clinical frequency for comparison against JMbayes2.
-- **Event rates and covariate distributions** are informed by the PIERS-ML cohort.
+## Method
 
-## Reference
+**Three-layer pipeline:**
 
-SCD 2026 / NISS Ingram Olkin Forum 2026
+1. **Layer 1 — Particle Filter:** Bootstrap particle filter (Np=100) estimates the posterior distribution of the latent risk trajectory θ(t) from noisy longitudinal observations.
+2. **Layer 2 — Time-Varying Cox:** Multiple imputation (Rubin's Rules) with M=5 imputations to combine PF uncertainty with a Cox proportional hazards model including baseline covariates (age, BMI).
+3. **Layer 3 — Decision Curve Analysis:** Cost-sensitive thresholding evaluated across the full cost-ratio frontier (treat-all / treat-none reference lines, no spurious "optimal" selection).
+
+**Paired comparison design:** HF and LM benchmarks share the same PF eta trajectory within each simulation, so the performance difference isolates the effect of monitoring cadence rather than data variability.
+
+**2×2 factorial misspecification design:**
+- Linear vs. nonlinear state dynamics
+- Gaussian vs. heavy-tailed (t₃) observation noise
+
+---
+
+## Quick Start
+
+```bash
+cd code
+
+# Single iteration (smoke test)
+python run_monte_carlo.py --scenario baseline --n_mc 1
+
+# Full MC for one scenario (80 reps, ~3.5 min)
+python run_monte_carlo.py --scenario baseline --n_mc 80
+
+# All four scenarios
+python run_monte_carlo.py --scenario nonlinear --n_mc 80
+python run_monte_carlo.py --scenario heavy_tail --n_mc 80
+python run_monte_carlo.py --scenario combined --n_mc 80
+```
+
+**Dependencies:**
+- Python ≥ 3.9
+- numpy, scipy, pandas
+- lifelines (for landmark Cox refitting)
+- matplotlib (for plots)
+
+---
+
+## Citation & Acknowledgments
+
+If you use this code or framework, please cite:
+
+> Wang, K. (2026). BayesPregMonitor: A Paired Comparison Framework for Continuous vs. Discrete Dynamic Risk Monitoring. NISS S3 Ingram Olkin Forum, Columbus, OH.
+
+Thanks to [@Osakazuha](https://github.com/Osakazuha) for the careful code review that caught the three bugs fixed in v1.1.
+
+---
 
 ## License
 
-MIT
+MIT License
+
+---
+
+> 本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。
