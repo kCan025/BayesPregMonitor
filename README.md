@@ -1,13 +1,3 @@
----
-AIGC:
-    Label: "1"
-    ContentProducer: 001191110102MACQD9K64018705
-    ProduceID: 1329787388049676_0/project_7668539694338130210-files/BayesPregMonitor/README.md
-    ReservedCode1: ""
-    ContentPropagator: 001191110102MACQD9K64028705
-    PropagateID: 1329787388049676#1792687616903
-    ReservedCode2: ""
----
 # BayesPregMonitor
 
 > **Status (2026-10-22, work in progress):** The `v1.1-bugfix` landmark benchmark below was found to be (i) in-sample (Cox fit and evaluated on the same outcome window), with EPV ≈ 3–4 per landmark, and (ii) structurally unable to measure cadence because evaluation times coincide with model-refresh times. Both the legacy and the refit landmark numbers are superseded by **Plan C** (`iAUC_hf_planC` / `iAUC_lm_clean` in `run_monte_carlo.py`): a single MI-Cox score, η frozen between landmarks, and evaluation between refresh times. Plan C results are under independent verification; validated numbers will replace the tables below. See `PLAN_C.md`.

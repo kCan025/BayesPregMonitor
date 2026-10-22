@@ -1,13 +1,3 @@
----
-AIGC:
-    Label: "1"
-    ContentProducer: 001191110102MACQD9K64018705
-    ProduceID: 1329787388049676_0/project_7668539694338130210-files/BayesPregMonitor/PLAN_C.md
-    ReservedCode1: ""
-    ContentPropagator: 001191110102MACQD9K64028705
-    PropagateID: 1329787388049676#1792687628159
-    ReservedCode2: ""
----
 # Plan C — Cadence-Isolated Comparison (2026-10-22)
 
 ## Why the previous benchmarks cannot answer the cadence question

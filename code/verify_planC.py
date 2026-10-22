@@ -3,30 +3,34 @@
 Independent Plan C verification.
 
 Reads ONLY the per-iteration JSON records (no model code, no re-running).
-Recomputes, from scratch, the paired comparison:
-  mean / SD / median of HF and LM-clean iAUC,
-  mean paired difference, win/tie/loss counts,
-  two-sided paired Wilcoxon signed-rank p-value.
+Recomputes, from scratch:
+  - mean / SD / median of HF and LM-clean iAUC
+  - mean paired difference, its t-based 95% CI, paired standardized effect dz
+  - win/tie/loss counts
+  - two-sided paired Wilcoxon signed-rank p-value, computed TWO ways:
+      (a) scipy.stats.wilcoxon
+      (b) hand-computed signed-rank statistic with tie-corrected normal
+          approximation (no scipy survival call), as an internal cross-check
 
 Usage:
   python verify_planC.py                       # all 4 scenarios, std files
   python verify_planC.py path/to/file.json     # one file
   python verify_planC.py --tag 20261022_1157   # timestamped files
 
-Reference (cloud run, 2026-10-22 80 reps):
+Reference (cloud run, 2026-10-22, 80 reps; independently reproduced on
+WSL/Python 3.13/lifelines 0.30.3 the same day):
   baseline   HF .7205  LMc .7070  diff +.0135  62:18  p 5.16e-09
   nonlinear  HF .8394  LMc .8326  diff +.0067  69:11  p 8.79e-12
   heavy_tail HF .7212  LMc .7055  diff +.0157  65:15  p 2.84e-10
   combined   HF .8385  LMc .8331  diff +.0054  65:15  p 8.55e-10
-(combined independently reproduced on WSL/Python 3.13, 2026-10-22 23:39.)
 """
-import glob
 import json
+import math
 import os
 import sys
 
 import numpy as np
-from scipy.stats import wilcoxon
+from scipy.stats import rankdata, t, wilcoxon
 
 SCENARIOS = ["baseline", "nonlinear", "heavy_tail", "combined"]
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -41,50 +45,68 @@ def load(path):
     return hf, lm
 
 
+def manual_signed_rank_p(d):
+    """Two-sided Wilcoxon signed-rank p from scratch (normal approx, tie-corrected)."""
+    d = d[d != 0]
+    n = len(d)
+    ranks = rankdata(np.abs(d), method="average")
+    w_plus = float(np.sum(ranks[d > 0]))
+    mu = n * (n + 1) / 4.0
+    # tie correction on the ranks of |d|
+    _, tie_counts = np.unique(ranks, return_counts=True)
+    tie_term = float(np.sum(tie_counts ** 3 - tie_counts))
+    var = n * (n + 1) * (2 * n + 1) / 24.0 - tie_term / 48.0
+    z = (w_plus - mu - 0.5 * np.sign(w_plus - mu)) / np.sqrt(var)
+    # two-sided normal tail via erfc
+    p = math.erfc(abs(z) / math.sqrt(2.0))
+    return w_plus, z, p
+
+
 def verify(path):
     hf, lm = load(path)
+    n = len(hf)
     d = hf - lm
-    nonzero = d[d != 0]
-    try:
-        p = wilcoxon(hf, lm, alternative="two-sided", zero_method="wilcox").pvalue
-    except ValueError as e:
-        p = float("nan")
-    wins = int(np.sum(d > 0))
-    ties = int(np.sum(d == 0))
-    losses = int(np.sum(d < 0))
+    mean_d, sd_d = float(d.mean()), float(d.std(ddof=1))
+    se = sd_d / np.sqrt(n)
+    ci = t.ppf(0.975, n - 1) * se
+    dz = mean_d / sd_d
+    p_scipy = wilcoxon(hf, lm, alternative="two-sided",
+                       zero_method="wilcox").pvalue
+    w_plus, z, p_manual = manual_signed_rank_p(d)
+    wins, ties, losses = int(np.sum(d > 0)), int(np.sum(d == 0)), int(np.sum(d < 0))
+
     print(f"  file     : {os.path.basename(path)}")
-    print(f"  n        : {len(d)} valid iterations")
+    print(f"  n        : {n} valid iterations")
     print(f"  HF       : mean {hf.mean():.4f}  sd {hf.std(ddof=1):.4f}  "
           f"median {np.median(hf):.4f}")
     print(f"  LM-clean : mean {lm.mean():.4f}  sd {lm.std(ddof=1):.4f}  "
           f"median {np.median(lm):.4f}")
-    print(f"  HF-LMc   : mean {d.mean():+.4f}  median {np.median(d):+.4f}")
+    print(f"  paired d : mean {mean_d:+.4f}  95% CI [{mean_d-ci:+.4f}, "
+          f"{mean_d+ci:+.4f}]  dz {dz:.3f}")
     print(f"  wins/tie/loss (HF perspective): {wins}/{ties}/{losses}")
-    print(f"  Wilcoxon two-sided p : {p:.3e}  "
-          f"(nonzero diffs used: {len(nonzero)})")
-    print(f"  verdict  : {'HF significantly better' if (d.mean() > 0 and p < 0.05) else 'CHECK'}")
+    print(f"  Wilcoxon p (scipy)           : {p_scipy:.3e}")
+    print(f"  signed-rank cross-check (W+={w_plus:.0f}, z={z:.2f}, "
+          f"normal p={p_manual:.3e})")
+    ok = mean_d > 0 and p_scipy < 0.05 and abs(np.log10(p_scipy / p_manual)) < 0.15
+    print(f"  verdict  : {'HF significantly better; cross-check agrees' if ok else 'CHECK'}")
     print()
 
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    tag = None
-    if "--tag" in sys.argv:
-        tag = sys.argv[sys.argv.index("--tag") + 1]
+    tag = sys.argv[sys.argv.index("--tag") + 1] if "--tag" in sys.argv else None
     if args:
         files = args
-    elif tag:
-        files = [os.path.join(RESULTS, f"monte_carlo_{s}_iters_{tag}.json")
-                 for s in SCENARIOS]
     else:
-        files = [os.path.join(RESULTS, f"monte_carlo_{s}_iters.json")
+        suffix = f"_{tag}" if tag else ""
+        files = [os.path.join(RESULTS, f"monte_carlo_{s}_iters{suffix}.json")
                  for s in SCENARIOS]
     files = [f for f in files if os.path.exists(f)]
     if not files:
         sys.exit("No matching _iters.json files found in " + RESULTS)
-    print("=" * 64)
+    print("=" * 66)
     print("Plan C independent verification (paired HF vs LM-clean)")
-    print("=" * 64)
+    print("=" * 66)
     for f in files:
         verify(f)
 
