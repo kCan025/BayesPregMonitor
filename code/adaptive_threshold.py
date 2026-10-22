@@ -1,21 +1,3 @@
-"""
-adaptive_threshold.py -- Layer 3: Cost-Sensitive Decision Rule (Fixed)
-=======================================================================
-Implements the clinical decision layer:
-
-  1. Compute conditional event probability P(T <= t+dt | T > t, H_i(t))
-     from the fitted extended Cox model
-  2. Cost-sensitive threshold: d* = C_FP / (C_FP + C_FN)
-  3. Sweep cost ratio to trace cost-benefit frontier
-  4. Compare against fixed-cutoff monitoring strategies
-  5. Compute net benefit / decision curve analysis
-
-Fixed version uses Nelson-Aalen marginal cumulative hazard as baseline
-and properly centers covariates to avoid mean shift.
-
-Date: 2026-08-15
-"""
-
 import numpy as np
 import pandas as pd
 from typing import Dict, Tuple, Optional

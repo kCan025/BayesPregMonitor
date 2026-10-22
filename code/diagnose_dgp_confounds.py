@@ -1,11 +1,3 @@
-"""
-diagnose_dgp_confounds.py — verify two things before writing the robustness narrative:
-  1. Pairing premise: does heavy_tail share the exact same theta/event_times as
-     baseline (and combined vs nonlinear)? This is the precondition for the
-     subject-level paired delta test.
-  2. Nonlinear confound mechanism: does the sin perturbation shift theta's MEAN
-     (or its VARIANCE)? This decides the correct diagnostic direction.
-"""
 import numpy as np
 from simulate_data import simulate
 

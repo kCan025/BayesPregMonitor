@@ -1,39 +1,3 @@
-"""
-analyze_pairing.py -- Cross-scenario paired hypothesis tests (Level 2)
-=======================================================================
-Loads per-iteration results from run_monte_carlo.py and runs paired
-scenario comparisons for the NISS robustness section.
-
-Scenario pairs share the same DGP seed (42 + mc), so theta and event_times
-are identical within each pair. The ONLY difference is observation noise:
-  Pair 1:  baseline  vs  heavy_tail   (linear theta, gauss vs t(3))
-  Pair 2:  nonlinear vs  combined     (nonlinear theta, gauss vs t(3))
-
-Three layers of comparison are run:
-
-  Layer 2A — Primary (HF advantage over Landmarking):
-      Δ_HF-LM = iAUC_highfreq - iAUC_landmark
-      H0: heavy-tail noise does not change HF's advantage over LM
-
-  Layer 2B — Sampling-frequency robustness:
-      Δ_HF-LF = iAUC_highfreq - iAUC_lowfreq
-      H0: heavy-tail noise does not change HF's advantage over LF
-      If Δ shrinks under heavy-tail → HF's extra info helps absorb noise.
-      If Δ stays → sampling frequency doesn't interact with noise type.
-
-  Layer 2C — Event-rate confound validation:
-      Δ_static = iAUC_static (no PF at all, just baseline covariates)
-      H0: static Cox iAUC is identical across the pair
-      If static iAUC also changes → it's event-rate composition, not PF.
-      Note: only meaningful across theta_mode axis (baseline vs nonlinear),
-            not across obs_noise axis. We report it as a diagnostic.
-
-  Diagnostics layer — PF quality:
-      pf_r, median_ess, p5_ess — paired comparison of filtering quality
-
-Run AFTER `python run_monte_carlo.py --run_all --n_mc 80`:
-    python analyze_pairing.py
-"""
 import json
 import numpy as np
 from scipy import stats

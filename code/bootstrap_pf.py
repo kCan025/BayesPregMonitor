@@ -1,17 +1,3 @@
-"""
-bootstrap_pf.py -- Bootstrap Particle Filter for latent risk state estimation
-============================================================================
-Estimates eta_i(t) = E[theta_i(t) | y_{1:t}] for each subject using a
-Bootstrap Particle Filter with N_particles=100.
-
-State space model:
-  State equation:   theta_i(t) = theta_i(t-1) + omega_i(t),  omega ~ N(0, sigma2_omega)
-  Observation eq:   y_i(t) = alpha * theta_i(t) + eps_i(t), eps ~ N(0, Sigma_eps)
-
-Output: eta_i(t) -- scalar dynamic risk score per subject per time point.
-Also stores particle weights for downstream multiple imputation.
-"""
-
 import numpy as np
 from typing import Tuple
 

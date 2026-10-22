@@ -1,28 +1,3 @@
-"""
-plot_figures.py -- Figures 2-5: Unified Poster Visualization
-==============================================================
-Generates publication-ready figures with consistent visual style
-matching Fig 1 (plot_fig1.py).
-
-Outputs:
-  ../figures/fig2_auc_comparison.png + .pdf
-  ../figures/fig3_auc_over_time.png + .pdf
-  ../figures/fig4_cost_benefit.png + .pdf
-  ../figures/fig5_decision_curves.png + .pdf
-
-Data sources:
-  - Fig 2: ../results/monte_carlo_results.json (or hardcoded fallback)
-  - Fig 3: Runs single-replicate pipeline to extract per-time AUCs
-  - Fig 4: ../results/decision_results.json (or runs step3 pipeline)
-  - Fig 5: Same as Fig 4
-
-Usage:
-    python plot_figures.py                    # all figures
-    python plot_figures.py --fig 2            # only Fig 2
-    python plot_figures.py --fig 2 3          # Fig 2 and 3
-    python plot_figures.py --skip_pipeline    # use only JSON, skip running pipeline
-"""
-
 import numpy as np
 import json
 import os

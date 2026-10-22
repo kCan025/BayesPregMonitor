@@ -1,20 +1,3 @@
-"""
-run_step2.py -- Step 2: Benchmark Comparison
-=============================================
-Runs all benchmark methods and compares with the high-frequency pipeline.
-
-Input: PF results and data from Step 1 (../results/pf_results.npz, data_summary.json)
-       OR regenerates data + PF if results not found.
-
-Output:
-  ../results/benchmark_results.json  -- full comparison table
-  ../figures/fig2_auc_comparison.png -- AUC comparison bar chart
-  ../figures/fig3_roc_curves.png     -- time-dependent ROC curves
-
-Usage:
-    python run_step2.py
-"""
-
 import numpy as np
 import json
 import os

@@ -1,24 +1,3 @@
-"""
-diagnose_lm_optimism.py -- how much of the landmarking benchmark's AUC is in-sample optimism?
-=============================================================================================
-Context
--------
-benchmarks.landmarking_benchmark() refits a 3-parameter CoxPHFitter at each landmark
-t_L on the at-risk subjects, using the outcome in (t_L, t_L + delta_t], and then
-scores those SAME subjects. With only ~5-20 events per landmark that is 2-7 events
-per variable, so the reported AUC is an in-sample (optimistic) estimate.
-
-By contrast the HF arm fits one Cox on the full counting-process history
-(~500 subjects x 40 weeks, ~90 events), i.e. 30+ events per variable.
-
-This script repeats the identical landmark fit but adds a 2-fold cross-fitted
-counterpart (fit on one half of the at-risk subjects, score the other half,
-average both directions) and reports both per landmark.
-
-Usage:
-    python diagnose_lm_optimism.py --scenario baseline --n_mc 80
-"""
-
 import numpy as np
 import json
 import sys

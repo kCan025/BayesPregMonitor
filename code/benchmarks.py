@@ -1,23 +1,3 @@
-"""
-benchmarks.py -- Benchmark methods for comparison with the high-frequency pipeline
-==================================================================================
-Implements four methods for time-dependent risk prediction:
-
-  1. High-Freq PF + Cox (OUR METHOD): weekly data, Bootstrap PF -> extended Cox
-  2. Static Cox: baseline covariates only (age, BMI), no longitudinal data
-  3. Landmarking: discrete-time prediction at weeks 20, 28, 32
-  4. Low-Freq PF + Cox: 4-week downsampled data, same PF pipeline
-
-Primary metric: incident/dynamic time-dependent AUC (Heagerty & Zheng, 2005)
-  - At each evaluation time t, predict event in (t, t+delta_t]
-  - Cases: event in window; Controls: survived past window
-  - Integrated AUC (iAUC): weighted average across evaluation times
-
-Also computes:
-  - Bootstrap 95% CI for iAUC
-  - Calibration (observed vs predicted event rates)
-"""
-
 import numpy as np
 from typing import Dict, List, Tuple, Optional
 import warnings

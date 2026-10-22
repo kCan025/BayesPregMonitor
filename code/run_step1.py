@@ -1,19 +1,3 @@
-"""
-run_step1.py -- Step 1: Data Generation + Bootstrap PF + Time-varying Cox
-==========================================================================
-Main pipeline script for the BayesPregMonitor project.
-
-Runs the complete Layer 1-2 analysis:
-  1. Generate N=500 synthetic subjects (DGP v3.3)
-  2. Run Bootstrap Particle Filter (100 particles)
-  3. Fit time-varying Cox model with marginal MI (M=5)
-  4. Generate Fig 1 (eta trajectories)
-  5. Save results to ../results/
-
-Usage:
-    python run_step1.py
-"""
-
 import numpy as np
 import time
 import os

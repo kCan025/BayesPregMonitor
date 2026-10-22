@@ -1,23 +1,3 @@
-"""
-run_monte_carlo.py -- Monte Carlo replication for Step 2 + Robustness
-=======================================================================
-Runs N_MC independent simulation replicates to assess:
-  1. Whether High-Freq PF+Cox consistently outperforms baselines
-  2. Stable iAUC estimates with confidence intervals
-  3. Paired comparison: method A vs method B across same datasets
-  4. [v4] Model misspecification robustness analysis across 4 scenarios
-
-Scenarios (theta_mode / obs_noise):
-  baseline    : linear   / gaussian   — original setup
-  nonlinear   : nonlinear/ gaussian   — sin perturbation in state transition
-  heavy_tail  : linear   / heavy_tail — Student-t(df=3) observation noise
-  combined    : nonlinear/ heavy_tail — both misspecifications together
-
-Usage:
-    python run_monte_carlo.py --scenario baseline --n_mc 80
-    python run_monte_carlo.py --run_all --n_mc 80
-"""
-
 import numpy as np
 import json
 import time

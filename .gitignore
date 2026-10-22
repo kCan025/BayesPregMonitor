@@ -1,5 +1,6 @@
 __pycache__/
 .idea/
 *.pyc
-results/
+results/__pycache__/
 figures/
+results_backup_pre_refit/

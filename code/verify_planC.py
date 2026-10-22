@@ -1,29 +1,3 @@
-#!/usr/bin/env python3
-"""
-Independent Plan C verification.
-
-Reads ONLY the per-iteration JSON records (no model code, no re-running).
-Recomputes, from scratch:
-  - mean / SD / median of HF and LM-clean iAUC
-  - mean paired difference, its t-based 95% CI, paired standardized effect dz
-  - win/tie/loss counts
-  - two-sided paired Wilcoxon signed-rank p-value, computed TWO ways:
-      (a) scipy.stats.wilcoxon
-      (b) hand-computed signed-rank statistic with tie-corrected normal
-          approximation (no scipy survival call), as an internal cross-check
-
-Usage:
-  python verify_planC.py                       # all 4 scenarios, std files
-  python verify_planC.py path/to/file.json     # one file
-  python verify_planC.py --tag 20261022_1157   # timestamped files
-
-Reference (cloud run, 2026-10-22, 80 reps; independently reproduced on
-WSL/Python 3.13/lifelines 0.30.3 the same day):
-  baseline   HF .7205  LMc .7070  diff +.0135  62:18  p 5.16e-09
-  nonlinear  HF .8394  LMc .8326  diff +.0067  69:11  p 8.79e-12
-  heavy_tail HF .7212  LMc .7055  diff +.0157  65:15  p 2.84e-10
-  combined   HF .8385  LMc .8331  diff +.0054  65:15  p 8.55e-10
-"""
 import json
 import math
 import os

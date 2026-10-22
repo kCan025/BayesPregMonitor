@@ -1,18 +1,3 @@
-"""
-run_step3.py -- Step 3: Cost-Sensitive Decision Rule (Layer 3)
-===============================================================
-Completes the three-layer pipeline by adding the decision layer.
-
-Input: Data + PF + Cox results from Steps 1-2
-Output:
-  ../results/decision_results.json     -- decision rule comparison
-  ../figures/fig4_cost_benefit.png     -- cost-benefit frontier
-  ../figures/fig5_decision_curves.png  -- decision curve analysis
-
-Usage:
-    python run_step3.py
-"""
-
 import numpy as np
 import json
 import os

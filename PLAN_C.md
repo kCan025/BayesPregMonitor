@@ -28,4 +28,3 @@ Implementation: `code/run_monte_carlo.py`, fields `iAUC_hf_planC` and `iAUC_lm_c
 
 ---
 
-> 本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。

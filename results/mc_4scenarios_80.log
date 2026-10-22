@@ -1,0 +1,5303 @@
+===========================================================================
+Monte Carlo Replication Study — Robustness Analysis
+Started at: 2026-09-30 08:17:37
+N_MC = 80 independent replicates per scenario
+Scenarios: all 4
+===========================================================================
+
+===========================================================================
+SCENARIO: baseline
+  theta_mode = linear
+  obs_noise  = gaussian
+  N_MC       = 80
+===========================================================================
+  MI [1/5]: beta_eta=0.6204 (se=0.1040), converged
+  MI [2/5]: beta_eta=0.5983 (se=0.1037), converged
+  MI [3/5]: beta_eta=0.6440 (se=0.1041), converged
+  MI [4/5]: beta_eta=0.6072 (se=0.1043), converged
+  MI [5/5]: beta_eta=0.5691 (se=0.1044), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6078 (SE=0.1084)
+Within-imputation var: 0.010837
+Between-imputation var: 0.000765
+Total var: 0.011756
+FMI (eta): 0.078
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04209603 0.02229944] (age, BMI)
+  iAUC = 0.6922 [95% CI: 0.5898, 0.7796]
+  [  1/80] HF=0.7243  LM=0.7115  medESS=52.4  (3.6s/iter, ETA 4.8min)
+  MI [1/5]: beta_eta=0.8309 (se=0.1163), converged
+  MI [2/5]: beta_eta=0.8988 (se=0.1160), converged
+  MI [3/5]: beta_eta=0.8929 (se=0.1170), converged
+  MI [4/5]: beta_eta=0.8852 (se=0.1166), converged
+  MI [5/5]: beta_eta=0.8493 (se=0.1159), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8714 (SE=0.1208)
+Within-imputation var: 0.013532
+Between-imputation var: 0.000884
+Total var: 0.014593
+FMI (eta): 0.073
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04710931 0.01313876] (age, BMI)
+  iAUC = 0.5211 [95% CI: 0.4430, 0.5984]
+  MI [1/5]: beta_eta=0.8231 (se=0.1263), converged
+  MI [2/5]: beta_eta=0.8226 (se=0.1241), converged
+  MI [3/5]: beta_eta=0.8221 (se=0.1255), converged
+  MI [4/5]: beta_eta=0.8049 (se=0.1254), converged
+  MI [5/5]: beta_eta=0.8456 (se=0.1253), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8236 (SE=0.1263)
+Within-imputation var: 0.015699
+Between-imputation var: 0.000209
+Total var: 0.015950
+FMI (eta): 0.016
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07246835 0.03887701] (age, BMI)
+  iAUC = 0.5063 [95% CI: 0.4088, 0.6020]
+  MI [1/5]: beta_eta=0.7796 (se=0.1146), converged
+  MI [2/5]: beta_eta=0.7722 (se=0.1141), converged
+  MI [3/5]: beta_eta=0.7734 (se=0.1147), converged
+  MI [4/5]: beta_eta=0.8043 (se=0.1141), converged
+  MI [5/5]: beta_eta=0.7590 (se=0.1145), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7777 (SE=0.1158)
+Within-imputation var: 0.013086
+Between-imputation var: 0.000277
+Total var: 0.013419
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05638505 0.04467382] (age, BMI)
+  iAUC = 0.6030 [95% CI: 0.5190, 0.6987]
+  MI [1/5]: beta_eta=0.8328 (se=0.1233), converged
+  MI [2/5]: beta_eta=0.9001 (se=0.1241), converged
+  MI [3/5]: beta_eta=0.8879 (se=0.1248), converged
+  MI [4/5]: beta_eta=0.8937 (se=0.1252), converged
+  MI [5/5]: beta_eta=0.8692 (se=0.1244), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8768 (SE=0.1279)
+Within-imputation var: 0.015471
+Between-imputation var: 0.000738
+Total var: 0.016356
+FMI (eta): 0.054
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07564403 0.02993993] (age, BMI)
+  iAUC = 0.5695 [95% CI: 0.4247, 0.6716]
+  MI [1/5]: beta_eta=0.7313 (se=0.1027), converged
+  MI [2/5]: beta_eta=0.7198 (se=0.1025), converged
+  MI [3/5]: beta_eta=0.7496 (se=0.1031), converged
+  MI [4/5]: beta_eta=0.7033 (se=0.1024), converged
+  MI [5/5]: beta_eta=0.7158 (se=0.1031), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7239 (SE=0.1045)
+Within-imputation var: 0.010556
+Between-imputation var: 0.000306
+Total var: 0.010923
+FMI (eta): 0.034
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06091563 -0.00122576] (age, BMI)
+  iAUC = 0.5899 [95% CI: 0.4979, 0.6725]
+  MI [1/5]: beta_eta=0.5526 (se=0.1152), converged
+  MI [2/5]: beta_eta=0.5204 (se=0.1149), converged
+  MI [3/5]: beta_eta=0.5103 (se=0.1149), converged
+  MI [4/5]: beta_eta=0.5787 (se=0.1154), converged
+  MI [5/5]: beta_eta=0.5339 (se=0.1149), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5392 (SE=0.1188)
+Within-imputation var: 0.013235
+Between-imputation var: 0.000739
+Total var: 0.014122
+FMI (eta): 0.063
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02765349 0.04745684] (age, BMI)
+  iAUC = 0.5841 [95% CI: 0.4921, 0.7061]
+  MI [1/5]: beta_eta=0.5342 (se=0.1017), converged
+  MI [2/5]: beta_eta=0.6216 (se=0.1015), converged
+  MI [3/5]: beta_eta=0.6148 (se=0.1017), converged
+  MI [4/5]: beta_eta=0.5935 (se=0.1014), converged
+  MI [5/5]: beta_eta=0.5673 (se=0.1019), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5863 (SE=0.1090)
+Within-imputation var: 0.010332
+Between-imputation var: 0.001295
+Total var: 0.011886
+FMI (eta): 0.131
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03848292 0.0465763 ] (age, BMI)
+  iAUC = 0.6144 [95% CI: 0.5116, 0.6934]
+  MI [1/5]: beta_eta=0.6383 (se=0.1090), converged
+  MI [2/5]: beta_eta=0.6287 (se=0.1088), converged
+  MI [3/5]: beta_eta=0.6520 (se=0.1098), converged
+  MI [4/5]: beta_eta=0.6043 (se=0.1089), converged
+  MI [5/5]: beta_eta=0.6375 (se=0.1088), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6322 (SE=0.1107)
+Within-imputation var: 0.011890
+Between-imputation var: 0.000312
+Total var: 0.012265
+FMI (eta): 0.031
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05154228 0.01167683] (age, BMI)
+  iAUC = 0.5295 [95% CI: 0.4449, 0.6024]
+  MI [1/5]: beta_eta=0.7572 (se=0.1274), converged
+  MI [2/5]: beta_eta=0.7009 (se=0.1262), converged
+  MI [3/5]: beta_eta=0.7228 (se=0.1260), converged
+  MI [4/5]: beta_eta=0.7768 (se=0.1271), converged
+  MI [5/5]: beta_eta=0.7473 (se=0.1264), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7410 (SE=0.1307)
+Within-imputation var: 0.016032
+Between-imputation var: 0.000880
+Total var: 0.017089
+FMI (eta): 0.062
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08671875 0.06051474] (age, BMI)
+  iAUC = 0.6138 [95% CI: 0.5117, 0.7048]
+  [ 10/80] HF=0.7200  LM=0.7445  medESS=52.2  (3.1s/iter, ETA 3.6min)
+  MI [1/5]: beta_eta=0.8188 (se=0.1177), converged
+  MI [2/5]: beta_eta=0.7926 (se=0.1177), converged
+  MI [3/5]: beta_eta=0.8093 (se=0.1182), converged
+  MI [4/5]: beta_eta=0.8967 (se=0.1200), converged
+  MI [5/5]: beta_eta=0.8238 (se=0.1170), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8282 (SE=0.1260)
+Within-imputation var: 0.013952
+Between-imputation var: 0.001606
+Total var: 0.015879
+FMI (eta): 0.121
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03277793 0.03685387] (age, BMI)
+  iAUC = 0.5231 [95% CI: 0.4152, 0.6228]
+  MI [1/5]: beta_eta=0.7605 (se=0.1142), converged
+  MI [2/5]: beta_eta=0.7065 (se=0.1156), converged
+  MI [3/5]: beta_eta=0.7281 (se=0.1152), converged
+  MI [4/5]: beta_eta=0.7748 (se=0.1159), converged
+  MI [5/5]: beta_eta=0.7218 (se=0.1148), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7383 (SE=0.1192)
+Within-imputation var: 0.013256
+Between-imputation var: 0.000802
+Total var: 0.014218
+FMI (eta): 0.068
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07357146 0.06487669] (age, BMI)
+  iAUC = 0.6832 [95% CI: 0.5420, 0.8119]
+  MI [1/5]: beta_eta=0.6153 (se=0.1249), converged
+  MI [2/5]: beta_eta=0.5868 (se=0.1249), converged
+  MI [3/5]: beta_eta=0.6233 (se=0.1247), converged
+  MI [4/5]: beta_eta=0.5699 (se=0.1250), converged
+  MI [5/5]: beta_eta=0.5623 (se=0.1247), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5915 (SE=0.1283)
+Within-imputation var: 0.015583
+Between-imputation var: 0.000731
+Total var: 0.016461
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0685621  0.05788442] (age, BMI)
+  iAUC = 0.6408 [95% CI: 0.5691, 0.7277]
+  MI [1/5]: beta_eta=0.6736 (se=0.1193), converged
+  MI [2/5]: beta_eta=0.6770 (se=0.1208), converged
+  MI [3/5]: beta_eta=0.7299 (se=0.1195), converged
+  MI [4/5]: beta_eta=0.7257 (se=0.1197), converged
+  MI [5/5]: beta_eta=0.6556 (se=0.1203), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6924 (SE=0.1254)
+Within-imputation var: 0.014377
+Between-imputation var: 0.001114
+Total var: 0.015714
+FMI (eta): 0.085
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06012942 0.01464587] (age, BMI)
+  iAUC = 0.5469 [95% CI: 0.4524, 0.6382]
+  MI [1/5]: beta_eta=0.9063 (se=0.1102), converged
+  MI [2/5]: beta_eta=0.9181 (se=0.1119), converged
+  MI [3/5]: beta_eta=0.9170 (se=0.1114), converged
+  MI [4/5]: beta_eta=0.8874 (se=0.1097), converged
+  MI [5/5]: beta_eta=0.8871 (se=0.1111), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9032 (SE=0.1121)
+Within-imputation var: 0.012289
+Between-imputation var: 0.000232
+Total var: 0.012568
+FMI (eta): 0.022
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.05675491 -0.01169634] (age, BMI)
+  iAUC = 0.5639 [95% CI: 0.4805, 0.6721]
+  MI [1/5]: beta_eta=0.6077 (se=0.1199), converged
+  MI [2/5]: beta_eta=0.6224 (se=0.1211), converged
+  MI [3/5]: beta_eta=0.6443 (se=0.1207), converged
+  MI [4/5]: beta_eta=0.6731 (se=0.1213), converged
+  MI [5/5]: beta_eta=0.6557 (se=0.1212), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6407 (SE=0.1242)
+Within-imputation var: 0.014604
+Between-imputation var: 0.000679
+Total var: 0.015418
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06596648 0.0027879 ] (age, BMI)
+  iAUC = 0.6416 [95% CI: 0.5447, 0.7477]
+  MI [1/5]: beta_eta=0.7280 (se=0.1201), converged
+  MI [2/5]: beta_eta=0.7183 (se=0.1210), converged
+  MI [3/5]: beta_eta=0.7603 (se=0.1211), converged
+  MI [4/5]: beta_eta=0.7099 (se=0.1207), converged
+  MI [5/5]: beta_eta=0.7242 (se=0.1212), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7281 (SE=0.1227)
+Within-imputation var: 0.014602
+Between-imputation var: 0.000369
+Total var: 0.015045
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03755567 0.02952245] (age, BMI)
+  iAUC = 0.5671 [95% CI: 0.4837, 0.6562]
+  MI [1/5]: beta_eta=0.9710 (se=0.1140), converged
+  MI [2/5]: beta_eta=0.9309 (se=0.1138), converged
+  MI [3/5]: beta_eta=0.9528 (se=0.1144), converged
+  MI [4/5]: beta_eta=0.9558 (se=0.1142), converged
+  MI [5/5]: beta_eta=0.9393 (se=0.1137), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9499 (SE=0.1153)
+Within-imputation var: 0.013003
+Between-imputation var: 0.000240
+Total var: 0.013290
+FMI (eta): 0.022
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03826974 0.00735886] (age, BMI)
+  iAUC = 0.6127 [95% CI: 0.5232, 0.7024]
+  MI [1/5]: beta_eta=0.4380 (se=0.1383), converged
+  MI [2/5]: beta_eta=0.4679 (se=0.1391), converged
+  MI [3/5]: beta_eta=0.4393 (se=0.1384), converged
+  MI [4/5]: beta_eta=0.4985 (se=0.1392), converged
+  MI [5/5]: beta_eta=0.4707 (se=0.1390), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.4629 (SE=0.1415)
+Within-imputation var: 0.019265
+Between-imputation var: 0.000632
+Total var: 0.020024
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04281964 0.03258574] (age, BMI)
+  iAUC = 0.5878 [95% CI: 0.4266, 0.7062]
+  MI [1/5]: beta_eta=0.7902 (se=0.1229), converged
+  MI [2/5]: beta_eta=0.7814 (se=0.1224), converged
+  MI [3/5]: beta_eta=0.7657 (se=0.1233), converged
+  MI [4/5]: beta_eta=0.7496 (se=0.1233), converged
+  MI [5/5]: beta_eta=0.7747 (se=0.1228), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7723 (SE=0.1241)
+Within-imputation var: 0.015116
+Between-imputation var: 0.000242
+Total var: 0.015406
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04115412 0.06979296] (age, BMI)
+  iAUC = 0.6763 [95% CI: 0.5742, 0.7596]
+  [ 20/80] HF=0.7564  LM=0.7461  medESS=52.3  (3.0s/iter, ETA 3.0min)
+  MI [1/5]: beta_eta=0.7115 (se=0.1070), converged
+  MI [2/5]: beta_eta=0.7186 (se=0.1073), converged
+  MI [3/5]: beta_eta=0.7086 (se=0.1059), converged
+  MI [4/5]: beta_eta=0.7068 (se=0.1065), converged
+  MI [5/5]: beta_eta=0.7334 (se=0.1075), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7158 (SE=0.1075)
+Within-imputation var: 0.011415
+Between-imputation var: 0.000117
+Total var: 0.011556
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03563977 0.01611969] (age, BMI)
+  iAUC = 0.4594 [95% CI: 0.3697, 0.5611]
+  MI [1/5]: beta_eta=0.5638 (se=0.1069), converged
+  MI [2/5]: beta_eta=0.5701 (se=0.1059), converged
+  MI [3/5]: beta_eta=0.5630 (se=0.1073), converged
+  MI [4/5]: beta_eta=0.5848 (se=0.1067), converged
+  MI [5/5]: beta_eta=0.5616 (se=0.1060), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5687 (SE=0.1071)
+Within-imputation var: 0.011360
+Between-imputation var: 0.000092
+Total var: 0.011470
+FMI (eta): 0.010
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03072223 0.03990703] (age, BMI)
+  iAUC = 0.6374 [95% CI: 0.5351, 0.7334]
+  MI [1/5]: beta_eta=0.9923 (se=0.1323), converged
+  MI [2/5]: beta_eta=0.9149 (se=0.1335), converged
+  MI [3/5]: beta_eta=0.9819 (se=0.1351), converged
+  MI [4/5]: beta_eta=0.9425 (se=0.1337), converged
+  MI [5/5]: beta_eta=0.9446 (se=0.1333), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9553 (SE=0.1380)
+Within-imputation var: 0.017853
+Between-imputation var: 0.000997
+Total var: 0.019049
+FMI (eta): 0.063
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03285631 0.08133019] (age, BMI)
+  iAUC = 0.6705 [95% CI: 0.5750, 0.7821]
+  MI [1/5]: beta_eta=0.9379 (se=0.1273), converged
+  MI [2/5]: beta_eta=0.9066 (se=0.1265), converged
+  MI [3/5]: beta_eta=0.9581 (se=0.1264), converged
+  MI [4/5]: beta_eta=0.9382 (se=0.1260), converged
+  MI [5/5]: beta_eta=0.9089 (se=0.1260), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9300 (SE=0.1287)
+Within-imputation var: 0.015985
+Between-imputation var: 0.000478
+Total var: 0.016558
+FMI (eta): 0.035
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03312436 0.01397543] (age, BMI)
+  iAUC = 0.4926 [95% CI: 0.3679, 0.6399]
+  MI [1/5]: beta_eta=0.8653 (se=0.1145), converged
+  MI [2/5]: beta_eta=0.8279 (se=0.1150), converged
+  MI [3/5]: beta_eta=0.8632 (se=0.1157), converged
+  MI [4/5]: beta_eta=0.8150 (se=0.1152), converged
+  MI [5/5]: beta_eta=0.8851 (se=0.1161), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8513 (SE=0.1196)
+Within-imputation var: 0.013301
+Between-imputation var: 0.000838
+Total var: 0.014306
+FMI (eta): 0.070
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0406338  0.03030959] (age, BMI)
+  iAUC = 0.5000 [95% CI: 0.3443, 0.6237]
+  MI [1/5]: beta_eta=0.7961 (se=0.1203), converged
+  MI [2/5]: beta_eta=0.8435 (se=0.1209), converged
+  MI [3/5]: beta_eta=0.8228 (se=0.1212), converged
+  MI [4/5]: beta_eta=0.8185 (se=0.1211), converged
+  MI [5/5]: beta_eta=0.8452 (se=0.1213), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8252 (SE=0.1230)
+Within-imputation var: 0.014632
+Between-imputation var: 0.000408
+Total var: 0.015121
+FMI (eta): 0.032
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.01815097 0.03121965] (age, BMI)
+  iAUC = 0.6477 [95% CI: 0.4571, 0.7596]
+  MI [1/5]: beta_eta=0.6608 (se=0.1183), converged
+  MI [2/5]: beta_eta=0.6580 (se=0.1175), converged
+  MI [3/5]: beta_eta=0.6660 (se=0.1178), converged
+  MI [4/5]: beta_eta=0.6886 (se=0.1186), converged
+  MI [5/5]: beta_eta=0.6814 (se=0.1184), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6710 (SE=0.1190)
+Within-imputation var: 0.013953
+Between-imputation var: 0.000178
+Total var: 0.014168
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02923572 0.05904588] (age, BMI)
+  iAUC = 0.5760 [95% CI: 0.4911, 0.6614]
+  MI [1/5]: beta_eta=0.8987 (se=0.1222), converged
+  MI [2/5]: beta_eta=0.8678 (se=0.1221), converged
+  MI [3/5]: beta_eta=0.8821 (se=0.1221), converged
+  MI [4/5]: beta_eta=0.9040 (se=0.1234), converged
+  MI [5/5]: beta_eta=0.8447 (se=0.1213), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8795 (SE=0.1250)
+Within-imputation var: 0.014936
+Between-imputation var: 0.000582
+Total var: 0.015634
+FMI (eta): 0.045
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04923754 0.03546245] (age, BMI)
+  iAUC = 0.5858 [95% CI: 0.4850, 0.6945]
+  MI [1/5]: beta_eta=0.8484 (se=0.1056), converged
+  MI [2/5]: beta_eta=0.8801 (se=0.1065), converged
+  MI [3/5]: beta_eta=0.8608 (se=0.1055), converged
+  MI [4/5]: beta_eta=0.8673 (se=0.1056), converged
+  MI [5/5]: beta_eta=0.8488 (se=0.1067), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8611 (SE=0.1070)
+Within-imputation var: 0.011229
+Between-imputation var: 0.000178
+Total var: 0.011443
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06302515 0.02452305] (age, BMI)
+  iAUC = 0.6013 [95% CI: 0.5124, 0.7315]
+  MI [1/5]: beta_eta=0.8676 (se=0.1023), converged
+  MI [2/5]: beta_eta=0.8755 (se=0.1028), converged
+  MI [3/5]: beta_eta=0.8886 (se=0.1030), converged
+  MI [4/5]: beta_eta=0.8677 (se=0.1013), converged
+  MI [5/5]: beta_eta=0.8879 (se=0.1035), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8774 (SE=0.1032)
+Within-imputation var: 0.010519
+Between-imputation var: 0.000108
+Total var: 0.010648
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06438672 0.02615083] (age, BMI)
+  iAUC = 0.5887 [95% CI: 0.5100, 0.6661]
+  [ 30/80] HF=0.7712  LM=0.7786  medESS=52.1  (3.1s/iter, ETA 2.6min)
+  MI [1/5]: beta_eta=0.7668 (se=0.1145), converged
+  MI [2/5]: beta_eta=0.7822 (se=0.1147), converged
+  MI [3/5]: beta_eta=0.7980 (se=0.1150), converged
+  MI [4/5]: beta_eta=0.8192 (se=0.1149), converged
+  MI [5/5]: beta_eta=0.8288 (se=0.1141), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7990 (SE=0.1180)
+Within-imputation var: 0.013142
+Between-imputation var: 0.000654
+Total var: 0.013926
+FMI (eta): 0.056
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04191418 0.03738142] (age, BMI)
+  iAUC = 0.5685 [95% CI: 0.4715, 0.6685]
+  MI [1/5]: beta_eta=0.5226 (se=0.1205), converged
+  MI [2/5]: beta_eta=0.5760 (se=0.1213), converged
+  MI [3/5]: beta_eta=0.5257 (se=0.1205), converged
+  MI [4/5]: beta_eta=0.5503 (se=0.1201), converged
+  MI [5/5]: beta_eta=0.5668 (se=0.1218), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5483 (SE=0.1236)
+Within-imputation var: 0.014604
+Between-imputation var: 0.000571
+Total var: 0.015289
+FMI (eta): 0.045
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10546704 0.09378041] (age, BMI)
+  iAUC = 0.6782 [95% CI: 0.5932, 0.7538]
+  MI [1/5]: beta_eta=0.8668 (se=0.1050), converged
+  MI [2/5]: beta_eta=0.8397 (se=0.1055), converged
+  MI [3/5]: beta_eta=0.8111 (se=0.1040), converged
+  MI [4/5]: beta_eta=0.7985 (se=0.1043), converged
+  MI [5/5]: beta_eta=0.8302 (se=0.1051), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8293 (SE=0.1087)
+Within-imputation var: 0.010982
+Between-imputation var: 0.000700
+Total var: 0.011821
+FMI (eta): 0.071
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05150343 0.0391079 ] (age, BMI)
+  iAUC = 0.6122 [95% CI: 0.5235, 0.7068]
+  MI [1/5]: beta_eta=0.8242 (se=0.1123), converged
+  MI [2/5]: beta_eta=0.8675 (se=0.1124), converged
+  MI [3/5]: beta_eta=0.8571 (se=0.1125), converged
+  MI [4/5]: beta_eta=0.8359 (se=0.1119), converged
+  MI [5/5]: beta_eta=0.8138 (se=0.1126), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8397 (SE=0.1150)
+Within-imputation var: 0.012621
+Between-imputation var: 0.000501
+Total var: 0.013221
+FMI (eta): 0.045
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05190775 0.02165292] (age, BMI)
+  iAUC = 0.6125 [95% CI: 0.5301, 0.6934]
+  MI [1/5]: beta_eta=0.8748 (se=0.1014), converged
+  MI [2/5]: beta_eta=0.8782 (se=0.1004), converged
+  MI [3/5]: beta_eta=0.8786 (se=0.1010), converged
+  MI [4/5]: beta_eta=0.8870 (se=0.1016), converged
+  MI [5/5]: beta_eta=0.8553 (se=0.1015), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8748 (SE=0.1020)
+Within-imputation var: 0.010240
+Between-imputation var: 0.000139
+Total var: 0.010407
+FMI (eta): 0.016
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07571985 0.05736385] (age, BMI)
+  iAUC = 0.6398 [95% CI: 0.5623, 0.7237]
+  MI [1/5]: beta_eta=0.5927 (se=0.1215), converged
+  MI [2/5]: beta_eta=0.5615 (se=0.1215), converged
+  MI [3/5]: beta_eta=0.6285 (se=0.1216), converged
+  MI [4/5]: beta_eta=0.6112 (se=0.1212), converged
+  MI [5/5]: beta_eta=0.5786 (se=0.1214), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5945 (SE=0.1248)
+Within-imputation var: 0.014750
+Between-imputation var: 0.000694
+Total var: 0.015584
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.01931863 0.03121704] (age, BMI)
+  iAUC = 0.5314 [95% CI: 0.3882, 0.6443]
+  MI [1/5]: beta_eta=0.7537 (se=0.1053), converged
+  MI [2/5]: beta_eta=0.7489 (se=0.1049), converged
+  MI [3/5]: beta_eta=0.7373 (se=0.1052), converged
+  MI [4/5]: beta_eta=0.7584 (se=0.1057), converged
+  MI [5/5]: beta_eta=0.7530 (se=0.1056), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7503 (SE=0.1057)
+Within-imputation var: 0.011099
+Between-imputation var: 0.000064
+Total var: 0.011176
+FMI (eta): 0.007
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02744005 0.05896638] (age, BMI)
+  iAUC = 0.5712 [95% CI: 0.4775, 0.6761]
+  MI [1/5]: beta_eta=0.8497 (se=0.1341), converged
+  MI [2/5]: beta_eta=0.8539 (se=0.1337), converged
+  MI [3/5]: beta_eta=0.8347 (se=0.1338), converged
+  MI [4/5]: beta_eta=0.8169 (se=0.1338), converged
+  MI [5/5]: beta_eta=0.8424 (se=0.1335), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8395 (SE=0.1348)
+Within-imputation var: 0.017902
+Between-imputation var: 0.000214
+Total var: 0.018159
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0401695  0.06269317] (age, BMI)
+  iAUC = 0.6436 [95% CI: 0.5287, 0.7497]
+  MI [1/5]: beta_eta=0.7505 (se=0.1150), converged
+  MI [2/5]: beta_eta=0.7971 (se=0.1157), converged
+  MI [3/5]: beta_eta=0.7434 (se=0.1154), converged
+  MI [4/5]: beta_eta=0.7778 (se=0.1159), converged
+  MI [5/5]: beta_eta=0.7684 (se=0.1161), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7674 (SE=0.1180)
+Within-imputation var: 0.013370
+Between-imputation var: 0.000463
+Total var: 0.013926
+FMI (eta): 0.040
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06030154 0.06809291] (age, BMI)
+  iAUC = 0.6144 [95% CI: 0.5108, 0.7029]
+  MI [1/5]: beta_eta=0.8570 (se=0.1281), converged
+  MI [2/5]: beta_eta=0.8734 (se=0.1290), converged
+  MI [3/5]: beta_eta=0.9022 (se=0.1311), converged
+  MI [4/5]: beta_eta=0.8246 (se=0.1283), converged
+  MI [5/5]: beta_eta=0.8620 (se=0.1298), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8638 (SE=0.1329)
+Within-imputation var: 0.016707
+Between-imputation var: 0.000787
+Total var: 0.017652
+FMI (eta): 0.054
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04545657 0.00794001] (age, BMI)
+  iAUC = 0.5712 [95% CI: 0.4678, 0.6888]
+  [ 40/80] HF=0.7399  LM=0.7270  medESS=52.1  (3.0s/iter, ETA 2.0min)
+  MI [1/5]: beta_eta=0.7751 (se=0.1268), converged
+  MI [2/5]: beta_eta=0.6335 (se=0.1246), converged
+  MI [3/5]: beta_eta=0.7058 (se=0.1259), converged
+  MI [4/5]: beta_eta=0.7508 (se=0.1263), converged
+  MI [5/5]: beta_eta=0.7049 (se=0.1243), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7140 (SE=0.1389)
+Within-imputation var: 0.015774
+Between-imputation var: 0.002927
+Total var: 0.019287
+FMI (eta): 0.182
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06338699 -0.00284782] (age, BMI)
+  iAUC = 0.6140 [95% CI: 0.5124, 0.7072]
+  MI [1/5]: beta_eta=0.7413 (se=0.1068), converged
+  MI [2/5]: beta_eta=0.7554 (se=0.1062), converged
+  MI [3/5]: beta_eta=0.7041 (se=0.1050), converged
+  MI [4/5]: beta_eta=0.7469 (se=0.1058), converged
+  MI [5/5]: beta_eta=0.7000 (se=0.1050), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7295 (SE=0.1094)
+Within-imputation var: 0.011181
+Between-imputation var: 0.000656
+Total var: 0.011968
+FMI (eta): 0.066
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07395526 0.03957976] (age, BMI)
+  iAUC = 0.6173 [95% CI: 0.5343, 0.7160]
+  MI [1/5]: beta_eta=0.7947 (se=0.1218), converged
+  MI [2/5]: beta_eta=0.7835 (se=0.1219), converged
+  MI [3/5]: beta_eta=0.7129 (se=0.1209), converged
+  MI [4/5]: beta_eta=0.7688 (se=0.1218), converged
+  MI [5/5]: beta_eta=0.7639 (se=0.1205), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7648 (SE=0.1262)
+Within-imputation var: 0.014734
+Between-imputation var: 0.000988
+Total var: 0.015919
+FMI (eta): 0.074
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04415017 0.03928537] (age, BMI)
+  iAUC = 0.5862 [95% CI: 0.4760, 0.6950]
+  MI [1/5]: beta_eta=0.8220 (se=0.1214), converged
+  MI [2/5]: beta_eta=0.8571 (se=0.1223), converged
+  MI [3/5]: beta_eta=0.8698 (se=0.1219), converged
+  MI [4/5]: beta_eta=0.8485 (se=0.1233), converged
+  MI [5/5]: beta_eta=0.8012 (se=0.1220), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8397 (SE=0.1259)
+Within-imputation var: 0.014922
+Between-imputation var: 0.000770
+Total var: 0.015846
+FMI (eta): 0.058
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06267037 0.02841789] (age, BMI)
+  iAUC = 0.5780 [95% CI: 0.4662, 0.6924]
+  MI [1/5]: beta_eta=0.7173 (se=0.1083), converged
+  MI [2/5]: beta_eta=0.7675 (se=0.1074), converged
+  MI [3/5]: beta_eta=0.7568 (se=0.1079), converged
+  MI [4/5]: beta_eta=0.7494 (se=0.1084), converged
+  MI [5/5]: beta_eta=0.7337 (se=0.1058), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7449 (SE=0.1097)
+Within-imputation var: 0.011572
+Between-imputation var: 0.000391
+Total var: 0.012042
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04961835 0.06005474] (age, BMI)
+  iAUC = 0.6509 [95% CI: 0.5419, 0.7503]
+  MI [1/5]: beta_eta=0.8069 (se=0.1287), converged
+  MI [2/5]: beta_eta=0.8290 (se=0.1284), converged
+  MI [3/5]: beta_eta=0.8016 (se=0.1285), converged
+  MI [4/5]: beta_eta=0.8480 (se=0.1296), converged
+  MI [5/5]: beta_eta=0.8372 (se=0.1278), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8245 (SE=0.1304)
+Within-imputation var: 0.016536
+Between-imputation var: 0.000391
+Total var: 0.017005
+FMI (eta): 0.028
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07991543 0.0465723 ] (age, BMI)
+  iAUC = 0.6639 [95% CI: 0.5716, 0.7427]
+  MI [1/5]: beta_eta=0.6389 (se=0.1024), converged
+  MI [2/5]: beta_eta=0.6186 (se=0.1025), converged
+  MI [3/5]: beta_eta=0.5903 (se=0.1025), converged
+  MI [4/5]: beta_eta=0.6197 (se=0.1024), converged
+  MI [5/5]: beta_eta=0.6089 (se=0.1024), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6153 (SE=0.1043)
+Within-imputation var: 0.010497
+Between-imputation var: 0.000314
+Total var: 0.010874
+FMI (eta): 0.035
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07497234 0.02021164] (age, BMI)
+  iAUC = 0.6001 [95% CI: 0.5174, 0.6995]
+  MI [1/5]: beta_eta=0.6056 (se=0.1016), converged
+  MI [2/5]: beta_eta=0.5553 (se=0.1016), converged
+  MI [3/5]: beta_eta=0.6014 (se=0.1012), converged
+  MI [4/5]: beta_eta=0.5861 (se=0.1023), converged
+  MI [5/5]: beta_eta=0.5821 (se=0.1015), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5861 (SE=0.1040)
+Within-imputation var: 0.010332
+Between-imputation var: 0.000395
+Total var: 0.010806
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04639496 0.01368178] (age, BMI)
+  iAUC = 0.5159 [95% CI: 0.4102, 0.6397]
+  MI [1/5]: beta_eta=0.9123 (se=0.1209), converged
+  MI [2/5]: beta_eta=0.9346 (se=0.1223), converged
+  MI [3/5]: beta_eta=0.9641 (se=0.1229), converged
+  MI [4/5]: beta_eta=0.9915 (se=0.1217), converged
+  MI [5/5]: beta_eta=0.9558 (se=0.1226), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9517 (SE=0.1264)
+Within-imputation var: 0.014905
+Between-imputation var: 0.000901
+Total var: 0.015986
+FMI (eta): 0.068
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05287609 0.05437858] (age, BMI)
+  iAUC = 0.5745 [95% CI: 0.4917, 0.6571]
+  MI [1/5]: beta_eta=0.9151 (se=0.1216), converged
+  MI [2/5]: beta_eta=0.8840 (se=0.1220), converged
+  MI [3/5]: beta_eta=0.9355 (se=0.1228), converged
+  MI [4/5]: beta_eta=0.8735 (se=0.1225), converged
+  MI [5/5]: beta_eta=0.9047 (se=0.1219), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9026 (SE=0.1251)
+Within-imputation var: 0.014924
+Between-imputation var: 0.000608
+Total var: 0.015653
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0442306  0.03822445] (age, BMI)
+  iAUC = 0.6058 [95% CI: 0.4912, 0.6973]
+  [ 50/80] HF=0.8069  LM=0.8004  medESS=52.1  (3.2s/iter, ETA 1.6min)
+  MI [1/5]: beta_eta=0.5823 (se=0.1134), converged
+  MI [2/5]: beta_eta=0.5924 (se=0.1128), converged
+  MI [3/5]: beta_eta=0.5971 (se=0.1136), converged
+  MI [4/5]: beta_eta=0.5828 (se=0.1133), converged
+  MI [5/5]: beta_eta=0.5510 (se=0.1134), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5811 (SE=0.1150)
+Within-imputation var: 0.012836
+Between-imputation var: 0.000324
+Total var: 0.013225
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05211505 0.0422894 ] (age, BMI)
+  iAUC = 0.6249 [95% CI: 0.5213, 0.7161]
+  MI [1/5]: beta_eta=0.8408 (se=0.1132), converged
+  MI [2/5]: beta_eta=0.8304 (se=0.1115), converged
+  MI [3/5]: beta_eta=0.9044 (se=0.1131), converged
+  MI [4/5]: beta_eta=0.8560 (se=0.1128), converged
+  MI [5/5]: beta_eta=0.8087 (se=0.1118), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8481 (SE=0.1192)
+Within-imputation var: 0.012651
+Between-imputation var: 0.001290
+Total var: 0.014198
+FMI (eta): 0.109
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05416115 0.02965217] (age, BMI)
+  iAUC = 0.5082 [95% CI: 0.3967, 0.6145]
+  MI [1/5]: beta_eta=0.5609 (se=0.1242), converged
+  MI [2/5]: beta_eta=0.5940 (se=0.1252), converged
+  MI [3/5]: beta_eta=0.5240 (se=0.1241), converged
+  MI [4/5]: beta_eta=0.5300 (se=0.1240), converged
+  MI [5/5]: beta_eta=0.5780 (se=0.1249), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5574 (SE=0.1288)
+Within-imputation var: 0.015496
+Between-imputation var: 0.000910
+Total var: 0.016588
+FMI (eta): 0.066
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04698821 0.01954376] (age, BMI)
+  iAUC = 0.6301 [95% CI: 0.5389, 0.7178]
+  MI [1/5]: beta_eta=0.6381 (se=0.1127), converged
+  MI [2/5]: beta_eta=0.5932 (se=0.1127), converged
+  MI [3/5]: beta_eta=0.6414 (se=0.1128), converged
+  MI [4/5]: beta_eta=0.6368 (se=0.1134), converged
+  MI [5/5]: beta_eta=0.6592 (se=0.1124), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6337 (SE=0.1159)
+Within-imputation var: 0.012726
+Between-imputation var: 0.000595
+Total var: 0.013439
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05252246 0.02671379] (age, BMI)
+  iAUC = 0.6057 [95% CI: 0.4934, 0.7106]
+  MI [1/5]: beta_eta=0.7703 (se=0.1162), converged
+  MI [2/5]: beta_eta=0.7646 (se=0.1177), converged
+  MI [3/5]: beta_eta=0.8009 (se=0.1185), converged
+  MI [4/5]: beta_eta=0.7540 (se=0.1183), converged
+  MI [5/5]: beta_eta=0.7248 (se=0.1175), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7629 (SE=0.1215)
+Within-imputation var: 0.013841
+Between-imputation var: 0.000758
+Total var: 0.014751
+FMI (eta): 0.062
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07197351 0.01977035] (age, BMI)
+  iAUC = 0.5689 [95% CI: 0.4457, 0.6806]
+  MI [1/5]: beta_eta=0.6525 (se=0.1264), converged
+  MI [2/5]: beta_eta=0.6194 (se=0.1257), converged
+  MI [3/5]: beta_eta=0.6532 (se=0.1270), converged
+  MI [4/5]: beta_eta=0.6222 (se=0.1264), converged
+  MI [5/5]: beta_eta=0.5922 (se=0.1255), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6279 (SE=0.1293)
+Within-imputation var: 0.015926
+Between-imputation var: 0.000655
+Total var: 0.016712
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02038639 0.04884368] (age, BMI)
+  iAUC = 0.6006 [95% CI: 0.4928, 0.7106]
+  MI [1/5]: beta_eta=0.8424 (se=0.1133), converged
+  MI [2/5]: beta_eta=0.8731 (se=0.1104), converged
+  MI [3/5]: beta_eta=0.8478 (se=0.1107), converged
+  MI [4/5]: beta_eta=0.8227 (se=0.1123), converged
+  MI [5/5]: beta_eta=0.9005 (se=0.1114), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8573 (SE=0.1164)
+Within-imputation var: 0.012456
+Between-imputation var: 0.000905
+Total var: 0.013542
+FMI (eta): 0.080
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05341726 0.028015  ] (age, BMI)
+  iAUC = 0.6102 [95% CI: 0.4363, 0.7664]
+  MI [1/5]: beta_eta=0.8555 (se=0.1176), converged
+  MI [2/5]: beta_eta=0.8669 (se=0.1179), converged
+  MI [3/5]: beta_eta=0.8684 (se=0.1178), converged
+  MI [4/5]: beta_eta=0.8842 (se=0.1187), converged
+  MI [5/5]: beta_eta=0.8743 (se=0.1177), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8699 (SE=0.1185)
+Within-imputation var: 0.013909
+Between-imputation var: 0.000111
+Total var: 0.014042
+FMI (eta): 0.009
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04570297 0.05798486] (age, BMI)
+  iAUC = 0.5978 [95% CI: 0.4815, 0.7060]
+  MI [1/5]: beta_eta=0.7964 (se=0.1253), converged
+  MI [2/5]: beta_eta=0.7804 (se=0.1258), converged
+  MI [3/5]: beta_eta=0.7247 (se=0.1250), converged
+  MI [4/5]: beta_eta=0.8304 (se=0.1248), converged
+  MI [5/5]: beta_eta=0.7645 (se=0.1252), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7793 (SE=0.1323)
+Within-imputation var: 0.015682
+Between-imputation var: 0.001528
+Total var: 0.017516
+FMI (eta): 0.105
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07221662 0.04580543] (age, BMI)
+  iAUC = 0.5925 [95% CI: 0.4739, 0.6908]
+  MI [1/5]: beta_eta=0.6065 (se=0.1068), converged
+  MI [2/5]: beta_eta=0.5680 (se=0.1063), converged
+  MI [3/5]: beta_eta=0.6173 (se=0.1064), converged
+  MI [4/5]: beta_eta=0.5971 (se=0.1067), converged
+  MI [5/5]: beta_eta=0.5960 (se=0.1063), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5970 (SE=0.1084)
+Within-imputation var: 0.011340
+Between-imputation var: 0.000336
+Total var: 0.011743
+FMI (eta): 0.034
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08429276 0.0319178 ] (age, BMI)
+  iAUC = 0.6371 [95% CI: 0.5646, 0.7406]
+  [ 60/80] HF=0.6888  LM=0.6578  medESS=52.2  (3.1s/iter, ETA 1.0min)
+  MI [1/5]: beta_eta=0.6655 (se=0.1071), converged
+  MI [2/5]: beta_eta=0.6647 (se=0.1072), converged
+  MI [3/5]: beta_eta=0.6899 (se=0.1074), converged
+  MI [4/5]: beta_eta=0.6852 (se=0.1074), converged
+  MI [5/5]: beta_eta=0.6384 (se=0.1071), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6687 (SE=0.1096)
+Within-imputation var: 0.011502
+Between-imputation var: 0.000417
+Total var: 0.012002
+FMI (eta): 0.042
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08135163 0.02399421] (age, BMI)
+  iAUC = 0.6493 [95% CI: 0.5667, 0.7291]
+  MI [1/5]: beta_eta=0.7792 (se=0.1134), converged
+  MI [2/5]: beta_eta=0.7726 (se=0.1134), converged
+  MI [3/5]: beta_eta=0.7715 (se=0.1131), converged
+  MI [4/5]: beta_eta=0.7830 (se=0.1142), converged
+  MI [5/5]: beta_eta=0.7821 (se=0.1138), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7777 (SE=0.1137)
+Within-imputation var: 0.012901
+Between-imputation var: 0.000029
+Total var: 0.012935
+FMI (eta): 0.003
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06875967 -0.00149465] (age, BMI)
+  iAUC = 0.5764 [95% CI: 0.4633, 0.6653]
+  MI [1/5]: beta_eta=0.7745 (se=0.1194), converged
+  MI [2/5]: beta_eta=0.7156 (se=0.1185), converged
+  MI [3/5]: beta_eta=0.7517 (se=0.1194), converged
+  MI [4/5]: beta_eta=0.7753 (se=0.1191), converged
+  MI [5/5]: beta_eta=0.7836 (se=0.1199), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7601 (SE=0.1230)
+Within-imputation var: 0.014225
+Between-imputation var: 0.000759
+Total var: 0.015136
+FMI (eta): 0.060
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0602677  0.03567143] (age, BMI)
+  iAUC = 0.6215 [95% CI: 0.5333, 0.7037]
+  MI [1/5]: beta_eta=0.9647 (se=0.1300), converged
+  MI [2/5]: beta_eta=0.9823 (se=0.1286), converged
+  MI [3/5]: beta_eta=0.9801 (se=0.1293), converged
+  MI [4/5]: beta_eta=0.9436 (se=0.1289), converged
+  MI [5/5]: beta_eta=0.9956 (se=0.1301), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9733 (SE=0.1312)
+Within-imputation var: 0.016741
+Between-imputation var: 0.000396
+Total var: 0.017215
+FMI (eta): 0.028
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07358906 0.00420355] (age, BMI)
+  iAUC = 0.5606 [95% CI: 0.3899, 0.6615]
+  MI [1/5]: beta_eta=0.6770 (se=0.1269), converged
+  MI [2/5]: beta_eta=0.7129 (se=0.1278), converged
+  MI [3/5]: beta_eta=0.7453 (se=0.1283), converged
+  MI [4/5]: beta_eta=0.7076 (se=0.1271), converged
+  MI [5/5]: beta_eta=0.7344 (se=0.1273), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7155 (SE=0.1307)
+Within-imputation var: 0.016249
+Between-imputation var: 0.000699
+Total var: 0.017087
+FMI (eta): 0.049
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04785257 0.05324386] (age, BMI)
+  iAUC = 0.5742 [95% CI: 0.4846, 0.6950]
+  MI [1/5]: beta_eta=0.6038 (se=0.1152), converged
+  MI [2/5]: beta_eta=0.6146 (se=0.1142), converged
+  MI [3/5]: beta_eta=0.5715 (se=0.1145), converged
+  MI [4/5]: beta_eta=0.5213 (se=0.1136), converged
+  MI [5/5]: beta_eta=0.5311 (se=0.1143), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5685 (SE=0.1232)
+Within-imputation var: 0.013078
+Between-imputation var: 0.001752
+Total var: 0.015181
+FMI (eta): 0.138
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05526771 0.02892055] (age, BMI)
+  iAUC = 0.6614 [95% CI: 0.5712, 0.7412]
+  MI [1/5]: beta_eta=0.8576 (se=0.1267), converged
+  MI [2/5]: beta_eta=0.7923 (se=0.1260), converged
+  MI [3/5]: beta_eta=0.8302 (se=0.1267), converged
+  MI [4/5]: beta_eta=0.8276 (se=0.1273), converged
+  MI [5/5]: beta_eta=0.8445 (se=0.1266), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8304 (SE=0.1295)
+Within-imputation var: 0.016044
+Between-imputation var: 0.000599
+Total var: 0.016764
+FMI (eta): 0.043
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03477393 0.05104512] (age, BMI)
+  iAUC = 0.6103 [95% CI: 0.5020, 0.7323]
+  MI [1/5]: beta_eta=0.8096 (se=0.1037), converged
+  MI [2/5]: beta_eta=0.8169 (se=0.1040), converged
+  MI [3/5]: beta_eta=0.8277 (se=0.1044), converged
+  MI [4/5]: beta_eta=0.7805 (se=0.1037), converged
+  MI [5/5]: beta_eta=0.7943 (se=0.1036), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8058 (SE=0.1059)
+Within-imputation var: 0.010795
+Between-imputation var: 0.000346
+Total var: 0.011211
+FMI (eta): 0.037
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04726727 0.06791841] (age, BMI)
+  iAUC = 0.5988 [95% CI: 0.4809, 0.7131]
+  MI [1/5]: beta_eta=0.7708 (se=0.1068), converged
+  MI [2/5]: beta_eta=0.7782 (se=0.1049), converged
+  MI [3/5]: beta_eta=0.7857 (se=0.1050), converged
+  MI [4/5]: beta_eta=0.7853 (se=0.1055), converged
+  MI [5/5]: beta_eta=0.7623 (se=0.1058), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7765 (SE=0.1062)
+Within-imputation var: 0.011154
+Between-imputation var: 0.000100
+Total var: 0.011273
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02565371 0.06237465] (age, BMI)
+  iAUC = 0.5545 [95% CI: 0.4667, 0.6314]
+  MI [1/5]: beta_eta=0.7830 (se=0.1224), converged
+  MI [2/5]: beta_eta=0.8218 (se=0.1224), converged
+  MI [3/5]: beta_eta=0.7841 (se=0.1214), converged
+  MI [4/5]: beta_eta=0.8446 (se=0.1219), converged
+  MI [5/5]: beta_eta=0.7717 (se=0.1223), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8010 (SE=0.1267)
+Within-imputation var: 0.014910
+Between-imputation var: 0.000950
+Total var: 0.016051
+FMI (eta): 0.071
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05596038 0.00887966] (age, BMI)
+  iAUC = 0.6208 [95% CI: 0.5351, 0.7105]
+  [ 70/80] HF=0.7018  LM=0.6943  medESS=52.2  (3.2s/iter, ETA 0.5min)
+  MI [1/5]: beta_eta=0.8083 (se=0.1169), converged
+  MI [2/5]: beta_eta=0.8443 (se=0.1171), converged
+  MI [3/5]: beta_eta=0.7566 (se=0.1166), converged
+  MI [4/5]: beta_eta=0.8276 (se=0.1168), converged
+  MI [5/5]: beta_eta=0.7951 (se=0.1165), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8064 (SE=0.1224)
+Within-imputation var: 0.013636
+Between-imputation var: 0.001124
+Total var: 0.014985
+FMI (eta): 0.090
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04438327 0.06502451] (age, BMI)
+  iAUC = 0.5421 [95% CI: 0.4293, 0.6528]
+  MI [1/5]: beta_eta=0.7333 (se=0.1204), converged
+  MI [2/5]: beta_eta=0.6924 (se=0.1202), converged
+  MI [3/5]: beta_eta=0.7252 (se=0.1199), converged
+  MI [4/5]: beta_eta=0.7612 (se=0.1200), converged
+  MI [5/5]: beta_eta=0.7277 (se=0.1191), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7280 (SE=0.1229)
+Within-imputation var: 0.014383
+Between-imputation var: 0.000601
+Total var: 0.015104
+FMI (eta): 0.048
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03431877 0.07304565] (age, BMI)
+  iAUC = 0.6476 [95% CI: 0.5566, 0.7292]
+  MI [1/5]: beta_eta=0.8690 (se=0.1108), converged
+  MI [2/5]: beta_eta=0.8972 (se=0.1110), converged
+  MI [3/5]: beta_eta=0.8644 (se=0.1110), converged
+  MI [4/5]: beta_eta=0.8684 (se=0.1116), converged
+  MI [5/5]: beta_eta=0.8906 (se=0.1107), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8779 (SE=0.1122)
+Within-imputation var: 0.012322
+Between-imputation var: 0.000222
+Total var: 0.012588
+FMI (eta): 0.021
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09098605 0.04513496] (age, BMI)
+  iAUC = 0.6671 [95% CI: 0.5376, 0.7693]
+  MI [1/5]: beta_eta=0.6898 (se=0.1128), converged
+  MI [2/5]: beta_eta=0.6968 (se=0.1133), converged
+  MI [3/5]: beta_eta=0.6679 (se=0.1135), converged
+  MI [4/5]: beta_eta=0.7003 (se=0.1127), converged
+  MI [5/5]: beta_eta=0.6939 (se=0.1136), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6898 (SE=0.1140)
+Within-imputation var: 0.012808
+Between-imputation var: 0.000165
+Total var: 0.013006
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05842872 0.03981638] (age, BMI)
+  iAUC = 0.5875 [95% CI: 0.4937, 0.6644]
+  MI [1/5]: beta_eta=0.8300 (se=0.1225), converged
+  MI [2/5]: beta_eta=0.8139 (se=0.1210), converged
+  MI [3/5]: beta_eta=0.7584 (se=0.1200), converged
+  MI [4/5]: beta_eta=0.7716 (se=0.1207), converged
+  MI [5/5]: beta_eta=0.7646 (se=0.1200), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7877 (SE=0.1259)
+Within-imputation var: 0.014607
+Between-imputation var: 0.001032
+Total var: 0.015845
+FMI (eta): 0.078
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06239547 0.07168041] (age, BMI)
+  iAUC = 0.6411 [95% CI: 0.5135, 0.7427]
+  MI [1/5]: beta_eta=0.8210 (se=0.1044), converged
+  MI [2/5]: beta_eta=0.8425 (se=0.1044), converged
+  MI [3/5]: beta_eta=0.8476 (se=0.1034), converged
+  MI [4/5]: beta_eta=0.7775 (se=0.1032), converged
+  MI [5/5]: beta_eta=0.7877 (se=0.1037), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8153 (SE=0.1094)
+Within-imputation var: 0.010775
+Between-imputation var: 0.001002
+Total var: 0.011977
+FMI (eta): 0.100
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07712318 0.0220473 ] (age, BMI)
+  iAUC = 0.6382 [95% CI: 0.5455, 0.7212]
+  MI [1/5]: beta_eta=0.7463 (se=0.1205), converged
+  MI [2/5]: beta_eta=0.7584 (se=0.1207), converged
+  MI [3/5]: beta_eta=0.7788 (se=0.1208), converged
+  MI [4/5]: beta_eta=0.7669 (se=0.1210), converged
+  MI [5/5]: beta_eta=0.7574 (se=0.1202), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7616 (SE=0.1214)
+Within-imputation var: 0.014556
+Between-imputation var: 0.000147
+Total var: 0.014733
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03197767 0.02830232] (age, BMI)
+  iAUC = 0.5686 [95% CI: 0.4685, 0.6694]
+  MI [1/5]: beta_eta=0.7209 (se=0.1227), converged
+  MI [2/5]: beta_eta=0.7407 (se=0.1227), converged
+  MI [3/5]: beta_eta=0.7499 (se=0.1238), converged
+  MI [4/5]: beta_eta=0.7331 (se=0.1239), converged
+  MI [5/5]: beta_eta=0.7529 (se=0.1225), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7395 (SE=0.1239)
+Within-imputation var: 0.015154
+Between-imputation var: 0.000169
+Total var: 0.015357
+FMI (eta): 0.013
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02851641 0.00155435] (age, BMI)
+  iAUC = 0.5392 [95% CI: 0.4426, 0.6537]
+  MI [1/5]: beta_eta=0.6508 (se=0.1088), converged
+  MI [2/5]: beta_eta=0.6480 (se=0.1085), converged
+  MI [3/5]: beta_eta=0.6856 (se=0.1086), converged
+  MI [4/5]: beta_eta=0.6685 (se=0.1085), converged
+  MI [5/5]: beta_eta=0.6514 (se=0.1088), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6609 (SE=0.1100)
+Within-imputation var: 0.011802
+Between-imputation var: 0.000256
+Total var: 0.012109
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0069786  0.02695822] (age, BMI)
+  iAUC = 0.6517 [95% CI: 0.5730, 0.7262]
+  MI [1/5]: beta_eta=0.6938 (se=0.1084), converged
+  MI [2/5]: beta_eta=0.7002 (se=0.1077), converged
+  MI [3/5]: beta_eta=0.6911 (se=0.1087), converged
+  MI [4/5]: beta_eta=0.7249 (se=0.1075), converged
+  MI [5/5]: beta_eta=0.6611 (se=0.1081), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6942 (SE=0.1109)
+Within-imputation var: 0.011678
+Between-imputation var: 0.000521
+Total var: 0.012303
+FMI (eta): 0.051
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05967711 0.02573578] (age, BMI)
+  iAUC = 0.5942 [95% CI: 0.5147, 0.6716]
+  [ 80/80] HF=0.7261  LM=0.7168  medESS=52.5  (3.0s/iter, ETA 0.0min)
+
+  Scenario 'baseline' complete: 80/80 valid, 0 ESS warnings, 4.1 min total
+
+===========================================================================
+MONTE CARLO RESULTS — scenario: baseline
+===========================================================================
+Method                        Mean       SD             95% CI  Valid   Median
+---------------------------------------------------------------------------
+High-Freq PF+Cox            0.7234   0.0464 [0.6321, 0.8045]     80   0.7243
+Static Cox                  0.5970   0.0486 [0.4998, 0.6783]     80   0.6003
+Landmarking                 0.7185   0.0468 [0.6390, 0.7973]     80   0.7210
+Low-Freq PF+Cox             0.7015   0.0491 [0.5974, 0.7770]     80   0.7002
+
+--- Diagnostics ---
+  Event rate:    0.192 +/- 0.020
+  PF corr(θ,η):  0.9889 +/- 0.0005
+  Median ESS:    52.2 +/- 0.1  (warn <10: 0 iters)
+  P5 ESS:        16.0 +/- 0.3
+  Cox beta_eta:  0.7544 (true gamma=0.8)
+  Lead time:     2.56 +/- 1.04 weeks
+
+  HF vs LM (n=80 paired): wins 50/30/0, mean diff +0.0049
+
+  Saved: ../results/monte_carlo_baseline.json
+
+===========================================================================
+SCENARIO: nonlinear
+  theta_mode = nonlinear
+  obs_noise  = gaussian
+  N_MC       = 80
+===========================================================================
+  MI [1/5]: beta_eta=0.7974 (se=0.0743), converged
+  MI [2/5]: beta_eta=0.8013 (se=0.0741), converged
+  MI [3/5]: beta_eta=0.8037 (se=0.0743), converged
+  MI [4/5]: beta_eta=0.7955 (se=0.0738), converged
+  MI [5/5]: beta_eta=0.7991 (se=0.0743), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7994 (SE=0.0742)
+Within-imputation var: 0.005500
+Between-imputation var: 0.000010
+Total var: 0.005512
+FMI (eta): 0.002
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09220891 0.05031152] (age, BMI)
+  iAUC = 0.6893 [95% CI: 0.6144, 0.7544]
+  [  1/80] HF=0.8354  LM=0.8360  medESS=51.8  (3.1s/iter, ETA 4.1min)
+  MI [1/5]: beta_eta=0.7285 (se=0.0748), converged
+  MI [2/5]: beta_eta=0.7103 (se=0.0740), converged
+  MI [3/5]: beta_eta=0.7332 (se=0.0754), converged
+  MI [4/5]: beta_eta=0.7259 (se=0.0747), converged
+  MI [5/5]: beta_eta=0.7372 (se=0.0754), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7270 (SE=0.0757)
+Within-imputation var: 0.005606
+Between-imputation var: 0.000106
+Total var: 0.005734
+FMI (eta): 0.022
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09615334 0.05838125] (age, BMI)
+  iAUC = 0.6311 [95% CI: 0.5595, 0.7064]
+  MI [1/5]: beta_eta=0.7099 (se=0.0767), converged
+  MI [2/5]: beta_eta=0.7248 (se=0.0773), converged
+  MI [3/5]: beta_eta=0.7250 (se=0.0776), converged
+  MI [4/5]: beta_eta=0.7057 (se=0.0764), converged
+  MI [5/5]: beta_eta=0.7195 (se=0.0770), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7170 (SE=0.0776)
+Within-imputation var: 0.005927
+Between-imputation var: 0.000077
+Total var: 0.006019
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11781498 0.07304696] (age, BMI)
+  iAUC = 0.7272 [95% CI: 0.6605, 0.7890]
+  MI [1/5]: beta_eta=0.8090 (se=0.0797), converged
+  MI [2/5]: beta_eta=0.8015 (se=0.0788), converged
+  MI [3/5]: beta_eta=0.7962 (se=0.0789), converged
+  MI [4/5]: beta_eta=0.7873 (se=0.0782), converged
+  MI [5/5]: beta_eta=0.7878 (se=0.0781), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7964 (SE=0.0794)
+Within-imputation var: 0.006201
+Between-imputation var: 0.000085
+Total var: 0.006304
+FMI (eta): 0.016
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10615052 0.04795084] (age, BMI)
+  iAUC = 0.7080 [95% CI: 0.6503, 0.7651]
+  MI [1/5]: beta_eta=0.7680 (se=0.0849), converged
+  MI [2/5]: beta_eta=0.7695 (se=0.0851), converged
+  MI [3/5]: beta_eta=0.8107 (se=0.0872), converged
+  MI [4/5]: beta_eta=0.7841 (se=0.0858), converged
+  MI [5/5]: beta_eta=0.8079 (se=0.0870), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7880 (SE=0.0889)
+Within-imputation var: 0.007395
+Between-imputation var: 0.000417
+Total var: 0.007895
+FMI (eta): 0.063
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13651143 0.0653539 ] (age, BMI)
+  iAUC = 0.6300 [95% CI: 0.5506, 0.7025]
+  MI [1/5]: beta_eta=0.6452 (se=0.0664), converged
+  MI [2/5]: beta_eta=0.6450 (se=0.0665), converged
+  MI [3/5]: beta_eta=0.6560 (se=0.0672), converged
+  MI [4/5]: beta_eta=0.6623 (se=0.0671), converged
+  MI [5/5]: beta_eta=0.6540 (se=0.0670), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6525 (SE=0.0673)
+Within-imputation var: 0.004469
+Between-imputation var: 0.000055
+Total var: 0.004536
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11499346 0.04278169] (age, BMI)
+  iAUC = 0.6242 [95% CI: 0.5489, 0.6963]
+  MI [1/5]: beta_eta=0.7223 (se=0.0784), converged
+  MI [2/5]: beta_eta=0.7433 (se=0.0792), converged
+  MI [3/5]: beta_eta=0.7234 (se=0.0781), converged
+  MI [4/5]: beta_eta=0.7149 (se=0.0777), converged
+  MI [5/5]: beta_eta=0.7066 (se=0.0775), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7221 (SE=0.0796)
+Within-imputation var: 0.006112
+Between-imputation var: 0.000187
+Total var: 0.006336
+FMI (eta): 0.035
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0873476  0.09031905] (age, BMI)
+  iAUC = 0.6742 [95% CI: 0.6015, 0.7495]
+  MI [1/5]: beta_eta=0.8852 (se=0.0848), converged
+  MI [2/5]: beta_eta=0.8749 (se=0.0843), converged
+  MI [3/5]: beta_eta=0.8399 (se=0.0821), converged
+  MI [4/5]: beta_eta=0.8822 (se=0.0849), converged
+  MI [5/5]: beta_eta=0.8892 (se=0.0851), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8743 (SE=0.0870)
+Within-imputation var: 0.007097
+Between-imputation var: 0.000396
+Total var: 0.007573
+FMI (eta): 0.063
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11770588 0.07588995] (age, BMI)
+  iAUC = 0.6815 [95% CI: 0.6252, 0.7401]
+  MI [1/5]: beta_eta=0.7041 (se=0.0766), converged
+  MI [2/5]: beta_eta=0.6948 (se=0.0764), converged
+  MI [3/5]: beta_eta=0.7177 (se=0.0777), converged
+  MI [4/5]: beta_eta=0.7183 (se=0.0781), converged
+  MI [5/5]: beta_eta=0.7106 (se=0.0771), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7091 (SE=0.0779)
+Within-imputation var: 0.005957
+Between-imputation var: 0.000097
+Total var: 0.006073
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11208094 0.06566016] (age, BMI)
+  iAUC = 0.6635 [95% CI: 0.6016, 0.7303]
+  MI [1/5]: beta_eta=0.6429 (se=0.0793), converged
+  MI [2/5]: beta_eta=0.6427 (se=0.0795), converged
+  MI [3/5]: beta_eta=0.6427 (se=0.0791), converged
+  MI [4/5]: beta_eta=0.6373 (se=0.0789), converged
+  MI [5/5]: beta_eta=0.6338 (se=0.0788), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6399 (SE=0.0793)
+Within-imputation var: 0.006264
+Between-imputation var: 0.000017
+Total var: 0.006284
+FMI (eta): 0.003
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15464841 0.08459806] (age, BMI)
+  iAUC = 0.7711 [95% CI: 0.7135, 0.8265]
+  [ 10/80] HF=0.8513  LM=0.8480  medESS=52.0  (3.2s/iter, ETA 3.7min)
+  MI [1/5]: beta_eta=0.9055 (se=0.0840), converged
+  MI [2/5]: beta_eta=0.9087 (se=0.0838), converged
+  MI [3/5]: beta_eta=0.9035 (se=0.0840), converged
+  MI [4/5]: beta_eta=0.9357 (se=0.0854), converged
+  MI [5/5]: beta_eta=0.9209 (se=0.0852), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9149 (SE=0.0858)
+Within-imputation var: 0.007139
+Between-imputation var: 0.000182
+Total var: 0.007357
+FMI (eta): 0.030
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12232773 0.07391099] (age, BMI)
+  iAUC = 0.7095 [95% CI: 0.6277, 0.7661]
+  MI [1/5]: beta_eta=0.8049 (se=0.0872), converged
+  MI [2/5]: beta_eta=0.7993 (se=0.0863), converged
+  MI [3/5]: beta_eta=0.7952 (se=0.0872), converged
+  MI [4/5]: beta_eta=0.8020 (se=0.0867), converged
+  MI [5/5]: beta_eta=0.7800 (se=0.0860), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7963 (SE=0.0873)
+Within-imputation var: 0.007513
+Between-imputation var: 0.000096
+Total var: 0.007628
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13209302 0.08081851] (age, BMI)
+  iAUC = 0.7555 [95% CI: 0.6811, 0.8153]
+  MI [1/5]: beta_eta=0.7970 (se=0.0809), converged
+  MI [2/5]: beta_eta=0.7951 (se=0.0808), converged
+  MI [3/5]: beta_eta=0.8146 (se=0.0814), converged
+  MI [4/5]: beta_eta=0.8088 (se=0.0816), converged
+  MI [5/5]: beta_eta=0.7771 (se=0.0800), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7985 (SE=0.0825)
+Within-imputation var: 0.006549
+Between-imputation var: 0.000210
+Total var: 0.006801
+FMI (eta): 0.037
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10496292 0.09064263] (age, BMI)
+  iAUC = 0.6969 [95% CI: 0.6325, 0.7524]
+  MI [1/5]: beta_eta=0.6793 (se=0.0739), converged
+  MI [2/5]: beta_eta=0.6952 (se=0.0749), converged
+  MI [3/5]: beta_eta=0.7276 (se=0.0768), converged
+  MI [4/5]: beta_eta=0.6892 (se=0.0746), converged
+  MI [5/5]: beta_eta=0.7155 (se=0.0758), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7013 (SE=0.0783)
+Within-imputation var: 0.005658
+Between-imputation var: 0.000390
+Total var: 0.006126
+FMI (eta): 0.076
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12392761 0.07006877] (age, BMI)
+  iAUC = 0.6903 [95% CI: 0.6260, 0.7538]
+  MI [1/5]: beta_eta=0.8377 (se=0.0835), converged
+  MI [2/5]: beta_eta=0.8434 (se=0.0839), converged
+  MI [3/5]: beta_eta=0.8355 (se=0.0832), converged
+  MI [4/5]: beta_eta=0.8034 (se=0.0819), converged
+  MI [5/5]: beta_eta=0.8678 (se=0.0854), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8375 (SE=0.0873)
+Within-imputation var: 0.006984
+Between-imputation var: 0.000531
+Total var: 0.007622
+FMI (eta): 0.084
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12196007 0.01059351] (age, BMI)
+  iAUC = 0.6451 [95% CI: 0.5697, 0.7043]
+  MI [1/5]: beta_eta=0.7231 (se=0.0787), converged
+  MI [2/5]: beta_eta=0.7195 (se=0.0782), converged
+  MI [3/5]: beta_eta=0.7347 (se=0.0791), converged
+  MI [4/5]: beta_eta=0.7375 (se=0.0793), converged
+  MI [5/5]: beta_eta=0.7326 (se=0.0788), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7295 (SE=0.0793)
+Within-imputation var: 0.006211
+Between-imputation var: 0.000061
+Total var: 0.006284
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.14232171 0.03996202] (age, BMI)
+  iAUC = 0.7650 [95% CI: 0.7030, 0.8175]
+  MI [1/5]: beta_eta=0.7158 (se=0.0815), converged
+  MI [2/5]: beta_eta=0.7059 (se=0.0810), converged
+  MI [3/5]: beta_eta=0.7013 (se=0.0806), converged
+  MI [4/5]: beta_eta=0.6719 (se=0.0792), converged
+  MI [5/5]: beta_eta=0.7170 (se=0.0814), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7024 (SE=0.0832)
+Within-imputation var: 0.006519
+Between-imputation var: 0.000334
+Total var: 0.006920
+FMI (eta): 0.058
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08517686 0.06925846] (age, BMI)
+  iAUC = 0.6527 [95% CI: 0.5895, 0.7271]
+  MI [1/5]: beta_eta=0.8496 (se=0.0839), converged
+  MI [2/5]: beta_eta=0.8134 (se=0.0821), converged
+  MI [3/5]: beta_eta=0.8038 (se=0.0809), converged
+  MI [4/5]: beta_eta=0.8369 (se=0.0832), converged
+  MI [5/5]: beta_eta=0.8519 (se=0.0840), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8311 (SE=0.0861)
+Within-imputation var: 0.006859
+Between-imputation var: 0.000467
+Total var: 0.007419
+FMI (eta): 0.075
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09294039 0.05981225] (age, BMI)
+  iAUC = 0.7154 [95% CI: 0.6408, 0.7746]
+  MI [1/5]: beta_eta=0.5954 (se=0.0789), converged
+  MI [2/5]: beta_eta=0.5875 (se=0.0786), converged
+  MI [3/5]: beta_eta=0.5907 (se=0.0788), converged
+  MI [4/5]: beta_eta=0.6097 (se=0.0797), converged
+  MI [5/5]: beta_eta=0.5976 (se=0.0788), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5962 (SE=0.0795)
+Within-imputation var: 0.006235
+Between-imputation var: 0.000073
+Total var: 0.006322
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11205148 0.09448641] (age, BMI)
+  iAUC = 0.7438 [95% CI: 0.6864, 0.8064]
+  MI [1/5]: beta_eta=0.7425 (se=0.0818), converged
+  MI [2/5]: beta_eta=0.7360 (se=0.0808), converged
+  MI [3/5]: beta_eta=0.7345 (se=0.0807), converged
+  MI [4/5]: beta_eta=0.7082 (se=0.0796), converged
+  MI [5/5]: beta_eta=0.7453 (se=0.0817), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7333 (SE=0.0825)
+Within-imputation var: 0.006550
+Between-imputation var: 0.000216
+Total var: 0.006810
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11265609 0.09811754] (age, BMI)
+  iAUC = 0.7507 [95% CI: 0.6930, 0.8105]
+  [ 20/80] HF=0.8605  LM=0.8598  medESS=52.0  (3.1s/iter, ETA 3.1min)
+  MI [1/5]: beta_eta=0.6161 (se=0.0653), converged
+  MI [2/5]: beta_eta=0.6277 (se=0.0658), converged
+  MI [3/5]: beta_eta=0.6049 (se=0.0644), converged
+  MI [4/5]: beta_eta=0.6276 (se=0.0658), converged
+  MI [5/5]: beta_eta=0.6279 (se=0.0656), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6208 (SE=0.0663)
+Within-imputation var: 0.004275
+Between-imputation var: 0.000105
+Total var: 0.004401
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11404526 0.05426808] (age, BMI)
+  iAUC = 0.6254 [95% CI: 0.5515, 0.6848]
+  MI [1/5]: beta_eta=0.8483 (se=0.0822), converged
+  MI [2/5]: beta_eta=0.8391 (se=0.0823), converged
+  MI [3/5]: beta_eta=0.8193 (se=0.0808), converged
+  MI [4/5]: beta_eta=0.8225 (se=0.0810), converged
+  MI [5/5]: beta_eta=0.8206 (se=0.0811), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8299 (SE=0.0827)
+Within-imputation var: 0.006640
+Between-imputation var: 0.000170
+Total var: 0.006843
+FMI (eta): 0.030
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10435931 0.04902971] (age, BMI)
+  iAUC = 0.7141 [95% CI: 0.6498, 0.7750]
+  MI [1/5]: beta_eta=0.8116 (se=0.0895), converged
+  MI [2/5]: beta_eta=0.8102 (se=0.0892), converged
+  MI [3/5]: beta_eta=0.8273 (se=0.0909), converged
+  MI [4/5]: beta_eta=0.7851 (se=0.0878), converged
+  MI [5/5]: beta_eta=0.8076 (se=0.0893), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8084 (SE=0.0909)
+Within-imputation var: 0.007987
+Between-imputation var: 0.000229
+Total var: 0.008261
+FMI (eta): 0.033
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10868965 0.09751874] (age, BMI)
+  iAUC = 0.6636 [95% CI: 0.5986, 0.7273]
+  MI [1/5]: beta_eta=0.9299 (se=0.0927), converged
+  MI [2/5]: beta_eta=0.9225 (se=0.0921), converged
+  MI [3/5]: beta_eta=0.9262 (se=0.0924), converged
+  MI [4/5]: beta_eta=0.9513 (se=0.0941), converged
+  MI [5/5]: beta_eta=0.9257 (se=0.0919), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9311 (SE=0.0935)
+Within-imputation var: 0.008585
+Between-imputation var: 0.000134
+Total var: 0.008746
+FMI (eta): 0.018
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09741521 0.0700438 ] (age, BMI)
+  iAUC = 0.7059 [95% CI: 0.6483, 0.7732]
+  MI [1/5]: beta_eta=0.7693 (se=0.0783), converged
+  MI [2/5]: beta_eta=0.7618 (se=0.0781), converged
+  MI [3/5]: beta_eta=0.7594 (se=0.0776), converged
+  MI [4/5]: beta_eta=0.7447 (se=0.0765), converged
+  MI [5/5]: beta_eta=0.7314 (se=0.0764), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7533 (SE=0.0791)
+Within-imputation var: 0.005987
+Between-imputation var: 0.000230
+Total var: 0.006263
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09840806 0.06270065] (age, BMI)
+  iAUC = 0.6618 [95% CI: 0.5896, 0.7384]
+  MI [1/5]: beta_eta=0.7826 (se=0.0801), converged
+  MI [2/5]: beta_eta=0.8072 (se=0.0813), converged
+  MI [3/5]: beta_eta=0.7829 (se=0.0796), converged
+  MI [4/5]: beta_eta=0.8111 (se=0.0816), converged
+  MI [5/5]: beta_eta=0.7746 (se=0.0794), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7917 (SE=0.0824)
+Within-imputation var: 0.006464
+Between-imputation var: 0.000268
+Total var: 0.006786
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0777041  0.06130666] (age, BMI)
+  iAUC = 0.6988 [95% CI: 0.6283, 0.7654]
+  MI [1/5]: beta_eta=0.7206 (se=0.0763), converged
+  MI [2/5]: beta_eta=0.7420 (se=0.0773), converged
+  MI [3/5]: beta_eta=0.7185 (se=0.0760), converged
+  MI [4/5]: beta_eta=0.7366 (se=0.0768), converged
+  MI [5/5]: beta_eta=0.7173 (se=0.0760), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7270 (SE=0.0775)
+Within-imputation var: 0.005849
+Between-imputation var: 0.000131
+Total var: 0.006006
+FMI (eta): 0.026
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09621064 0.10602875] (age, BMI)
+  iAUC = 0.7068 [95% CI: 0.6305, 0.7747]
+  MI [1/5]: beta_eta=0.8604 (se=0.0899), converged
+  MI [2/5]: beta_eta=0.8451 (se=0.0887), converged
+  MI [3/5]: beta_eta=0.8565 (se=0.0893), converged
+  MI [4/5]: beta_eta=0.8726 (se=0.0906), converged
+  MI [5/5]: beta_eta=0.8667 (se=0.0895), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8603 (SE=0.0903)
+Within-imputation var: 0.008025
+Between-imputation var: 0.000109
+Total var: 0.008156
+FMI (eta): 0.016
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08492058 0.08822984] (age, BMI)
+  iAUC = 0.6663 [95% CI: 0.5879, 0.7279]
+  MI [1/5]: beta_eta=0.8185 (se=0.0805), converged
+  MI [2/5]: beta_eta=0.8074 (se=0.0801), converged
+  MI [3/5]: beta_eta=0.8162 (se=0.0808), converged
+  MI [4/5]: beta_eta=0.8038 (se=0.0801), converged
+  MI [5/5]: beta_eta=0.7990 (se=0.0806), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8090 (SE=0.0809)
+Within-imputation var: 0.006465
+Between-imputation var: 0.000068
+Total var: 0.006547
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11471638 0.04785967] (age, BMI)
+  iAUC = 0.6925 [95% CI: 0.6294, 0.7665]
+  MI [1/5]: beta_eta=0.7821 (se=0.0742), converged
+  MI [2/5]: beta_eta=0.7788 (se=0.0746), converged
+  MI [3/5]: beta_eta=0.7896 (se=0.0749), converged
+  MI [4/5]: beta_eta=0.7816 (se=0.0743), converged
+  MI [5/5]: beta_eta=0.7991 (se=0.0751), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7862 (SE=0.0752)
+Within-imputation var: 0.005569
+Between-imputation var: 0.000068
+Total var: 0.005650
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12240691 0.07283294] (age, BMI)
+  iAUC = 0.7114 [95% CI: 0.6534, 0.7797]
+  [ 30/80] HF=0.8541  LM=0.8524  medESS=51.8  (3.1s/iter, ETA 2.5min)
+  MI [1/5]: beta_eta=0.7698 (se=0.0804), converged
+  MI [2/5]: beta_eta=0.7678 (se=0.0803), converged
+  MI [3/5]: beta_eta=0.7703 (se=0.0805), converged
+  MI [4/5]: beta_eta=0.7697 (se=0.0805), converged
+  MI [5/5]: beta_eta=0.7434 (se=0.0791), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7642 (SE=0.0812)
+Within-imputation var: 0.006428
+Between-imputation var: 0.000136
+Total var: 0.006592
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0919481  0.05711588] (age, BMI)
+  iAUC = 0.6393 [95% CI: 0.5628, 0.7239]
+  MI [1/5]: beta_eta=0.6592 (se=0.0831), converged
+  MI [2/5]: beta_eta=0.6834 (se=0.0847), converged
+  MI [3/5]: beta_eta=0.6974 (se=0.0855), converged
+  MI [4/5]: beta_eta=0.6611 (se=0.0837), converged
+  MI [5/5]: beta_eta=0.6668 (se=0.0837), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6736 (SE=0.0860)
+Within-imputation var: 0.007081
+Between-imputation var: 0.000268
+Total var: 0.007402
+FMI (eta): 0.043
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15546874 0.10859027] (age, BMI)
+  iAUC = 0.6988 [95% CI: 0.6244, 0.7756]
+  MI [1/5]: beta_eta=0.8215 (se=0.0794), converged
+  MI [2/5]: beta_eta=0.8084 (se=0.0785), converged
+  MI [3/5]: beta_eta=0.8264 (se=0.0795), converged
+  MI [4/5]: beta_eta=0.8034 (se=0.0780), converged
+  MI [5/5]: beta_eta=0.8246 (se=0.0794), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8169 (SE=0.0798)
+Within-imputation var: 0.006234
+Between-imputation var: 0.000106
+Total var: 0.006362
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09781945 0.07288724] (age, BMI)
+  iAUC = 0.6866 [95% CI: 0.6255, 0.7464]
+  MI [1/5]: beta_eta=0.7471 (se=0.0776), converged
+  MI [2/5]: beta_eta=0.7545 (se=0.0787), converged
+  MI [3/5]: beta_eta=0.7634 (se=0.0792), converged
+  MI [4/5]: beta_eta=0.7671 (se=0.0789), converged
+  MI [5/5]: beta_eta=0.7563 (se=0.0783), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7577 (SE=0.0790)
+Within-imputation var: 0.006167
+Between-imputation var: 0.000061
+Total var: 0.006241
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09924983 0.05477525] (age, BMI)
+  iAUC = 0.6986 [95% CI: 0.6265, 0.7572]
+  MI [1/5]: beta_eta=0.7898 (se=0.0751), converged
+  MI [2/5]: beta_eta=0.8008 (se=0.0756), converged
+  MI [3/5]: beta_eta=0.8024 (se=0.0762), converged
+  MI [4/5]: beta_eta=0.8291 (se=0.0772), converged
+  MI [5/5]: beta_eta=0.8028 (se=0.0759), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8050 (SE=0.0777)
+Within-imputation var: 0.005778
+Between-imputation var: 0.000211
+Total var: 0.006031
+FMI (eta): 0.042
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10300114 0.0939705 ] (age, BMI)
+  iAUC = 0.7164 [95% CI: 0.6512, 0.7753]
+  MI [1/5]: beta_eta=0.7172 (se=0.0762), converged
+  MI [2/5]: beta_eta=0.7134 (se=0.0762), converged
+  MI [3/5]: beta_eta=0.7153 (se=0.0762), converged
+  MI [4/5]: beta_eta=0.7230 (se=0.0767), converged
+  MI [5/5]: beta_eta=0.7083 (se=0.0758), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7154 (SE=0.0765)
+Within-imputation var: 0.005811
+Between-imputation var: 0.000029
+Total var: 0.005846
+FMI (eta): 0.006
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10064479 0.07093514] (age, BMI)
+  iAUC = 0.6255 [95% CI: 0.5467, 0.6984]
+  MI [1/5]: beta_eta=0.7942 (se=0.0734), converged
+  MI [2/5]: beta_eta=0.8037 (se=0.0736), converged
+  MI [3/5]: beta_eta=0.7737 (se=0.0726), converged
+  MI [4/5]: beta_eta=0.7855 (se=0.0727), converged
+  MI [5/5]: beta_eta=0.8056 (se=0.0739), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7925 (SE=0.0747)
+Within-imputation var: 0.005364
+Between-imputation var: 0.000175
+Total var: 0.005575
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.077566   0.06529238] (age, BMI)
+  iAUC = 0.6518 [95% CI: 0.5875, 0.7164]
+  MI [1/5]: beta_eta=0.8036 (se=0.0873), converged
+  MI [2/5]: beta_eta=0.7814 (se=0.0861), converged
+  MI [3/5]: beta_eta=0.8260 (se=0.0884), converged
+  MI [4/5]: beta_eta=0.8202 (se=0.0881), converged
+  MI [5/5]: beta_eta=0.8042 (se=0.0871), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8071 (SE=0.0894)
+Within-imputation var: 0.007637
+Between-imputation var: 0.000303
+Total var: 0.008001
+FMI (eta): 0.045
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08728751 0.09088339] (age, BMI)
+  iAUC = 0.6991 [95% CI: 0.6288, 0.7626]
+  MI [1/5]: beta_eta=0.8464 (se=0.0806), converged
+  MI [2/5]: beta_eta=0.8612 (se=0.0813), converged
+  MI [3/5]: beta_eta=0.8506 (se=0.0812), converged
+  MI [4/5]: beta_eta=0.8710 (se=0.0821), converged
+  MI [5/5]: beta_eta=0.8668 (se=0.0822), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8592 (SE=0.0823)
+Within-imputation var: 0.006637
+Between-imputation var: 0.000110
+Total var: 0.006769
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11514212 0.08294549] (age, BMI)
+  iAUC = 0.7052 [95% CI: 0.6531, 0.7582]
+  MI [1/5]: beta_eta=0.8321 (se=0.0874), converged
+  MI [2/5]: beta_eta=0.8549 (se=0.0889), converged
+  MI [3/5]: beta_eta=0.8750 (se=0.0896), converged
+  MI [4/5]: beta_eta=0.8460 (se=0.0882), converged
+  MI [5/5]: beta_eta=0.8612 (se=0.0889), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8538 (SE=0.0904)
+Within-imputation var: 0.007855
+Between-imputation var: 0.000260
+Total var: 0.008166
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10985297 0.02771902] (age, BMI)
+  iAUC = 0.6770 [95% CI: 0.6054, 0.7477]
+  [ 40/80] HF=0.8353  LM=0.8232  medESS=51.8  (3.2s/iter, ETA 2.1min)
+  MI [1/5]: beta_eta=0.7738 (se=0.0802), converged
+  MI [2/5]: beta_eta=0.7566 (se=0.0795), converged
+  MI [3/5]: beta_eta=0.7413 (se=0.0787), converged
+  MI [4/5]: beta_eta=0.7760 (se=0.0805), converged
+  MI [5/5]: beta_eta=0.7603 (se=0.0803), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7616 (SE=0.0813)
+Within-imputation var: 0.006377
+Between-imputation var: 0.000199
+Total var: 0.006616
+FMI (eta): 0.036
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11565392 0.0446146 ] (age, BMI)
+  iAUC = 0.6844 [95% CI: 0.6240, 0.7352]
+  MI [1/5]: beta_eta=0.7811 (se=0.0770), converged
+  MI [2/5]: beta_eta=0.7880 (se=0.0774), converged
+  MI [3/5]: beta_eta=0.7858 (se=0.0776), converged
+  MI [4/5]: beta_eta=0.7615 (se=0.0760), converged
+  MI [5/5]: beta_eta=0.7919 (se=0.0778), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7817 (SE=0.0783)
+Within-imputation var: 0.005954
+Between-imputation var: 0.000142
+Total var: 0.006124
+FMI (eta): 0.028
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10905975 0.06022367] (age, BMI)
+  iAUC = 0.6735 [95% CI: 0.6026, 0.7448]
+  MI [1/5]: beta_eta=0.8096 (se=0.0869), converged
+  MI [2/5]: beta_eta=0.8195 (se=0.0868), converged
+  MI [3/5]: beta_eta=0.8180 (se=0.0869), converged
+  MI [4/5]: beta_eta=0.8223 (se=0.0870), converged
+  MI [5/5]: beta_eta=0.8234 (se=0.0869), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8186 (SE=0.0871)
+Within-imputation var: 0.007547
+Between-imputation var: 0.000030
+Total var: 0.007582
+FMI (eta): 0.005
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12463904 0.09149062] (age, BMI)
+  iAUC = 0.7614 [95% CI: 0.7130, 0.8220]
+  MI [1/5]: beta_eta=0.8757 (se=0.0836), converged
+  MI [2/5]: beta_eta=0.9045 (se=0.0850), converged
+  MI [3/5]: beta_eta=0.8812 (se=0.0843), converged
+  MI [4/5]: beta_eta=0.8927 (se=0.0846), converged
+  MI [5/5]: beta_eta=0.8778 (se=0.0839), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8864 (SE=0.0853)
+Within-imputation var: 0.007104
+Between-imputation var: 0.000145
+Total var: 0.007279
+FMI (eta): 0.024
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10897275 0.02783884] (age, BMI)
+  iAUC = 0.6653 [95% CI: 0.5855, 0.7446]
+  MI [1/5]: beta_eta=0.8233 (se=0.0826), converged
+  MI [2/5]: beta_eta=0.8110 (se=0.0822), converged
+  MI [3/5]: beta_eta=0.7941 (se=0.0811), converged
+  MI [4/5]: beta_eta=0.8196 (se=0.0830), converged
+  MI [5/5]: beta_eta=0.8321 (se=0.0830), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8160 (SE=0.0839)
+Within-imputation var: 0.006787
+Between-imputation var: 0.000207
+Total var: 0.007035
+FMI (eta): 0.035
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08601803 0.09540656] (age, BMI)
+  iAUC = 0.7235 [95% CI: 0.6512, 0.7735]
+  MI [1/5]: beta_eta=0.8317 (se=0.0856), converged
+  MI [2/5]: beta_eta=0.8283 (se=0.0857), converged
+  MI [3/5]: beta_eta=0.8331 (se=0.0856), converged
+  MI [4/5]: beta_eta=0.8451 (se=0.0863), converged
+  MI [5/5]: beta_eta=0.8319 (se=0.0860), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8340 (SE=0.0861)
+Within-imputation var: 0.007371
+Between-imputation var: 0.000041
+Total var: 0.007421
+FMI (eta): 0.007
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15442956 0.08293933] (age, BMI)
+  iAUC = 0.7474 [95% CI: 0.6827, 0.8064]
+  MI [1/5]: beta_eta=0.6753 (se=0.0699), converged
+  MI [2/5]: beta_eta=0.6778 (se=0.0701), converged
+  MI [3/5]: beta_eta=0.6635 (se=0.0692), converged
+  MI [4/5]: beta_eta=0.7047 (se=0.0714), converged
+  MI [5/5]: beta_eta=0.6789 (se=0.0701), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6800 (SE=0.0721)
+Within-imputation var: 0.004920
+Between-imputation var: 0.000227
+Total var: 0.005192
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1277723  0.06292192] (age, BMI)
+  iAUC = 0.7126 [95% CI: 0.6432, 0.7709]
+  MI [1/5]: beta_eta=0.6595 (se=0.0692), converged
+  MI [2/5]: beta_eta=0.6704 (se=0.0699), converged
+  MI [3/5]: beta_eta=0.6503 (se=0.0692), converged
+  MI [4/5]: beta_eta=0.6557 (se=0.0694), converged
+  MI [5/5]: beta_eta=0.6460 (se=0.0691), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6564 (SE=0.0701)
+Within-imputation var: 0.004815
+Between-imputation var: 0.000088
+Total var: 0.004920
+FMI (eta): 0.021
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09611127 0.06525352] (age, BMI)
+  iAUC = 0.7102 [95% CI: 0.6415, 0.7660]
+  MI [1/5]: beta_eta=0.7076 (se=0.0746), converged
+  MI [2/5]: beta_eta=0.7064 (se=0.0746), converged
+  MI [3/5]: beta_eta=0.6851 (se=0.0736), converged
+  MI [4/5]: beta_eta=0.6625 (se=0.0725), converged
+  MI [5/5]: beta_eta=0.6786 (se=0.0733), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6880 (SE=0.0766)
+Within-imputation var: 0.005434
+Between-imputation var: 0.000366
+Total var: 0.005874
+FMI (eta): 0.075
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10718339 0.07622173] (age, BMI)
+  iAUC = 0.7145 [95% CI: 0.6616, 0.7710]
+  MI [1/5]: beta_eta=0.7776 (se=0.0831), converged
+  MI [2/5]: beta_eta=0.8030 (se=0.0846), converged
+  MI [3/5]: beta_eta=0.7912 (se=0.0839), converged
+  MI [4/5]: beta_eta=0.7641 (se=0.0823), converged
+  MI [5/5]: beta_eta=0.7755 (se=0.0829), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7823 (SE=0.0850)
+Within-imputation var: 0.006947
+Between-imputation var: 0.000227
+Total var: 0.007219
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11343054 0.07001985] (age, BMI)
+  iAUC = 0.6851 [95% CI: 0.6214, 0.7484]
+  [ 50/80] HF=0.8384  LM=0.8419  medESS=51.8  (3.2s/iter, ETA 1.6min)
+  MI [1/5]: beta_eta=0.6021 (se=0.0651), converged
+  MI [2/5]: beta_eta=0.6346 (se=0.0665), converged
+  MI [3/5]: beta_eta=0.6218 (se=0.0660), converged
+  MI [4/5]: beta_eta=0.6085 (se=0.0654), converged
+  MI [5/5]: beta_eta=0.6184 (se=0.0657), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6170 (SE=0.0672)
+Within-imputation var: 0.004322
+Between-imputation var: 0.000157
+Total var: 0.004511
+FMI (eta): 0.042
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12636711 0.05622976] (age, BMI)
+  iAUC = 0.7118 [95% CI: 0.6427, 0.7741]
+  MI [1/5]: beta_eta=0.8399 (se=0.0844), converged
+  MI [2/5]: beta_eta=0.8668 (se=0.0853), converged
+  MI [3/5]: beta_eta=0.8517 (se=0.0845), converged
+  MI [4/5]: beta_eta=0.8576 (se=0.0852), converged
+  MI [5/5]: beta_eta=0.8473 (se=0.0847), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8527 (SE=0.0856)
+Within-imputation var: 0.007195
+Between-imputation var: 0.000104
+Total var: 0.007320
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10970887 0.06570984] (age, BMI)
+  iAUC = 0.6605 [95% CI: 0.5998, 0.7276]
+  MI [1/5]: beta_eta=0.6449 (se=0.0754), converged
+  MI [2/5]: beta_eta=0.6616 (se=0.0760), converged
+  MI [3/5]: beta_eta=0.6432 (se=0.0750), converged
+  MI [4/5]: beta_eta=0.6493 (se=0.0756), converged
+  MI [5/5]: beta_eta=0.6462 (se=0.0754), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6490 (SE=0.0759)
+Within-imputation var: 0.005697
+Between-imputation var: 0.000054
+Total var: 0.005762
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11880884 0.0609674 ] (age, BMI)
+  iAUC = 0.6318 [95% CI: 0.5534, 0.7043]
+  MI [1/5]: beta_eta=0.6178 (se=0.0749), converged
+  MI [2/5]: beta_eta=0.6392 (se=0.0760), converged
+  MI [3/5]: beta_eta=0.6048 (se=0.0738), converged
+  MI [4/5]: beta_eta=0.6242 (se=0.0750), converged
+  MI [5/5]: beta_eta=0.6272 (se=0.0751), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6226 (SE=0.0762)
+Within-imputation var: 0.005620
+Between-imputation var: 0.000160
+Total var: 0.005812
+FMI (eta): 0.033
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1185248  0.03665785] (age, BMI)
+  iAUC = 0.6676 [95% CI: 0.5932, 0.7423]
+  MI [1/5]: beta_eta=0.8851 (se=0.0912), converged
+  MI [2/5]: beta_eta=0.9120 (se=0.0931), converged
+  MI [3/5]: beta_eta=0.9020 (se=0.0924), converged
+  MI [4/5]: beta_eta=0.8549 (se=0.0888), converged
+  MI [5/5]: beta_eta=0.8433 (se=0.0891), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8795 (SE=0.0965)
+Within-imputation var: 0.008267
+Between-imputation var: 0.000878
+Total var: 0.009321
+FMI (eta): 0.113
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.14382206 0.04927145] (age, BMI)
+  iAUC = 0.6877 [95% CI: 0.6147, 0.7605]
+  MI [1/5]: beta_eta=0.5758 (se=0.0765), converged
+  MI [2/5]: beta_eta=0.5600 (se=0.0756), converged
+  MI [3/5]: beta_eta=0.5378 (se=0.0745), converged
+  MI [4/5]: beta_eta=0.5525 (se=0.0753), converged
+  MI [5/5]: beta_eta=0.5693 (se=0.0761), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5591 (SE=0.0773)
+Within-imputation var: 0.005717
+Between-imputation var: 0.000220
+Total var: 0.005981
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09593845 0.07275108] (age, BMI)
+  iAUC = 0.6440 [95% CI: 0.5770, 0.7119]
+  MI [1/5]: beta_eta=0.8020 (se=0.0835), converged
+  MI [2/5]: beta_eta=0.7966 (se=0.0829), converged
+  MI [3/5]: beta_eta=0.7846 (se=0.0828), converged
+  MI [4/5]: beta_eta=0.8324 (se=0.0843), converged
+  MI [5/5]: beta_eta=0.8188 (se=0.0838), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8069 (SE=0.0860)
+Within-imputation var: 0.006969
+Between-imputation var: 0.000355
+Total var: 0.007395
+FMI (eta): 0.058
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10913122 0.04668861] (age, BMI)
+  iAUC = 0.7094 [95% CI: 0.6331, 0.7724]
+  MI [1/5]: beta_eta=0.8527 (se=0.0772), converged
+  MI [2/5]: beta_eta=0.8529 (se=0.0777), converged
+  MI [3/5]: beta_eta=0.8508 (se=0.0774), converged
+  MI [4/5]: beta_eta=0.8393 (se=0.0768), converged
+  MI [5/5]: beta_eta=0.8732 (se=0.0778), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8538 (SE=0.0785)
+Within-imputation var: 0.005989
+Between-imputation var: 0.000150
+Total var: 0.006169
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10984423 0.07556773] (age, BMI)
+  iAUC = 0.7275 [95% CI: 0.6630, 0.7786]
+  MI [1/5]: beta_eta=0.8055 (se=0.0845), converged
+  MI [2/5]: beta_eta=0.8115 (se=0.0849), converged
+  MI [3/5]: beta_eta=0.8174 (se=0.0849), converged
+  MI [4/5]: beta_eta=0.8408 (se=0.0864), converged
+  MI [5/5]: beta_eta=0.8057 (se=0.0846), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8162 (SE=0.0865)
+Within-imputation var: 0.007233
+Between-imputation var: 0.000213
+Total var: 0.007489
+FMI (eta): 0.034
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1069623  0.06927995] (age, BMI)
+  iAUC = 0.7331 [95% CI: 0.6691, 0.7972]
+  MI [1/5]: beta_eta=0.6786 (se=0.0734), converged
+  MI [2/5]: beta_eta=0.6775 (se=0.0732), converged
+  MI [3/5]: beta_eta=0.6725 (se=0.0732), converged
+  MI [4/5]: beta_eta=0.6588 (se=0.0721), converged
+  MI [5/5]: beta_eta=0.6722 (se=0.0729), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6719 (SE=0.0735)
+Within-imputation var: 0.005321
+Between-imputation var: 0.000062
+Total var: 0.005396
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12488522 0.07165464] (age, BMI)
+  iAUC = 0.6967 [95% CI: 0.6339, 0.7537]
+  [ 60/80] HF=0.8039  LM=0.7990  medESS=51.9  (3.2s/iter, ETA 1.1min)
+  MI [1/5]: beta_eta=0.7149 (se=0.0710), converged
+  MI [2/5]: beta_eta=0.7180 (se=0.0714), converged
+  MI [3/5]: beta_eta=0.7148 (se=0.0714), converged
+  MI [4/5]: beta_eta=0.7137 (se=0.0715), converged
+  MI [5/5]: beta_eta=0.7322 (se=0.0721), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7187 (SE=0.0720)
+Within-imputation var: 0.005107
+Between-imputation var: 0.000059
+Total var: 0.005178
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1156941  0.05079137] (age, BMI)
+  iAUC = 0.6695 [95% CI: 0.5917, 0.7321]
+  MI [1/5]: beta_eta=0.7167 (se=0.0746), converged
+  MI [2/5]: beta_eta=0.7544 (se=0.0764), converged
+  MI [3/5]: beta_eta=0.7225 (se=0.0750), converged
+  MI [4/5]: beta_eta=0.7298 (se=0.0753), converged
+  MI [5/5]: beta_eta=0.7378 (se=0.0758), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7322 (SE=0.0771)
+Within-imputation var: 0.005691
+Between-imputation var: 0.000216
+Total var: 0.005949
+FMI (eta): 0.043
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11749381 0.05376121] (age, BMI)
+  iAUC = 0.6892 [95% CI: 0.6329, 0.7495]
+  MI [1/5]: beta_eta=0.7716 (se=0.0845), converged
+  MI [2/5]: beta_eta=0.7581 (se=0.0834), converged
+  MI [3/5]: beta_eta=0.7754 (se=0.0845), converged
+  MI [4/5]: beta_eta=0.7507 (se=0.0828), converged
+  MI [5/5]: beta_eta=0.7680 (se=0.0842), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7648 (SE=0.0846)
+Within-imputation var: 0.007039
+Between-imputation var: 0.000103
+Total var: 0.007162
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1361939  0.06438237] (age, BMI)
+  iAUC = 0.7347 [95% CI: 0.6792, 0.7805]
+  MI [1/5]: beta_eta=0.8456 (se=0.0850), converged
+  MI [2/5]: beta_eta=0.8427 (se=0.0848), converged
+  MI [3/5]: beta_eta=0.8146 (se=0.0833), converged
+  MI [4/5]: beta_eta=0.8534 (se=0.0854), converged
+  MI [5/5]: beta_eta=0.8501 (se=0.0842), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8413 (SE=0.0862)
+Within-imputation var: 0.007146
+Between-imputation var: 0.000239
+Total var: 0.007433
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1277927  0.04589142] (age, BMI)
+  iAUC = 0.7108 [95% CI: 0.6506, 0.7650]
+  MI [1/5]: beta_eta=0.7838 (se=0.0807), converged
+  MI [2/5]: beta_eta=0.7993 (se=0.0815), converged
+  MI [3/5]: beta_eta=0.8119 (se=0.0825), converged
+  MI [4/5]: beta_eta=0.7833 (se=0.0810), converged
+  MI [5/5]: beta_eta=0.7803 (se=0.0804), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7917 (SE=0.0826)
+Within-imputation var: 0.006597
+Between-imputation var: 0.000182
+Total var: 0.006816
+FMI (eta): 0.032
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11438018 0.06915725] (age, BMI)
+  iAUC = 0.7237 [95% CI: 0.6681, 0.7941]
+  MI [1/5]: beta_eta=0.5760 (se=0.0678), converged
+  MI [2/5]: beta_eta=0.5882 (se=0.0684), converged
+  MI [3/5]: beta_eta=0.5478 (se=0.0663), converged
+  MI [4/5]: beta_eta=0.5864 (se=0.0682), converged
+  MI [5/5]: beta_eta=0.5774 (se=0.0677), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5752 (SE=0.0700)
+Within-imputation var: 0.004580
+Between-imputation var: 0.000263
+Total var: 0.004895
+FMI (eta): 0.064
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1167452  0.06244498] (age, BMI)
+  iAUC = 0.6990 [95% CI: 0.6238, 0.7596]
+  MI [1/5]: beta_eta=0.8114 (se=0.0811), converged
+  MI [2/5]: beta_eta=0.8337 (se=0.0821), converged
+  MI [3/5]: beta_eta=0.8321 (se=0.0823), converged
+  MI [4/5]: beta_eta=0.8138 (se=0.0814), converged
+  MI [5/5]: beta_eta=0.8343 (se=0.0822), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8251 (SE=0.0827)
+Within-imputation var: 0.006690
+Between-imputation var: 0.000131
+Total var: 0.006846
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10505597 0.04962329] (age, BMI)
+  iAUC = 0.6333 [95% CI: 0.5645, 0.7034]
+  MI [1/5]: beta_eta=0.7366 (se=0.0757), converged
+  MI [2/5]: beta_eta=0.7530 (se=0.0765), converged
+  MI [3/5]: beta_eta=0.7426 (se=0.0761), converged
+  MI [4/5]: beta_eta=0.7303 (se=0.0755), converged
+  MI [5/5]: beta_eta=0.7511 (se=0.0767), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7427 (SE=0.0768)
+Within-imputation var: 0.005792
+Between-imputation var: 0.000092
+Total var: 0.005903
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10311588 0.092073  ] (age, BMI)
+  iAUC = 0.7162 [95% CI: 0.6386, 0.7684]
+  MI [1/5]: beta_eta=0.7178 (se=0.0758), converged
+  MI [2/5]: beta_eta=0.7078 (se=0.0750), converged
+  MI [3/5]: beta_eta=0.7178 (se=0.0755), converged
+  MI [4/5]: beta_eta=0.7147 (se=0.0755), converged
+  MI [5/5]: beta_eta=0.7196 (se=0.0760), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7155 (SE=0.0757)
+Within-imputation var: 0.005707
+Between-imputation var: 0.000022
+Total var: 0.005733
+FMI (eta): 0.005
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12316643 0.09632345] (age, BMI)
+  iAUC = 0.7310 [95% CI: 0.6712, 0.7935]
+  MI [1/5]: beta_eta=0.7086 (se=0.0778), converged
+  MI [2/5]: beta_eta=0.7012 (se=0.0779), converged
+  MI [3/5]: beta_eta=0.6948 (se=0.0774), converged
+  MI [4/5]: beta_eta=0.6880 (se=0.0765), converged
+  MI [5/5]: beta_eta=0.6991 (se=0.0772), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6983 (SE=0.0778)
+Within-imputation var: 0.005986
+Between-imputation var: 0.000058
+Total var: 0.006056
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1116767  0.06226845] (age, BMI)
+  iAUC = 0.7327 [95% CI: 0.6710, 0.7815]
+  [ 70/80] HF=0.8488  LM=0.8543  medESS=51.8  (3.2s/iter, ETA 0.5min)
+  MI [1/5]: beta_eta=0.7980 (se=0.0843), converged
+  MI [2/5]: beta_eta=0.8147 (se=0.0860), converged
+  MI [3/5]: beta_eta=0.8398 (se=0.0880), converged
+  MI [4/5]: beta_eta=0.8150 (se=0.0866), converged
+  MI [5/5]: beta_eta=0.8049 (se=0.0855), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8145 (SE=0.0878)
+Within-imputation var: 0.007409
+Between-imputation var: 0.000252
+Total var: 0.007711
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11680142 0.10483473] (age, BMI)
+  iAUC = 0.7254 [95% CI: 0.6659, 0.7813]
+  MI [1/5]: beta_eta=0.7441 (se=0.0755), converged
+  MI [2/5]: beta_eta=0.7486 (se=0.0757), converged
+  MI [3/5]: beta_eta=0.7462 (se=0.0755), converged
+  MI [4/5]: beta_eta=0.7457 (se=0.0756), converged
+  MI [5/5]: beta_eta=0.7134 (se=0.0744), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7396 (SE=0.0770)
+Within-imputation var: 0.005673
+Between-imputation var: 0.000217
+Total var: 0.005933
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08984847 0.07728293] (age, BMI)
+  iAUC = 0.6599 [95% CI: 0.5910, 0.7261]
+  MI [1/5]: beta_eta=0.7701 (se=0.0791), converged
+  MI [2/5]: beta_eta=0.8060 (se=0.0809), converged
+  MI [3/5]: beta_eta=0.7949 (se=0.0804), converged
+  MI [4/5]: beta_eta=0.7884 (se=0.0804), converged
+  MI [5/5]: beta_eta=0.7742 (se=0.0791), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7868 (SE=0.0816)
+Within-imputation var: 0.006398
+Between-imputation var: 0.000219
+Total var: 0.006660
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11238244 0.05526314] (age, BMI)
+  iAUC = 0.6642 [95% CI: 0.5953, 0.7222]
+  MI [1/5]: beta_eta=0.6727 (se=0.0747), converged
+  MI [2/5]: beta_eta=0.6738 (se=0.0748), converged
+  MI [3/5]: beta_eta=0.6915 (se=0.0756), converged
+  MI [4/5]: beta_eta=0.6941 (se=0.0756), converged
+  MI [5/5]: beta_eta=0.7045 (se=0.0761), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6873 (SE=0.0768)
+Within-imputation var: 0.005679
+Between-imputation var: 0.000189
+Total var: 0.005906
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12061216 0.07982157] (age, BMI)
+  iAUC = 0.7221 [95% CI: 0.6660, 0.7860]
+  MI [1/5]: beta_eta=0.8933 (se=0.0880), converged
+  MI [2/5]: beta_eta=0.8860 (se=0.0874), converged
+  MI [3/5]: beta_eta=0.8972 (se=0.0875), converged
+  MI [4/5]: beta_eta=0.8853 (se=0.0869), converged
+  MI [5/5]: beta_eta=0.8901 (se=0.0876), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8904 (SE=0.0876)
+Within-imputation var: 0.007652
+Between-imputation var: 0.000025
+Total var: 0.007682
+FMI (eta): 0.004
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09796656 0.07781105] (age, BMI)
+  iAUC = 0.6858 [95% CI: 0.5966, 0.7614]
+  MI [1/5]: beta_eta=0.7004 (se=0.0780), converged
+  MI [2/5]: beta_eta=0.6815 (se=0.0770), converged
+  MI [3/5]: beta_eta=0.6749 (se=0.0774), converged
+  MI [4/5]: beta_eta=0.6808 (se=0.0764), converged
+  MI [5/5]: beta_eta=0.6954 (se=0.0778), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6866 (SE=0.0782)
+Within-imputation var: 0.005977
+Between-imputation var: 0.000116
+Total var: 0.006116
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13968131 0.05462752] (age, BMI)
+  iAUC = 0.7151 [95% CI: 0.6524, 0.7854]
+  MI [1/5]: beta_eta=0.8991 (se=0.0888), converged
+  MI [2/5]: beta_eta=0.8975 (se=0.0881), converged
+  MI [3/5]: beta_eta=0.9128 (se=0.0890), converged
+  MI [4/5]: beta_eta=0.9015 (se=0.0886), converged
+  MI [5/5]: beta_eta=0.8847 (se=0.0878), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8991 (SE=0.0891)
+Within-imputation var: 0.007826
+Between-imputation var: 0.000101
+Total var: 0.007946
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10687383 0.05172145] (age, BMI)
+  iAUC = 0.6477 [95% CI: 0.5604, 0.7187]
+  MI [1/5]: beta_eta=0.6970 (se=0.0758), converged
+  MI [2/5]: beta_eta=0.6874 (se=0.0753), converged
+  MI [3/5]: beta_eta=0.6997 (se=0.0761), converged
+  MI [4/5]: beta_eta=0.6810 (se=0.0751), converged
+  MI [5/5]: beta_eta=0.6957 (se=0.0757), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6922 (SE=0.0761)
+Within-imputation var: 0.005716
+Between-imputation var: 0.000060
+Total var: 0.005787
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11423589 0.04062893] (age, BMI)
+  iAUC = 0.6903 [95% CI: 0.6120, 0.7586]
+  MI [1/5]: beta_eta=0.7260 (se=0.0735), converged
+  MI [2/5]: beta_eta=0.7457 (se=0.0748), converged
+  MI [3/5]: beta_eta=0.7281 (se=0.0736), converged
+  MI [4/5]: beta_eta=0.7253 (se=0.0737), converged
+  MI [5/5]: beta_eta=0.7302 (se=0.0741), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7310 (SE=0.0745)
+Within-imputation var: 0.005467
+Between-imputation var: 0.000071
+Total var: 0.005552
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0935965  0.05306218] (age, BMI)
+  iAUC = 0.7038 [95% CI: 0.6401, 0.7797]
+  MI [1/5]: beta_eta=0.7667 (se=0.0787), converged
+  MI [2/5]: beta_eta=0.7844 (se=0.0795), converged
+  MI [3/5]: beta_eta=0.7835 (se=0.0796), converged
+  MI [4/5]: beta_eta=0.7416 (se=0.0772), converged
+  MI [5/5]: beta_eta=0.7847 (se=0.0798), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7722 (SE=0.0816)
+Within-imputation var: 0.006235
+Between-imputation var: 0.000349
+Total var: 0.006654
+FMI (eta): 0.063
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10831706 0.0516497 ] (age, BMI)
+  iAUC = 0.6905 [95% CI: 0.6231, 0.7537]
+  [ 80/80] HF=0.8575  LM=0.8501  medESS=52.0  (3.1s/iter, ETA 0.0min)
+
+  Scenario 'nonlinear' complete: 80/80 valid, 0 ESS warnings, 4.1 min total
+
+===========================================================================
+MONTE CARLO RESULTS — scenario: nonlinear
+===========================================================================
+Method                        Mean       SD             95% CI  Valid   Median
+---------------------------------------------------------------------------
+High-Freq PF+Cox            0.8354   0.0243 [0.7916, 0.8780]     80   0.8354
+Static Cox                  0.6933   0.0354 [0.6255, 0.7615]     80   0.6977
+Landmarking                 0.8332   0.0242 [0.7950, 0.8723]     80   0.8326
+Low-Freq PF+Cox             0.8244   0.0232 [0.7821, 0.8664]     80   0.8262
+
+--- Diagnostics ---
+  Event rate:    0.285 +/- 0.023
+  PF corr(θ,η):  0.9964 +/- 0.0001
+  Median ESS:    51.8 +/- 0.1  (warn <10: 0 iters)
+  P5 ESS:        14.8 +/- 0.3
+  Cox beta_eta:  0.7621 (true gamma=0.8)
+  Lead time:     2.00 +/- 1.59 weeks
+
+  HF vs LM (n=80 paired): wins 51/29/0, mean diff +0.0022
+
+  Saved: ../results/monte_carlo_nonlinear.json
+
+===========================================================================
+SCENARIO: heavy_tail
+  theta_mode = linear
+  obs_noise  = heavy_tail
+  N_MC       = 80
+===========================================================================
+  MI [1/5]: beta_eta=0.6264 (se=0.1064), converged
+  MI [2/5]: beta_eta=0.6156 (se=0.1069), converged
+  MI [3/5]: beta_eta=0.6159 (se=0.1063), converged
+  MI [4/5]: beta_eta=0.5707 (se=0.1066), converged
+  MI [5/5]: beta_eta=0.6096 (se=0.1073), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6076 (SE=0.1093)
+Within-imputation var: 0.011384
+Between-imputation var: 0.000463
+Total var: 0.011940
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04209603 0.02229944] (age, BMI)
+  iAUC = 0.6922 [95% CI: 0.5898, 0.7796]
+  [  1/80] HF=0.7234  LM=0.7137  medESS=54.6  (3.0s/iter, ETA 3.9min)
+  MI [1/5]: beta_eta=0.8320 (se=0.1205), converged
+  MI [2/5]: beta_eta=0.8255 (se=0.1194), converged
+  MI [3/5]: beta_eta=0.8579 (se=0.1204), converged
+  MI [4/5]: beta_eta=0.8856 (se=0.1213), converged
+  MI [5/5]: beta_eta=0.8720 (se=0.1197), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8546 (SE=0.1235)
+Within-imputation var: 0.014463
+Between-imputation var: 0.000659
+Total var: 0.015254
+FMI (eta): 0.052
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04710931 0.01313876] (age, BMI)
+  iAUC = 0.5211 [95% CI: 0.4430, 0.5984]
+  MI [1/5]: beta_eta=0.7882 (se=0.1279), converged
+  MI [2/5]: beta_eta=0.8015 (se=0.1289), converged
+  MI [3/5]: beta_eta=0.7628 (se=0.1274), converged
+  MI [4/5]: beta_eta=0.7896 (se=0.1287), converged
+  MI [5/5]: beta_eta=0.7670 (se=0.1264), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7818 (SE=0.1291)
+Within-imputation var: 0.016345
+Between-imputation var: 0.000268
+Total var: 0.016666
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07246835 0.03887701] (age, BMI)
+  iAUC = 0.5063 [95% CI: 0.4088, 0.6020]
+  MI [1/5]: beta_eta=0.8004 (se=0.1184), converged
+  MI [2/5]: beta_eta=0.7256 (se=0.1183), converged
+  MI [3/5]: beta_eta=0.7751 (se=0.1185), converged
+  MI [4/5]: beta_eta=0.8035 (se=0.1184), converged
+  MI [5/5]: beta_eta=0.7466 (se=0.1177), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7702 (SE=0.1239)
+Within-imputation var: 0.013981
+Between-imputation var: 0.001147
+Total var: 0.015357
+FMI (eta): 0.090
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05638505 0.04467382] (age, BMI)
+  iAUC = 0.6030 [95% CI: 0.5190, 0.6987]
+  MI [1/5]: beta_eta=0.8158 (se=0.1256), converged
+  MI [2/5]: beta_eta=0.8694 (se=0.1261), converged
+  MI [3/5]: beta_eta=0.8685 (se=0.1258), converged
+  MI [4/5]: beta_eta=0.8408 (se=0.1258), converged
+  MI [5/5]: beta_eta=0.8308 (se=0.1254), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8451 (SE=0.1284)
+Within-imputation var: 0.015808
+Between-imputation var: 0.000555
+Total var: 0.016474
+FMI (eta): 0.040
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07564403 0.02993993] (age, BMI)
+  iAUC = 0.5695 [95% CI: 0.4247, 0.6716]
+  MI [1/5]: beta_eta=0.7646 (se=0.1050), converged
+  MI [2/5]: beta_eta=0.7495 (se=0.1044), converged
+  MI [3/5]: beta_eta=0.7489 (se=0.1042), converged
+  MI [4/5]: beta_eta=0.7560 (se=0.1039), converged
+  MI [5/5]: beta_eta=0.8054 (se=0.1044), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7649 (SE=0.1075)
+Within-imputation var: 0.010899
+Between-imputation var: 0.000554
+Total var: 0.011563
+FMI (eta): 0.057
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06091563 -0.00122576] (age, BMI)
+  iAUC = 0.5899 [95% CI: 0.4979, 0.6725]
+  MI [1/5]: beta_eta=0.5632 (se=0.1180), converged
+  MI [2/5]: beta_eta=0.5328 (se=0.1169), converged
+  MI [3/5]: beta_eta=0.5064 (se=0.1167), converged
+  MI [4/5]: beta_eta=0.5015 (se=0.1168), converged
+  MI [5/5]: beta_eta=0.5393 (se=0.1174), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5287 (SE=0.1204)
+Within-imputation var: 0.013733
+Between-imputation var: 0.000640
+Total var: 0.014501
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02765349 0.04745684] (age, BMI)
+  iAUC = 0.5841 [95% CI: 0.4921, 0.7061]
+  MI [1/5]: beta_eta=0.6259 (se=0.1047), converged
+  MI [2/5]: beta_eta=0.5849 (se=0.1039), converged
+  MI [3/5]: beta_eta=0.6465 (se=0.1043), converged
+  MI [4/5]: beta_eta=0.6410 (se=0.1047), converged
+  MI [5/5]: beta_eta=0.6192 (se=0.1043), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6235 (SE=0.1077)
+Within-imputation var: 0.010899
+Between-imputation var: 0.000588
+Total var: 0.011604
+FMI (eta): 0.061
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03848292 0.0465763 ] (age, BMI)
+  iAUC = 0.6144 [95% CI: 0.5116, 0.6934]
+  MI [1/5]: beta_eta=0.6406 (se=0.1098), converged
+  MI [2/5]: beta_eta=0.5872 (se=0.1108), converged
+  MI [3/5]: beta_eta=0.5882 (se=0.1103), converged
+  MI [4/5]: beta_eta=0.6157 (se=0.1104), converged
+  MI [5/5]: beta_eta=0.6560 (se=0.1101), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6175 (SE=0.1153)
+Within-imputation var: 0.012159
+Between-imputation var: 0.000948
+Total var: 0.013296
+FMI (eta): 0.086
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05154228 0.01167683] (age, BMI)
+  iAUC = 0.5295 [95% CI: 0.4449, 0.6024]
+  MI [1/5]: beta_eta=0.7135 (se=0.1283), converged
+  MI [2/5]: beta_eta=0.7194 (se=0.1277), converged
+  MI [3/5]: beta_eta=0.6782 (se=0.1281), converged
+  MI [4/5]: beta_eta=0.7605 (se=0.1287), converged
+  MI [5/5]: beta_eta=0.6950 (se=0.1282), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7133 (SE=0.1326)
+Within-imputation var: 0.016435
+Between-imputation var: 0.000959
+Total var: 0.017585
+FMI (eta): 0.065
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08671875 0.06051474] (age, BMI)
+  iAUC = 0.6138 [95% CI: 0.5117, 0.7048]
+  [ 10/80] HF=0.7114  LM=0.7364  medESS=54.4  (3.1s/iter, ETA 3.6min)
+  MI [1/5]: beta_eta=0.7982 (se=0.1206), converged
+  MI [2/5]: beta_eta=0.7803 (se=0.1199), converged
+  MI [3/5]: beta_eta=0.8109 (se=0.1199), converged
+  MI [4/5]: beta_eta=0.8141 (se=0.1199), converged
+  MI [5/5]: beta_eta=0.7877 (se=0.1198), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7982 (SE=0.1211)
+Within-imputation var: 0.014402
+Between-imputation var: 0.000211
+Total var: 0.014656
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03277793 0.03685387] (age, BMI)
+  iAUC = 0.5231 [95% CI: 0.4152, 0.6228]
+  MI [1/5]: beta_eta=0.7281 (se=0.1181), converged
+  MI [2/5]: beta_eta=0.7100 (se=0.1182), converged
+  MI [3/5]: beta_eta=0.7252 (se=0.1180), converged
+  MI [4/5]: beta_eta=0.7338 (se=0.1168), converged
+  MI [5/5]: beta_eta=0.7311 (se=0.1181), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7256 (SE=0.1183)
+Within-imputation var: 0.013884
+Between-imputation var: 0.000087
+Total var: 0.013989
+FMI (eta): 0.007
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07357146 0.06487669] (age, BMI)
+  iAUC = 0.6832 [95% CI: 0.5420, 0.8119]
+  MI [1/5]: beta_eta=0.6495 (se=0.1275), converged
+  MI [2/5]: beta_eta=0.6006 (se=0.1275), converged
+  MI [3/5]: beta_eta=0.6189 (se=0.1281), converged
+  MI [4/5]: beta_eta=0.6318 (se=0.1275), converged
+  MI [5/5]: beta_eta=0.6385 (se=0.1277), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6279 (SE=0.1293)
+Within-imputation var: 0.016297
+Between-imputation var: 0.000355
+Total var: 0.016723
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0685621  0.05788442] (age, BMI)
+  iAUC = 0.6408 [95% CI: 0.5691, 0.7277]
+  MI [1/5]: beta_eta=0.7317 (se=0.1227), converged
+  MI [2/5]: beta_eta=0.7732 (se=0.1230), converged
+  MI [3/5]: beta_eta=0.7375 (se=0.1241), converged
+  MI [4/5]: beta_eta=0.7527 (se=0.1225), converged
+  MI [5/5]: beta_eta=0.7654 (se=0.1228), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7521 (SE=0.1245)
+Within-imputation var: 0.015135
+Between-imputation var: 0.000312
+Total var: 0.015510
+FMI (eta): 0.024
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06012942 0.01464587] (age, BMI)
+  iAUC = 0.5469 [95% CI: 0.4524, 0.6382]
+  MI [1/5]: beta_eta=0.9244 (se=0.1117), converged
+  MI [2/5]: beta_eta=0.9391 (se=0.1131), converged
+  MI [3/5]: beta_eta=0.9151 (se=0.1120), converged
+  MI [4/5]: beta_eta=0.9722 (se=0.1127), converged
+  MI [5/5]: beta_eta=0.9535 (se=0.1139), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9409 (SE=0.1154)
+Within-imputation var: 0.012697
+Between-imputation var: 0.000520
+Total var: 0.013321
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.05675491 -0.01169634] (age, BMI)
+  iAUC = 0.5639 [95% CI: 0.4805, 0.6721]
+  MI [1/5]: beta_eta=0.6704 (se=0.1228), converged
+  MI [2/5]: beta_eta=0.7100 (se=0.1250), converged
+  MI [3/5]: beta_eta=0.6661 (se=0.1233), converged
+  MI [4/5]: beta_eta=0.6875 (se=0.1238), converged
+  MI [5/5]: beta_eta=0.6923 (se=0.1235), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6853 (SE=0.1252)
+Within-imputation var: 0.015291
+Between-imputation var: 0.000314
+Total var: 0.015668
+FMI (eta): 0.024
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06596648 0.0027879 ] (age, BMI)
+  iAUC = 0.6416 [95% CI: 0.5447, 0.7477]
+  MI [1/5]: beta_eta=0.7326 (se=0.1218), converged
+  MI [2/5]: beta_eta=0.7522 (se=0.1216), converged
+  MI [3/5]: beta_eta=0.7677 (se=0.1229), converged
+  MI [4/5]: beta_eta=0.7291 (se=0.1211), converged
+  MI [5/5]: beta_eta=0.7411 (se=0.1218), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7445 (SE=0.1230)
+Within-imputation var: 0.014843
+Between-imputation var: 0.000247
+Total var: 0.015140
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03755567 0.02952245] (age, BMI)
+  iAUC = 0.5671 [95% CI: 0.4837, 0.6562]
+  MI [1/5]: beta_eta=0.9725 (se=0.1153), converged
+  MI [2/5]: beta_eta=0.9534 (se=0.1171), converged
+  MI [3/5]: beta_eta=0.9734 (se=0.1154), converged
+  MI [4/5]: beta_eta=0.9232 (se=0.1164), converged
+  MI [5/5]: beta_eta=0.9788 (se=0.1157), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9603 (SE=0.1186)
+Within-imputation var: 0.013450
+Between-imputation var: 0.000522
+Total var: 0.014076
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03826974 0.00735886] (age, BMI)
+  iAUC = 0.6127 [95% CI: 0.5232, 0.7024]
+  MI [1/5]: beta_eta=0.3748 (se=0.1409), converged
+  MI [2/5]: beta_eta=0.4372 (se=0.1419), converged
+  MI [3/5]: beta_eta=0.3843 (se=0.1415), converged
+  MI [4/5]: beta_eta=0.4035 (se=0.1414), converged
+  MI [5/5]: beta_eta=0.4574 (se=0.1421), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.4114 (SE=0.1467)
+Within-imputation var: 0.020041
+Between-imputation var: 0.001228
+Total var: 0.021514
+FMI (eta): 0.069
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04281964 0.03258574] (age, BMI)
+  iAUC = 0.5878 [95% CI: 0.4266, 0.7062]
+  MI [1/5]: beta_eta=0.7174 (se=0.1249), converged
+  MI [2/5]: beta_eta=0.7252 (se=0.1262), converged
+  MI [3/5]: beta_eta=0.7457 (se=0.1241), converged
+  MI [4/5]: beta_eta=0.8016 (se=0.1259), converged
+  MI [5/5]: beta_eta=0.7702 (se=0.1250), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7520 (SE=0.1308)
+Within-imputation var: 0.015679
+Between-imputation var: 0.001187
+Total var: 0.017103
+FMI (eta): 0.083
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04115412 0.06979296] (age, BMI)
+  iAUC = 0.6763 [95% CI: 0.5742, 0.7596]
+  [ 20/80] HF=0.7660  LM=0.7615  medESS=54.5  (3.0s/iter, ETA 3.0min)
+  MI [1/5]: beta_eta=0.6832 (se=0.1088), converged
+  MI [2/5]: beta_eta=0.6927 (se=0.1091), converged
+  MI [3/5]: beta_eta=0.6907 (se=0.1090), converged
+  MI [4/5]: beta_eta=0.7055 (se=0.1091), converged
+  MI [5/5]: beta_eta=0.7387 (se=0.1091), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7021 (SE=0.1116)
+Within-imputation var: 0.011883
+Between-imputation var: 0.000482
+Total var: 0.012462
+FMI (eta): 0.046
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03563977 0.01611969] (age, BMI)
+  iAUC = 0.4594 [95% CI: 0.3697, 0.5611]
+  MI [1/5]: beta_eta=0.6320 (se=0.1094), converged
+  MI [2/5]: beta_eta=0.5712 (se=0.1091), converged
+  MI [3/5]: beta_eta=0.6341 (se=0.1098), converged
+  MI [4/5]: beta_eta=0.6166 (se=0.1089), converged
+  MI [5/5]: beta_eta=0.6100 (se=0.1095), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6128 (SE=0.1128)
+Within-imputation var: 0.011957
+Between-imputation var: 0.000643
+Total var: 0.012729
+FMI (eta): 0.061
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03072223 0.03990703] (age, BMI)
+  iAUC = 0.6374 [95% CI: 0.5351, 0.7334]
+  MI [1/5]: beta_eta=0.9287 (se=0.1356), converged
+  MI [2/5]: beta_eta=0.9304 (se=0.1360), converged
+  MI [3/5]: beta_eta=0.9176 (se=0.1359), converged
+  MI [4/5]: beta_eta=0.9385 (se=0.1346), converged
+  MI [5/5]: beta_eta=0.9454 (se=0.1358), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9321 (SE=0.1361)
+Within-imputation var: 0.018378
+Between-imputation var: 0.000110
+Total var: 0.018510
+FMI (eta): 0.007
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03285631 0.08133019] (age, BMI)
+  iAUC = 0.6705 [95% CI: 0.5750, 0.7821]
+  MI [1/5]: beta_eta=0.8951 (se=0.1325), converged
+  MI [2/5]: beta_eta=0.9005 (se=0.1308), converged
+  MI [3/5]: beta_eta=0.8814 (se=0.1314), converged
+  MI [4/5]: beta_eta=0.8687 (se=0.1311), converged
+  MI [5/5]: beta_eta=0.8862 (se=0.1323), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8864 (SE=0.1323)
+Within-imputation var: 0.017327
+Between-imputation var: 0.000153
+Total var: 0.017511
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03312436 0.01397543] (age, BMI)
+  iAUC = 0.4926 [95% CI: 0.3679, 0.6399]
+  MI [1/5]: beta_eta=0.7735 (se=0.1176), converged
+  MI [2/5]: beta_eta=0.8486 (se=0.1199), converged
+  MI [3/5]: beta_eta=0.8612 (se=0.1195), converged
+  MI [4/5]: beta_eta=0.8456 (se=0.1181), converged
+  MI [5/5]: beta_eta=0.8785 (se=0.1193), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8415 (SE=0.1268)
+Within-imputation var: 0.014134
+Between-imputation var: 0.001611
+Total var: 0.016067
+FMI (eta): 0.120
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0406338  0.03030959] (age, BMI)
+  iAUC = 0.5000 [95% CI: 0.3443, 0.6237]
+  MI [1/5]: beta_eta=0.8033 (se=0.1226), converged
+  MI [2/5]: beta_eta=0.8270 (se=0.1239), converged
+  MI [3/5]: beta_eta=0.8525 (se=0.1250), converged
+  MI [4/5]: beta_eta=0.8040 (se=0.1235), converged
+  MI [5/5]: beta_eta=0.7461 (se=0.1229), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8066 (SE=0.1309)
+Within-imputation var: 0.015276
+Between-imputation var: 0.001549
+Total var: 0.017135
+FMI (eta): 0.108
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.01815097 0.03121965] (age, BMI)
+  iAUC = 0.6477 [95% CI: 0.4571, 0.7596]
+  MI [1/5]: beta_eta=0.6460 (se=0.1213), converged
+  MI [2/5]: beta_eta=0.5854 (se=0.1211), converged
+  MI [3/5]: beta_eta=0.6296 (se=0.1216), converged
+  MI [4/5]: beta_eta=0.6091 (se=0.1215), converged
+  MI [5/5]: beta_eta=0.6729 (se=0.1222), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6286 (SE=0.1270)
+Within-imputation var: 0.014770
+Between-imputation var: 0.001129
+Total var: 0.016125
+FMI (eta): 0.084
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02923572 0.05904588] (age, BMI)
+  iAUC = 0.5760 [95% CI: 0.4911, 0.6614]
+  MI [1/5]: beta_eta=0.8688 (se=0.1254), converged
+  MI [2/5]: beta_eta=0.8624 (se=0.1243), converged
+  MI [3/5]: beta_eta=0.8861 (se=0.1264), converged
+  MI [4/5]: beta_eta=0.8607 (se=0.1256), converged
+  MI [5/5]: beta_eta=0.8545 (se=0.1256), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8665 (SE=0.1262)
+Within-imputation var: 0.015740
+Between-imputation var: 0.000147
+Total var: 0.015916
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04923754 0.03546245] (age, BMI)
+  iAUC = 0.5858 [95% CI: 0.4850, 0.6945]
+  MI [1/5]: beta_eta=0.8909 (se=0.1078), converged
+  MI [2/5]: beta_eta=0.8571 (se=0.1069), converged
+  MI [3/5]: beta_eta=0.8222 (se=0.1069), converged
+  MI [4/5]: beta_eta=0.8715 (se=0.1081), converged
+  MI [5/5]: beta_eta=0.8455 (se=0.1075), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8574 (SE=0.1112)
+Within-imputation var: 0.011545
+Between-imputation var: 0.000675
+Total var: 0.012355
+FMI (eta): 0.066
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06302515 0.02452305] (age, BMI)
+  iAUC = 0.6013 [95% CI: 0.5124, 0.7315]
+  MI [1/5]: beta_eta=0.8518 (se=0.1051), converged
+  MI [2/5]: beta_eta=0.8426 (se=0.1060), converged
+  MI [3/5]: beta_eta=0.8399 (se=0.1055), converged
+  MI [4/5]: beta_eta=0.8281 (se=0.1055), converged
+  MI [5/5]: beta_eta=0.8136 (se=0.1051), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8352 (SE=0.1067)
+Within-imputation var: 0.011116
+Between-imputation var: 0.000217
+Total var: 0.011377
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06438672 0.02615083] (age, BMI)
+  iAUC = 0.5887 [95% CI: 0.5100, 0.6661]
+  [ 30/80] HF=0.7598  LM=0.7686  medESS=54.5  (3.0s/iter, ETA 2.5min)
+  MI [1/5]: beta_eta=0.7212 (se=0.1155), converged
+  MI [2/5]: beta_eta=0.7636 (se=0.1163), converged
+  MI [3/5]: beta_eta=0.7977 (se=0.1168), converged
+  MI [4/5]: beta_eta=0.8321 (se=0.1172), converged
+  MI [5/5]: beta_eta=0.7725 (se=0.1159), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7774 (SE=0.1248)
+Within-imputation var: 0.013542
+Between-imputation var: 0.001694
+Total var: 0.015575
+FMI (eta): 0.130
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04191418 0.03738142] (age, BMI)
+  iAUC = 0.5685 [95% CI: 0.4715, 0.6685]
+  MI [1/5]: beta_eta=0.5718 (se=0.1237), converged
+  MI [2/5]: beta_eta=0.5799 (se=0.1242), converged
+  MI [3/5]: beta_eta=0.5570 (se=0.1244), converged
+  MI [4/5]: beta_eta=0.5435 (se=0.1232), converged
+  MI [5/5]: beta_eta=0.5877 (se=0.1241), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5680 (SE=0.1255)
+Within-imputation var: 0.015362
+Between-imputation var: 0.000315
+Total var: 0.015740
+FMI (eta): 0.024
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10546704 0.09378041] (age, BMI)
+  iAUC = 0.6782 [95% CI: 0.5932, 0.7538]
+  MI [1/5]: beta_eta=0.8125 (se=0.1076), converged
+  MI [2/5]: beta_eta=0.7682 (se=0.1075), converged
+  MI [3/5]: beta_eta=0.8472 (se=0.1073), converged
+  MI [4/5]: beta_eta=0.8078 (se=0.1079), converged
+  MI [5/5]: beta_eta=0.8903 (se=0.1081), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8252 (SE=0.1188)
+Within-imputation var: 0.011590
+Between-imputation var: 0.002110
+Total var: 0.014122
+FMI (eta): 0.179
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05150343 0.0391079 ] (age, BMI)
+  iAUC = 0.6122 [95% CI: 0.5235, 0.7068]
+  MI [1/5]: beta_eta=0.8172 (se=0.1148), converged
+  MI [2/5]: beta_eta=0.8278 (se=0.1152), converged
+  MI [3/5]: beta_eta=0.8126 (se=0.1138), converged
+  MI [4/5]: beta_eta=0.8200 (se=0.1144), converged
+  MI [5/5]: beta_eta=0.8650 (se=0.1137), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8285 (SE=0.1167)
+Within-imputation var: 0.013082
+Between-imputation var: 0.000447
+Total var: 0.013618
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05190775 0.02165292] (age, BMI)
+  iAUC = 0.6125 [95% CI: 0.5301, 0.6934]
+  MI [1/5]: beta_eta=0.8585 (se=0.1032), converged
+  MI [2/5]: beta_eta=0.8784 (se=0.1037), converged
+  MI [3/5]: beta_eta=0.8553 (se=0.1031), converged
+  MI [4/5]: beta_eta=0.8975 (se=0.1039), converged
+  MI [5/5]: beta_eta=0.8505 (se=0.1029), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8680 (SE=0.1056)
+Within-imputation var: 0.010685
+Between-imputation var: 0.000384
+Total var: 0.011146
+FMI (eta): 0.041
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07571985 0.05736385] (age, BMI)
+  iAUC = 0.6398 [95% CI: 0.5623, 0.7237]
+  MI [1/5]: beta_eta=0.5251 (se=0.1240), converged
+  MI [2/5]: beta_eta=0.6294 (se=0.1246), converged
+  MI [3/5]: beta_eta=0.5590 (se=0.1233), converged
+  MI [4/5]: beta_eta=0.5423 (se=0.1239), converged
+  MI [5/5]: beta_eta=0.5180 (se=0.1239), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5548 (SE=0.1332)
+Within-imputation var: 0.015358
+Between-imputation var: 0.001994
+Total var: 0.017751
+FMI (eta): 0.135
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.01931863 0.03121704] (age, BMI)
+  iAUC = 0.5314 [95% CI: 0.3882, 0.6443]
+  MI [1/5]: beta_eta=0.7469 (se=0.1082), converged
+  MI [2/5]: beta_eta=0.7703 (se=0.1076), converged
+  MI [3/5]: beta_eta=0.7609 (se=0.1077), converged
+  MI [4/5]: beta_eta=0.8056 (se=0.1086), converged
+  MI [5/5]: beta_eta=0.7657 (se=0.1079), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7699 (SE=0.1106)
+Within-imputation var: 0.011660
+Between-imputation var: 0.000475
+Total var: 0.012230
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02744005 0.05896638] (age, BMI)
+  iAUC = 0.5712 [95% CI: 0.4775, 0.6761]
+  MI [1/5]: beta_eta=0.8027 (se=0.1372), converged
+  MI [2/5]: beta_eta=0.7952 (se=0.1379), converged
+  MI [3/5]: beta_eta=0.8157 (se=0.1380), converged
+  MI [4/5]: beta_eta=0.8475 (se=0.1382), converged
+  MI [5/5]: beta_eta=0.8672 (se=0.1377), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8257 (SE=0.1418)
+Within-imputation var: 0.018989
+Between-imputation var: 0.000940
+Total var: 0.020117
+FMI (eta): 0.056
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0401695  0.06269317] (age, BMI)
+  iAUC = 0.6436 [95% CI: 0.5287, 0.7497]
+  MI [1/5]: beta_eta=0.7779 (se=0.1198), converged
+  MI [2/5]: beta_eta=0.7475 (se=0.1196), converged
+  MI [3/5]: beta_eta=0.8038 (se=0.1208), converged
+  MI [4/5]: beta_eta=0.7621 (se=0.1191), converged
+  MI [5/5]: beta_eta=0.7968 (se=0.1199), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7776 (SE=0.1226)
+Within-imputation var: 0.014363
+Between-imputation var: 0.000549
+Total var: 0.015022
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06030154 0.06809291] (age, BMI)
+  iAUC = 0.6144 [95% CI: 0.5108, 0.7029]
+  MI [1/5]: beta_eta=0.9758 (se=0.1335), converged
+  MI [2/5]: beta_eta=0.8741 (se=0.1325), converged
+  MI [3/5]: beta_eta=0.8638 (se=0.1318), converged
+  MI [4/5]: beta_eta=0.9323 (se=0.1334), converged
+  MI [5/5]: beta_eta=0.9291 (se=0.1325), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9150 (SE=0.1420)
+Within-imputation var: 0.017623
+Between-imputation var: 0.002123
+Total var: 0.020171
+FMI (eta): 0.126
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04545657 0.00794001] (age, BMI)
+  iAUC = 0.5712 [95% CI: 0.4678, 0.6888]
+  [ 40/80] HF=0.7244  LM=0.7068  medESS=54.3  (3.0s/iter, ETA 2.0min)
+  MI [1/5]: beta_eta=0.7311 (se=0.1300), converged
+  MI [2/5]: beta_eta=0.7342 (se=0.1283), converged
+  MI [3/5]: beta_eta=0.7532 (se=0.1293), converged
+  MI [4/5]: beta_eta=0.7122 (se=0.1291), converged
+  MI [5/5]: beta_eta=0.7982 (se=0.1302), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7458 (SE=0.1343)
+Within-imputation var: 0.016743
+Between-imputation var: 0.001070
+Total var: 0.018028
+FMI (eta): 0.071
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06338699 -0.00284782] (age, BMI)
+  iAUC = 0.6140 [95% CI: 0.5124, 0.7072]
+  MI [1/5]: beta_eta=0.7246 (se=0.1077), converged
+  MI [2/5]: beta_eta=0.7442 (se=0.1074), converged
+  MI [3/5]: beta_eta=0.6979 (se=0.1064), converged
+  MI [4/5]: beta_eta=0.6800 (se=0.1078), converged
+  MI [5/5]: beta_eta=0.7731 (se=0.1085), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7240 (SE=0.1149)
+Within-imputation var: 0.011569
+Between-imputation var: 0.001359
+Total var: 0.013199
+FMI (eta): 0.124
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07395526 0.03957976] (age, BMI)
+  iAUC = 0.6173 [95% CI: 0.5343, 0.7160]
+  MI [1/5]: beta_eta=0.7355 (se=0.1212), converged
+  MI [2/5]: beta_eta=0.7684 (se=0.1227), converged
+  MI [3/5]: beta_eta=0.7622 (se=0.1233), converged
+  MI [4/5]: beta_eta=0.7305 (se=0.1209), converged
+  MI [5/5]: beta_eta=0.7960 (se=0.1229), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7585 (SE=0.1256)
+Within-imputation var: 0.014932
+Between-imputation var: 0.000708
+Total var: 0.015781
+FMI (eta): 0.054
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04415017 0.03928537] (age, BMI)
+  iAUC = 0.5862 [95% CI: 0.4760, 0.6950]
+  MI [1/5]: beta_eta=0.8372 (se=0.1246), converged
+  MI [2/5]: beta_eta=0.9231 (se=0.1247), converged
+  MI [3/5]: beta_eta=0.8979 (se=0.1253), converged
+  MI [4/5]: beta_eta=0.9271 (se=0.1249), converged
+  MI [5/5]: beta_eta=0.8735 (se=0.1244), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8918 (SE=0.1313)
+Within-imputation var: 0.015567
+Between-imputation var: 0.001394
+Total var: 0.017239
+FMI (eta): 0.097
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06267037 0.02841789] (age, BMI)
+  iAUC = 0.5780 [95% CI: 0.4662, 0.6924]
+  MI [1/5]: beta_eta=0.8094 (se=0.1103), converged
+  MI [2/5]: beta_eta=0.7909 (se=0.1099), converged
+  MI [3/5]: beta_eta=0.7793 (se=0.1111), converged
+  MI [4/5]: beta_eta=0.8061 (se=0.1106), converged
+  MI [5/5]: beta_eta=0.8445 (se=0.1113), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8060 (SE=0.1139)
+Within-imputation var: 0.012244
+Between-imputation var: 0.000607
+Total var: 0.012973
+FMI (eta): 0.056
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04961835 0.06005474] (age, BMI)
+  iAUC = 0.6509 [95% CI: 0.5419, 0.7503]
+  MI [1/5]: beta_eta=0.7984 (se=0.1314), converged
+  MI [2/5]: beta_eta=0.8832 (se=0.1326), converged
+  MI [3/5]: beta_eta=0.8619 (se=0.1339), converged
+  MI [4/5]: beta_eta=0.8634 (se=0.1327), converged
+  MI [5/5]: beta_eta=0.8331 (se=0.1321), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8480 (SE=0.1374)
+Within-imputation var: 0.017570
+Between-imputation var: 0.001090
+Total var: 0.018878
+FMI (eta): 0.069
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07991543 0.0465723 ] (age, BMI)
+  iAUC = 0.6639 [95% CI: 0.5716, 0.7427]
+  MI [1/5]: beta_eta=0.6429 (se=0.1040), converged
+  MI [2/5]: beta_eta=0.6686 (se=0.1045), converged
+  MI [3/5]: beta_eta=0.6469 (se=0.1044), converged
+  MI [4/5]: beta_eta=0.6654 (se=0.1045), converged
+  MI [5/5]: beta_eta=0.6285 (se=0.1046), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6505 (SE=0.1060)
+Within-imputation var: 0.010897
+Between-imputation var: 0.000276
+Total var: 0.011228
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07497234 0.02021164] (age, BMI)
+  iAUC = 0.6001 [95% CI: 0.5174, 0.6995]
+  MI [1/5]: beta_eta=0.5400 (se=0.1041), converged
+  MI [2/5]: beta_eta=0.5894 (se=0.1043), converged
+  MI [3/5]: beta_eta=0.5398 (se=0.1050), converged
+  MI [4/5]: beta_eta=0.5412 (se=0.1053), converged
+  MI [5/5]: beta_eta=0.5334 (se=0.1045), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5487 (SE=0.1076)
+Within-imputation var: 0.010950
+Between-imputation var: 0.000526
+Total var: 0.011581
+FMI (eta): 0.055
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04639496 0.01368178] (age, BMI)
+  iAUC = 0.5159 [95% CI: 0.4102, 0.6397]
+  MI [1/5]: beta_eta=1.0038 (se=0.1211), converged
+  MI [2/5]: beta_eta=1.0212 (se=0.1223), converged
+  MI [3/5]: beta_eta=1.0145 (se=0.1210), converged
+  MI [4/5]: beta_eta=1.0328 (se=0.1214), converged
+  MI [5/5]: beta_eta=1.0040 (se=0.1220), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 1.0153 (SE=0.1223)
+Within-imputation var: 0.014778
+Between-imputation var: 0.000150
+Total var: 0.014958
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05287609 0.05437858] (age, BMI)
+  iAUC = 0.5745 [95% CI: 0.4917, 0.6571]
+  MI [1/5]: beta_eta=0.9194 (se=0.1268), converged
+  MI [2/5]: beta_eta=0.9421 (se=0.1251), converged
+  MI [3/5]: beta_eta=0.9275 (se=0.1258), converged
+  MI [4/5]: beta_eta=0.9324 (se=0.1254), converged
+  MI [5/5]: beta_eta=0.8937 (se=0.1258), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9230 (SE=0.1274)
+Within-imputation var: 0.015824
+Between-imputation var: 0.000337
+Total var: 0.016228
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0442306  0.03822445] (age, BMI)
+  iAUC = 0.6058 [95% CI: 0.4912, 0.6973]
+  [ 50/80] HF=0.8066  LM=0.7974  medESS=54.5  (3.1s/iter, ETA 1.6min)
+  MI [1/5]: beta_eta=0.5527 (se=0.1155), converged
+  MI [2/5]: beta_eta=0.4933 (se=0.1151), converged
+  MI [3/5]: beta_eta=0.5673 (se=0.1157), converged
+  MI [4/5]: beta_eta=0.5969 (se=0.1164), converged
+  MI [5/5]: beta_eta=0.5828 (se=0.1160), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5586 (SE=0.1238)
+Within-imputation var: 0.013396
+Between-imputation var: 0.001606
+Total var: 0.015323
+FMI (eta): 0.126
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05211505 0.0422894 ] (age, BMI)
+  iAUC = 0.6249 [95% CI: 0.5213, 0.7161]
+  MI [1/5]: beta_eta=0.8600 (se=0.1161), converged
+  MI [2/5]: beta_eta=0.8411 (se=0.1163), converged
+  MI [3/5]: beta_eta=0.8992 (se=0.1162), converged
+  MI [4/5]: beta_eta=0.8652 (se=0.1169), converged
+  MI [5/5]: beta_eta=0.8443 (se=0.1158), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8620 (SE=0.1190)
+Within-imputation var: 0.013515
+Between-imputation var: 0.000537
+Total var: 0.014160
+FMI (eta): 0.046
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05416115 0.02965217] (age, BMI)
+  iAUC = 0.5082 [95% CI: 0.3967, 0.6145]
+  MI [1/5]: beta_eta=0.5568 (se=0.1269), converged
+  MI [2/5]: beta_eta=0.5219 (se=0.1256), converged
+  MI [3/5]: beta_eta=0.5448 (se=0.1268), converged
+  MI [4/5]: beta_eta=0.5014 (se=0.1260), converged
+  MI [5/5]: beta_eta=0.5328 (se=0.1262), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5316 (SE=0.1285)
+Within-imputation var: 0.015955
+Between-imputation var: 0.000454
+Total var: 0.016500
+FMI (eta): 0.033
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04698821 0.01954376] (age, BMI)
+  iAUC = 0.6301 [95% CI: 0.5389, 0.7178]
+  MI [1/5]: beta_eta=0.6367 (se=0.1156), converged
+  MI [2/5]: beta_eta=0.6007 (se=0.1161), converged
+  MI [3/5]: beta_eta=0.6617 (se=0.1157), converged
+  MI [4/5]: beta_eta=0.6702 (se=0.1156), converged
+  MI [5/5]: beta_eta=0.6617 (se=0.1155), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6462 (SE=0.1198)
+Within-imputation var: 0.013384
+Between-imputation var: 0.000804
+Total var: 0.014349
+FMI (eta): 0.067
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05252246 0.02671379] (age, BMI)
+  iAUC = 0.6057 [95% CI: 0.4934, 0.7106]
+  MI [1/5]: beta_eta=0.7540 (se=0.1207), converged
+  MI [2/5]: beta_eta=0.7608 (se=0.1206), converged
+  MI [3/5]: beta_eta=0.7738 (se=0.1205), converged
+  MI [4/5]: beta_eta=0.7316 (se=0.1207), converged
+  MI [5/5]: beta_eta=0.6968 (se=0.1202), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7434 (SE=0.1250)
+Within-imputation var: 0.014531
+Between-imputation var: 0.000912
+Total var: 0.015626
+FMI (eta): 0.070
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07197351 0.01977035] (age, BMI)
+  iAUC = 0.5689 [95% CI: 0.4457, 0.6806]
+  MI [1/5]: beta_eta=0.6902 (se=0.1283), converged
+  MI [2/5]: beta_eta=0.5610 (se=0.1269), converged
+  MI [3/5]: beta_eta=0.7108 (se=0.1289), converged
+  MI [4/5]: beta_eta=0.7331 (se=0.1290), converged
+  MI [5/5]: beta_eta=0.6596 (se=0.1284), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6709 (SE=0.1479)
+Within-imputation var: 0.016459
+Between-imputation var: 0.004509
+Total var: 0.021870
+FMI (eta): 0.247
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02038639 0.04884368] (age, BMI)
+  iAUC = 0.6006 [95% CI: 0.4928, 0.7106]
+  MI [1/5]: beta_eta=0.9055 (se=0.1168), converged
+  MI [2/5]: beta_eta=0.9162 (se=0.1147), converged
+  MI [3/5]: beta_eta=0.9373 (se=0.1138), converged
+  MI [4/5]: beta_eta=0.9038 (se=0.1165), converged
+  MI [5/5]: beta_eta=0.8784 (se=0.1153), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9083 (SE=0.1178)
+Within-imputation var: 0.013322
+Between-imputation var: 0.000456
+Total var: 0.013869
+FMI (eta): 0.039
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05341726 0.028015  ] (age, BMI)
+  iAUC = 0.6102 [95% CI: 0.4363, 0.7664]
+  MI [1/5]: beta_eta=0.8300 (se=0.1202), converged
+  MI [2/5]: beta_eta=0.9112 (se=0.1204), converged
+  MI [3/5]: beta_eta=0.8426 (se=0.1200), converged
+  MI [4/5]: beta_eta=0.8514 (se=0.1206), converged
+  MI [5/5]: beta_eta=0.8192 (se=0.1194), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8509 (SE=0.1264)
+Within-imputation var: 0.014430
+Between-imputation var: 0.001285
+Total var: 0.015972
+FMI (eta): 0.097
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04570297 0.05798486] (age, BMI)
+  iAUC = 0.5978 [95% CI: 0.4815, 0.7060]
+  MI [1/5]: beta_eta=0.7976 (se=0.1302), converged
+  MI [2/5]: beta_eta=0.8072 (se=0.1290), converged
+  MI [3/5]: beta_eta=0.7915 (se=0.1292), converged
+  MI [4/5]: beta_eta=0.7783 (se=0.1295), converged
+  MI [5/5]: beta_eta=0.8194 (se=0.1312), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7988 (SE=0.1309)
+Within-imputation var: 0.016853
+Between-imputation var: 0.000242
+Total var: 0.017143
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07221662 0.04580543] (age, BMI)
+  iAUC = 0.5925 [95% CI: 0.4739, 0.6908]
+  MI [1/5]: beta_eta=0.6672 (se=0.1101), converged
+  MI [2/5]: beta_eta=0.6159 (se=0.1084), converged
+  MI [3/5]: beta_eta=0.6275 (se=0.1088), converged
+  MI [4/5]: beta_eta=0.6306 (se=0.1090), converged
+  MI [5/5]: beta_eta=0.6264 (se=0.1087), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6335 (SE=0.1111)
+Within-imputation var: 0.011883
+Between-imputation var: 0.000384
+Total var: 0.012344
+FMI (eta): 0.037
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08429276 0.0319178 ] (age, BMI)
+  iAUC = 0.6371 [95% CI: 0.5646, 0.7406]
+  [ 60/80] HF=0.6838  LM=0.6499  medESS=54.4  (3.1s/iter, ETA 1.0min)
+  MI [1/5]: beta_eta=0.6527 (se=0.1086), converged
+  MI [2/5]: beta_eta=0.6146 (se=0.1080), converged
+  MI [3/5]: beta_eta=0.6354 (se=0.1084), converged
+  MI [4/5]: beta_eta=0.6366 (se=0.1076), converged
+  MI [5/5]: beta_eta=0.6778 (se=0.1086), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6434 (SE=0.1113)
+Within-imputation var: 0.011714
+Between-imputation var: 0.000552
+Total var: 0.012377
+FMI (eta): 0.054
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08135163 0.02399421] (age, BMI)
+  iAUC = 0.6493 [95% CI: 0.5667, 0.7291]
+  MI [1/5]: beta_eta=0.8132 (se=0.1158), converged
+  MI [2/5]: beta_eta=0.8116 (se=0.1158), converged
+  MI [3/5]: beta_eta=0.7901 (se=0.1157), converged
+  MI [4/5]: beta_eta=0.7864 (se=0.1161), converged
+  MI [5/5]: beta_eta=0.7895 (se=0.1165), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7982 (SE=0.1169)
+Within-imputation var: 0.013453
+Between-imputation var: 0.000171
+Total var: 0.013658
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [ 0.06875967 -0.00149465] (age, BMI)
+  iAUC = 0.5764 [95% CI: 0.4633, 0.6653]
+  MI [1/5]: beta_eta=0.7468 (se=0.1215), converged
+  MI [2/5]: beta_eta=0.7599 (se=0.1229), converged
+  MI [3/5]: beta_eta=0.7662 (se=0.1212), converged
+  MI [4/5]: beta_eta=0.7504 (se=0.1213), converged
+  MI [5/5]: beta_eta=0.7457 (se=0.1225), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7538 (SE=0.1223)
+Within-imputation var: 0.014853
+Between-imputation var: 0.000079
+Total var: 0.014948
+FMI (eta): 0.006
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0602677  0.03567143] (age, BMI)
+  iAUC = 0.6215 [95% CI: 0.5333, 0.7037]
+  MI [1/5]: beta_eta=1.0211 (se=0.1310), converged
+  MI [2/5]: beta_eta=1.0311 (se=0.1322), converged
+  MI [3/5]: beta_eta=1.0300 (se=0.1321), converged
+  MI [4/5]: beta_eta=1.0527 (se=0.1324), converged
+  MI [5/5]: beta_eta=1.0409 (se=0.1319), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 1.0352 (SE=0.1326)
+Within-imputation var: 0.017406
+Between-imputation var: 0.000146
+Total var: 0.017581
+FMI (eta): 0.010
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07358906 0.00420355] (age, BMI)
+  iAUC = 0.5606 [95% CI: 0.3899, 0.6615]
+  MI [1/5]: beta_eta=0.7990 (se=0.1314), converged
+  MI [2/5]: beta_eta=0.8106 (se=0.1318), converged
+  MI [3/5]: beta_eta=0.8215 (se=0.1321), converged
+  MI [4/5]: beta_eta=0.7334 (se=0.1307), converged
+  MI [5/5]: beta_eta=0.8343 (se=0.1331), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7998 (SE=0.1387)
+Within-imputation var: 0.017379
+Between-imputation var: 0.001545
+Total var: 0.019233
+FMI (eta): 0.096
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04785257 0.05324386] (age, BMI)
+  iAUC = 0.5742 [95% CI: 0.4846, 0.6950]
+  MI [1/5]: beta_eta=0.5772 (se=0.1152), converged
+  MI [2/5]: beta_eta=0.5736 (se=0.1165), converged
+  MI [3/5]: beta_eta=0.6015 (se=0.1163), converged
+  MI [4/5]: beta_eta=0.6386 (se=0.1167), converged
+  MI [5/5]: beta_eta=0.5818 (se=0.1160), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5945 (SE=0.1198)
+Within-imputation var: 0.013494
+Between-imputation var: 0.000724
+Total var: 0.014362
+FMI (eta): 0.060
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05526771 0.02892055] (age, BMI)
+  iAUC = 0.6614 [95% CI: 0.5712, 0.7412]
+  MI [1/5]: beta_eta=0.8526 (se=0.1312), converged
+  MI [2/5]: beta_eta=0.8358 (se=0.1301), converged
+  MI [3/5]: beta_eta=0.8740 (se=0.1312), converged
+  MI [4/5]: beta_eta=0.7738 (se=0.1301), converged
+  MI [5/5]: beta_eta=0.8292 (se=0.1296), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8331 (SE=0.1367)
+Within-imputation var: 0.017010
+Between-imputation var: 0.001399
+Total var: 0.018689
+FMI (eta): 0.090
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03477393 0.05104512] (age, BMI)
+  iAUC = 0.6103 [95% CI: 0.5020, 0.7323]
+  MI [1/5]: beta_eta=0.8292 (se=0.1065), converged
+  MI [2/5]: beta_eta=0.8590 (se=0.1076), converged
+  MI [3/5]: beta_eta=0.8373 (se=0.1056), converged
+  MI [4/5]: beta_eta=0.8312 (se=0.1062), converged
+  MI [5/5]: beta_eta=0.7934 (se=0.1051), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8300 (SE=0.1093)
+Within-imputation var: 0.011281
+Between-imputation var: 0.000558
+Total var: 0.011950
+FMI (eta): 0.056
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04726727 0.06791841] (age, BMI)
+  iAUC = 0.5988 [95% CI: 0.4809, 0.7131]
+  MI [1/5]: beta_eta=0.7241 (se=0.1065), converged
+  MI [2/5]: beta_eta=0.8025 (se=0.1062), converged
+  MI [3/5]: beta_eta=0.7524 (se=0.1075), converged
+  MI [4/5]: beta_eta=0.7001 (se=0.1070), converged
+  MI [5/5]: beta_eta=0.7743 (se=0.1073), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7507 (SE=0.1157)
+Within-imputation var: 0.011430
+Between-imputation var: 0.001628
+Total var: 0.013383
+FMI (eta): 0.146
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02565371 0.06237465] (age, BMI)
+  iAUC = 0.5545 [95% CI: 0.4667, 0.6314]
+  MI [1/5]: beta_eta=0.7687 (se=0.1238), converged
+  MI [2/5]: beta_eta=0.8045 (se=0.1248), converged
+  MI [3/5]: beta_eta=0.7932 (se=0.1238), converged
+  MI [4/5]: beta_eta=0.7852 (se=0.1244), converged
+  MI [5/5]: beta_eta=0.7927 (se=0.1246), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7889 (SE=0.1251)
+Within-imputation var: 0.015444
+Between-imputation var: 0.000174
+Total var: 0.015653
+FMI (eta): 0.013
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05596038 0.00887966] (age, BMI)
+  iAUC = 0.6208 [95% CI: 0.5351, 0.7105]
+  [ 70/80] HF=0.7052  LM=0.6946  medESS=54.5  (3.1s/iter, ETA 0.5min)
+  MI [1/5]: beta_eta=0.7794 (se=0.1178), converged
+  MI [2/5]: beta_eta=0.7911 (se=0.1171), converged
+  MI [3/5]: beta_eta=0.7908 (se=0.1158), converged
+  MI [4/5]: beta_eta=0.7846 (se=0.1171), converged
+  MI [5/5]: beta_eta=0.7945 (se=0.1178), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7881 (SE=0.1173)
+Within-imputation var: 0.013714
+Between-imputation var: 0.000036
+Total var: 0.013758
+FMI (eta): 0.003
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.04438327 0.06502451] (age, BMI)
+  iAUC = 0.5421 [95% CI: 0.4293, 0.6528]
+  MI [1/5]: beta_eta=0.8005 (se=0.1232), converged
+  MI [2/5]: beta_eta=0.7997 (se=0.1232), converged
+  MI [3/5]: beta_eta=0.7883 (se=0.1219), converged
+  MI [4/5]: beta_eta=0.7907 (se=0.1223), converged
+  MI [5/5]: beta_eta=0.8450 (se=0.1234), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8048 (SE=0.1254)
+Within-imputation var: 0.015080
+Between-imputation var: 0.000532
+Total var: 0.015719
+FMI (eta): 0.041
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03431877 0.07304565] (age, BMI)
+  iAUC = 0.6476 [95% CI: 0.5566, 0.7292]
+  MI [1/5]: beta_eta=0.8701 (se=0.1130), converged
+  MI [2/5]: beta_eta=0.8812 (se=0.1129), converged
+  MI [3/5]: beta_eta=0.9473 (se=0.1125), converged
+  MI [4/5]: beta_eta=0.9034 (se=0.1131), converged
+  MI [5/5]: beta_eta=0.9361 (se=0.1136), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9076 (SE=0.1188)
+Within-imputation var: 0.012769
+Between-imputation var: 0.001128
+Total var: 0.014123
+FMI (eta): 0.096
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09098605 0.04513496] (age, BMI)
+  iAUC = 0.6671 [95% CI: 0.5376, 0.7693]
+  MI [1/5]: beta_eta=0.6708 (se=0.1166), converged
+  MI [2/5]: beta_eta=0.6469 (se=0.1160), converged
+  MI [3/5]: beta_eta=0.6782 (se=0.1162), converged
+  MI [4/5]: beta_eta=0.6371 (se=0.1166), converged
+  MI [5/5]: beta_eta=0.6476 (se=0.1164), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6561 (SE=0.1179)
+Within-imputation var: 0.013541
+Between-imputation var: 0.000306
+Total var: 0.013907
+FMI (eta): 0.026
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05842872 0.03981638] (age, BMI)
+  iAUC = 0.5875 [95% CI: 0.4937, 0.6644]
+  MI [1/5]: beta_eta=0.8619 (se=0.1246), converged
+  MI [2/5]: beta_eta=0.8380 (se=0.1249), converged
+  MI [3/5]: beta_eta=0.8339 (se=0.1249), converged
+  MI [4/5]: beta_eta=0.8050 (se=0.1245), converged
+  MI [5/5]: beta_eta=0.8867 (se=0.1262), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8451 (SE=0.1295)
+Within-imputation var: 0.015628
+Between-imputation var: 0.000949
+Total var: 0.016767
+FMI (eta): 0.068
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.06239547 0.07168041] (age, BMI)
+  iAUC = 0.6411 [95% CI: 0.5135, 0.7427]
+  MI [1/5]: beta_eta=0.8250 (se=0.1025), converged
+  MI [2/5]: beta_eta=0.8049 (se=0.1033), converged
+  MI [3/5]: beta_eta=0.8463 (se=0.1031), converged
+  MI [4/5]: beta_eta=0.8114 (se=0.1042), converged
+  MI [5/5]: beta_eta=0.8312 (se=0.1044), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8238 (SE=0.1050)
+Within-imputation var: 0.010710
+Between-imputation var: 0.000269
+Total var: 0.011033
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.07712318 0.0220473 ] (age, BMI)
+  iAUC = 0.6382 [95% CI: 0.5455, 0.7212]
+  MI [1/5]: beta_eta=0.6815 (se=0.1240), converged
+  MI [2/5]: beta_eta=0.6757 (se=0.1250), converged
+  MI [3/5]: beta_eta=0.6888 (se=0.1239), converged
+  MI [4/5]: beta_eta=0.6736 (se=0.1249), converged
+  MI [5/5]: beta_eta=0.6487 (se=0.1242), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6737 (SE=0.1255)
+Within-imputation var: 0.015471
+Between-imputation var: 0.000229
+Total var: 0.015746
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.03197767 0.02830232] (age, BMI)
+  iAUC = 0.5686 [95% CI: 0.4685, 0.6694]
+  MI [1/5]: beta_eta=0.7364 (se=0.1268), converged
+  MI [2/5]: beta_eta=0.7726 (se=0.1275), converged
+  MI [3/5]: beta_eta=0.7766 (se=0.1272), converged
+  MI [4/5]: beta_eta=0.7632 (se=0.1269), converged
+  MI [5/5]: beta_eta=0.7907 (se=0.1266), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7679 (SE=0.1289)
+Within-imputation var: 0.016128
+Between-imputation var: 0.000408
+Total var: 0.016618
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.02851641 0.00155435] (age, BMI)
+  iAUC = 0.5392 [95% CI: 0.4426, 0.6537]
+  MI [1/5]: beta_eta=0.7669 (se=0.1129), converged
+  MI [2/5]: beta_eta=0.7026 (se=0.1122), converged
+  MI [3/5]: beta_eta=0.7388 (se=0.1120), converged
+  MI [4/5]: beta_eta=0.7213 (se=0.1122), converged
+  MI [5/5]: beta_eta=0.6895 (se=0.1112), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7238 (SE=0.1170)
+Within-imputation var: 0.012568
+Between-imputation var: 0.000928
+Total var: 0.013682
+FMI (eta): 0.081
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0069786  0.02695822] (age, BMI)
+  iAUC = 0.6517 [95% CI: 0.5730, 0.7262]
+  MI [1/5]: beta_eta=0.7011 (se=0.1100), converged
+  MI [2/5]: beta_eta=0.7339 (se=0.1092), converged
+  MI [3/5]: beta_eta=0.6935 (se=0.1101), converged
+  MI [4/5]: beta_eta=0.7349 (se=0.1093), converged
+  MI [5/5]: beta_eta=0.7428 (se=0.1094), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7212 (SE=0.1123)
+Within-imputation var: 0.012015
+Between-imputation var: 0.000497
+Total var: 0.012612
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.05967711 0.02573578] (age, BMI)
+  iAUC = 0.5942 [95% CI: 0.5147, 0.6716]
+  [ 80/80] HF=0.7092  LM=0.7007  medESS=54.4  (3.0s/iter, ETA 0.0min)
+
+  Scenario 'heavy_tail' complete: 80/80 valid, 0 ESS warnings, 4.1 min total
+
+===========================================================================
+MONTE CARLO RESULTS — scenario: heavy_tail
+===========================================================================
+Method                        Mean       SD             95% CI  Valid   Median
+---------------------------------------------------------------------------
+High-Freq PF+Cox            0.7210   0.0463 [0.6286, 0.8024]     80   0.7182
+Static Cox                  0.5970   0.0486 [0.4998, 0.6783]     80   0.6003
+Landmarking                 0.7157   0.0469 [0.6347, 0.7938]     80   0.7139
+Low-Freq PF+Cox             0.6995   0.0476 [0.5948, 0.7700]     80   0.6993
+
+--- Diagnostics ---
+  Event rate:    0.192 +/- 0.020
+  PF corr(θ,η):  0.9795 +/- 0.0010
+  Median ESS:    54.4 +/- 0.1  (warn <10: 0 iters)
+  P5 ESS:        21.0 +/- 0.4
+  Cox beta_eta:  0.7605 (true gamma=0.8)
+  Lead time:     2.75 +/- 1.15 weeks
+
+  HF vs LM (n=80 paired): wins 51/29/0, mean diff +0.0053
+
+  Saved: ../results/monte_carlo_heavy_tail.json
+
+===========================================================================
+SCENARIO: combined
+  theta_mode = nonlinear
+  obs_noise  = heavy_tail
+  N_MC       = 80
+===========================================================================
+  MI [1/5]: beta_eta=0.7782 (se=0.0747), converged
+  MI [2/5]: beta_eta=0.7930 (se=0.0754), converged
+  MI [3/5]: beta_eta=0.7736 (se=0.0744), converged
+  MI [4/5]: beta_eta=0.7981 (se=0.0756), converged
+  MI [5/5]: beta_eta=0.7913 (se=0.0754), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7868 (SE=0.0760)
+Within-imputation var: 0.005639
+Between-imputation var: 0.000109
+Total var: 0.005770
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09220891 0.05031152] (age, BMI)
+  iAUC = 0.6893 [95% CI: 0.6144, 0.7544]
+  [  1/80] HF=0.8309  LM=0.8323  medESS=53.9  (3.1s/iter, ETA 4.1min)
+  MI [1/5]: beta_eta=0.7114 (se=0.0749), converged
+  MI [2/5]: beta_eta=0.7228 (se=0.0756), converged
+  MI [3/5]: beta_eta=0.7211 (se=0.0756), converged
+  MI [4/5]: beta_eta=0.7077 (se=0.0746), converged
+  MI [5/5]: beta_eta=0.7161 (se=0.0754), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7158 (SE=0.0755)
+Within-imputation var: 0.005655
+Between-imputation var: 0.000040
+Total var: 0.005704
+FMI (eta): 0.008
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09615334 0.05838125] (age, BMI)
+  iAUC = 0.6311 [95% CI: 0.5595, 0.7064]
+  MI [1/5]: beta_eta=0.7375 (se=0.0791), converged
+  MI [2/5]: beta_eta=0.7286 (se=0.0783), converged
+  MI [3/5]: beta_eta=0.7227 (se=0.0780), converged
+  MI [4/5]: beta_eta=0.7228 (se=0.0777), converged
+  MI [5/5]: beta_eta=0.7421 (se=0.0794), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7307 (SE=0.0791)
+Within-imputation var: 0.006162
+Between-imputation var: 0.000076
+Total var: 0.006253
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11781498 0.07304696] (age, BMI)
+  iAUC = 0.7272 [95% CI: 0.6605, 0.7890]
+  MI [1/5]: beta_eta=0.8471 (se=0.0831), converged
+  MI [2/5]: beta_eta=0.8348 (se=0.0822), converged
+  MI [3/5]: beta_eta=0.8421 (se=0.0821), converged
+  MI [4/5]: beta_eta=0.8235 (se=0.0814), converged
+  MI [5/5]: beta_eta=0.8385 (se=0.0829), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8372 (SE=0.0829)
+Within-imputation var: 0.006778
+Between-imputation var: 0.000079
+Total var: 0.006873
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10615052 0.04795084] (age, BMI)
+  iAUC = 0.7080 [95% CI: 0.6503, 0.7651]
+  MI [1/5]: beta_eta=0.7977 (se=0.0880), converged
+  MI [2/5]: beta_eta=0.7742 (se=0.0865), converged
+  MI [3/5]: beta_eta=0.7707 (se=0.0863), converged
+  MI [4/5]: beta_eta=0.7481 (se=0.0848), converged
+  MI [5/5]: beta_eta=0.7670 (se=0.0856), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7715 (SE=0.0884)
+Within-imputation var: 0.007439
+Between-imputation var: 0.000316
+Total var: 0.007818
+FMI (eta): 0.048
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13651143 0.0653539 ] (age, BMI)
+  iAUC = 0.6300 [95% CI: 0.5506, 0.7025]
+  MI [1/5]: beta_eta=0.6611 (se=0.0678), converged
+  MI [2/5]: beta_eta=0.6529 (se=0.0671), converged
+  MI [3/5]: beta_eta=0.6623 (se=0.0678), converged
+  MI [4/5]: beta_eta=0.6603 (se=0.0675), converged
+  MI [5/5]: beta_eta=0.6535 (se=0.0672), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6580 (SE=0.0676)
+Within-imputation var: 0.004552
+Between-imputation var: 0.000020
+Total var: 0.004575
+FMI (eta): 0.005
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11499346 0.04278169] (age, BMI)
+  iAUC = 0.6242 [95% CI: 0.5489, 0.6963]
+  MI [1/5]: beta_eta=0.7016 (se=0.0771), converged
+  MI [2/5]: beta_eta=0.7281 (se=0.0788), converged
+  MI [3/5]: beta_eta=0.7023 (se=0.0772), converged
+  MI [4/5]: beta_eta=0.7175 (se=0.0783), converged
+  MI [5/5]: beta_eta=0.7086 (se=0.0775), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7116 (SE=0.0787)
+Within-imputation var: 0.006049
+Between-imputation var: 0.000126
+Total var: 0.006200
+FMI (eta): 0.024
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0873476  0.09031905] (age, BMI)
+  iAUC = 0.6742 [95% CI: 0.6015, 0.7495]
+  MI [1/5]: beta_eta=0.8716 (se=0.0856), converged
+  MI [2/5]: beta_eta=0.8898 (se=0.0867), converged
+  MI [3/5]: beta_eta=0.8703 (se=0.0851), converged
+  MI [4/5]: beta_eta=0.8432 (se=0.0840), converged
+  MI [5/5]: beta_eta=0.8510 (se=0.0841), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8652 (SE=0.0875)
+Within-imputation var: 0.007240
+Between-imputation var: 0.000340
+Total var: 0.007648
+FMI (eta): 0.053
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11770588 0.07588995] (age, BMI)
+  iAUC = 0.6815 [95% CI: 0.6252, 0.7401]
+  MI [1/5]: beta_eta=0.6756 (se=0.0757), converged
+  MI [2/5]: beta_eta=0.6861 (se=0.0763), converged
+  MI [3/5]: beta_eta=0.7145 (se=0.0780), converged
+  MI [4/5]: beta_eta=0.7135 (se=0.0779), converged
+  MI [5/5]: beta_eta=0.7079 (se=0.0772), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6995 (SE=0.0794)
+Within-imputation var: 0.005935
+Between-imputation var: 0.000311
+Total var: 0.006308
+FMI (eta): 0.059
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11208094 0.06566016] (age, BMI)
+  iAUC = 0.6635 [95% CI: 0.6016, 0.7303]
+  MI [1/5]: beta_eta=0.6545 (se=0.0809), converged
+  MI [2/5]: beta_eta=0.6486 (se=0.0805), converged
+  MI [3/5]: beta_eta=0.6490 (se=0.0811), converged
+  MI [4/5]: beta_eta=0.6600 (se=0.0813), converged
+  MI [5/5]: beta_eta=0.6483 (se=0.0803), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6521 (SE=0.0810)
+Within-imputation var: 0.006535
+Between-imputation var: 0.000026
+Total var: 0.006567
+FMI (eta): 0.005
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15464841 0.08459806] (age, BMI)
+  iAUC = 0.7711 [95% CI: 0.7135, 0.8265]
+  [ 10/80] HF=0.8476  LM=0.8443  medESS=53.8  (3.2s/iter, ETA 3.7min)
+  MI [1/5]: beta_eta=0.9163 (se=0.0854), converged
+  MI [2/5]: beta_eta=0.9580 (se=0.0874), converged
+  MI [3/5]: beta_eta=0.9481 (se=0.0873), converged
+  MI [4/5]: beta_eta=0.9254 (se=0.0856), converged
+  MI [5/5]: beta_eta=0.9383 (se=0.0868), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9372 (SE=0.0884)
+Within-imputation var: 0.007484
+Between-imputation var: 0.000282
+Total var: 0.007822
+FMI (eta): 0.043
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12232773 0.07391099] (age, BMI)
+  iAUC = 0.7095 [95% CI: 0.6277, 0.7661]
+  MI [1/5]: beta_eta=0.8000 (se=0.0887), converged
+  MI [2/5]: beta_eta=0.8300 (se=0.0900), converged
+  MI [3/5]: beta_eta=0.8066 (se=0.0889), converged
+  MI [4/5]: beta_eta=0.8089 (se=0.0887), converged
+  MI [5/5]: beta_eta=0.8011 (se=0.0884), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8093 (SE=0.0900)
+Within-imputation var: 0.007915
+Between-imputation var: 0.000148
+Total var: 0.008092
+FMI (eta): 0.022
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13209302 0.08081851] (age, BMI)
+  iAUC = 0.7555 [95% CI: 0.6811, 0.8153]
+  MI [1/5]: beta_eta=0.8014 (se=0.0825), converged
+  MI [2/5]: beta_eta=0.8151 (se=0.0830), converged
+  MI [3/5]: beta_eta=0.8069 (se=0.0827), converged
+  MI [4/5]: beta_eta=0.8216 (se=0.0837), converged
+  MI [5/5]: beta_eta=0.8359 (se=0.0851), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8162 (SE=0.0847)
+Within-imputation var: 0.006955
+Between-imputation var: 0.000181
+Total var: 0.007172
+FMI (eta): 0.030
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10496292 0.09064263] (age, BMI)
+  iAUC = 0.6969 [95% CI: 0.6325, 0.7524]
+  MI [1/5]: beta_eta=0.6820 (se=0.0757), converged
+  MI [2/5]: beta_eta=0.6839 (se=0.0757), converged
+  MI [3/5]: beta_eta=0.7212 (se=0.0780), converged
+  MI [4/5]: beta_eta=0.6904 (se=0.0761), converged
+  MI [5/5]: beta_eta=0.6933 (se=0.0766), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6942 (SE=0.0784)
+Within-imputation var: 0.005844
+Between-imputation var: 0.000250
+Total var: 0.006144
+FMI (eta): 0.049
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12392761 0.07006877] (age, BMI)
+  iAUC = 0.6903 [95% CI: 0.6260, 0.7538]
+  MI [1/5]: beta_eta=0.8488 (se=0.0856), converged
+  MI [2/5]: beta_eta=0.8518 (se=0.0851), converged
+  MI [3/5]: beta_eta=0.8172 (se=0.0833), converged
+  MI [4/5]: beta_eta=0.8245 (se=0.0843), converged
+  MI [5/5]: beta_eta=0.8537 (se=0.0859), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8392 (SE=0.0869)
+Within-imputation var: 0.007200
+Between-imputation var: 0.000290
+Total var: 0.007548
+FMI (eta): 0.046
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12196007 0.01059351] (age, BMI)
+  iAUC = 0.6451 [95% CI: 0.5697, 0.7043]
+  MI [1/5]: beta_eta=0.7305 (se=0.0807), converged
+  MI [2/5]: beta_eta=0.7383 (se=0.0805), converged
+  MI [3/5]: beta_eta=0.7477 (se=0.0812), converged
+  MI [4/5]: beta_eta=0.7559 (se=0.0818), converged
+  MI [5/5]: beta_eta=0.7464 (se=0.0815), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7438 (SE=0.0818)
+Within-imputation var: 0.006582
+Between-imputation var: 0.000094
+Total var: 0.006695
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.14232171 0.03996202] (age, BMI)
+  iAUC = 0.7650 [95% CI: 0.7030, 0.8175]
+  MI [1/5]: beta_eta=0.7325 (se=0.0832), converged
+  MI [2/5]: beta_eta=0.6956 (se=0.0812), converged
+  MI [3/5]: beta_eta=0.6969 (se=0.0813), converged
+  MI [4/5]: beta_eta=0.6993 (se=0.0814), converged
+  MI [5/5]: beta_eta=0.6925 (se=0.0810), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7034 (SE=0.0836)
+Within-imputation var: 0.006662
+Between-imputation var: 0.000271
+Total var: 0.006987
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08517686 0.06925846] (age, BMI)
+  iAUC = 0.6527 [95% CI: 0.5895, 0.7271]
+  MI [1/5]: beta_eta=0.8926 (se=0.0888), converged
+  MI [2/5]: beta_eta=0.8819 (se=0.0873), converged
+  MI [3/5]: beta_eta=0.9036 (se=0.0892), converged
+  MI [4/5]: beta_eta=0.9066 (se=0.0893), converged
+  MI [5/5]: beta_eta=0.8694 (se=0.0866), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8908 (SE=0.0899)
+Within-imputation var: 0.007789
+Between-imputation var: 0.000239
+Total var: 0.008076
+FMI (eta): 0.035
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09294039 0.05981225] (age, BMI)
+  iAUC = 0.7154 [95% CI: 0.6408, 0.7746]
+  MI [1/5]: beta_eta=0.6197 (se=0.0812), converged
+  MI [2/5]: beta_eta=0.5742 (se=0.0786), converged
+  MI [3/5]: beta_eta=0.6094 (se=0.0807), converged
+  MI [4/5]: beta_eta=0.5807 (se=0.0790), converged
+  MI [5/5]: beta_eta=0.5938 (se=0.0799), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5956 (SE=0.0826)
+Within-imputation var: 0.006380
+Between-imputation var: 0.000364
+Total var: 0.006817
+FMI (eta): 0.064
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11205148 0.09448641] (age, BMI)
+  iAUC = 0.7438 [95% CI: 0.6864, 0.8064]
+  MI [1/5]: beta_eta=0.7551 (se=0.0832), converged
+  MI [2/5]: beta_eta=0.7610 (se=0.0837), converged
+  MI [3/5]: beta_eta=0.7420 (se=0.0825), converged
+  MI [4/5]: beta_eta=0.7699 (se=0.0841), converged
+  MI [5/5]: beta_eta=0.7528 (se=0.0833), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7562 (SE=0.0841)
+Within-imputation var: 0.006949
+Between-imputation var: 0.000106
+Total var: 0.007076
+FMI (eta): 0.018
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11265609 0.09811754] (age, BMI)
+  iAUC = 0.7507 [95% CI: 0.6930, 0.8105]
+  [ 20/80] HF=0.8584  LM=0.8556  medESS=53.9  (3.1s/iter, ETA 3.1min)
+  MI [1/5]: beta_eta=0.6225 (se=0.0663), converged
+  MI [2/5]: beta_eta=0.6151 (se=0.0657), converged
+  MI [3/5]: beta_eta=0.6148 (se=0.0658), converged
+  MI [4/5]: beta_eta=0.6168 (se=0.0660), converged
+  MI [5/5]: beta_eta=0.6073 (se=0.0652), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6153 (SE=0.0661)
+Within-imputation var: 0.004332
+Between-imputation var: 0.000030
+Total var: 0.004368
+FMI (eta): 0.008
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11404526 0.05426808] (age, BMI)
+  iAUC = 0.6254 [95% CI: 0.5515, 0.6848]
+  MI [1/5]: beta_eta=0.8649 (se=0.0848), converged
+  MI [2/5]: beta_eta=0.8868 (se=0.0862), converged
+  MI [3/5]: beta_eta=0.8723 (se=0.0850), converged
+  MI [4/5]: beta_eta=0.8952 (se=0.0866), converged
+  MI [5/5]: beta_eta=0.8753 (se=0.0857), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8789 (SE=0.0867)
+Within-imputation var: 0.007338
+Between-imputation var: 0.000145
+Total var: 0.007512
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10435931 0.04902971] (age, BMI)
+  iAUC = 0.7141 [95% CI: 0.6498, 0.7750]
+  MI [1/5]: beta_eta=0.8060 (se=0.0897), converged
+  MI [2/5]: beta_eta=0.8317 (se=0.0918), converged
+  MI [3/5]: beta_eta=0.8142 (se=0.0909), converged
+  MI [4/5]: beta_eta=0.8532 (se=0.0927), converged
+  MI [5/5]: beta_eta=0.8384 (se=0.0921), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8287 (SE=0.0938)
+Within-imputation var: 0.008364
+Between-imputation var: 0.000357
+Total var: 0.008793
+FMI (eta): 0.049
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10868965 0.09751874] (age, BMI)
+  iAUC = 0.6636 [95% CI: 0.5986, 0.7273]
+  MI [1/5]: beta_eta=0.8872 (se=0.0921), converged
+  MI [2/5]: beta_eta=0.8963 (se=0.0927), converged
+  MI [3/5]: beta_eta=0.8774 (se=0.0905), converged
+  MI [4/5]: beta_eta=0.8740 (se=0.0911), converged
+  MI [5/5]: beta_eta=0.8938 (se=0.0919), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8857 (SE=0.0923)
+Within-imputation var: 0.008402
+Between-imputation var: 0.000096
+Total var: 0.008517
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09741521 0.0700438 ] (age, BMI)
+  iAUC = 0.7059 [95% CI: 0.6483, 0.7732]
+  MI [1/5]: beta_eta=0.7965 (se=0.0806), converged
+  MI [2/5]: beta_eta=0.7666 (se=0.0790), converged
+  MI [3/5]: beta_eta=0.7504 (se=0.0779), converged
+  MI [4/5]: beta_eta=0.7911 (se=0.0805), converged
+  MI [5/5]: beta_eta=0.7742 (se=0.0794), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7758 (SE=0.0821)
+Within-imputation var: 0.006316
+Between-imputation var: 0.000349
+Total var: 0.006735
+FMI (eta): 0.062
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09840806 0.06270065] (age, BMI)
+  iAUC = 0.6618 [95% CI: 0.5896, 0.7384]
+  MI [1/5]: beta_eta=0.8453 (se=0.0850), converged
+  MI [2/5]: beta_eta=0.8299 (se=0.0842), converged
+  MI [3/5]: beta_eta=0.8497 (se=0.0853), converged
+  MI [4/5]: beta_eta=0.8595 (se=0.0859), converged
+  MI [5/5]: beta_eta=0.8438 (se=0.0849), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8456 (SE=0.0859)
+Within-imputation var: 0.007236
+Between-imputation var: 0.000115
+Total var: 0.007374
+FMI (eta): 0.019
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0777041  0.06130666] (age, BMI)
+  iAUC = 0.6988 [95% CI: 0.6283, 0.7654]
+  MI [1/5]: beta_eta=0.7153 (se=0.0767), converged
+  MI [2/5]: beta_eta=0.7073 (se=0.0766), converged
+  MI [3/5]: beta_eta=0.7255 (se=0.0776), converged
+  MI [4/5]: beta_eta=0.7241 (se=0.0775), converged
+  MI [5/5]: beta_eta=0.7130 (se=0.0767), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7170 (SE=0.0775)
+Within-imputation var: 0.005932
+Between-imputation var: 0.000059
+Total var: 0.006003
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09621064 0.10602875] (age, BMI)
+  iAUC = 0.7068 [95% CI: 0.6305, 0.7747]
+  MI [1/5]: beta_eta=0.8601 (se=0.0910), converged
+  MI [2/5]: beta_eta=0.8470 (se=0.0898), converged
+  MI [3/5]: beta_eta=0.8806 (se=0.0921), converged
+  MI [4/5]: beta_eta=0.8606 (se=0.0909), converged
+  MI [5/5]: beta_eta=0.8890 (se=0.0930), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8675 (SE=0.0933)
+Within-imputation var: 0.008350
+Between-imputation var: 0.000290
+Total var: 0.008698
+FMI (eta): 0.040
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08492058 0.08822984] (age, BMI)
+  iAUC = 0.6663 [95% CI: 0.5879, 0.7279]
+  MI [1/5]: beta_eta=0.8355 (se=0.0832), converged
+  MI [2/5]: beta_eta=0.8039 (se=0.0816), converged
+  MI [3/5]: beta_eta=0.8425 (se=0.0836), converged
+  MI [4/5]: beta_eta=0.8272 (se=0.0826), converged
+  MI [5/5]: beta_eta=0.8278 (se=0.0825), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8274 (SE=0.0842)
+Within-imputation var: 0.006841
+Between-imputation var: 0.000211
+Total var: 0.007094
+FMI (eta): 0.036
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11471638 0.04785967] (age, BMI)
+  iAUC = 0.6925 [95% CI: 0.6294, 0.7665]
+  MI [1/5]: beta_eta=0.8020 (se=0.0760), converged
+  MI [2/5]: beta_eta=0.8109 (se=0.0767), converged
+  MI [3/5]: beta_eta=0.8184 (se=0.0769), converged
+  MI [4/5]: beta_eta=0.8164 (se=0.0770), converged
+  MI [5/5]: beta_eta=0.7907 (se=0.0756), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8077 (SE=0.0775)
+Within-imputation var: 0.005844
+Between-imputation var: 0.000131
+Total var: 0.006001
+FMI (eta): 0.026
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12240691 0.07283294] (age, BMI)
+  iAUC = 0.7114 [95% CI: 0.6534, 0.7797]
+  [ 30/80] HF=0.8593  LM=0.8573  medESS=54.1  (3.1s/iter, ETA 2.6min)
+  MI [1/5]: beta_eta=0.8120 (se=0.0837), converged
+  MI [2/5]: beta_eta=0.8124 (se=0.0833), converged
+  MI [3/5]: beta_eta=0.7969 (se=0.0830), converged
+  MI [4/5]: beta_eta=0.8223 (se=0.0846), converged
+  MI [5/5]: beta_eta=0.7663 (se=0.0810), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8020 (SE=0.0865)
+Within-imputation var: 0.006907
+Between-imputation var: 0.000480
+Total var: 0.007483
+FMI (eta): 0.077
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0919481  0.05711588] (age, BMI)
+  iAUC = 0.6393 [95% CI: 0.5628, 0.7239]
+  MI [1/5]: beta_eta=0.7098 (se=0.0879), converged
+  MI [2/5]: beta_eta=0.7447 (se=0.0898), converged
+  MI [3/5]: beta_eta=0.6872 (se=0.0862), converged
+  MI [4/5]: beta_eta=0.7286 (se=0.0888), converged
+  MI [5/5]: beta_eta=0.7159 (se=0.0880), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7172 (SE=0.0912)
+Within-imputation var: 0.007769
+Between-imputation var: 0.000461
+Total var: 0.008322
+FMI (eta): 0.066
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15546874 0.10859027] (age, BMI)
+  iAUC = 0.6988 [95% CI: 0.6244, 0.7756]
+  MI [1/5]: beta_eta=0.8278 (se=0.0808), converged
+  MI [2/5]: beta_eta=0.8427 (se=0.0819), converged
+  MI [3/5]: beta_eta=0.8531 (se=0.0826), converged
+  MI [4/5]: beta_eta=0.8598 (se=0.0827), converged
+  MI [5/5]: beta_eta=0.8558 (se=0.0821), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8478 (SE=0.0832)
+Within-imputation var: 0.006724
+Between-imputation var: 0.000166
+Total var: 0.006922
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09781945 0.07288724] (age, BMI)
+  iAUC = 0.6866 [95% CI: 0.6255, 0.7464]
+  MI [1/5]: beta_eta=0.7309 (se=0.0783), converged
+  MI [2/5]: beta_eta=0.7627 (se=0.0799), converged
+  MI [3/5]: beta_eta=0.7484 (se=0.0797), converged
+  MI [4/5]: beta_eta=0.7546 (se=0.0799), converged
+  MI [5/5]: beta_eta=0.7267 (se=0.0783), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7447 (SE=0.0810)
+Within-imputation var: 0.006274
+Between-imputation var: 0.000238
+Total var: 0.006560
+FMI (eta): 0.044
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09924983 0.05477525] (age, BMI)
+  iAUC = 0.6986 [95% CI: 0.6265, 0.7572]
+  MI [1/5]: beta_eta=0.8151 (se=0.0774), converged
+  MI [2/5]: beta_eta=0.8126 (se=0.0778), converged
+  MI [3/5]: beta_eta=0.8146 (se=0.0778), converged
+  MI [4/5]: beta_eta=0.8072 (se=0.0774), converged
+  MI [5/5]: beta_eta=0.8153 (se=0.0777), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8130 (SE=0.0777)
+Within-imputation var: 0.006024
+Between-imputation var: 0.000011
+Total var: 0.006037
+FMI (eta): 0.002
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10300114 0.0939705 ] (age, BMI)
+  iAUC = 0.7164 [95% CI: 0.6512, 0.7753]
+  MI [1/5]: beta_eta=0.7116 (se=0.0776), converged
+  MI [2/5]: beta_eta=0.7155 (se=0.0776), converged
+  MI [3/5]: beta_eta=0.6975 (se=0.0767), converged
+  MI [4/5]: beta_eta=0.7009 (se=0.0769), converged
+  MI [5/5]: beta_eta=0.7043 (se=0.0771), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7060 (SE=0.0776)
+Within-imputation var: 0.005959
+Between-imputation var: 0.000056
+Total var: 0.006025
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10064479 0.07093514] (age, BMI)
+  iAUC = 0.6255 [95% CI: 0.5467, 0.6984]
+  MI [1/5]: beta_eta=0.7986 (se=0.0751), converged
+  MI [2/5]: beta_eta=0.7948 (se=0.0752), converged
+  MI [3/5]: beta_eta=0.7866 (se=0.0746), converged
+  MI [4/5]: beta_eta=0.8103 (se=0.0759), converged
+  MI [5/5]: beta_eta=0.7957 (se=0.0751), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7972 (SE=0.0758)
+Within-imputation var: 0.005653
+Between-imputation var: 0.000074
+Total var: 0.005741
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.077566   0.06529238] (age, BMI)
+  iAUC = 0.6518 [95% CI: 0.5875, 0.7164]
+  MI [1/5]: beta_eta=0.8195 (se=0.0900), converged
+  MI [2/5]: beta_eta=0.8202 (se=0.0898), converged
+  MI [3/5]: beta_eta=0.8027 (se=0.0892), converged
+  MI [4/5]: beta_eta=0.8235 (se=0.0897), converged
+  MI [5/5]: beta_eta=0.8242 (se=0.0905), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8180 (SE=0.0903)
+Within-imputation var: 0.008069
+Between-imputation var: 0.000077
+Total var: 0.008162
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08728751 0.09088339] (age, BMI)
+  iAUC = 0.6991 [95% CI: 0.6288, 0.7626]
+  MI [1/5]: beta_eta=0.8642 (se=0.0831), converged
+  MI [2/5]: beta_eta=0.8721 (se=0.0836), converged
+  MI [3/5]: beta_eta=0.8957 (se=0.0854), converged
+  MI [4/5]: beta_eta=0.8614 (se=0.0828), converged
+  MI [5/5]: beta_eta=0.8520 (se=0.0828), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8691 (SE=0.0855)
+Within-imputation var: 0.006980
+Between-imputation var: 0.000273
+Total var: 0.007309
+FMI (eta): 0.045
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11514212 0.08294549] (age, BMI)
+  iAUC = 0.7052 [95% CI: 0.6531, 0.7582]
+  MI [1/5]: beta_eta=0.8512 (se=0.0889), converged
+  MI [2/5]: beta_eta=0.8781 (se=0.0909), converged
+  MI [3/5]: beta_eta=0.8815 (se=0.0909), converged
+  MI [4/5]: beta_eta=0.8520 (se=0.0897), converged
+  MI [5/5]: beta_eta=0.8471 (se=0.0893), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8620 (SE=0.0917)
+Within-imputation var: 0.008090
+Between-imputation var: 0.000269
+Total var: 0.008413
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10985297 0.02771902] (age, BMI)
+  iAUC = 0.6770 [95% CI: 0.6054, 0.7477]
+  [ 40/80] HF=0.8375  LM=0.8239  medESS=53.9  (3.2s/iter, ETA 2.1min)
+  MI [1/5]: beta_eta=0.8041 (se=0.0836), converged
+  MI [2/5]: beta_eta=0.7979 (se=0.0837), converged
+  MI [3/5]: beta_eta=0.8036 (se=0.0838), converged
+  MI [4/5]: beta_eta=0.7989 (se=0.0835), converged
+  MI [5/5]: beta_eta=0.7815 (se=0.0825), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7972 (SE=0.0840)
+Within-imputation var: 0.006959
+Between-imputation var: 0.000084
+Total var: 0.007061
+FMI (eta): 0.014
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11565392 0.0446146 ] (age, BMI)
+  iAUC = 0.6844 [95% CI: 0.6240, 0.7352]
+  MI [1/5]: beta_eta=0.7539 (se=0.0760), converged
+  MI [2/5]: beta_eta=0.7679 (se=0.0769), converged
+  MI [3/5]: beta_eta=0.7776 (se=0.0773), converged
+  MI [4/5]: beta_eta=0.7729 (se=0.0773), converged
+  MI [5/5]: beta_eta=0.7843 (se=0.0778), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7713 (SE=0.0781)
+Within-imputation var: 0.005940
+Between-imputation var: 0.000132
+Total var: 0.006098
+FMI (eta): 0.026
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10905975 0.06022367] (age, BMI)
+  iAUC = 0.6735 [95% CI: 0.6026, 0.7448]
+  MI [1/5]: beta_eta=0.7848 (se=0.0857), converged
+  MI [2/5]: beta_eta=0.8084 (se=0.0872), converged
+  MI [3/5]: beta_eta=0.8243 (se=0.0883), converged
+  MI [4/5]: beta_eta=0.8308 (se=0.0884), converged
+  MI [5/5]: beta_eta=0.8119 (se=0.0868), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8121 (SE=0.0894)
+Within-imputation var: 0.007623
+Between-imputation var: 0.000314
+Total var: 0.008000
+FMI (eta): 0.047
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12463904 0.09149062] (age, BMI)
+  iAUC = 0.7614 [95% CI: 0.7130, 0.8220]
+  MI [1/5]: beta_eta=0.8580 (se=0.0842), converged
+  MI [2/5]: beta_eta=0.9129 (se=0.0862), converged
+  MI [3/5]: beta_eta=0.8915 (se=0.0859), converged
+  MI [4/5]: beta_eta=0.8752 (se=0.0845), converged
+  MI [5/5]: beta_eta=0.8847 (se=0.0853), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8845 (SE=0.0881)
+Within-imputation var: 0.007264
+Between-imputation var: 0.000411
+Total var: 0.007757
+FMI (eta): 0.064
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10897275 0.02783884] (age, BMI)
+  iAUC = 0.6653 [95% CI: 0.5855, 0.7446]
+  MI [1/5]: beta_eta=0.8320 (se=0.0850), converged
+  MI [2/5]: beta_eta=0.8282 (se=0.0850), converged
+  MI [3/5]: beta_eta=0.8705 (se=0.0877), converged
+  MI [4/5]: beta_eta=0.8285 (se=0.0848), converged
+  MI [5/5]: beta_eta=0.8576 (se=0.0865), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8434 (SE=0.0884)
+Within-imputation var: 0.007361
+Between-imputation var: 0.000380
+Total var: 0.007817
+FMI (eta): 0.058
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08601803 0.09540656] (age, BMI)
+  iAUC = 0.7235 [95% CI: 0.6512, 0.7735]
+  MI [1/5]: beta_eta=0.8327 (se=0.0866), converged
+  MI [2/5]: beta_eta=0.8102 (se=0.0855), converged
+  MI [3/5]: beta_eta=0.8253 (se=0.0864), converged
+  MI [4/5]: beta_eta=0.8067 (se=0.0854), converged
+  MI [5/5]: beta_eta=0.8269 (se=0.0860), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8203 (SE=0.0869)
+Within-imputation var: 0.007394
+Between-imputation var: 0.000127
+Total var: 0.007547
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.15442956 0.08293933] (age, BMI)
+  iAUC = 0.7474 [95% CI: 0.6827, 0.8064]
+  MI [1/5]: beta_eta=0.6998 (se=0.0720), converged
+  MI [2/5]: beta_eta=0.6998 (se=0.0720), converged
+  MI [3/5]: beta_eta=0.6668 (se=0.0703), converged
+  MI [4/5]: beta_eta=0.6826 (se=0.0713), converged
+  MI [5/5]: beta_eta=0.7049 (se=0.0723), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6908 (SE=0.0737)
+Within-imputation var: 0.005124
+Between-imputation var: 0.000251
+Total var: 0.005425
+FMI (eta): 0.055
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1277723  0.06292192] (age, BMI)
+  iAUC = 0.7126 [95% CI: 0.6432, 0.7709]
+  MI [1/5]: beta_eta=0.6289 (se=0.0691), converged
+  MI [2/5]: beta_eta=0.6264 (se=0.0690), converged
+  MI [3/5]: beta_eta=0.6307 (se=0.0691), converged
+  MI [4/5]: beta_eta=0.6618 (se=0.0710), converged
+  MI [5/5]: beta_eta=0.6342 (se=0.0695), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6364 (SE=0.0713)
+Within-imputation var: 0.004834
+Between-imputation var: 0.000210
+Total var: 0.005086
+FMI (eta): 0.049
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09611127 0.06525352] (age, BMI)
+  iAUC = 0.7102 [95% CI: 0.6415, 0.7660]
+  MI [1/5]: beta_eta=0.7031 (se=0.0751), converged
+  MI [2/5]: beta_eta=0.7183 (se=0.0758), converged
+  MI [3/5]: beta_eta=0.6998 (se=0.0751), converged
+  MI [4/5]: beta_eta=0.7106 (se=0.0756), converged
+  MI [5/5]: beta_eta=0.7229 (se=0.0763), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7109 (SE=0.0763)
+Within-imputation var: 0.005714
+Between-imputation var: 0.000096
+Total var: 0.005829
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10718339 0.07622173] (age, BMI)
+  iAUC = 0.7145 [95% CI: 0.6616, 0.7710]
+  MI [1/5]: beta_eta=0.8216 (se=0.0863), converged
+  MI [2/5]: beta_eta=0.7971 (se=0.0850), converged
+  MI [3/5]: beta_eta=0.8073 (se=0.0855), converged
+  MI [4/5]: beta_eta=0.8279 (se=0.0874), converged
+  MI [5/5]: beta_eta=0.8146 (se=0.0859), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8137 (SE=0.0870)
+Within-imputation var: 0.007398
+Between-imputation var: 0.000146
+Total var: 0.007573
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11343054 0.07001985] (age, BMI)
+  iAUC = 0.6851 [95% CI: 0.6214, 0.7484]
+  [ 50/80] HF=0.8295  LM=0.8288  medESS=53.7  (3.2s/iter, ETA 1.6min)
+  MI [1/5]: beta_eta=0.6264 (se=0.0669), converged
+  MI [2/5]: beta_eta=0.6271 (se=0.0671), converged
+  MI [3/5]: beta_eta=0.6366 (se=0.0678), converged
+  MI [4/5]: beta_eta=0.6141 (se=0.0664), converged
+  MI [5/5]: beta_eta=0.6065 (se=0.0662), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6221 (SE=0.0681)
+Within-imputation var: 0.004470
+Between-imputation var: 0.000140
+Total var: 0.004639
+FMI (eta): 0.036
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12636711 0.05622976] (age, BMI)
+  iAUC = 0.7118 [95% CI: 0.6427, 0.7741]
+  MI [1/5]: beta_eta=0.8504 (se=0.0867), converged
+  MI [2/5]: beta_eta=0.8601 (se=0.0873), converged
+  MI [3/5]: beta_eta=0.8628 (se=0.0874), converged
+  MI [4/5]: beta_eta=0.8723 (se=0.0876), converged
+  MI [5/5]: beta_eta=0.8701 (se=0.0870), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8632 (SE=0.0877)
+Within-imputation var: 0.007607
+Between-imputation var: 0.000076
+Total var: 0.007698
+FMI (eta): 0.012
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10970887 0.06570984] (age, BMI)
+  iAUC = 0.6605 [95% CI: 0.5998, 0.7276]
+  MI [1/5]: beta_eta=0.6387 (se=0.0759), converged
+  MI [2/5]: beta_eta=0.6639 (se=0.0772), converged
+  MI [3/5]: beta_eta=0.6734 (se=0.0774), converged
+  MI [4/5]: beta_eta=0.6354 (se=0.0755), converged
+  MI [5/5]: beta_eta=0.6678 (se=0.0772), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6558 (SE=0.0790)
+Within-imputation var: 0.005876
+Between-imputation var: 0.000308
+Total var: 0.006245
+FMI (eta): 0.059
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11880884 0.0609674 ] (age, BMI)
+  iAUC = 0.6318 [95% CI: 0.5534, 0.7043]
+  MI [1/5]: beta_eta=0.6219 (se=0.0759), converged
+  MI [2/5]: beta_eta=0.5963 (se=0.0745), converged
+  MI [3/5]: beta_eta=0.6078 (se=0.0750), converged
+  MI [4/5]: beta_eta=0.5863 (se=0.0741), converged
+  MI [5/5]: beta_eta=0.6097 (se=0.0749), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6044 (SE=0.0764)
+Within-imputation var: 0.005612
+Between-imputation var: 0.000185
+Total var: 0.005834
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1185248  0.03665785] (age, BMI)
+  iAUC = 0.6676 [95% CI: 0.5932, 0.7423]
+  MI [1/5]: beta_eta=0.8733 (se=0.0924), converged
+  MI [2/5]: beta_eta=0.8773 (se=0.0925), converged
+  MI [3/5]: beta_eta=0.8866 (se=0.0931), converged
+  MI [4/5]: beta_eta=0.8938 (se=0.0941), converged
+  MI [5/5]: beta_eta=0.8874 (se=0.0932), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8837 (SE=0.0935)
+Within-imputation var: 0.008659
+Between-imputation var: 0.000068
+Total var: 0.008741
+FMI (eta): 0.009
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.14382206 0.04927145] (age, BMI)
+  iAUC = 0.6877 [95% CI: 0.6147, 0.7605]
+  MI [1/5]: beta_eta=0.5494 (se=0.0756), converged
+  MI [2/5]: beta_eta=0.5362 (se=0.0750), converged
+  MI [3/5]: beta_eta=0.5366 (se=0.0750), converged
+  MI [4/5]: beta_eta=0.5323 (se=0.0746), converged
+  MI [5/5]: beta_eta=0.5526 (se=0.0759), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5414 (SE=0.0759)
+Within-imputation var: 0.005662
+Between-imputation var: 0.000080
+Total var: 0.005758
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09593845 0.07275108] (age, BMI)
+  iAUC = 0.6440 [95% CI: 0.5770, 0.7119]
+  MI [1/5]: beta_eta=0.8412 (se=0.0873), converged
+  MI [2/5]: beta_eta=0.8172 (se=0.0859), converged
+  MI [3/5]: beta_eta=0.8272 (se=0.0871), converged
+  MI [4/5]: beta_eta=0.8393 (se=0.0877), converged
+  MI [5/5]: beta_eta=0.8356 (se=0.0872), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8321 (SE=0.0877)
+Within-imputation var: 0.007575
+Between-imputation var: 0.000098
+Total var: 0.007693
+FMI (eta): 0.015
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10913122 0.04668861] (age, BMI)
+  iAUC = 0.7094 [95% CI: 0.6331, 0.7724]
+  MI [1/5]: beta_eta=0.8536 (se=0.0792), converged
+  MI [2/5]: beta_eta=0.8201 (se=0.0773), converged
+  MI [3/5]: beta_eta=0.8520 (se=0.0786), converged
+  MI [4/5]: beta_eta=0.8788 (se=0.0802), converged
+  MI [5/5]: beta_eta=0.8628 (se=0.0794), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8535 (SE=0.0824)
+Within-imputation var: 0.006232
+Between-imputation var: 0.000461
+Total var: 0.006785
+FMI (eta): 0.082
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10984423 0.07556773] (age, BMI)
+  iAUC = 0.7275 [95% CI: 0.6630, 0.7786]
+  MI [1/5]: beta_eta=0.8440 (se=0.0875), converged
+  MI [2/5]: beta_eta=0.8476 (se=0.0876), converged
+  MI [3/5]: beta_eta=0.8287 (se=0.0868), converged
+  MI [4/5]: beta_eta=0.7875 (se=0.0847), converged
+  MI [5/5]: beta_eta=0.8283 (se=0.0864), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8272 (SE=0.0905)
+Within-imputation var: 0.007505
+Between-imputation var: 0.000570
+Total var: 0.008189
+FMI (eta): 0.084
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1069623  0.06927995] (age, BMI)
+  iAUC = 0.7331 [95% CI: 0.6691, 0.7972]
+  MI [1/5]: beta_eta=0.6938 (se=0.0754), converged
+  MI [2/5]: beta_eta=0.6857 (se=0.0750), converged
+  MI [3/5]: beta_eta=0.6633 (se=0.0736), converged
+  MI [4/5]: beta_eta=0.6847 (se=0.0749), converged
+  MI [5/5]: beta_eta=0.6798 (se=0.0745), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6815 (SE=0.0757)
+Within-imputation var: 0.005578
+Between-imputation var: 0.000128
+Total var: 0.005731
+FMI (eta): 0.027
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12488522 0.07165464] (age, BMI)
+  iAUC = 0.6967 [95% CI: 0.6339, 0.7537]
+  [ 60/80] HF=0.8049  LM=0.7998  medESS=53.7  (3.1s/iter, ETA 1.0min)
+  MI [1/5]: beta_eta=0.7225 (se=0.0723), converged
+  MI [2/5]: beta_eta=0.7037 (se=0.0714), converged
+  MI [3/5]: beta_eta=0.7131 (se=0.0720), converged
+  MI [4/5]: beta_eta=0.7341 (se=0.0733), converged
+  MI [5/5]: beta_eta=0.7135 (se=0.0720), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7174 (SE=0.0733)
+Within-imputation var: 0.005213
+Between-imputation var: 0.000132
+Total var: 0.005371
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1156941  0.05079137] (age, BMI)
+  iAUC = 0.6695 [95% CI: 0.5917, 0.7321]
+  MI [1/5]: beta_eta=0.7224 (se=0.0759), converged
+  MI [2/5]: beta_eta=0.7284 (se=0.0762), converged
+  MI [3/5]: beta_eta=0.7373 (se=0.0768), converged
+  MI [4/5]: beta_eta=0.6836 (se=0.0740), converged
+  MI [5/5]: beta_eta=0.7284 (se=0.0762), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7200 (SE=0.0793)
+Within-imputation var: 0.005753
+Between-imputation var: 0.000442
+Total var: 0.006284
+FMI (eta): 0.084
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11749381 0.05376121] (age, BMI)
+  iAUC = 0.6892 [95% CI: 0.6329, 0.7495]
+  MI [1/5]: beta_eta=0.8011 (se=0.0868), converged
+  MI [2/5]: beta_eta=0.7868 (se=0.0859), converged
+  MI [3/5]: beta_eta=0.8012 (se=0.0868), converged
+  MI [4/5]: beta_eta=0.7798 (se=0.0854), converged
+  MI [5/5]: beta_eta=0.7692 (se=0.0849), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7876 (SE=0.0873)
+Within-imputation var: 0.007393
+Between-imputation var: 0.000191
+Total var: 0.007622
+FMI (eta): 0.030
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1361939  0.06438237] (age, BMI)
+  iAUC = 0.7347 [95% CI: 0.6792, 0.7805]
+  MI [1/5]: beta_eta=0.8885 (se=0.0881), converged
+  MI [2/5]: beta_eta=0.8631 (se=0.0868), converged
+  MI [3/5]: beta_eta=0.8609 (se=0.0866), converged
+  MI [4/5]: beta_eta=0.8799 (se=0.0876), converged
+  MI [5/5]: beta_eta=0.8820 (se=0.0879), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8749 (SE=0.0884)
+Within-imputation var: 0.007641
+Between-imputation var: 0.000149
+Total var: 0.007820
+FMI (eta): 0.023
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1277927  0.04589142] (age, BMI)
+  iAUC = 0.7108 [95% CI: 0.6506, 0.7650]
+  MI [1/5]: beta_eta=0.7606 (se=0.0810), converged
+  MI [2/5]: beta_eta=0.7742 (se=0.0817), converged
+  MI [3/5]: beta_eta=0.7726 (se=0.0816), converged
+  MI [4/5]: beta_eta=0.7554 (se=0.0803), converged
+  MI [5/5]: beta_eta=0.7668 (se=0.0813), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7659 (SE=0.0817)
+Within-imputation var: 0.006592
+Between-imputation var: 0.000064
+Total var: 0.006668
+FMI (eta): 0.011
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11438018 0.06915725] (age, BMI)
+  iAUC = 0.7237 [95% CI: 0.6681, 0.7941]
+  MI [1/5]: beta_eta=0.5934 (se=0.0697), converged
+  MI [2/5]: beta_eta=0.6035 (se=0.0700), converged
+  MI [3/5]: beta_eta=0.5822 (se=0.0689), converged
+  MI [4/5]: beta_eta=0.6015 (se=0.0697), converged
+  MI [5/5]: beta_eta=0.5943 (se=0.0695), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.5950 (SE=0.0702)
+Within-imputation var: 0.004840
+Between-imputation var: 0.000071
+Total var: 0.004925
+FMI (eta): 0.017
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1167452  0.06244498] (age, BMI)
+  iAUC = 0.6990 [95% CI: 0.6238, 0.7596]
+  MI [1/5]: beta_eta=0.8252 (se=0.0835), converged
+  MI [2/5]: beta_eta=0.8400 (se=0.0842), converged
+  MI [3/5]: beta_eta=0.8532 (se=0.0846), converged
+  MI [4/5]: beta_eta=0.8389 (se=0.0841), converged
+  MI [5/5]: beta_eta=0.8652 (se=0.0858), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8445 (SE=0.0861)
+Within-imputation var: 0.007132
+Between-imputation var: 0.000232
+Total var: 0.007410
+FMI (eta): 0.038
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10505597 0.04962329] (age, BMI)
+  iAUC = 0.6333 [95% CI: 0.5645, 0.7034]
+  MI [1/5]: beta_eta=0.7947 (se=0.0800), converged
+  MI [2/5]: beta_eta=0.7720 (se=0.0788), converged
+  MI [3/5]: beta_eta=0.8121 (se=0.0814), converged
+  MI [4/5]: beta_eta=0.7943 (se=0.0797), converged
+  MI [5/5]: beta_eta=0.7959 (se=0.0802), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7938 (SE=0.0815)
+Within-imputation var: 0.006403
+Between-imputation var: 0.000205
+Total var: 0.006648
+FMI (eta): 0.037
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10311588 0.092073  ] (age, BMI)
+  iAUC = 0.7162 [95% CI: 0.6386, 0.7684]
+  MI [1/5]: beta_eta=0.7152 (se=0.0760), converged
+  MI [2/5]: beta_eta=0.7377 (se=0.0776), converged
+  MI [3/5]: beta_eta=0.7308 (se=0.0771), converged
+  MI [4/5]: beta_eta=0.7288 (se=0.0768), converged
+  MI [5/5]: beta_eta=0.7078 (se=0.0757), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7241 (SE=0.0778)
+Within-imputation var: 0.005877
+Between-imputation var: 0.000149
+Total var: 0.006057
+FMI (eta): 0.030
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12316643 0.09632345] (age, BMI)
+  iAUC = 0.7310 [95% CI: 0.6712, 0.7935]
+  MI [1/5]: beta_eta=0.7412 (se=0.0809), converged
+  MI [2/5]: beta_eta=0.6975 (se=0.0782), converged
+  MI [3/5]: beta_eta=0.7208 (se=0.0802), converged
+  MI [4/5]: beta_eta=0.7069 (se=0.0791), converged
+  MI [5/5]: beta_eta=0.7442 (se=0.0811), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7221 (SE=0.0830)
+Within-imputation var: 0.006386
+Between-imputation var: 0.000423
+Total var: 0.006894
+FMI (eta): 0.074
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.1116767  0.06226845] (age, BMI)
+  iAUC = 0.7327 [95% CI: 0.6710, 0.7815]
+  [ 70/80] HF=0.8481  LM=0.8515  medESS=53.9  (3.2s/iter, ETA 0.5min)
+  MI [1/5]: beta_eta=0.8084 (se=0.0872), converged
+  MI [2/5]: beta_eta=0.8269 (se=0.0875), converged
+  MI [3/5]: beta_eta=0.8190 (se=0.0869), converged
+  MI [4/5]: beta_eta=0.8336 (se=0.0883), converged
+  MI [5/5]: beta_eta=0.8364 (se=0.0883), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8249 (SE=0.0885)
+Within-imputation var: 0.007681
+Between-imputation var: 0.000130
+Total var: 0.007837
+FMI (eta): 0.020
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11680142 0.10483473] (age, BMI)
+  iAUC = 0.7254 [95% CI: 0.6659, 0.7813]
+  MI [1/5]: beta_eta=0.7412 (se=0.0764), converged
+  MI [2/5]: beta_eta=0.7127 (se=0.0751), converged
+  MI [3/5]: beta_eta=0.7507 (se=0.0770), converged
+  MI [4/5]: beta_eta=0.7426 (se=0.0768), converged
+  MI [5/5]: beta_eta=0.7633 (se=0.0773), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7421 (SE=0.0792)
+Within-imputation var: 0.005857
+Between-imputation var: 0.000347
+Total var: 0.006274
+FMI (eta): 0.066
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.08984847 0.07728293] (age, BMI)
+  iAUC = 0.6599 [95% CI: 0.5910, 0.7261]
+  MI [1/5]: beta_eta=0.7874 (se=0.0811), converged
+  MI [2/5]: beta_eta=0.7796 (se=0.0810), converged
+  MI [3/5]: beta_eta=0.7702 (se=0.0804), converged
+  MI [4/5]: beta_eta=0.7799 (se=0.0810), converged
+  MI [5/5]: beta_eta=0.7800 (se=0.0812), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7794 (SE=0.0812)
+Within-imputation var: 0.006553
+Between-imputation var: 0.000037
+Total var: 0.006598
+FMI (eta): 0.007
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11238244 0.05526314] (age, BMI)
+  iAUC = 0.6642 [95% CI: 0.5953, 0.7222]
+  MI [1/5]: beta_eta=0.6812 (se=0.0762), converged
+  MI [2/5]: beta_eta=0.6930 (se=0.0770), converged
+  MI [3/5]: beta_eta=0.6970 (se=0.0771), converged
+  MI [4/5]: beta_eta=0.7206 (se=0.0787), converged
+  MI [5/5]: beta_eta=0.6849 (se=0.0766), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6953 (SE=0.0790)
+Within-imputation var: 0.005948
+Between-imputation var: 0.000239
+Total var: 0.006235
+FMI (eta): 0.046
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.12061216 0.07982157] (age, BMI)
+  iAUC = 0.7221 [95% CI: 0.6660, 0.7860]
+  MI [1/5]: beta_eta=0.8432 (se=0.0856), converged
+  MI [2/5]: beta_eta=0.8678 (se=0.0876), converged
+  MI [3/5]: beta_eta=0.8650 (se=0.0870), converged
+  MI [4/5]: beta_eta=0.8775 (se=0.0879), converged
+  MI [5/5]: beta_eta=0.8879 (se=0.0881), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.8683 (SE=0.0891)
+Within-imputation var: 0.007612
+Between-imputation var: 0.000277
+Total var: 0.007945
+FMI (eta): 0.042
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.09796656 0.07781105] (age, BMI)
+  iAUC = 0.6858 [95% CI: 0.5966, 0.7614]
+  MI [1/5]: beta_eta=0.6821 (se=0.0786), converged
+  MI [2/5]: beta_eta=0.6898 (se=0.0789), converged
+  MI [3/5]: beta_eta=0.7020 (se=0.0793), converged
+  MI [4/5]: beta_eta=0.7056 (se=0.0796), converged
+  MI [5/5]: beta_eta=0.6548 (se=0.0766), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.6869 (SE=0.0817)
+Within-imputation var: 0.006179
+Between-imputation var: 0.000411
+Total var: 0.006672
+FMI (eta): 0.074
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.13968131 0.05462752] (age, BMI)
+  iAUC = 0.7151 [95% CI: 0.6524, 0.7854]
+  MI [1/5]: beta_eta=0.8964 (se=0.0899), converged
+  MI [2/5]: beta_eta=0.8786 (se=0.0891), converged
+  MI [3/5]: beta_eta=0.9082 (se=0.0912), converged
+  MI [4/5]: beta_eta=0.9091 (se=0.0907), converged
+  MI [5/5]: beta_eta=0.9091 (se=0.0904), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.9003 (SE=0.0914)
+Within-imputation var: 0.008147
+Between-imputation var: 0.000176
+Total var: 0.008358
+FMI (eta): 0.025
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10687383 0.05172145] (age, BMI)
+  iAUC = 0.6477 [95% CI: 0.5604, 0.7187]
+  MI [1/5]: beta_eta=0.7663 (se=0.0810), converged
+  MI [2/5]: beta_eta=0.7466 (se=0.0800), converged
+  MI [3/5]: beta_eta=0.7664 (se=0.0813), converged
+  MI [4/5]: beta_eta=0.7288 (se=0.0786), converged
+  MI [5/5]: beta_eta=0.7101 (se=0.0776), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7436 (SE=0.0841)
+Within-imputation var: 0.006356
+Between-imputation var: 0.000597
+Total var: 0.007073
+FMI (eta): 0.101
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.11423589 0.04062893] (age, BMI)
+  iAUC = 0.6903 [95% CI: 0.6120, 0.7586]
+  MI [1/5]: beta_eta=0.6943 (se=0.0732), converged
+  MI [2/5]: beta_eta=0.7458 (se=0.0758), converged
+  MI [3/5]: beta_eta=0.7414 (se=0.0755), converged
+  MI [4/5]: beta_eta=0.7047 (se=0.0740), converged
+  MI [5/5]: beta_eta=0.7250 (se=0.0749), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7222 (SE=0.0786)
+Within-imputation var: 0.005579
+Between-imputation var: 0.000505
+Total var: 0.006186
+FMI (eta): 0.098
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.0935965  0.05306218] (age, BMI)
+  iAUC = 0.7038 [95% CI: 0.6401, 0.7797]
+  MI [1/5]: beta_eta=0.7816 (se=0.0802), converged
+  MI [2/5]: beta_eta=0.7771 (se=0.0801), converged
+  MI [3/5]: beta_eta=0.7860 (se=0.0808), converged
+  MI [4/5]: beta_eta=0.7940 (se=0.0814), converged
+  MI [5/5]: beta_eta=0.7599 (se=0.0792), converged
+
+=== Rubin's Rules Pooling (M=5) ===
+Pooled beta_eta: 0.7797 (SE=0.0815)
+Within-imputation var: 0.006453
+Between-imputation var: 0.000162
+Total var: 0.006647
+FMI (eta): 0.029
+
+--- Static Cox (baseline only) ---
+  beta_X = [0.10831706 0.0516497 ] (age, BMI)
+  iAUC = 0.6905 [95% CI: 0.6231, 0.7537]
+  [ 80/80] HF=0.8566  LM=0.8501  medESS=53.9  (3.1s/iter, ETA 0.0min)
+
+  Scenario 'combined' complete: 80/80 valid, 0 ESS warnings, 4.1 min total
+
+===========================================================================
+MONTE CARLO RESULTS — scenario: combined
+===========================================================================
+Method                        Mean       SD             95% CI  Valid   Median
+---------------------------------------------------------------------------
+High-Freq PF+Cox            0.8336   0.0239 [0.7878, 0.8763]     80   0.8323
+Static Cox                  0.6933   0.0354 [0.6255, 0.7615]     80   0.6977
+Landmarking                 0.8313   0.0234 [0.7947, 0.8690]     80   0.8301
+Low-Freq PF+Cox             0.8230   0.0236 [0.7836, 0.8639]     80   0.8254
+
+--- Diagnostics ---
+  Event rate:    0.285 +/- 0.023
+  PF corr(θ,η):  0.9938 +/- 0.0002
+  Median ESS:    53.9 +/- 0.1  (warn <10: 0 iters)
+  P5 ESS:        19.1 +/- 0.3
+  Cox beta_eta:  0.7709 (true gamma=0.8)
+  Lead time:     2.25 +/- 1.67 weeks
+
+  HF vs LM (n=80 paired): wins 55/25/0, mean diff +0.0023
+
+  Saved: ../results/monte_carlo_combined.json
+
+=====================================================================================
+CROSS-SCENARIO COMPARISON
+=====================================================================================
+Scenario         HF iAUC  LM iAUC  Δ HF-LM    PF r  Lead(w)   Evt%  medESS  Warn
+-------------------------------------------------------------------------------------
+baseline          0.7234   0.7185  +0.0049  0.9889     2.56  19.2%    52.2     0
+nonlinear         0.8354   0.8332  +0.0022  0.9964     2.00  28.5%    51.8     0
+heavy_tail        0.7210   0.7157  +0.0053  0.9795     2.75  19.2%    54.4     0
+combined          0.8336   0.8313  +0.0023  0.9938     2.25  28.5%    53.9     0
+=====================================================================================
+
+Interpretation guide:
+  · If Δ HF-LM stays positive across all scenarios → HF advantage is robust
+  · If PF r drops but Δ stays similar → Cox structure absorbs the noise
+  · If Δ shrinks substantially → advantage depends on good filtering
+  · If medESS < 10 → particle degeneracy; consider increasing n_particles

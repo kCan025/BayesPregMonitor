@@ -1,18 +1,3 @@
-"""
-simulate_data.py — Data Generating Process (DGP) for maternal risk simulation
-=============================================================================
-Generates N=500 synthetic subjects with:
-  - Scalar latent risk state theta_i(t) evolving as Gaussian random walk
-  - 4-dim wearable observations y_i(t) = alpha * theta_i(t) + eps_i(t)
-  - Event times from Weibull proportional hazards model
-  - Random censoring + administrative censoring at week 40
-
-DGP v3.4: adjusted event rate to ~9% (realistic for high-risk cohort),
-added random dropout censoring mechanism.
-
-All parameters are hardcoded for reproducibility.
-"""
-
 import numpy as np
 from dataclasses import dataclass
 from typing import Tuple

@@ -1,23 +1,3 @@
-"""
-make_robustness_figure.py — Core figure for NISS robustness section
-====================================================================
-Generates a publication-quality forest-plot style figure:
-
-  Left panel: Δ_HF-LM and Δ_HF-LF across the two matched pairs
-    (baseline ↔ heavy_tail, nonlinear ↔ combined)
-    Each bar = mean difference ± 95% CI
-    p-values from paired Wilcoxon on the right
-
-  Right panel: Diagnostic table
-    pf_r, medESS, Static iAUC — paired comparison
-
-Reads monte_carlo_{scenario}_iters.json from ../results/
-Outputs: ../figures/robustness_forest.png  (300 dpi, for poster)
-         ../figures/robustness_forest.pdf  (vector, for paper)
-
-Run AFTER analyze_pairing.py:
-    python make_robustness_figure.py
-"""
 import json
 import numpy as np
 from scipy import stats

@@ -1,0 +1,12 @@
+  [20/80] 0.96s/iter
+  [40/80] 0.93s/iter
+  [60/80] 0.93s/iter
+  [80/80] 0.93s/iter
+
+=== LM in-sample vs 2-fold cross-fitted AUC -- baseline (n=80) ===
+landmark    n_events   in-sample   cross-fit    optimism
+20              10.0      0.7182      0.5930     +0.1252
+28              10.9      0.7511      0.6727     +0.0784
+32              12.1      0.7655      0.6932     +0.0722
+mean                      0.7450      0.6532     +0.0918
+saved: ../results/lm_optimism_baseline.json  (1.2 min)

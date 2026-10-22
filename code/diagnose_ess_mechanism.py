@@ -1,35 +1,3 @@
-"""
-diagnose_ess_mechanism.py -- Why does median ESS go UP under heavy-tail?
-=========================================================================
-
-Two competing hypotheses:
-
-  H1 (wrong):  Gaussian likelihood "discounts" extreme observations,
-               making weights more spread out → ESS rises.
-       ⚠ Classic PF literature says the OPPOSITE: Gaussian (Mahalanobis
-         squared) likelihood concentrates weight faster on outliers,
-         making ESS DROP. That's why t-likelihood / robust PF exist.
-
-  H2 (Mary):  t(3) noise is variance-matched (scale = σ * √((df-2)/df)
-              ≈ 0.577 σ), so the MIDDLE ~95% of observations are
-              actually SMALLER in magnitude than Gaussian — most
-              time points have milder residuals → less particle
-              discrimination → flatter weights → higher ESS.
-              Only the extreme tail (~1%) has bigger residuals,
-              which would collapse weights — but those are rare.
-
-  NOTE on tail prediction (corrected after data inspection):
-  The original hypothesis predicted that "worst ESS points get worse",
-  but single-seed inspection shows even p1 ESS is HIGHER under t(3).
-  The "middle 95% milder" effect is strong enough to lift the entire
-  ESS distribution, including tail percentiles — the trade-off is
-  only visible at the absolute minimum (1 point out of thousands),
-  which is too noisy to interpret. The cross-MC analysis below
-  provides the definitive answer.
-
-Run AFTER `python run_monte_carlo.py --run_all --n_mc 80`:
-    python diagnose_ess_mechanism.py
-"""
 import numpy as np
 from simulate_data import simulate
 from bootstrap_pf import BootstrapPF

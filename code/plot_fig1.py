@@ -1,15 +1,3 @@
-"""
-plot_fig1.py -- Figure 1: Dynamic Risk Score Trajectories eta_i(t)
-==================================================================
-Generates a multi-panel figure showing:
-  (a) True latent state trajectories theta_i(t) for selected subjects
-  (b) Estimated risk scores eta_i(t) from Bootstrap PF
-  (c) Observed wearable signals (4-dim) for one representative subject
-  (d) PF posterior uncertainty: eta_i(t) +/- 2*std from particle ensemble
-
-Style: publication-ready, clean, suitable for SCD/NISS poster.
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl

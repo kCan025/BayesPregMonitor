@@ -1,0 +1,29 @@
+{
+  "N": 500,
+  "T_weeks": 40,
+  "event_rate": 0.106,
+  "mean_event_time_events": 22.056603773584907,
+  "mean_event_time_censored": 38.147651006711406,
+  "dgp_params": {
+    "sigma2_omega": 0.04,
+    "alpha": [
+      1.0,
+      -0.8,
+      -0.6,
+      -0.7
+    ],
+    "Sigma_eps_diag": [
+      0.25,
+      0.16,
+      0.36,
+      0.09
+    ],
+    "gamma": 0.8,
+    "k_weibull": 1.2,
+    "lambda_weibull": 0.0008,
+    "beta": [
+      0.005,
+      0.005
+    ]
+  }
+}
