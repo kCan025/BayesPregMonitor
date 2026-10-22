@@ -30,7 +30,8 @@ os.makedirs('../results', exist_ok=True)
 from simulate_data import simulate
 from bootstrap_pf import BootstrapPF
 from benchmarks import (time_dependent_auc, static_cox_benchmark,
-                        downsample_observations, BootstrapPF as BPF2)
+                        downsample_observations, landmarking_benchmark,
+                        BootstrapPF as BPF2)
 from time_varying_cox import prepare_counting_process_data, fit_cox_model
 
 
@@ -159,6 +160,29 @@ def run_one_iter(seed, scenario="baseline", interval=4):
             eval_times=landmark_times)
         result['iAUC_highfreq'] = auc_hf['iAUC']
 
+        # === Plan C: clean frequency comparison ===
+        # Same MI-Cox β as HF. LM-clean freezes η at the last landmark
+        # (stale between landmarks). Eval times moved BETWEEN landmarks
+        # so that HF uses fresh η(t) while LM-clean uses stale η(t_L).
+        eval_times_planC = [22, 24, 26, 30, 34]
+        risk_score_lm_clean = np.zeros_like(risk_score)
+        T_weeks = data.params.T_weeks
+        for t_week in range(1, T_weeks + 1):
+            lms_before = [lm for lm in landmark_times if lm <= t_week]
+            last_lm = lms_before[-1] if lms_before else landmark_times[0]
+            risk_score_lm_clean[t_week - 1, :] = (
+                beta_eta * eta_all[last_lm - 1, :]
+                + (X_centered @ beta_X)
+            )
+        auc_hf_planC = time_dependent_auc(
+            data.event_times, data.event_indicators, risk_score,
+            eval_times=eval_times_planC)
+        auc_lm_clean = time_dependent_auc(
+            data.event_times, data.event_indicators, risk_score_lm_clean,
+            eval_times=eval_times_planC)
+        result['iAUC_hf_planC'] = auc_hf_planC['iAUC']
+        result['iAUC_lm_clean'] = auc_lm_clean['iAUC']
+
         # Lead time: for event subjects, earliest week flagged above median
         # relative to nearest prior landmark
         lead_times_list = []
@@ -184,6 +208,8 @@ def run_one_iter(seed, scenario="baseline", interval=4):
         result['cox_beta_eta'] = np.nan
         result['mean_lead_time'] = np.nan
         result['n_lead_subjects'] = 0
+        result['iAUC_hf_planC'] = np.nan
+        result['iAUC_lm_clean'] = np.nan
 
     # 4. Static Cox (baseline only) — same eval_times for fair comparison
     try:
@@ -192,14 +218,27 @@ def run_one_iter(seed, scenario="baseline", interval=4):
     except Exception:
         result['iAUC_static'] = np.nan
 
-    # 5. Landmarking (using eta at landmark times -- fair comparison)
+    # 5. Landmarking -- TRUE independent Cox refit at each landmark (Bugfix #2b)
+    #    NOTE: This arm has known in-sample optimism (same subjects fit & scored).
+    #    Retained for reference only. Primary frequency comparison is Plan C above.
+    #    Risk score held constant between landmarks (discrete monitoring).
     try:
-        lm_aucs = run_landmarking_auc_only(data, eta_all)
-        result['landmark_aucs'] = lm_aucs
-        result['iAUC_landmark'] = np.mean(lm_aucs) if lm_aucs else np.nan
-    except Exception:
+        lm_res = landmarking_benchmark(data, eta_all,
+                                       landmark_times=landmark_times)
+        result['landmark_aucs'] = lm_res['landmark_aucs']
+        result['iAUC_landmark'] = lm_res['iAUC']
+        result['iAUC_landmark_mean_auc'] = (
+            float(np.mean(lm_res['landmark_aucs']))
+            if lm_res['landmark_aucs'] else np.nan)
+        result['landmark_coxfit'] = [d['coxfit'] for d in lm_res['landmark_details']]
+    except Exception as e:
+        import traceback
+        print(f"  [LM] landmarking_benchmark FAILED: {type(e).__name__}: {e}")
+        traceback.print_exc()
         result['landmark_aucs'] = []
         result['iAUC_landmark'] = np.nan
+        result['iAUC_landmark_mean_auc'] = np.nan
+        result['landmark_coxfit'] = []
 
     # 6. Low-Freq PF + Cox
     try:
@@ -238,7 +277,7 @@ def run_one_iter(seed, scenario="baseline", interval=4):
     return result
 
 
-def run_scenario(scenario, n_mc):
+def run_scenario(scenario, n_mc, run_timestamp=None):
     """Run n_mc replicates for a single scenario, return results list + total_time."""
     cfg = SCENARIOS[scenario]
 
@@ -266,6 +305,7 @@ def run_scenario(scenario, n_mc):
             res = {'scenario': scenario,
                    'iAUC_highfreq': np.nan, 'iAUC_static': np.nan,
                    'iAUC_landmark': np.nan, 'iAUC_lowfreq': np.nan,
+                   'iAUC_hf_planC': np.nan, 'iAUC_lm_clean': np.nan,
                    'pf_r': np.nan, 'cox_beta_eta': np.nan,
                    'landmark_aucs': [], 'event_rate': np.nan,
                    'median_ess': np.nan, 'p5_ess': np.nan,
@@ -279,9 +319,10 @@ def run_scenario(scenario, n_mc):
         if (mc + 1) % 10 == 0 or mc == 0:
             hf = res.get('iAUC_highfreq', float('nan'))
             lm = res.get('iAUC_landmark', float('nan'))
+            lmc = res.get('iAUC_lm_clean', float('nan'))
             ess = res.get('median_ess', float('nan'))
             print(f"  [{mc+1:3d}/{n_mc}] HF={hf:.4f}  LM={lm:.4f}  "
-                  f"medESS={ess:.1f}  "
+                  f"LMc={lmc:.4f}  medESS={ess:.1f}  "
                   f"({elapsed_iter:.1f}s/iter, ETA {eta_sec/60:.1f}min)")
 
     total_time = time.time() - t0
@@ -291,18 +332,27 @@ def run_scenario(scenario, n_mc):
           f"{ess_warnings} ESS warnings, {total_time/60:.1f} min total")
 
     # Save per-iteration results (needed for cross-scenario paired tests)
-    iters_path = f'../results/monte_carlo_{scenario}_iters.json'
+    if run_timestamp is None:
+        run_timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+    iters_path = f'../results/monte_carlo_{scenario}_iters_{run_timestamp}.json'
     with open(iters_path, 'w') as f:
         json.dump(_json_safe(all_results), f, indent=2, allow_nan=False)
+    # Also save to standard name for convenience
+    iters_std = f'../results/monte_carlo_{scenario}_iters.json'
+    with open(iters_std, 'w') as f:
+        json.dump(_json_safe(all_results), f, indent=2, allow_nan=False)
     print(f"  Saved per-iter: {iters_path}")
+    print(f"  Saved per-iter (std): {iters_std}")
 
     return all_results, total_time
 
 
 def summarize_results(all_results, scenario):
     """Produce per-scenario summary table + paired comparisons + diagnostics."""
-    methods = ['iAUC_highfreq', 'iAUC_static', 'iAUC_landmark', 'iAUC_lowfreq']
-    labels = ['High-Freq PF+Cox', 'Static Cox', 'Landmarking', 'Low-Freq PF+Cox']
+    methods = ['iAUC_highfreq', 'iAUC_static', 'iAUC_landmark', 'iAUC_lowfreq',
+               'iAUC_hf_planC', 'iAUC_lm_clean']
+    labels = ['High-Freq PF+Cox', 'Static Cox', 'Landmarking', 'Low-Freq PF+Cox',
+              'HF (planC eval)', 'LM-clean (planC eval)']
 
     print(f"\n{'='*75}")
     print(f"MONTE CARLO RESULTS — scenario: {scenario}")
@@ -398,6 +448,38 @@ def summarize_results(all_results, scenario):
             'wilcoxon_p': None if np.isnan(w_p) else float(w_p),
         }
 
+    # --- Paired HF vs LM-clean (Plan C: clean frequency comparison) ---
+    # Same β, same X. Only difference: HF uses fresh η(t), LM-clean uses
+    # stale η(last_landmark). Eval at [22,24,26,30,34] (between landmarks).
+    hf_pC = np.array([r['iAUC_hf_planC'] for r in all_results
+                      if (not np.isnan(r.get('iAUC_hf_planC', np.nan)) and
+                          not np.isnan(r.get('iAUC_lm_clean', np.nan)))])
+    lm_pC = np.array([r['iAUC_lm_clean'] for r in all_results
+                      if (not np.isnan(r.get('iAUC_hf_planC', np.nan)) and
+                          not np.isnan(r.get('iAUC_lm_clean', np.nan)))])
+    if len(hf_pC) > 0:
+        hf_wins_pC = int(np.sum(hf_pC > lm_pC))
+        ties_pC = int(np.sum(hf_pC == lm_pC))
+        lm_wins_pC = int(np.sum(hf_pC < lm_pC))
+        mean_diff_pC = float(np.mean(hf_pC - lm_pC))
+        delta_pC = hf_pC - lm_pC
+        if np.all(delta_pC == 0):
+            w_stat_pC, w_p_pC = float('nan'), float('nan')
+        else:
+            from scipy.stats import wilcoxon
+            w_stat_pC, w_p_pC = wilcoxon(delta_pC)
+        print(f"\n  HF vs LM-clean [Plan C] (n={len(hf_pC)} paired): "
+              f"wins {hf_wins_pC}/{lm_wins_pC}/{ties_pC}, "
+              f"mean diff {mean_diff_pC:+.4f}, Wilcoxon p={w_p_pC:.4g}")
+        paired['HF_vs_LM_clean'] = {
+            'n_paired': int(len(hf_pC)),
+            'HF_wins': hf_wins_pC, 'LM_clean_wins': lm_wins_pC, 'ties': ties_pC,
+            'mean_diff': mean_diff_pC,
+            'wilcoxon_stat': None if np.isnan(w_stat_pC) else float(w_stat_pC),
+            'wilcoxon_p': None if np.isnan(w_p_pC) else float(w_p_pC),
+            'eval_times': [22, 24, 26, 30, 34],
+        }
+
     diagnostics = {
         'event_rate_mean': float(np.mean(event_rates)) if event_rates else None,
         'pf_r_mean': float(np.mean(pf_rs)) if pf_rs else None,
@@ -435,7 +517,9 @@ def main():
 
     print("=" * 75)
     print(f"Monte Carlo Replication Study — Robustness Analysis")
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M')
     print(f"Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Run ID: {timestamp}")
     print(f"N_MC = {n_mc} independent replicates per scenario")
     if run_all:
         print(f"Scenarios: all {len(SCENARIOS)}")
@@ -447,7 +531,7 @@ def main():
     cross_summary = {}
 
     for sc in scenarios_to_run:
-        results, total_time = run_scenario(sc, n_mc)
+        results, total_time = run_scenario(sc, n_mc, run_timestamp=timestamp)
         summary, paired, diagnostics = summarize_results(results, sc)
 
         # Per-scenario JSON
@@ -464,15 +548,24 @@ def main():
             'diagnostics': diagnostics,
             'total_time_seconds': float(total_time),
         }
-        out_path = f'../results/monte_carlo_{sc}.json'
+        out_path = f'../results/monte_carlo_{sc}_{timestamp}.json'
         with open(out_path, 'w') as f:
             json.dump(output, f, indent=2)
+        # Also save to standard name
+        out_std = f'../results/monte_carlo_{sc}.json'
+        with open(out_std, 'w') as f:
+            json.dump(output, f, indent=2)
         print(f"\n  Saved: {out_path}")
+        print(f"  Saved (std): {out_std}")
 
         cross_summary[sc] = {
             'hf_mean': summary.get('High-Freq PF+Cox', {}).get('mean'),
             'lm_mean': summary.get('Landmarking', {}).get('mean'),
+            'hf_planC_mean': summary.get('HF (planC eval)', {}).get('mean'),
+            'lm_clean_mean': summary.get('LM-clean (planC eval)', {}).get('mean'),
             'hf_vs_lm_diff': paired.get('HF_vs_LM', {}).get('mean_diff'),
+            'hf_vs_lm_clean_diff': paired.get('HF_vs_LM_clean', {}).get('mean_diff'),
+            'hf_vs_lm_clean_p': paired.get('HF_vs_LM_clean', {}).get('wilcoxon_p'),
             'pf_r': diagnostics.get('pf_r_mean'),
             'lead_time': diagnostics.get('lead_time_mean'),
             'event_rate': diagnostics.get('event_rate_mean'),
@@ -483,27 +576,30 @@ def main():
 
     # --- Cross-scenario comparison table ---
     if len(scenarios_to_run) > 1:
-        print("\n" + "=" * 85)
+        print("\n" + "=" * 100)
         print("CROSS-SCENARIO COMPARISON")
-        print("=" * 85)
-        print(f"{'Scenario':<15} {'HF iAUC':>8} {'LM iAUC':>8} {'Δ HF-LM':>8} "
-              f"{'PF r':>7} {'Lead(w)':>8} {'Evt%':>6} {'medESS':>7} {'Warn':>5}")
-        print("-" * 85)
+        print("=" * 100)
+        print(f"{'Scenario':<15} {'HF':>7} {'LM':>7} {'LMc':>7} "
+              f"{'ΔHF-LM':>8} {'ΔHF-LMc':>8} {'p(planC)':>9} "
+              f"{'PF r':>6} {'Evt%':>5} {'medESS':>7}")
+        print("-" * 100)
         for sc in scenarios_to_run:
             s = cross_summary[sc]
-            print(f"{sc:<15} {s['hf_mean']:>8.4f} {s['lm_mean']:>8.4f} "
-                  f"{s['hf_vs_lm_diff']:>+8.4f} "
-                  f"{s['pf_r']:>7.4f} "
-                  f"{s['lead_time']:>8.2f} "
-                  f"{100*s['event_rate']:>5.1f}% "
-                  f"{s['median_ess']:>7.1f} "
-                  f"{s['ess_warnings']:>5d}")
-        print("=" * 85)
+            p_str = f"{s['hf_vs_lm_clean_p']:.2e}" if s.get('hf_vs_lm_clean_p') else 'N/A'
+            print(f"{sc:<15} {s['hf_mean']:>7.4f} {s['lm_mean']:>7.4f} "
+                  f"{s['lm_clean_mean']:>7.4f} "
+                  f"{s['hf_vs_lm_diff']:>+8.4f} {s['hf_vs_lm_clean_diff']:>+8.4f} "
+                  f"{p_str:>9} "
+                  f"{s['pf_r']:>6.4f} "
+                  f"{100*s['event_rate']:>4.1f}% "
+                  f"{s['median_ess']:>7.1f}")
+        print("=" * 100)
         print("\nInterpretation guide:")
-        print("  · If Δ HF-LM stays positive across all scenarios → HF advantage is robust")
-        print("  · If PF r drops but Δ stays similar → Cox structure absorbs the noise")
-        print("  · If Δ shrinks substantially → advantage depends on good filtering")
-        print("  · If medESS < 10 → particle degeneracy; consider increasing n_particles")
+        print("  · Plan C (HF vs LM-clean): same β, only η freshness differs.")
+        print("    If ΔHF-LMc > 0 and significant → continuous monitoring buys real AUC.")
+        print("    If ΔHF-LMc ≈ 0 → frequency doesn't matter (signal dominated).")
+        print("  · Old LM (HF vs LM) is contaminated by in-sample optimism — ignore for frequency claims.")
+        print("  · If medESS < 10 → particle degeneracy; consider increasing n_particles.")
 
 
 if __name__ == "__main__":
