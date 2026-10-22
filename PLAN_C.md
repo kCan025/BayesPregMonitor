@@ -24,7 +24,7 @@ Implementation: `code/run_monte_carlo.py`, fields `iAUC_hf_planC` and `iAUC_lm_c
 ## Status
 
 - 4 misspecification scenarios × 80 MC replicates: direction (HF > LM-clean) is consistent and statistically significant in all four. Effect sizes are small (~0.005–0.016 iAUC) and shrink toward zero when particle-filter recovery is near-perfect (nonlinear dynamics, PF–θ correlation ≈ 0.99) — i.e. the value of frequent updating depends on filter/signal quality.
-- Exact effect sizes are **not yet finalized**: independent re-computation from `_iters.json` and sensitivity analyses (evaluation grid, δ horizon, landmark spacing) are in progress. Do not cite specific numbers until these complete.
+- **Verified 2026-10-22/23.** Paired Δ with 95% CI: baseline +0.0135 [+.0099, +.0171], heavy-tail +0.0157 [+.0120, +.0195], nonlinear +0.0067 [+.0054, +.0081], combined +0.0054 [+.0041, +.0068]; Wilcoxon p from 2.8e-10 to 8.8e-12, all survive Bonferroni. Reproduced on three compute environments and via a from-scratch signed-rank recomputation (`code/verify_planC.py`). Remaining sensitivity analyses (not yet done): evaluation grid / δ horizon / landmark spacing, and replacing frozen η with data-free particle forward propagation in the nonlinear scenarios (the frozen posterior mean is exactly the conditional expectation under the linear random walk, but neglects the deterministic drift under nonlinear dynamics).
 
 ---
 

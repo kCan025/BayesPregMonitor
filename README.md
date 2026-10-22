@@ -1,6 +1,15 @@
 # BayesPregMonitor
 
-> **Status (2026-10-22, work in progress):** The `v1.1-bugfix` landmark benchmark below was found to be (i) in-sample (Cox fit and evaluated on the same outcome window), with EPV ≈ 3–4 per landmark, and (ii) structurally unable to measure cadence because evaluation times coincide with model-refresh times. Both the legacy and the refit landmark numbers are superseded by **Plan C** (`iAUC_hf_planC` / `iAUC_lm_clean` in `run_monte_carlo.py`): a single MI-Cox score, η frozen between landmarks, and evaluation between refresh times. Plan C results are under independent verification; validated numbers will replace the tables below. See `PLAN_C.md`.
+> **Status (2026-10-22, work in progress):** The `v1.1-bugfix` landmark benchmark below was found to be (i) in-sample (Cox fit and evaluated on the same outcome window), with EPV ≈ 3–4 per landmark, and (ii) structurally unable to measure cadence because evaluation times coincide with model-refresh times. Both the legacy and the refit landmark numbers are superseded by **Plan C** (`iAUC_hf_planC` / `iAUC_lm_clean` in `run_monte_carlo.py`): a single MI-Cox score, η frozen between landmarks, and evaluation between refresh times. Plan C results were independently verified on 2026-10-22/23 across three compute environments (Linux, WSL, Windows) and a from-scratch signed-rank recomputation (`code/verify_planC.py` on the committed `results/*_iters.json` records). **Verified Plan C results (paired, 80 reps/scenario):**
+
+| Scenario | HF | LM-clean | Δ (95% CI) | Wilcoxon p |
+|---|---|---|---|---|
+| Baseline | 0.7205 | 0.7070 | +0.0135 [+.0099, +.0171] | 5.2e-09 |
+| Heavy-tail | 0.7212 | 0.7055 | +0.0157 [+.0120, +.0195] | 2.8e-10 |
+| Nonlinear | 0.8394 | 0.8326 | +0.0067 [+.0054, +.0081] | 8.8e-12 |
+| Combined | 0.8385 | 0.8331 | +0.0054 [+.0041, +.0068] | 8.5e-10 |
+
+All four differences exclude zero and survive Bonferroni (α=0.0125). Effects are small on the raw scale (0.5–1.6 AUC points); tiny p-values reflect paired-design power, not clinical magnitude. The v1.1-bugfix landmark table further down is retained for history only. See `PLAN_C.md`.
 
 Bayesian Particle Filter + Time-Varying Cox Model for Dynamic Maternal Risk Monitoring.
 
@@ -18,7 +27,9 @@ After presenting at [NISS S3 Ingram Olkin Forum](https://www.niss.org/events/s3-
 | #2: Landmarking copies PF eta instead of refitting Cox | `benchmarks.py` | Critical | True landmarking with `lifelines.CoxPHFitter` refit at each landmark time |
 | #3: Cost-ratio argmax always picks minimum | `adaptive_threshold.py` | Medium | Removed optimization; standard decision curve with treat-all/treat-none references |
 
-### Post-fix MC results (4 scenarios × 80 reps)
+### Post-fix MC results — v1.1 landmarking, SUPERSEDED (in-sample; kept for history, do not cite)
+
+_The comparable, cadence-isolated numbers are the verified Plan C table in the status banner above._
 
 | Scenario | HF iAUC | LM iAUC | HF-LM diff | Wilcoxon p |
 |----------|---------|---------|------------|------------|

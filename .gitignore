@@ -4,3 +4,4 @@ __pycache__/
 results/__pycache__/
 figures/
 results_backup_pre_refit/
+.Rhistory
