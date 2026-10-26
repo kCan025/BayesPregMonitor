@@ -1,128 +1,86 @@
 # BayesPregMonitor
 
-> **Status (2026-10-22, work in progress):** The `v1.1-bugfix` landmark benchmark below was found to be (i) in-sample (Cox fit and evaluated on the same outcome window), with EPV ≈ 3–4 per landmark, and (ii) structurally unable to measure cadence because evaluation times coincide with model-refresh times. Both the legacy and the refit landmark numbers are superseded by **Plan C** (`iAUC_hf_planC` / `iAUC_lm_clean` in `run_monte_carlo.py`): a single MI-Cox score, η frozen between landmarks, and evaluation between refresh times. Plan C results were independently verified on 2026-10-22/23 across three compute environments (Linux, WSL, Windows) and a from-scratch signed-rank recomputation (`code/verify_planC.py` on the committed `results/*_iters.json` records). **Verified Plan C results (paired, 80 reps/scenario):**
+> **Status (2026-10-26):** Two versions live here. **v4.0** (`results/v4.0/`, tag `v4.0-calibrated`) recalibrates the data-generating process (DGP) to a **realistic overall preeclampsia event rate of ~4%** at **N = 2,000**, adding two binary covariates (`age ≥ 33`, prior-preeclampsia history). The analysis (particle filter, multiple-imputation Cox, Plan-C iAUC) is unchanged except for passing the new covariates through. **v3.4** (tag `v3.4-archive`, the earlier `results/*.json`) used a DGP that produced an unrealistic **19–28%** event rate; its numbers are retained for history only and must not be compared in the same table with v4.0.
 
-| Scenario | HF | LM-clean | Δ (95% CI) | Wilcoxon p |
-|---|---|---|---|---|
-| Baseline | 0.7205 | 0.7070 | +0.0135 [+.0099, +.0171] | 5.2e-09 |
-| Heavy-tail | 0.7212 | 0.7055 | +0.0157 [+.0120, +.0195] | 2.8e-10 |
-| Nonlinear | 0.8394 | 0.8326 | +0.0067 [+.0054, +.0081] | 8.8e-12 |
-| Combined | 0.8385 | 0.8331 | +0.0054 [+.0041, +.0068] | 8.5e-10 |
+## v4.0 verified Plan C results (realistic ~4% event rate, N = 2,000, 80 paired replicates/scenario)
 
-All four differences exclude zero and survive Bonferroni (α=0.0125). Effects are small on the raw scale (0.5–1.6 AUC points); tiny p-values reflect paired-design power, not clinical magnitude. The v1.1-bugfix landmark table further down is retained for history only. See `PLAN_C.md`.
+HF uses the fresh filtered latent state η(t); LM-clean freezes η at the last landmark; both share one MI-Cox score, and evaluation sits between refresh times (`eval = 22, 24, 26, 30, 34`). Independently recomputed from raw per-replicate records (`code/audit_v40.py`).
 
-Bayesian Particle Filter + Time-Varying Cox Model for Dynamic Maternal Risk Monitoring.
+| Scenario | HF | LM-clean | mean Δ | 95% CI of mean Δ | Wilcoxon p |
+|---|---|---|---|---|---|
+| Baseline (linear, Gaussian) | 0.7506 | 0.7409 | +0.0097 | [+0.0064, +0.0130] | 8.4e-07 |
+| Heavy-tail (linear, t₃) | 0.7504 | 0.7403 | +0.0101 | [+0.0072, +0.0129] | 8.2e-09 |
+| Nonlinear (nonlinear, Gaussian) | 0.8315 | 0.8264 | +0.0051 | [+0.0035, +0.0068] | 2.2e-07 |
+| Combined (nonlinear, t₃) | 0.8309 | 0.8265 | +0.0044 | [+0.0027, +0.0062] | 2.1e-06 |
 
-A simulation-based framework for comparing **continuous monitoring** (high-frequency particle filter + time-varying Cox) against **discrete landmark-based monitoring**, using a paired design that isolates the effect of monitoring cadence.
+All four mean differences are positive, exclude zero, and survive Bonferroni correction (α = 0.0125). **The absolute effects are small (0.4–1.0 AUC points).** The CIs above are confidence intervals for the *paired mean*; the per-replicate Δ is much more spread out (roughly −0.02 to +0.04) and is not a confidence interval.
 
----
+**Realized event rates (80 replicates):** linear latent process 4.07% overall; nonlinear 4.14% (about 82 events/replicate, range 61–102). Subgroups: age ≥ 33 (n ≈ 320) 5.58% / 5.72%; age < 33 3.79% / 3.84%; prior preeclampsia (n ≈ 201) 9.82% / 9.84%; no prior history 3.43% / 3.50% (linear / nonlinear). The prior-history group has only ~20 events per replicate, so its **event rate** is reported but not subgroup discrimination. Every replicate produced a valid iAUC; in 11/80 (linear) and 5/80 (nonlinear) replicates, one early window had fewer than five cases and was dropped.
 
-## ⚠️ Post-NISS Update: Bug Fixes (v1.1-bugfix)
+## v4.0 DGP specification
 
-After presenting at [NISS S3 Ingram Olkin Forum](https://www.niss.org/events/s3-ingram-olkin-forum-challenges-modeling-and-analyzing-maternal-health-data) (Oct 15–16, 2026), a code review by [@Osakazuha](https://github.com/Osakazuha) identified three issues. All three have been fixed in the `v1.1-bugfix` tag. The NISS poster shows pre-fix numbers.
+- Cohort **N = 2,000**, horizon T = 40 weeks; Weibull baseline hazard calibrated **separately per latent mode** to ~4% overall: λ = 0.0002176 (linear) and λ = 0.0001227 (nonlinear), shape k = 1.2.
+- New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on an independent stream `seed+4`). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; a sensitivity analysis over neighboring values is planned.**
+- Particle filter, M = 5 multiple-imputation Cox, and Plan-C evaluation are unchanged.
 
-| Bug | File | Severity | Fix |
-|-----|------|----------|-----|
-| #1: Same seed across all DGP generators | `simulate_data.py` | High | Independent seeds per generator (`seed`, `seed+1`, `seed+2`, `seed+3`) |
-| #2: Landmarking copies PF eta instead of refitting Cox | `benchmarks.py` | Critical | True landmarking with `lifelines.CoxPHFitter` refit at each landmark time |
-| #3: Cost-ratio argmax always picks minimum | `adaptive_threshold.py` | Medium | Removed optimization; standard decision curve with treat-all/treat-none references |
+## Limitations
 
-### Post-fix MC results — v1.1 landmarking, SUPERSEDED (in-sample; kept for history, do not cite)
+- Effects are small in absolute terms; very small paired p-values reflect paired-design power, not clinical magnitude.
+- **Replicate independence (v4.0, pre-existing):** the θ₀ draw of replicate k and covariate draws of replicate k+1 come from overlapping `numpy.random.RandomState` lineages. The Wilcoxon test assumes independent pairs; the practical impact is believed to be small but has not been quantified. A stream-separation fix is planned for v4.1 and will regenerate all numbers.
+- The estimated latent-state coefficient is β_η ≈ 0.769–0.774 versus the generating γ = 0.8 (v3.4: 0.777–0.790); the reason for the difference is not investigated here and no causal explanation is claimed.
+- HRs and prior-history prevalence are assumptions pending external reference values.
 
-_The comparable, cadence-isolated numbers are the verified Plan C table in the status banner above._
-
-| Scenario | HF iAUC | LM iAUC | HF-LM diff | Wilcoxon p |
-|----------|---------|---------|------------|------------|
-| Baseline (linear + Gaussian) | 0.7173 | 0.7127 | +0.0045 | 0.008 ** |
-| Heavy-tail (linear + t(3)) | 0.7158 | 0.7120 | +0.0038 | 0.026 * |
-| Nonlinear (nonlinear + Gaussian) | 0.8352 | 0.8338 | +0.0014 | 0.086 |
-| Combined (nonlinear + t(3)) | 0.8352 | 0.8339 | +0.0013 | 0.189 |
-
-**Key findings:**
-- Direction (HF ≥ LM) holds in all 4 scenarios.
-- Statistical significance holds under **linear dynamics** (p < 0.05) but not under **nonlinear dynamics**.
-- The gap shrinkage under nonlinear dynamics is consistent with a **ceiling effect**: more complex trajectories improve PF tracking accuracy (r: 0.978 → 0.993), pushing both methods toward their performance ceiling.
-- Static Cox drops to ~0.53 (near chance) and no longer varies across scenarios — the old ~0.60–0.69 values were an artifact of Bug #1 (age/BMI acting as theta₀ proxy).
-
-Full details in [BUGFIX_PLAN.md](./BUGFIX_PLAN.md).
-
----
-
-## Project Structure
+## Project structure
 
 ```
 BayesPregMonitor/
 ├── code/
-│   ├── simulate_data.py        # Data generation process (4 scenarios)
+│   ├── simulate_data.py        # DGP (v4.0: N=2000, 4% calibration, 4 covariates)
 │   ├── bootstrap_pf.py         # Bootstrap particle filter (Np=100)
-│   ├── benchmarks.py           # Static Cox, landmarking, low-freq benchmarks
-│   ├── adaptive_threshold.py   # Decision layer + cost-sensitive threshold + DCA
-│   ├── run_step12.py           # Layer 1+2: PF + Cox pipeline
-│   ├── run_step3.py            # Layer 3: Decision analysis
-│   ├── run_monte_carlo.py      # Full MC simulation (4 scenarios)
-│   └── plot_figures.py         # Visualization
-├── results/                    # MC output (JSON)
-├── figures/                    # Plots
-├── BUGFIX_PLAN.md              # Detailed bug analysis + fix plan
-└── ISSUE_REPLY_DRAFT.md        # GitHub issue reply draft
+│   ├── time_varying_cox.py     # Multiple-imputation time-varying Cox
+│   ├── benchmarks.py           # Static Cox, landmarking, time-dependent AUC
+│   ├── adaptive_threshold.py   # Decision curve analysis
+│   ├── run_monte_carlo.py      # Paired MC over 4 scenarios (output: results/$RESULTS_SUBDIR)
+│   ├── run_step1.py / run_step2.py / run_step3.py
+│   ├── verify_planC.py         # From-scratch Plan C check on v3.4 records
+│   ├── regression_v34.py       # v4.0-code vs all 160 committed v3.4 event rates
+│   ├── audit_v40.py            # Independent recomputation from raw v4.0 records
+│   └── (diagnostic/plotting helpers)
+├── results/
+│   ├── v4.0/                   # v4.0 calibrated run: chunks/ + merge_report
+│   └── *.json                  # v3.4 (pre-calibration) records, archived
+├── PLAN_C.md
+├── BUGFIX_PLAN.md
+├── LICENSE                     # MIT
+└── README.md
 ```
 
----
+## Quick start
 
-## Method
-
-**Three-layer pipeline:**
-
-1. **Layer 1 — Particle Filter:** Bootstrap particle filter (Np=100) estimates the posterior distribution of the latent risk trajectory θ(t) from noisy longitudinal observations.
-2. **Layer 2 — Time-Varying Cox:** Multiple imputation (Rubin's Rules) with M=5 imputations to combine PF uncertainty with a Cox proportional hazards model including baseline covariates (age, BMI).
-3. **Layer 3 — Decision Curve Analysis:** Cost-sensitive thresholding evaluated across the full cost-ratio frontier (treat-all / treat-none reference lines, no spurious "optimal" selection).
-
-**Paired comparison design:** HF and LM benchmarks share the same PF eta trajectory within each simulation, so the performance difference isolates the effect of monitoring cadence rather than data variability.
-
-**2×2 factorial misspecification design:**
-- Linear vs. nonlinear state dynamics
-- Gaussian vs. heavy-tailed (t₃) observation noise
-
----
-
-## Quick Start
+Output is written to `results/$RESULTS_SUBDIR` (default `v4.0`) so a re-run never overwrites another version's files.
 
 ```bash
 cd code
-
-# Single iteration (smoke test)
-python run_monte_carlo.py --scenario baseline --n_mc 1
-
-# Full MC for one scenario (80 reps, ~3.5 min)
-python run_monte_carlo.py --scenario baseline --n_mc 80
-
-# All four scenarios
-python run_monte_carlo.py --scenario nonlinear --n_mc 80
-python run_monte_carlo.py --scenario heavy_tail --n_mc 80
-python run_monte_carlo.py --scenario combined --n_mc 80
+python run_monte_carlo.py --scenario baseline --n_mc 2          # smoke test
+python run_monte_carlo.py --scenario baseline --n_mc 80         # one scenario
+python run_monte_carlo.py --run_all --n_mc 80                   # all four
+# Independent verification of a run (regression gate + raw-record audit):
+python regression_v34.py . ../results
+python audit_v40.py ../results/v4.0/chunks --report ../results/v4.0/merge_report.json
 ```
 
-**Dependencies:**
-- Python ≥ 3.9
-- numpy, scipy, pandas
-- lifelines (for landmark Cox refitting)
-- matplotlib (for plots)
+Runtime is hardware-dependent (single-core, roughly 15–20 minutes per scenario of 80 on the reference machine). Dependencies: Python ≥ 3.9, numpy, scipy, pandas, lifelines, matplotlib, scikit-learn.
 
----
+## Version history
 
-## Citation & Acknowledgments
+- **v4.0 (2026-10-26):** realistic ~4% event rate, N = 2,000, two added risk-factor covariates; analysis unchanged.
+- **v3.4 (2026-10-22, tag `v3.4-archive`; tag `v1.2-planc`):** Plan C under a 19–28% event DGP — archived, do not cite for calibrated claims. Plan C fixed two design flaws (in-sample optimism; evaluation coinciding with model refresh). See `PLAN_C.md`.
+- **v1.1-bugfix:** independent per-generator seeds; true landmark Cox refit; decision-curve fix (see `BUGFIX_PLAN.md`). The NISS poster shows pre-fix numbers.
 
-If you use this code or framework, please cite:
+## Citation & acknowledgments
 
-> Wang, K. (2026). BayesPregMonitor: A Paired Comparison Framework for Continuous vs. Discrete Dynamic Risk Monitoring. NISS S3 Ingram Olkin Forum, Columbus, OH.
-
-Thanks to [@Osakazuha](https://github.com/Osakazuha) for the careful code review that caught the three bugs fixed in v1.1.
-
----
+Wang, K. (2026). *BayesPregMonitor: A Paired Comparison Framework for Continuous vs. Discrete Dynamic Risk Monitoring.* NISS S3 Ingram Olkin Forum, Columbus, OH. Thanks to [@Osakazuha](https://github.com/Osakazuha) for the code review that caught the three issues fixed in v1.1.
 
 ## License
 
-MIT License
-
----
-
+MIT License — see [LICENSE](./LICENSE).

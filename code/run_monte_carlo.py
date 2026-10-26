@@ -8,10 +8,10 @@ Runs N_MC independent simulation replicates to assess:
   4. [v4] Model misspecification robustness analysis across 4 scenarios
 
 Scenarios (theta_mode / obs_noise):
-  baseline    : linear   / gaussian   - original setup
-  nonlinear   : nonlinear/ gaussian   - sin perturbation in state transition
-  heavy_tail  : linear   / heavy_tail - Student-t(df=3) observation noise
-  combined    : nonlinear/ heavy_tail - both misspecifications together
+  baseline    : linear   / gaussian   — original setup
+  nonlinear   : nonlinear/ gaussian   — sin perturbation in state transition
+  heavy_tail  : linear   / heavy_tail — Student-t(df=3) observation noise
+  combined    : nonlinear/ heavy_tail — both misspecifications together
 
 Usage:
     python run_monte_carlo.py --scenario baseline --n_mc 80
@@ -26,6 +26,10 @@ import os
 from datetime import datetime
 
 os.makedirs('../results', exist_ok=True)
+# results go to results/<subdir> so a re-run can never overwrite another version's files
+RESULTS_SUBDIR = os.environ.get('RESULTS_SUBDIR', 'v4.0')
+RESULTS_DIR = f'../results/{RESULTS_SUBDIR}'
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 from simulate_data import simulate
 from bootstrap_pf import BootstrapPF
@@ -334,11 +338,11 @@ def run_scenario(scenario, n_mc, run_timestamp=None):
     # Save per-iteration results (needed for cross-scenario paired tests)
     if run_timestamp is None:
         run_timestamp = datetime.now().strftime('%Y%m%d_%H%M')
-    iters_path = f'../results/monte_carlo_{scenario}_iters_{run_timestamp}.json'
+    iters_path = f'{RESULTS_DIR}/monte_carlo_{scenario}_iters_{run_timestamp}.json'
     with open(iters_path, 'w') as f:
         json.dump(_json_safe(all_results), f, indent=2, allow_nan=False)
     # Also save to standard name for convenience
-    iters_std = f'../results/monte_carlo_{scenario}_iters.json'
+    iters_std = f'{RESULTS_DIR}/monte_carlo_{scenario}_iters.json'
     with open(iters_std, 'w') as f:
         json.dump(_json_safe(all_results), f, indent=2, allow_nan=False)
     print(f"  Saved per-iter: {iters_path}")
@@ -540,19 +544,27 @@ def main():
             'n_mc': n_mc,
             'scenario_config': SCENARIOS[sc],
             'dgp_params': {
-                'gamma': 0.8, 'lambda_weibull': 0.0015,
-                'beta': [0.005, 0.005], 'N': 500, 'T_weeks': 40,
+                'dgp_version': 'v4.0',
+                'gamma': 0.8,
+                'lambda_weibull_linear': 0.0002176,
+                'lambda_weibull_nonlinear': 0.0001227,
+                'beta': [0.005, 0.005, float(np.log(1.5)), float(np.log(3.0))],
+                'covariates': ['age', 'bmi', 'age_ge33', 'prior_pe_history'],
+                'prior_pe_prevalence': 0.10,  # working assumption, to be confirmed
+                'hr_age_ge33': 1.5, 'hr_prior_pe': 3.0,  # working assumptions, tbc
+                'N': 2000, 'T_weeks': 40,
+                'target_event_rate': 0.04,
             },
             'summary': summary,
             'paired_comparisons': paired,
             'diagnostics': diagnostics,
             'total_time_seconds': float(total_time),
         }
-        out_path = f'../results/monte_carlo_{sc}_{timestamp}.json'
+        out_path = f'{RESULTS_DIR}/monte_carlo_{sc}_{timestamp}.json'
         with open(out_path, 'w') as f:
             json.dump(output, f, indent=2)
         # Also save to standard name
-        out_std = f'../results/monte_carlo_{sc}.json'
+        out_std = f'{RESULTS_DIR}/monte_carlo_{sc}.json'
         with open(out_std, 'w') as f:
             json.dump(output, f, indent=2)
         print(f"\n  Saved: {out_path}")

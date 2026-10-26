@@ -1,0 +1,3802 @@
+[
+  {
+    "scenario": "combined",
+    "event_rate": 0.0435,
+    "pf_r": 0.9937029785397412,
+    "median_ess": 53.77121162101891,
+    "p5_ess": 19.110265332030703,
+    "ess_warning": false,
+    "cox_beta_eta": 1.0578428722386501,
+    "iAUC_highfreq": 0.8502806594762983,
+    "iAUC_hf_planC": 0.8613110504398666,
+    "iAUC_lm_clean": 0.8657418898173428,
+    "mean_lead_time": 0.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.5446557145795986,
+    "landmark_aucs": [
+      0.8965394402035624,
+      0.8439684993008022,
+      0.8171455487517664
+    ],
+    "iAUC_landmark": 0.8507802627325359,
+    "iAUC_landmark_mean_auc": 0.8525511627520436,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.9943863801390627,
+    "iAUC_lowfreq": 0.8339406941546419,
+    "_seed": 42,
+    "_mc": 0,
+    "_audit": {
+      "n_events_total": 87,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 87,
+          "rate": 0.0435
+        },
+        "age_ge33": {
+          "n": 331,
+          "events": 19,
+          "rate": 0.05740181268882175
+        },
+        "age_lt33": {
+          "n": 1669,
+          "events": 68,
+          "rate": 0.04074295985620132
+        },
+        "prior_pe_yes": {
+          "n": 208,
+          "events": 18,
+          "rate": 0.08653846153846154
+        },
+        "prior_pe_no": {
+          "n": 1792,
+          "events": 69,
+          "rate": 0.03850446428571429
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1955,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 15,
+          "n_controls": 1945,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 8,
+          "n_controls": 1937,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 14,
+          "n_controls": 1923,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0395,
+    "pf_r": 0.9936436478827151,
+    "median_ess": 53.84069529736465,
+    "p5_ess": 18.987547775886142,
+    "ess_warning": false,
+    "cox_beta_eta": 0.5853914637260816,
+    "iAUC_highfreq": 0.8455443781714591,
+    "iAUC_hf_planC": 0.7922787769961621,
+    "iAUC_lm_clean": 0.815138569610387,
+    "mean_lead_time": 3.6666666666666665,
+    "n_lead_subjects": 3,
+    "iAUC_static": 0.5446674975518562,
+    "landmark_aucs": [
+      0.8626206196038598,
+      0.7990778688524589,
+      0.8651390319258496
+    ],
+    "iAUC_landmark": 0.8499065254161845,
+    "iAUC_landmark_mean_auc": 0.8422791734607228,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.4392051667610624,
+    "iAUC_lowfreq": 0.812672482862993,
+    "_seed": 43,
+    "_mc": 1,
+    "_audit": {
+      "n_events_total": 79,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 79,
+          "rate": 0.0395
+        },
+        "age_ge33": {
+          "n": 312,
+          "events": 12,
+          "rate": 0.038461538461538464
+        },
+        "age_lt33": {
+          "n": 1688,
+          "events": 67,
+          "rate": 0.039691943127962086
+        },
+        "prior_pe_yes": {
+          "n": 192,
+          "events": 15,
+          "rate": 0.078125
+        },
+        "prior_pe_no": {
+          "n": 1808,
+          "events": 64,
+          "rate": 0.035398230088495575
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 18,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 12,
+          "n_controls": 1957,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 4,
+          "n_controls": 1955,
+          "skipped": true
+        },
+        {
+          "t": 30,
+          "n_cases": 5,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 17,
+          "n_controls": 1933,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 4,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.045,
+    "pf_r": 0.9936011875597576,
+    "median_ess": 53.788853460040905,
+    "p5_ess": 19.00667751052068,
+    "ess_warning": false,
+    "cox_beta_eta": 0.644235424354608,
+    "iAUC_highfreq": 0.8001428535625673,
+    "iAUC_hf_planC": 0.7797803516088031,
+    "iAUC_lm_clean": 0.7756458776652718,
+    "mean_lead_time": 3.0,
+    "n_lead_subjects": 3,
+    "iAUC_static": 0.5785694594120449,
+    "landmark_aucs": [
+      0.7921528834770845,
+      0.8158974358974359,
+      0.8081088082901555
+    ],
+    "iAUC_landmark": 0.8050926041953835,
+    "iAUC_landmark_mean_auc": 0.8053863758882253,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5989681995060653,
+    "iAUC_lowfreq": 0.7679381469136112,
+    "_seed": 44,
+    "_mc": 2,
+    "_audit": {
+      "n_events_total": 90,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 90,
+          "rate": 0.045
+        },
+        "age_ge33": {
+          "n": 315,
+          "events": 19,
+          "rate": 0.06031746031746032
+        },
+        "age_lt33": {
+          "n": 1685,
+          "events": 71,
+          "rate": 0.042136498516320474
+        },
+        "prior_pe_yes": {
+          "n": 200,
+          "events": 19,
+          "rate": 0.095
+        },
+        "prior_pe_no": {
+          "n": 1800,
+          "events": 71,
+          "rate": 0.03944444444444444
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 15,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 12,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 11,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 15,
+          "n_controls": 1939,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 19,
+          "n_controls": 1920,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0465,
+    "pf_r": 0.9938651559931266,
+    "median_ess": 53.78799502525504,
+    "p5_ess": 19.128600207948697,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7139829231190349,
+    "iAUC_highfreq": 0.8191417053391459,
+    "iAUC_hf_planC": 0.8341425886007504,
+    "iAUC_lm_clean": 0.8221162569585067,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6275840247503868,
+    "landmark_aucs": [
+      0.8597708932904463,
+      0.800114547537228,
+      0.7879844605548928
+    ],
+    "iAUC_landmark": 0.8078563727558243,
+    "iAUC_landmark_mean_auc": 0.815956633794189,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6340262974454269,
+    "iAUC_lowfreq": 0.7739769371396428,
+    "_seed": 45,
+    "_mc": 3,
+    "_audit": {
+      "n_events_total": 93,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 93,
+          "rate": 0.0465
+        },
+        "age_ge33": {
+          "n": 328,
+          "events": 18,
+          "rate": 0.054878048780487805
+        },
+        "age_lt33": {
+          "n": 1672,
+          "events": 75,
+          "rate": 0.04485645933014354
+        },
+        "prior_pe_yes": {
+          "n": 205,
+          "events": 29,
+          "rate": 0.14146341463414633
+        },
+        "prior_pe_no": {
+          "n": 1795,
+          "events": 64,
+          "rate": 0.03565459610027855
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 12,
+          "n_controls": 1963,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 11,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 16,
+          "n_controls": 1947,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 15,
+          "n_controls": 1932,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 17,
+          "n_controls": 1915,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0415,
+    "pf_r": 0.9938099084841279,
+    "median_ess": 53.796696594091586,
+    "p5_ess": 18.97774763107328,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6503372664333341,
+    "iAUC_highfreq": 0.7747015762052364,
+    "iAUC_hf_planC": 0.7770273165965252,
+    "iAUC_lm_clean": 0.7831471941989732,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5868495680274352,
+    "landmark_aucs": [
+      0.8670503921900569,
+      0.7608080288214102,
+      0.7954898911353032
+    ],
+    "iAUC_landmark": 0.797995119699268,
+    "iAUC_landmark_mean_auc": 0.8077827707155901,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5577838247136729,
+    "iAUC_lowfreq": 0.7623821143573172,
+    "_seed": 46,
+    "_mc": 4,
+    "_audit": {
+      "n_events_total": 83,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 83,
+          "rate": 0.0415
+        },
+        "age_ge33": {
+          "n": 325,
+          "events": 21,
+          "rate": 0.06461538461538462
+        },
+        "age_lt33": {
+          "n": 1675,
+          "events": 62,
+          "rate": 0.037014925373134326
+        },
+        "prior_pe_yes": {
+          "n": 187,
+          "events": 17,
+          "rate": 0.09090909090909091
+        },
+        "prior_pe_no": {
+          "n": 1813,
+          "events": 66,
+          "rate": 0.03640375068946498
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 10,
+          "n_controls": 1963,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 15,
+          "n_controls": 1948,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 14,
+          "n_controls": 1934,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1923,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0405,
+    "pf_r": 0.9937626197705678,
+    "median_ess": 53.82147872495693,
+    "p5_ess": 19.14589640229183,
+    "ess_warning": false,
+    "cox_beta_eta": 0.9578248325725612,
+    "iAUC_highfreq": 0.8671827188673316,
+    "iAUC_hf_planC": 0.8588396719491375,
+    "iAUC_lm_clean": 0.8516543944361233,
+    "mean_lead_time": 4.0,
+    "n_lead_subjects": 2,
+    "iAUC_static": 0.7495162010618767,
+    "landmark_aucs": [
+      0.8198610405016099,
+      0.8309377138945927,
+      0.8688338493292054
+    ],
+    "iAUC_landmark": 0.8398418763128732,
+    "iAUC_landmark_mean_auc": 0.839877534575136,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7522411233191049,
+    "iAUC_lowfreq": 0.8263451264493293,
+    "_seed": 47,
+    "_mc": 5,
+    "_audit": {
+      "n_events_total": 81,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 81,
+          "rate": 0.0405
+        },
+        "age_ge33": {
+          "n": 335,
+          "events": 23,
+          "rate": 0.06865671641791045
+        },
+        "age_lt33": {
+          "n": 1665,
+          "events": 58,
+          "rate": 0.034834834834834835
+        },
+        "prior_pe_yes": {
+          "n": 226,
+          "events": 18,
+          "rate": 0.07964601769911504
+        },
+        "prior_pe_no": {
+          "n": 1774,
+          "events": 63,
+          "rate": 0.03551296505073281
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 7,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 11,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1945,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 14,
+          "n_controls": 1931,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.033,
+    "pf_r": 0.9938553690309245,
+    "median_ess": 53.82852137926874,
+    "p5_ess": 19.250786833348016,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7315171240656941,
+    "iAUC_highfreq": 0.8150296726011869,
+    "iAUC_hf_planC": 0.8208494538006372,
+    "iAUC_lm_clean": 0.8141215293582158,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5171923273543597,
+    "landmark_aucs": [
+      0.8108304297328688,
+      0.9455156295647092,
+      0.7540946185013981
+    ],
+    "iAUC_landmark": 0.8297214998555267,
+    "iAUC_landmark_mean_auc": 0.8368135592663254,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5383033802747348,
+    "iAUC_lowfreq": 0.801515858727301,
+    "_seed": 48,
+    "_mc": 6,
+    "_audit": {
+      "n_events_total": 66,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 66,
+          "rate": 0.033
+        },
+        "age_ge33": {
+          "n": 319,
+          "events": 18,
+          "rate": 0.05642633228840126
+        },
+        "age_lt33": {
+          "n": 1681,
+          "events": 48,
+          "rate": 0.028554431885782272
+        },
+        "prior_pe_yes": {
+          "n": 198,
+          "events": 15,
+          "rate": 0.07575757575757576
+        },
+        "prior_pe_no": {
+          "n": 1802,
+          "events": 51,
+          "rate": 0.02830188679245283
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 6,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 5,
+          "n_controls": 1963,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 5,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1951,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1940,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0485,
+    "pf_r": 0.9938628574595701,
+    "median_ess": 53.900602770782655,
+    "p5_ess": 19.31626744463111,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8018848349744008,
+    "iAUC_highfreq": 0.8437540194074857,
+    "iAUC_hf_planC": 0.848001085076803,
+    "iAUC_lm_clean": 0.8436539961344139,
+    "mean_lead_time": 6.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6552670315693196,
+    "landmark_aucs": [
+      0.8453436807095344,
+      0.8043366029943211,
+      0.7913336792942397
+    ],
+    "iAUC_landmark": 0.8134423277549913,
+    "iAUC_landmark_mean_auc": 0.8136713209993651,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6564160066664936,
+    "iAUC_lowfreq": 0.7991225186857788,
+    "_seed": 49,
+    "_mc": 7,
+    "_audit": {
+      "n_events_total": 97,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 97,
+          "rate": 0.0485
+        },
+        "age_ge33": {
+          "n": 316,
+          "events": 18,
+          "rate": 0.056962025316455694
+        },
+        "age_lt33": {
+          "n": 1684,
+          "events": 79,
+          "rate": 0.04691211401425178
+        },
+        "prior_pe_yes": {
+          "n": 184,
+          "events": 23,
+          "rate": 0.125
+        },
+        "prior_pe_no": {
+          "n": 1816,
+          "events": 74,
+          "rate": 0.040748898678414094
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 13,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 16,
+          "n_controls": 1952,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 19,
+          "n_controls": 1943,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 10,
+          "n_controls": 1933,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 18,
+          "n_controls": 1915,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0425,
+    "pf_r": 0.9936093641087701,
+    "median_ess": 53.855341692028645,
+    "p5_ess": 19.173024965791427,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8971687504678035,
+    "iAUC_highfreq": 0.8583009485604446,
+    "iAUC_hf_planC": 0.8367776914217224,
+    "iAUC_lm_clean": 0.8433792477035011,
+    "mean_lead_time": 3.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6771551544022397,
+    "landmark_aucs": [
+      0.8692718940936864,
+      0.8771675625146063,
+      0.83950296949778
+    ],
+    "iAUC_landmark": 0.8572423495326843,
+    "iAUC_landmark_mean_auc": 0.8619808087020241,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.826503503819306,
+    "iAUC_lowfreq": 0.8233950385135042,
+    "_seed": 50,
+    "_mc": 8,
+    "_audit": {
+      "n_events_total": 85,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 85,
+          "rate": 0.0425
+        },
+        "age_ge33": {
+          "n": 317,
+          "events": 22,
+          "rate": 0.0694006309148265
+        },
+        "age_lt33": {
+          "n": 1683,
+          "events": 63,
+          "rate": 0.0374331550802139
+        },
+        "prior_pe_yes": {
+          "n": 207,
+          "events": 18,
+          "rate": 0.08695652173913043
+        },
+        "prior_pe_no": {
+          "n": 1793,
+          "events": 67,
+          "rate": 0.0373675404350251
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 7,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 12,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1937,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 15,
+          "n_controls": 1922,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0395,
+    "pf_r": 0.9938639338852696,
+    "median_ess": 54.00143790520086,
+    "p5_ess": 19.162870495098947,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6974959703744069,
+    "iAUC_highfreq": 0.8136679688089169,
+    "iAUC_hf_planC": 0.8459686275299972,
+    "iAUC_lm_clean": 0.8393999536565954,
+    "mean_lead_time": 4.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6668677697168972,
+    "landmark_aucs": [
+      0.757884028484232,
+      0.8224022633744856,
+      0.8971576227390181
+    ],
+    "iAUC_landmark": 0.8171671618829278,
+    "iAUC_landmark_mean_auc": 0.8258146381992453,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.592794960266578,
+    "iAUC_lowfreq": 0.777137599734544,
+    "_seed": 51,
+    "_mc": 9,
+    "_audit": {
+      "n_events_total": 79,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 79,
+          "rate": 0.0395
+        },
+        "age_ge33": {
+          "n": 292,
+          "events": 17,
+          "rate": 0.05821917808219178
+        },
+        "age_lt33": {
+          "n": 1708,
+          "events": 62,
+          "rate": 0.03629976580796253
+        },
+        "prior_pe_yes": {
+          "n": 191,
+          "events": 17,
+          "rate": 0.08900523560209424
+        },
+        "prior_pe_no": {
+          "n": 1809,
+          "events": 62,
+          "rate": 0.03427307904919845
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 10,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 6,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 15,
+          "n_controls": 1939,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 10,
+          "n_controls": 1929,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.038,
+    "pf_r": 0.9937282518027097,
+    "median_ess": 53.81205329453485,
+    "p5_ess": 18.919786379875823,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8618518963537184,
+    "iAUC_highfreq": 0.8352325037354543,
+    "iAUC_hf_planC": 0.8411919836635848,
+    "iAUC_lm_clean": 0.8337113010641245,
+    "mean_lead_time": 1.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.5708528910152889,
+    "landmark_aucs": [
+      0.8500819070214087,
+      0.8308753393499156,
+      0.8870679939894817
+    ],
+    "iAUC_landmark": 0.854068249392517,
+    "iAUC_landmark_mean_auc": 0.8560084134536021,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7352278669521337,
+    "iAUC_lowfreq": 0.8183890004075041,
+    "_seed": 52,
+    "_mc": 10,
+    "_audit": {
+      "n_events_total": 76,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 76,
+          "rate": 0.038
+        },
+        "age_ge33": {
+          "n": 328,
+          "events": 17,
+          "rate": 0.051829268292682924
+        },
+        "age_lt33": {
+          "n": 1672,
+          "events": 59,
+          "rate": 0.035287081339712915
+        },
+        "prior_pe_yes": {
+          "n": 199,
+          "events": 12,
+          "rate": 0.06030150753768844
+        },
+        "prior_pe_no": {
+          "n": 1801,
+          "events": 64,
+          "rate": 0.03553581343697946
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 12,
+          "n_controls": 1963,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 6,
+          "n_controls": 1961,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 10,
+          "n_controls": 1953,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1940,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 9,
+          "n_controls": 1931,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.04,
+    "pf_r": 0.9935120033832732,
+    "median_ess": 53.853495572915065,
+    "p5_ess": 19.025510165604626,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7306105659765032,
+    "iAUC_highfreq": 0.8416093743814412,
+    "iAUC_hf_planC": 0.8307910825665411,
+    "iAUC_lm_clean": 0.8204059367216286,
+    "mean_lead_time": 6.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6223195787862393,
+    "landmark_aucs": [
+      0.7892511462047886,
+      0.8601475381712129,
+      0.8432940827964156
+    ],
+    "iAUC_landmark": 0.8357767778202979,
+    "iAUC_landmark_mean_auc": 0.8308975890574724,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6819542791290154,
+    "iAUC_lowfreq": 0.8131853630857339,
+    "_seed": 53,
+    "_mc": 11,
+    "_audit": {
+      "n_events_total": 80,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 80,
+          "rate": 0.04
+        },
+        "age_ge33": {
+          "n": 301,
+          "events": 20,
+          "rate": 0.0664451827242525
+        },
+        "age_lt33": {
+          "n": 1699,
+          "events": 60,
+          "rate": 0.03531489111241907
+        },
+        "prior_pe_yes": {
+          "n": 193,
+          "events": 19,
+          "rate": 0.09844559585492228
+        },
+        "prior_pe_no": {
+          "n": 1807,
+          "events": 61,
+          "rate": 0.033757609297177645
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1961,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 5,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 9,
+          "n_controls": 1952,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 16,
+          "n_controls": 1936,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1925,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.046,
+    "pf_r": 0.9935686887858766,
+    "median_ess": 53.87736755562343,
+    "p5_ess": 18.956818619175774,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8474064703758417,
+    "iAUC_highfreq": 0.8663812375519937,
+    "iAUC_hf_planC": 0.873286328302206,
+    "iAUC_lm_clean": 0.8685268766771492,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6558592003468505,
+    "landmark_aucs": [
+      0.8922136926210247,
+      0.8147459086993971,
+      0.8395324675324675
+    ],
+    "iAUC_landmark": 0.8480089964366524,
+    "iAUC_landmark_mean_auc": 0.8488306896176298,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7478198878816834,
+    "iAUC_lowfreq": 0.8146923733521211,
+    "_seed": 54,
+    "_mc": 12,
+    "_audit": {
+      "n_events_total": 92,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 92,
+          "rate": 0.046
+        },
+        "age_ge33": {
+          "n": 311,
+          "events": 16,
+          "rate": 0.05144694533762058
+        },
+        "age_lt33": {
+          "n": 1689,
+          "events": 76,
+          "rate": 0.044997039668442866
+        },
+        "prior_pe_yes": {
+          "n": 210,
+          "events": 25,
+          "rate": 0.11904761904761904
+        },
+        "prior_pe_no": {
+          "n": 1790,
+          "events": 67,
+          "rate": 0.037430167597765365
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 14,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 14,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 14,
+          "n_controls": 1944,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 14,
+          "n_controls": 1930,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1919,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.038,
+    "pf_r": 0.993756024388875,
+    "median_ess": 53.90069914667737,
+    "p5_ess": 19.1475642404586,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7847146792402141,
+    "iAUC_highfreq": 0.8740781300799096,
+    "iAUC_hf_planC": 0.8447274443805928,
+    "iAUC_lm_clean": 0.8487911501518759,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6910730480313478,
+    "landmark_aucs": [
+      0.8205035188275411,
+      0.8615187275525911,
+      0.8836617927527018
+    ],
+    "iAUC_landmark": 0.8613815643127256,
+    "iAUC_landmark_mean_auc": 0.855228013044278,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6041124173330751,
+    "iAUC_lowfreq": 0.8106808576170839,
+    "_seed": 55,
+    "_mc": 13,
+    "_audit": {
+      "n_events_total": 76,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 76,
+          "rate": 0.038
+        },
+        "age_ge33": {
+          "n": 322,
+          "events": 16,
+          "rate": 0.049689440993788817
+        },
+        "age_lt33": {
+          "n": 1678,
+          "events": 60,
+          "rate": 0.03575685339690107
+        },
+        "prior_pe_yes": {
+          "n": 188,
+          "events": 20,
+          "rate": 0.10638297872340426
+        },
+        "prior_pe_no": {
+          "n": 1812,
+          "events": 56,
+          "rate": 0.03090507726269316
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 5,
+          "n_controls": 1967,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 13,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1945,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 13,
+          "n_controls": 1932,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.035,
+    "pf_r": 0.9936323898282804,
+    "median_ess": 53.761809545888,
+    "p5_ess": 18.962127128553202,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8593704294989966,
+    "iAUC_highfreq": 0.8343535269143549,
+    "iAUC_hf_planC": 0.8463192842153618,
+    "iAUC_lm_clean": 0.8470918639006922,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.687854865385599,
+    "landmark_aucs": [
+      0.8881012658227847,
+      0.8375063873275421,
+      0.8639205444761
+    ],
+    "iAUC_landmark": 0.8591109822844379,
+    "iAUC_landmark_mean_auc": 0.8631760658754756,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7542844687065677,
+    "iAUC_lowfreq": 0.8117444457706013,
+    "_seed": 56,
+    "_mc": 14,
+    "_audit": {
+      "n_events_total": 70,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 70,
+          "rate": 0.035
+        },
+        "age_ge33": {
+          "n": 299,
+          "events": 10,
+          "rate": 0.033444816053511704
+        },
+        "age_lt33": {
+          "n": 1701,
+          "events": 60,
+          "rate": 0.03527336860670194
+        },
+        "prior_pe_yes": {
+          "n": 194,
+          "events": 21,
+          "rate": 0.10824742268041238
+        },
+        "prior_pe_no": {
+          "n": 1806,
+          "events": 49,
+          "rate": 0.027131782945736434
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1970,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 7,
+          "n_controls": 1968,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 8,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1949,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 12,
+          "n_controls": 1937,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.039,
+    "pf_r": 0.9936547404717375,
+    "median_ess": 54.063014800684144,
+    "p5_ess": 19.029867410826608,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7311268325461512,
+    "iAUC_highfreq": 0.8389716634391179,
+    "iAUC_hf_planC": 0.7765904572564613,
+    "iAUC_lm_clean": 0.764824844039213,
+    "mean_lead_time": 0.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6993439513101213,
+    "landmark_aucs": [
+      0.8297038327526132,
+      0.8374688004698282,
+      0.8831868321268528
+    ],
+    "iAUC_landmark": 0.8563213848160297,
+    "iAUC_landmark_mean_auc": 0.8501198217830982,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5961055684057683,
+    "iAUC_lowfreq": 0.7633877405841205,
+    "_seed": 57,
+    "_mc": 15,
+    "_audit": {
+      "n_events_total": 78,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 78,
+          "rate": 0.039
+        },
+        "age_ge33": {
+          "n": 317,
+          "events": 14,
+          "rate": 0.04416403785488959
+        },
+        "age_lt33": {
+          "n": 1683,
+          "events": 64,
+          "rate": 0.038027332144979206
+        },
+        "prior_pe_yes": {
+          "n": 209,
+          "events": 20,
+          "rate": 0.09569377990430622
+        },
+        "prior_pe_no": {
+          "n": 1791,
+          "events": 58,
+          "rate": 0.03238414293690676
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 15,
+          "n_controls": 1953,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 12,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 7,
+          "n_controls": 1943,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 17,
+          "n_controls": 1926,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.034,
+    "pf_r": 0.993895443322266,
+    "median_ess": 53.885925938016996,
+    "p5_ess": 18.88938264566383,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7552085951816618,
+    "iAUC_highfreq": 0.8115099258070985,
+    "iAUC_hf_planC": 0.8107447328698684,
+    "iAUC_lm_clean": 0.7985203137955227,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6291084091364821,
+    "landmark_aucs": [
+      0.8741414141414141,
+      0.8601936799184506,
+      0.7527726250148006
+    ],
+    "iAUC_landmark": 0.8130958674371548,
+    "iAUC_landmark_mean_auc": 0.8290359063582219,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7182651244077601,
+    "iAUC_lowfreq": 0.7689629400076563,
+    "_seed": 58,
+    "_mc": 16,
+    "_audit": {
+      "n_events_total": 68,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 68,
+          "rate": 0.034
+        },
+        "age_ge33": {
+          "n": 288,
+          "events": 12,
+          "rate": 0.041666666666666664
+        },
+        "age_lt33": {
+          "n": 1712,
+          "events": 56,
+          "rate": 0.03271028037383177
+        },
+        "prior_pe_yes": {
+          "n": 188,
+          "events": 20,
+          "rate": 0.10638297872340426
+        },
+        "prior_pe_no": {
+          "n": 1812,
+          "events": 48,
+          "rate": 0.026490066225165563
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 7,
+          "n_controls": 1976,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1972,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 7,
+          "n_controls": 1969,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 15,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1943,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.037,
+    "pf_r": 0.9936163712010417,
+    "median_ess": 53.80900929863141,
+    "p5_ess": 18.99623487628551,
+    "ess_warning": false,
+    "cox_beta_eta": 0.5812142970845314,
+    "iAUC_highfreq": 0.7696996014329802,
+    "iAUC_hf_planC": 0.8179288219776397,
+    "iAUC_lm_clean": 0.8165083537062626,
+    "mean_lead_time": 7.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6193607419239776,
+    "landmark_aucs": [
+      0.6744884153559952,
+      0.7105128205128205,
+      0.8183224717520747
+    ],
+    "iAUC_landmark": 0.7329600967726927,
+    "iAUC_landmark_mean_auc": 0.7344412358736302,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.4810276468339299,
+    "iAUC_lowfreq": 0.7244459608256696,
+    "_seed": 59,
+    "_mc": 17,
+    "_audit": {
+      "n_events_total": 74,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 74,
+          "rate": 0.037
+        },
+        "age_ge33": {
+          "n": 311,
+          "events": 20,
+          "rate": 0.06430868167202572
+        },
+        "age_lt33": {
+          "n": 1689,
+          "events": 54,
+          "rate": 0.03197158081705151
+        },
+        "prior_pe_yes": {
+          "n": 205,
+          "events": 17,
+          "rate": 0.08292682926829269
+        },
+        "prior_pe_no": {
+          "n": 1795,
+          "events": 57,
+          "rate": 0.03175487465181059
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 12,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 11,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 9,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 12,
+          "n_controls": 1944,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 9,
+          "n_controls": 1935,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.035,
+    "pf_r": 0.9937786362317481,
+    "median_ess": 53.79124931605348,
+    "p5_ess": 19.301764271353218,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6954474388773275,
+    "iAUC_highfreq": 0.8195034001050554,
+    "iAUC_hf_planC": 0.805585509045954,
+    "iAUC_lm_clean": 0.8001285277042556,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.606425417737333,
+    "landmark_aucs": [
+      0.826447778502573,
+      0.8182283666154634,
+      0.8233779608650874
+    ],
+    "iAUC_landmark": 0.8230099802666136,
+    "iAUC_landmark_mean_auc": 0.8226847019943745,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5892556298965826,
+    "iAUC_lowfreq": 0.7959936966737177,
+    "_seed": 60,
+    "_mc": 18,
+    "_audit": {
+      "n_events_total": 70,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 70,
+          "rate": 0.035
+        },
+        "age_ge33": {
+          "n": 316,
+          "events": 9,
+          "rate": 0.028481012658227847
+        },
+        "age_lt33": {
+          "n": 1684,
+          "events": 61,
+          "rate": 0.03622327790973872
+        },
+        "prior_pe_yes": {
+          "n": 206,
+          "events": 17,
+          "rate": 0.0825242718446602
+        },
+        "prior_pe_no": {
+          "n": 1794,
+          "events": 53,
+          "rate": 0.029542920847268672
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 12,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 7,
+          "n_controls": 1964,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 5,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 10,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 13,
+          "n_controls": 1937,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.038,
+    "pf_r": 0.9937746166009717,
+    "median_ess": 53.781356714892,
+    "p5_ess": 18.992220028925182,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6453558178397596,
+    "iAUC_highfreq": 0.8325990459785345,
+    "iAUC_hf_planC": 0.8332429290972492,
+    "iAUC_lm_clean": 0.827644323905463,
+    "mean_lead_time": 3.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6784318272161124,
+    "landmark_aucs": [
+      0.7105752961082911,
+      0.8296872531985469,
+      0.7513774104683196
+    ],
+    "iAUC_landmark": 0.7762355903007818,
+    "iAUC_landmark_mean_auc": 0.7638799865917192,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.529588407746696,
+    "iAUC_lowfreq": 0.7720617463892938,
+    "_seed": 61,
+    "_mc": 19,
+    "_audit": {
+      "n_events_total": 76,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 76,
+          "rate": 0.038
+        },
+        "age_ge33": {
+          "n": 304,
+          "events": 18,
+          "rate": 0.05921052631578947
+        },
+        "age_lt33": {
+          "n": 1696,
+          "events": 58,
+          "rate": 0.03419811320754717
+        },
+        "prior_pe_yes": {
+          "n": 204,
+          "events": 19,
+          "rate": 0.09313725490196079
+        },
+        "prior_pe_no": {
+          "n": 1796,
+          "events": 57,
+          "rate": 0.03173719376391982
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1964,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 9,
+          "n_controls": 1961,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 10,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 10,
+          "n_controls": 1944,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 15,
+          "n_controls": 1929,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0445,
+    "pf_r": 0.99382095854927,
+    "median_ess": 53.79051456517624,
+    "p5_ess": 18.766147204948222,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7396094098621295,
+    "iAUC_highfreq": 0.825019285163281,
+    "iAUC_hf_planC": 0.8096398902559102,
+    "iAUC_lm_clean": 0.7951857906258664,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5831351247107226,
+    "landmark_aucs": [
+      0.8784243661732176,
+      0.8021746604779095,
+      0.7862506473329881
+    ],
+    "iAUC_landmark": 0.8270281563383903,
+    "iAUC_landmark_mean_auc": 0.8222832246613717,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5850521976082297,
+    "iAUC_lowfreq": 0.7743153767035228,
+    "_seed": 62,
+    "_mc": 20,
+    "_audit": {
+      "n_events_total": 89,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 89,
+          "rate": 0.0445
+        },
+        "age_ge33": {
+          "n": 342,
+          "events": 16,
+          "rate": 0.04678362573099415
+        },
+        "age_lt33": {
+          "n": 1658,
+          "events": 73,
+          "rate": 0.04402895054282268
+        },
+        "prior_pe_yes": {
+          "n": 209,
+          "events": 18,
+          "rate": 0.0861244019138756
+        },
+        "prior_pe_no": {
+          "n": 1791,
+          "events": 71,
+          "rate": 0.039642657733109994
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1951,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 10,
+          "n_controls": 1946,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 11,
+          "n_controls": 1935,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 17,
+          "n_controls": 1918,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.04,
+    "pf_r": 0.9937600327881604,
+    "median_ess": 53.843124900974814,
+    "p5_ess": 19.34331970834688,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8521422043470552,
+    "iAUC_highfreq": 0.8470511065480265,
+    "iAUC_hf_planC": 0.8400970396207853,
+    "iAUC_lm_clean": 0.8444682944280476,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.632058521560575,
+    "landmark_aucs": [
+      0.8738968092328581,
+      0.8311065433367592,
+      0.885556704584626
+    ],
+    "iAUC_landmark": 0.8635067305498517,
+    "iAUC_landmark_mean_auc": 0.8635200190514144,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6825458625857481,
+    "iAUC_lowfreq": 0.8130846452201689,
+    "_seed": 63,
+    "_mc": 21,
+    "_audit": {
+      "n_events_total": 80,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 80,
+          "rate": 0.04
+        },
+        "age_ge33": {
+          "n": 334,
+          "events": 20,
+          "rate": 0.059880239520958084
+        },
+        "age_lt33": {
+          "n": 1666,
+          "events": 60,
+          "rate": 0.03601440576230492
+        },
+        "prior_pe_yes": {
+          "n": 193,
+          "events": 15,
+          "rate": 0.07772020725388601
+        },
+        "prior_pe_no": {
+          "n": 1807,
+          "events": 65,
+          "rate": 0.03597122302158273
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 6,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 6,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 12,
+          "n_controls": 1942,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 14,
+          "n_controls": 1928,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0425,
+    "pf_r": 0.9938434074924831,
+    "median_ess": 53.824834246538906,
+    "p5_ess": 19.039686910151694,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7933181683442119,
+    "iAUC_highfreq": 0.8613407245701391,
+    "iAUC_hf_planC": 0.8219068447994421,
+    "iAUC_lm_clean": 0.8134201809854356,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6095685447276117,
+    "landmark_aucs": [
+      0.8700811359026369,
+      0.8809433656082652,
+      0.8107710926694329
+    ],
+    "iAUC_landmark": 0.8497633005469842,
+    "iAUC_landmark_mean_auc": 0.8539318647267784,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6567020500737633,
+    "iAUC_lowfreq": 0.8234442836468886,
+    "_seed": 64,
+    "_mc": 22,
+    "_audit": {
+      "n_events_total": 85,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 85,
+          "rate": 0.0425
+        },
+        "age_ge33": {
+          "n": 327,
+          "events": 12,
+          "rate": 0.03669724770642202
+        },
+        "age_lt33": {
+          "n": 1673,
+          "events": 73,
+          "rate": 0.04363419007770472
+        },
+        "prior_pe_yes": {
+          "n": 218,
+          "events": 25,
+          "rate": 0.11467889908256881
+        },
+        "prior_pe_no": {
+          "n": 1782,
+          "events": 60,
+          "rate": 0.03367003367003367
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1968,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 7,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 10,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 21,
+          "n_controls": 1937,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 19,
+          "n_controls": 1918,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.041,
+    "pf_r": 0.9938505515049576,
+    "median_ess": 53.859041922042124,
+    "p5_ess": 19.321585116470096,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6900414945401936,
+    "iAUC_highfreq": 0.8128975718840186,
+    "iAUC_hf_planC": 0.8335082269979852,
+    "iAUC_lm_clean": 0.8284503022162525,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6390160615263738,
+    "landmark_aucs": [
+      0.7980003703017959,
+      0.6604851129363449,
+      0.8513881703742024
+    ],
+    "iAUC_landmark": 0.789009262197241,
+    "iAUC_landmark_mean_auc": 0.7699578845374478,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5232653192011036,
+    "iAUC_lowfreq": 0.7611924512337005,
+    "_seed": 65,
+    "_mc": 23,
+    "_audit": {
+      "n_events_total": 82,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 82,
+          "rate": 0.041
+        },
+        "age_ge33": {
+          "n": 319,
+          "events": 21,
+          "rate": 0.06583072100313479
+        },
+        "age_lt33": {
+          "n": 1681,
+          "events": 61,
+          "rate": 0.0362879238548483
+        },
+        "prior_pe_yes": {
+          "n": 209,
+          "events": 25,
+          "rate": 0.11961722488038277
+        },
+        "prior_pe_no": {
+          "n": 1791,
+          "events": 57,
+          "rate": 0.031825795644891124
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 10,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 5,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 10,
+          "n_controls": 1944,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 16,
+          "n_controls": 1928,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0385,
+    "pf_r": 0.9937072651089374,
+    "median_ess": 53.88054801715111,
+    "p5_ess": 19.269179356039256,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7131545551928864,
+    "iAUC_highfreq": 0.8621821867549858,
+    "iAUC_hf_planC": 0.8085325329617322,
+    "iAUC_lm_clean": 0.8003644549255011,
+    "mean_lead_time": 0.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.68924609915916,
+    "landmark_aucs": [
+      0.822488769508637,
+      0.8723884140550807,
+      0.7741545893719807
+    ],
+    "iAUC_landmark": 0.824494282573627,
+    "iAUC_landmark_mean_auc": 0.8230105909785661,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5478942217243177,
+    "iAUC_lowfreq": 0.7867778269497067,
+    "_seed": 66,
+    "_mc": 24,
+    "_audit": {
+      "n_events_total": 77,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 77,
+          "rate": 0.0385
+        },
+        "age_ge33": {
+          "n": 317,
+          "events": 20,
+          "rate": 0.06309148264984227
+        },
+        "age_lt33": {
+          "n": 1683,
+          "events": 57,
+          "rate": 0.0338680926916221
+        },
+        "prior_pe_yes": {
+          "n": 210,
+          "events": 22,
+          "rate": 0.10476190476190476
+        },
+        "prior_pe_no": {
+          "n": 1790,
+          "events": 55,
+          "rate": 0.030726256983240222
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 10,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 6,
+          "n_controls": 1957,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 8,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 12,
+          "n_controls": 1938,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 12,
+          "n_controls": 1926,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.046,
+    "pf_r": 0.9937276650512008,
+    "median_ess": 53.906733884397866,
+    "p5_ess": 18.992732233872708,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7279841253722987,
+    "iAUC_highfreq": 0.8102341334118687,
+    "iAUC_hf_planC": 0.822368695159449,
+    "iAUC_lm_clean": 0.7954202671510828,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5692975997643941,
+    "landmark_aucs": [
+      0.8417402730126287,
+      0.8636833936885671,
+      0.7191037191037191
+    ],
+    "iAUC_landmark": 0.8179649536150788,
+    "iAUC_landmark_mean_auc": 0.8081757952683049,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.579698472535972,
+    "iAUC_lowfreq": 0.7826093358857311,
+    "_seed": 67,
+    "_mc": 25,
+    "_audit": {
+      "n_events_total": 92,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 92,
+          "rate": 0.046
+        },
+        "age_ge33": {
+          "n": 317,
+          "events": 21,
+          "rate": 0.06624605678233439
+        },
+        "age_lt33": {
+          "n": 1683,
+          "events": 71,
+          "rate": 0.0421865715983363
+        },
+        "prior_pe_yes": {
+          "n": 189,
+          "events": 18,
+          "rate": 0.09523809523809523
+        },
+        "prior_pe_no": {
+          "n": 1811,
+          "events": 74,
+          "rate": 0.040861402540033134
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 15,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 12,
+          "n_controls": 1945,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 11,
+          "n_controls": 1939,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 8,
+          "n_controls": 1931,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 16,
+          "n_controls": 1915,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0445,
+    "pf_r": 0.993931892834434,
+    "median_ess": 53.87103194422019,
+    "p5_ess": 19.303987652159044,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7523493838805824,
+    "iAUC_highfreq": 0.8198176884002505,
+    "iAUC_hf_planC": 0.8709205215640151,
+    "iAUC_lm_clean": 0.8617821514092552,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6010298517848445,
+    "landmark_aucs": [
+      0.7560534057479067,
+      0.8632962508412843,
+      0.8102697095435685
+    ],
+    "iAUC_landmark": 0.8155730290167699,
+    "iAUC_landmark_mean_auc": 0.8098731220442531,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6082423815037981,
+    "iAUC_lowfreq": 0.8076682207222879,
+    "_seed": 68,
+    "_mc": 26,
+    "_audit": {
+      "n_events_total": 89,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 89,
+          "rate": 0.0445
+        },
+        "age_ge33": {
+          "n": 313,
+          "events": 20,
+          "rate": 0.06389776357827476
+        },
+        "age_lt33": {
+          "n": 1687,
+          "events": 69,
+          "rate": 0.04090100770598696
+        },
+        "prior_pe_yes": {
+          "n": 169,
+          "events": 17,
+          "rate": 0.10059171597633136
+        },
+        "prior_pe_no": {
+          "n": 1831,
+          "events": 72,
+          "rate": 0.03932277444019661
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 12,
+          "n_controls": 1948,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1939,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 23,
+          "n_controls": 1916,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.041,
+    "pf_r": 0.9939529520796517,
+    "median_ess": 53.953627278875025,
+    "p5_ess": 19.194412912007078,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8023961568034907,
+    "iAUC_highfreq": 0.8588890271211744,
+    "iAUC_hf_planC": 0.8612700800822723,
+    "iAUC_lm_clean": 0.8466819657769694,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6553713610350833,
+    "landmark_aucs": [
+      0.8400475947645759,
+      0.830774880646346,
+      0.8709692582495064
+    ],
+    "iAUC_landmark": 0.8483142572779299,
+    "iAUC_landmark_mean_auc": 0.8472639112201428,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.640414726367288,
+    "iAUC_lowfreq": 0.8378638964916646,
+    "_seed": 69,
+    "_mc": 27,
+    "_audit": {
+      "n_events_total": 82,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 82,
+          "rate": 0.041
+        },
+        "age_ge33": {
+          "n": 296,
+          "events": 19,
+          "rate": 0.06418918918918919
+        },
+        "age_lt33": {
+          "n": 1704,
+          "events": 63,
+          "rate": 0.03697183098591549
+        },
+        "prior_pe_yes": {
+          "n": 200,
+          "events": 21,
+          "rate": 0.105
+        },
+        "prior_pe_no": {
+          "n": 1800,
+          "events": 61,
+          "rate": 0.03388888888888889
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 19,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 9,
+          "n_controls": 1952,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 5,
+          "n_controls": 1949,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 6,
+          "n_controls": 1943,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 15,
+          "n_controls": 1928,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0455,
+    "pf_r": 0.9936737380181958,
+    "median_ess": 53.89784214910544,
+    "p5_ess": 19.15717000125296,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7873163028722576,
+    "iAUC_highfreq": 0.8248290566870083,
+    "iAUC_hf_planC": 0.8085609351099768,
+    "iAUC_lm_clean": 0.8057389184723484,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6001887116143421,
+    "landmark_aucs": [
+      0.7656170644997461,
+      0.840506793977231,
+      0.8115089661534913
+    ],
+    "iAUC_landmark": 0.8101120015685122,
+    "iAUC_landmark_mean_auc": 0.8058776082101562,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6741170265879525,
+    "iAUC_lowfreq": 0.7982746366688724,
+    "_seed": 70,
+    "_mc": 28,
+    "_audit": {
+      "n_events_total": 91,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 91,
+          "rate": 0.0455
+        },
+        "age_ge33": {
+          "n": 320,
+          "events": 19,
+          "rate": 0.059375
+        },
+        "age_lt33": {
+          "n": 1680,
+          "events": 72,
+          "rate": 0.04285714285714286
+        },
+        "prior_pe_yes": {
+          "n": 201,
+          "events": 20,
+          "rate": 0.09950248756218906
+        },
+        "prior_pe_no": {
+          "n": 1799,
+          "events": 71,
+          "rate": 0.039466370205669815
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 6,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 15,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1937,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 19,
+          "n_controls": 1918,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.042,
+    "pf_r": 0.9937626740110868,
+    "median_ess": 53.88220542261078,
+    "p5_ess": 19.204503105161958,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8427010964670141,
+    "iAUC_highfreq": 0.7901204543503763,
+    "iAUC_hf_planC": 0.8278235280157581,
+    "iAUC_lm_clean": 0.814217117181258,
+    "mean_lead_time": 0.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.648379159394581,
+    "landmark_aucs": [
+      0.7451596553471871,
+      0.8187490823667597,
+      0.7851065776232733
+    ],
+    "iAUC_landmark": 0.7925810420302709,
+    "iAUC_landmark_mean_auc": 0.7830051051124066,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.7289598664355242,
+    "iAUC_lowfreq": 0.7422391347887042,
+    "_seed": 71,
+    "_mc": 29,
+    "_audit": {
+      "n_events_total": 84,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 84,
+          "rate": 0.042
+        },
+        "age_ge33": {
+          "n": 321,
+          "events": 20,
+          "rate": 0.06230529595015576
+        },
+        "age_lt33": {
+          "n": 1679,
+          "events": 64,
+          "rate": 0.038117927337701016
+        },
+        "prior_pe_yes": {
+          "n": 212,
+          "events": 22,
+          "rate": 0.10377358490566038
+        },
+        "prior_pe_no": {
+          "n": 1788,
+          "events": 62,
+          "rate": 0.03467561521252797
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 7,
+          "n_controls": 1967,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 13,
+          "n_controls": 1960,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 14,
+          "n_controls": 1953,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 17,
+          "n_controls": 1936,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 14,
+          "n_controls": 1922,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0475,
+    "pf_r": 0.9939003250198247,
+    "median_ess": 53.83553253422293,
+    "p5_ess": 19.38687272187161,
+    "ess_warning": false,
+    "cox_beta_eta": 0.8994765857229755,
+    "iAUC_highfreq": 0.8403979124168808,
+    "iAUC_hf_planC": 0.8469103986488454,
+    "iAUC_lm_clean": 0.8489633382836842,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5605346120221475,
+    "landmark_aucs": [
+      0.8482995088499675,
+      0.8418581878924025,
+      0.8324127149557061
+    ],
+    "iAUC_landmark": 0.8412986462500331,
+    "iAUC_landmark_mean_auc": 0.8408568038993588,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6979235701283079,
+    "iAUC_lowfreq": 0.8327946591782128,
+    "_seed": 72,
+    "_mc": 30,
+    "_audit": {
+      "n_events_total": 95,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 95,
+          "rate": 0.0475
+        },
+        "age_ge33": {
+          "n": 336,
+          "events": 22,
+          "rate": 0.06547619047619048
+        },
+        "age_lt33": {
+          "n": 1664,
+          "events": 73,
+          "rate": 0.043870192307692304
+        },
+        "prior_pe_yes": {
+          "n": 223,
+          "events": 16,
+          "rate": 0.07174887892376682
+        },
+        "prior_pe_no": {
+          "n": 1777,
+          "events": 79,
+          "rate": 0.04445694991558807
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1959,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 15,
+          "n_controls": 1947,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 19,
+          "n_controls": 1940,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1927,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 16,
+          "n_controls": 1911,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0435,
+    "pf_r": 0.9939070260379159,
+    "median_ess": 53.84689910615951,
+    "p5_ess": 19.05534622498998,
+    "ess_warning": false,
+    "cox_beta_eta": 1.0341660486043118,
+    "iAUC_highfreq": 0.8865315732785612,
+    "iAUC_hf_planC": 0.8953422508823144,
+    "iAUC_lm_clean": 0.8889111585551828,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6755379104776695,
+    "landmark_aucs": [
+      0.8439317028149514,
+      0.8653846153846154,
+      0.8944099378881987
+    ],
+    "iAUC_landmark": 0.8722039926859204,
+    "iAUC_landmark_mean_auc": 0.8679087520292552,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.8410036245654976,
+    "iAUC_lowfreq": 0.8396663577386468,
+    "_seed": 73,
+    "_mc": 31,
+    "_audit": {
+      "n_events_total": 87,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 87,
+          "rate": 0.0435
+        },
+        "age_ge33": {
+          "n": 304,
+          "events": 16,
+          "rate": 0.05263157894736842
+        },
+        "age_lt33": {
+          "n": 1696,
+          "events": 71,
+          "rate": 0.04186320754716981
+        },
+        "prior_pe_yes": {
+          "n": 185,
+          "events": 25,
+          "rate": 0.13513513513513514
+        },
+        "prior_pe_no": {
+          "n": 1815,
+          "events": 62,
+          "rate": 0.03415977961432507
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1967,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 9,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 15,
+          "n_controls": 1943,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 19,
+          "n_controls": 1924,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.04,
+    "pf_r": 0.9938246090580284,
+    "median_ess": 53.90469152686319,
+    "p5_ess": 19.029643076262055,
+    "ess_warning": false,
+    "cox_beta_eta": 0.684897400845786,
+    "iAUC_highfreq": 0.8735681652651791,
+    "iAUC_hf_planC": 0.830596696650124,
+    "iAUC_lm_clean": 0.8397565136476427,
+    "mean_lead_time": 0.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6879096868171887,
+    "landmark_aucs": [
+      0.8470880641699148,
+      0.8194186276448487,
+      0.8762626262626262
+    ],
+    "iAUC_landmark": 0.8439217374031649,
+    "iAUC_landmark_mean_auc": 0.8475897726924632,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5399333086666904,
+    "iAUC_lowfreq": 0.8042772959014766,
+    "_seed": 74,
+    "_mc": 32,
+    "_audit": {
+      "n_events_total": 80,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 80,
+          "rate": 0.04
+        },
+        "age_ge33": {
+          "n": 323,
+          "events": 16,
+          "rate": 0.04953560371517028
+        },
+        "age_lt33": {
+          "n": 1677,
+          "events": 64,
+          "rate": 0.0381633870005963
+        },
+        "prior_pe_yes": {
+          "n": 186,
+          "events": 22,
+          "rate": 0.11827956989247312
+        },
+        "prior_pe_no": {
+          "n": 1814,
+          "events": 58,
+          "rate": 0.03197353914002205
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 11,
+          "n_controls": 1961,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 9,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 7,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 13,
+          "n_controls": 1941,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 13,
+          "n_controls": 1928,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0485,
+    "pf_r": 0.9938480140712425,
+    "median_ess": 53.77974063247271,
+    "p5_ess": 18.91918518389969,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7049993776963063,
+    "iAUC_highfreq": 0.7990228676121327,
+    "iAUC_hf_planC": 0.7985634943834301,
+    "iAUC_lm_clean": 0.7725477095252015,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6069349256972246,
+    "landmark_aucs": [
+      0.8392394122731202,
+      0.8131887052341599,
+      0.7785911436457459
+    ],
+    "iAUC_landmark": 0.8104498880369139,
+    "iAUC_landmark_mean_auc": 0.8103397537176753,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.506037668312707,
+    "iAUC_lowfreq": 0.7530433602497116,
+    "_seed": 75,
+    "_mc": 33,
+    "_audit": {
+      "n_events_total": 97,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 97,
+          "rate": 0.0485
+        },
+        "age_ge33": {
+          "n": 326,
+          "events": 21,
+          "rate": 0.06441717791411043
+        },
+        "age_lt33": {
+          "n": 1674,
+          "events": 76,
+          "rate": 0.04540023894862605
+        },
+        "prior_pe_yes": {
+          "n": 206,
+          "events": 20,
+          "rate": 0.0970873786407767
+        },
+        "prior_pe_no": {
+          "n": 1794,
+          "events": 77,
+          "rate": 0.04292084726867335
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 6,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1948,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 13,
+          "n_controls": 1943,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 10,
+          "n_controls": 1933,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 23,
+          "n_controls": 1910,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.043,
+    "pf_r": 0.9938514906809969,
+    "median_ess": 53.76444932850746,
+    "p5_ess": 19.10695985725735,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7309006463024953,
+    "iAUC_highfreq": 0.8007318363088006,
+    "iAUC_hf_planC": 0.8374960372201421,
+    "iAUC_lm_clean": 0.8281053199784082,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5552807993024685,
+    "landmark_aucs": [
+      0.9192697768762678,
+      0.7764966598150052,
+      0.8273433454168824
+    ],
+    "iAUC_landmark": 0.8176698446277212,
+    "iAUC_landmark_mean_auc": 0.8410365940360517,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6238949239651647,
+    "iAUC_lowfreq": 0.7755749631937794,
+    "_seed": 76,
+    "_mc": 34,
+    "_audit": {
+      "n_events_total": 86,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 86,
+          "rate": 0.043
+        },
+        "age_ge33": {
+          "n": 309,
+          "events": 13,
+          "rate": 0.042071197411003236
+        },
+        "age_lt33": {
+          "n": 1691,
+          "events": 73,
+          "rate": 0.04316972205795387
+        },
+        "prior_pe_yes": {
+          "n": 200,
+          "events": 25,
+          "rate": 0.125
+        },
+        "prior_pe_no": {
+          "n": 1800,
+          "events": 61,
+          "rate": 0.03388888888888889
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 5,
+          "n_controls": 1969,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 10,
+          "n_controls": 1962,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 15,
+          "n_controls": 1954,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 12,
+          "n_controls": 1942,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 18,
+          "n_controls": 1924,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0395,
+    "pf_r": 0.9937465773808531,
+    "median_ess": 53.90816526572816,
+    "p5_ess": 19.21697505515823,
+    "ess_warning": false,
+    "cox_beta_eta": 0.80676322851012,
+    "iAUC_highfreq": 0.8383743992676786,
+    "iAUC_hf_planC": 0.8244852052598203,
+    "iAUC_lm_clean": 0.8110484942029506,
+    "mean_lead_time": 2.5,
+    "n_lead_subjects": 2,
+    "iAUC_static": 0.649668166908231,
+    "landmark_aucs": [
+      0.9125446200917898,
+      0.8143004494216459,
+      0.8572167997633836
+    ],
+    "iAUC_landmark": 0.8474139903882829,
+    "iAUC_landmark_mean_auc": 0.8613539564256065,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6611707164426702,
+    "iAUC_lowfreq": 0.799755892898009,
+    "_seed": 77,
+    "_mc": 35,
+    "_audit": {
+      "n_events_total": 79,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 79,
+          "rate": 0.0395
+        },
+        "age_ge33": {
+          "n": 307,
+          "events": 15,
+          "rate": 0.048859934853420196
+        },
+        "age_lt33": {
+          "n": 1693,
+          "events": 64,
+          "rate": 0.03780271707028943
+        },
+        "prior_pe_yes": {
+          "n": 223,
+          "events": 21,
+          "rate": 0.09417040358744394
+        },
+        "prior_pe_no": {
+          "n": 1777,
+          "events": 58,
+          "rate": 0.032639279684862126
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 6,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 8,
+          "n_controls": 1953,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 14,
+          "n_controls": 1944,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1935,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 6,
+          "n_controls": 1929,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.033,
+    "pf_r": 0.9938518368635028,
+    "median_ess": 53.80070828008941,
+    "p5_ess": 19.384039939078235,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7660976813714424,
+    "iAUC_highfreq": 0.7977074073286404,
+    "iAUC_hf_planC": 0.8277859688635546,
+    "iAUC_lm_clean": 0.8263812299012039,
+    "mean_lead_time": 7.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.6207864571149061,
+    "landmark_aucs": [
+      0.8297028031070584,
+      0.7279085014934071,
+      0.8279254079254079
+    ],
+    "iAUC_landmark": 0.799174836775058,
+    "iAUC_landmark_mean_auc": 0.795178904175291,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.6587669364407142,
+    "iAUC_lowfreq": 0.7685714893345527,
+    "_seed": 78,
+    "_mc": 36,
+    "_audit": {
+      "n_events_total": 66,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 66,
+          "rate": 0.033
+        },
+        "age_ge33": {
+          "n": 341,
+          "events": 14,
+          "rate": 0.04105571847507331
+        },
+        "age_lt33": {
+          "n": 1659,
+          "events": 52,
+          "rate": 0.03134418324291742
+        },
+        "prior_pe_yes": {
+          "n": 205,
+          "events": 18,
+          "rate": 0.08780487804878048
+        },
+        "prior_pe_no": {
+          "n": 1795,
+          "events": 48,
+          "rate": 0.026740947075208913
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 8,
+          "n_controls": 1972,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 6,
+          "n_controls": 1968,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 7,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 12,
+          "n_controls": 1953,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 11,
+          "n_controls": 1942,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.041,
+    "pf_r": 0.9936915935905405,
+    "median_ess": 53.914375633761864,
+    "p5_ess": 18.845177549454107,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7986219038481097,
+    "iAUC_highfreq": 0.8107794969568087,
+    "iAUC_hf_planC": 0.8236855420724184,
+    "iAUC_lm_clean": 0.8205342162963489,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.6327491383735425,
+    "landmark_aucs": [
+      0.8339276617422313,
+      0.761740473738414,
+      0.8841097308488612
+    ],
+    "iAUC_landmark": 0.8275867126200778,
+    "iAUC_landmark_mean_auc": 0.8265926221098354,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5643788914012512,
+    "iAUC_lowfreq": 0.7886338637530249,
+    "_seed": 79,
+    "_mc": 37,
+    "_audit": {
+      "n_events_total": 82,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 82,
+          "rate": 0.041
+        },
+        "age_ge33": {
+          "n": 322,
+          "events": 18,
+          "rate": 0.055900621118012424
+        },
+        "age_lt33": {
+          "n": 1678,
+          "events": 64,
+          "rate": 0.03814064362336114
+        },
+        "prior_pe_yes": {
+          "n": 171,
+          "events": 14,
+          "rate": 0.08187134502923976
+        },
+        "prior_pe_no": {
+          "n": 1829,
+          "events": 68,
+          "rate": 0.037178786221979225
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 12,
+          "n_controls": 1958,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 11,
+          "n_controls": 1952,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 8,
+          "n_controls": 1950,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 9,
+          "n_controls": 1941,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 18,
+          "n_controls": 1923,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0435,
+    "pf_r": 0.9937885376602841,
+    "median_ess": 53.77432694791784,
+    "p5_ess": 18.942023972461076,
+    "ess_warning": false,
+    "cox_beta_eta": 0.7660374172641502,
+    "iAUC_highfreq": 0.871739592505997,
+    "iAUC_hf_planC": 0.8368457608250954,
+    "iAUC_lm_clean": 0.8271219660713776,
+    "mean_lead_time": 5.0,
+    "n_lead_subjects": 1,
+    "iAUC_static": 0.7039899189263049,
+    "landmark_aucs": [
+      0.8121827411167513,
+      0.8735717961914565,
+      0.8071169369769681
+    ],
+    "iAUC_landmark": 0.8463243555096711,
+    "iAUC_landmark_mean_auc": 0.8309571580950587,
+    "landmark_coxfit": [
+      "fallback_eta (too few events)",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.5673073901315011,
+    "iAUC_lowfreq": 0.8176752801141712,
+    "_seed": 80,
+    "_mc": 38,
+    "_audit": {
+      "n_events_total": 87,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 87,
+          "rate": 0.0435
+        },
+        "age_ge33": {
+          "n": 328,
+          "events": 24,
+          "rate": 0.07317073170731707
+        },
+        "age_lt33": {
+          "n": 1672,
+          "events": 63,
+          "rate": 0.037679425837320576
+        },
+        "prior_pe_yes": {
+          "n": 205,
+          "events": 24,
+          "rate": 0.11707317073170732
+        },
+        "prior_pe_no": {
+          "n": 1795,
+          "events": 63,
+          "rate": 0.0350974930362117
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 9,
+          "n_controls": 1965,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 7,
+          "n_controls": 1963,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 13,
+          "n_controls": 1952,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 18,
+          "n_controls": 1934,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 7,
+          "n_controls": 1927,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  },
+  {
+    "scenario": "combined",
+    "event_rate": 0.0495,
+    "pf_r": 0.9935317971174573,
+    "median_ess": 53.84324467777212,
+    "p5_ess": 19.038845398956635,
+    "ess_warning": false,
+    "cox_beta_eta": 0.6825442096687502,
+    "iAUC_highfreq": 0.8107744370434664,
+    "iAUC_hf_planC": 0.8234409393922777,
+    "iAUC_lm_clean": 0.8302639103221915,
+    "mean_lead_time": null,
+    "n_lead_subjects": 0,
+    "iAUC_static": 0.5938911048479115,
+    "landmark_aucs": [
+      0.8102009722121454,
+      0.8007087628865979,
+      0.8066641387809271
+    ],
+    "iAUC_landmark": 0.804435385560616,
+    "iAUC_landmark_mean_auc": 0.8058579579598901,
+    "landmark_coxfit": [
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "cox_beta_eta_lowfreq": 0.579405590029703,
+    "iAUC_lowfreq": 0.7980085625956953,
+    "_seed": 81,
+    "_mc": 39,
+    "_audit": {
+      "n_events_total": 99,
+      "subgroups": {
+        "overall": {
+          "n": 2000,
+          "events": 99,
+          "rate": 0.0495
+        },
+        "age_ge33": {
+          "n": 303,
+          "events": 18,
+          "rate": 0.0594059405940594
+        },
+        "age_lt33": {
+          "n": 1697,
+          "events": 81,
+          "rate": 0.047731290512669416
+        },
+        "prior_pe_yes": {
+          "n": 183,
+          "events": 21,
+          "rate": 0.11475409836065574
+        },
+        "prior_pe_no": {
+          "n": 1817,
+          "events": 78,
+          "rate": 0.04292790313703908
+        }
+      },
+      "windows": [
+        {
+          "t": 22,
+          "n_cases": 6,
+          "n_controls": 1966,
+          "skipped": false
+        },
+        {
+          "t": 24,
+          "n_cases": 5,
+          "n_controls": 1964,
+          "skipped": false
+        },
+        {
+          "t": 26,
+          "n_cases": 10,
+          "n_controls": 1956,
+          "skipped": false
+        },
+        {
+          "t": 30,
+          "n_cases": 27,
+          "n_controls": 1929,
+          "skipped": false
+        },
+        {
+          "t": 34,
+          "n_cases": 18,
+          "n_controls": 1911,
+          "skipped": false
+        }
+      ],
+      "n_valid_windows": 5,
+      "all_windows_skipped": false
+    }
+  }
+]

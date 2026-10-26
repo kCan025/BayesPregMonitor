@@ -1,11 +1,48 @@
+"""
+simulate_data.py — Data Generating Process (DGP) for maternal risk simulation
+=============================================================================
+Generates synthetic subjects with:
+  - Scalar latent risk state theta_i(t) evolving as Gaussian random walk
+  - 4-dim wearable observations y_i(t) = alpha * theta_i(t) + eps_i(t)
+  - Event times from Weibull proportional hazards model
+  - Random censoring + administrative censoring at week 40
+
+DGP v4.0 (2026-10-25, after Dr. Sundaram's calibration guidance):
+  - N = 2000 (v3.4 was 500); enlarged so Plan-C 4-week evaluation windows
+    keep >=5 cases under the realistic ~4% event rate.
+  - Baseline covariates now (age, bmi, age_ge33, prior_pe_history).
+      age_ge33 = 1{age>=33}, HR 1.5 (WORKING ASSUMPTION, to be confirmed)
+      prior_pe_history ~ Bernoulli(0.10) on an INDEPENDENT stream (seed+4),
+      HR 3.0 (WORKING ASSUMPTION, to be confirmed). Prevalence 0.10 also tbc.
+    The two new columns are APPENDED; X[:,0]=age, X[:,1]=bmi unchanged and the
+    age/bmi RNG stream is untouched, so v3.4 streams remain reproducible.
+  - beta = [0.005, 0.005, ln 1.5, ln 3.0].
+  - Overall event rate calibrated to ~4% (US preeclampsia prevalence):
+      lambda_weibull = 0.0002176 for linear latent process (baseline/heavy_tail)
+      lambda_weibull = 0.0001227 for nonlinear latent process (nonlinear/combined)
+    calibrated separately, N=2000, 80-rep verification (4.07% / 4.14%).
+  - v3.4 N=500 production values were lambda=0.0015 (rate 18.87% linear /
+    28.00% nonlinear over 80 reps). The N=500 4%-calibration lambdas
+    (0.000313 / 0.000173) are NOT reused at N=2000.
+
+All parameters are hardcoded for reproducibility.
+"""
+
 import numpy as np
 from dataclasses import dataclass
 from typing import Tuple
 
+# ---- v4.0 calibration constants (N=2000, target ~4%) -----------------------
+N_V4 = 2000
+LAMBDA_V4_LINEAR = 0.0002176      # baseline / heavy_tail (linear latent process)
+LAMBDA_V4_NONLINEAR = 0.0001227   # nonlinear / combined (nonlinear latent process)
+PRIOR_PE_PREVALENCE = 0.10        # WORKING ASSUMPTION (to be confirmed)
+AGE_GE33_CUTOFF = 33.0
+
 
 @dataclass
 class DGPParams:
-    """Complete DGP parameter specification (v3.4)."""
+    """Complete DGP parameter specification (v4.0)."""
     # State evolution
     sigma2_omega: float = 0.04       # State noise variance
 
@@ -14,13 +51,13 @@ class DGPParams:
     Sigma_eps: np.ndarray = None     # Observation noise covariance (4x4 diagonal)
 
     # Event hazard
-    gamma: float = 0.8               # Latent state -> hazard link (v3.5: from 0.5)
+    gamma: float = 0.8               # Latent state -> hazard link
     k_weibull: float = 1.2           # Weibull shape parameter
-    lambda_weibull: float = 0.0015   # Weibull scale parameter (v3.5: event rate ~10-15%)
-    beta: np.ndarray = None          # Baseline covariate effects (2x1)
+    lambda_weibull: float = LAMBDA_V4_LINEAR  # v4.0: calibrated to ~4% at N=2000 (linear)
+    beta: np.ndarray = None          # Covariate effects (4x1); set in __post_init__
 
     # Simulation design
-    N: int = 500                     # Number of subjects
+    N: int = N_V4                    # v4.0: 500 -> 2000 (window adequacy at ~4%)
     T_weeks: int = 40                # Total gestational weeks
     censoring_week: int = 40         # Administrative censoring time
 
@@ -34,19 +71,34 @@ class DGPParams:
         if self.Sigma_eps is None:
             self.Sigma_eps = np.diag([0.25, 0.16, 0.36, 0.09])
         if self.beta is None:
-            self.beta = np.array([0.005, 0.005])  # v3.4: reduced from [0.03, 0.05]
+            # v4.0: append effects for age_ge33 (HR 1.5) and prior_pe (HR 3.0).
+            # HRs/prevalence are WORKING ASSUMPTIONS (to be confirmed by collaborator).
+            self.beta = np.array([
+                0.005, 0.005,
+                np.log(1.5),           # age_ge33
+                np.log(3.0),           # prior_pe_history
+            ])
 
 
 def generate_baseline_covariates(N: int, seed: int = 42) -> np.ndarray:
     """
-    Generate baseline covariates X_i = (age, BMI).
+    Generate baseline covariates X_i = (age, BMI, age_ge33, prior_pe_history).
     - age ~ N(28, 5^2), clipped to [18, 45]
     - BMI ~ N(26, 5^2), clipped to [18, 45]
+      (age/BMI use the SAME RandomState(seed) stream as v3.4, so the first two
+       columns are bit-for-bit unchanged -> old streams stay reproducible)
+    - age_ge33 = 1{age >= 33} (deterministic function of age)
+    - prior_pe_history ~ Bernoulli(0.10) on an INDEPENDENT stream RandomState(seed+4)
+      (prevalence 0.10 is a working assumption, to be confirmed).
+    New columns are APPENDED: X[:,0]=age, X[:,1]=bmi are never moved.
     """
     rng = np.random.RandomState(seed)
     age = np.clip(rng.normal(28, 5, N), 18, 45)
     bmi = np.clip(rng.normal(26, 5, N), 18, 45)
-    return np.column_stack([age, bmi])  # (N, 2)
+    age_ge33 = (age >= AGE_GE33_CUTOFF).astype(float)
+    rng_pe = np.random.RandomState(seed + 4)  # independent stream; do NOT reuse seed/+1/+3
+    prior_pe = (rng_pe.uniform(0, 1, N) < PRIOR_PE_PREVALENCE).astype(float)
+    return np.column_stack([age, bmi, age_ge33, prior_pe])  # (N, 4)
 
 
 def generate_latent_trajectories(N: int, T: int, sigma2_omega: float,
@@ -206,7 +258,7 @@ class SimulatedData:
     """Container for all simulated data."""
     theta: np.ndarray       # (T, N) latent state
     Y: np.ndarray           # (T, N, 4) wearable observations
-    X: np.ndarray           # (N, 2) baseline covariates
+    X: np.ndarray           # (N, 4) baseline covariates: age, bmi, age_ge33, prior_pe
     event_times: np.ndarray # (N,) observed event/censoring times
     event_indicators: np.ndarray  # (N,) 1=event, 0=censored
     params: DGPParams
@@ -245,9 +297,14 @@ def simulate(seed: int = 42, theta_mode: str = "linear",
         verbose: if True, print summary (set False for batch MC runs)
     """
     params = DGPParams()
+    # v4.0: lambda calibrated per latent-process mode so each yields ~4% at N=2000.
+    if theta_mode == "nonlinear":
+        params.lambda_weibull = LAMBDA_V4_NONLINEAR
+    else:
+        params.lambda_weibull = LAMBDA_V4_LINEAR
     if verbose:
         print("=" * 60)
-        print(f"Simulating maternal risk data (DGP v3.4, {theta_mode}/{obs_noise})")
+        print(f"Simulating maternal risk data (DGP v4.0, {theta_mode}/{obs_noise})")
         print("=" * 60)
 
     # 1. Baseline covariates
@@ -284,10 +341,14 @@ def simulate(seed: int = 42, theta_mode: str = "linear",
 
 if __name__ == "__main__":
     data = simulate()
-    # Quick sanity check
-    assert data.theta.shape == (40, 500)
-    assert data.Y.shape == (40, 500, 4)
-    assert data.X.shape == (500, 2)
-    assert data.event_times.shape == (500,)
-    assert data.event_indicators.shape == (500,)
+    # Quick sanity check (v4.0: N=2000, 4 covariates)
+    assert data.theta.shape == (40, N_V4)
+    assert data.Y.shape == (40, N_V4, 4)
+    assert data.X.shape == (N_V4, 4)
+    assert set(np.unique(data.X[:, 2])).issubset({0.0, 1.0})   # age_ge33 binary
+    assert set(np.unique(data.X[:, 3])).issubset({0.0, 1.0})   # prior_pe binary
+    assert data.event_times.shape == (N_V4,)
+    assert data.event_indicators.shape == (N_V4,)
+    print(f"prior_pe prevalence: {data.X[:, 3].mean():.3f} (target {PRIOR_PE_PREVALENCE})")
+    print(f"age_ge33 prevalence: {data.X[:, 2].mean():.3f}")
     print("\nAll shape checks passed.")

@@ -1,3 +1,14 @@
+"""
+time_varying_cox.py -- Time-varying Cox model with eta_i(t) as covariate
+========================================================================
+Fits extended Cox proportional hazards model:
+  lambda_i(t) = lambda_0(t) * exp(beta_1 * eta_i(t) + beta_2' X_i)
+
+Uses counting process format (start, stop, event) for time-varying covariates.
+Supports multiple imputation (M=5) with Rubin's rules for pooling.
+
+v3.4: Fixed risk set definition -- at_risk = (start < t_k) & (stop >= t_k)
+"""
 
 import numpy as np
 from typing import Tuple
