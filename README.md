@@ -20,13 +20,13 @@ All four mean differences are positive, exclude zero, and survive Bonferroni cor
 ## v4.0 DGP specification
 
 - Cohort **N = 2,000**, horizon T = 40 weeks; Weibull baseline hazard calibrated **separately per latent mode** to ~4% overall: λ = 0.0002176 (linear) and λ = 0.0001227 (nonlinear), shape k = 1.2.
-- New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on an independent stream `seed+4`). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; a sensitivity analysis over neighboring values is planned.**
-- Particle filter, M = 5 multiple-imputation Cox, and Plan-C evaluation are unchanged.
+- New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on its own `RandomState(seed+4)`, independent of the same replicate's other streams; see Limitations for cross-replicate overlap). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; a sensitivity analysis over neighboring values is planned.**
+- Particle filter, M = 5 multiple-imputation Cox, and Plan-C evaluation are unchanged. Static Cox now uses all four covariates; the legacy Landmarking comparison still uses age and BMI only.
 
 ## Limitations
 
 - Effects are small in absolute terms; very small paired p-values reflect paired-design power, not clinical magnitude.
-- **Replicate independence (v4.0, pre-existing):** the θ₀ draw of replicate k and covariate draws of replicate k+1 come from overlapping `numpy.random.RandomState` lineages. The Wilcoxon test assumes independent pairs; the practical impact is believed to be small but has not been quantified. A stream-separation fix is planned for v4.1 and will regenerate all numbers.
+- **Replicate independence:** replicate k uses seeds 42+k (covariates), +1 (latent states), +2 (observations), +3 (events) and, new in v4.0, +4 (prior history), so neighbouring replicates share random-number lineages. Known overlaps: the latent-state initial draw of replicate k with the age/BMI draw of replicate k+1 (present since v3.4); and, introduced in v4.0, the prior-history draw of replicate k with the event uniforms of replicate k+1. The Wilcoxon test assumes independent pairs. The lag-1 autocorrelation of the paired difference across replicates is between -0.09 and +0.01 in the four scenarios (standard error under independence about 0.11); the effect on the p-values has not been quantified further. A stream-separation fix is planned for v4.1 and will regenerate all numbers.
 - The estimated latent-state coefficient is β_η ≈ 0.769–0.774 versus the generating γ = 0.8 (v3.4: 0.777–0.790); the reason for the difference is not investigated here and no causal explanation is claimed.
 - HRs and prior-history prevalence are assumptions pending external reference values.
 
@@ -61,7 +61,7 @@ Output is written to `results/$RESULTS_SUBDIR` (default `v4.0`) so a re-run neve
 
 ```bash
 cd code
-python run_monte_carlo.py --scenario baseline --n_mc 2          # smoke test
+RESULTS_SUBDIR=smoke python run_monte_carlo.py --scenario baseline --n_mc 2   # smoke test, own folder
 python run_monte_carlo.py --scenario baseline --n_mc 80         # one scenario
 python run_monte_carlo.py --run_all --n_mc 80                   # all four
 # Independent verification of a run (regression gate + raw-record audit):
@@ -69,10 +69,11 @@ python regression_v34.py . ../results
 python audit_v40.py ../results/v4.0/chunks --report ../results/v4.0/merge_report.json
 ```
 
-Runtime is hardware-dependent (single-core, roughly 15–20 minutes per scenario of 80 on the reference machine). Dependencies: Python ≥ 3.9, numpy, scipy, pandas, lifelines, matplotlib, scikit-learn.
+Runtime is hardware-dependent (single-core, roughly 20–25 minutes per scenario of 80 on the reference machine). Dependencies: Python ≥ 3.9, numpy, scipy, pandas, lifelines, matplotlib, scikit-learn.
 
 ## Version history
 
+- **v4.0.1 (2026-10-28):** documentation and audit-script fixes only; all numbers unchanged.
 - **v4.0 (2026-10-26):** realistic ~4% event rate, N = 2,000, two added risk-factor covariates; analysis unchanged.
 - **v3.4 (2026-10-22, tag `v3.4-archive`; tag `v1.2-planc`):** Plan C under a 19–28% event DGP — archived, do not cite for calibrated claims. Plan C fixed two design flaws (in-sample optimism; evaluation coinciding with model refresh). See `PLAN_C.md`.
 - **v1.1-bugfix:** independent per-generator seeds; true landmark Cox refit; decision-curve fix (see `BUGFIX_PLAN.md`). The NISS poster shows pre-fix numbers.

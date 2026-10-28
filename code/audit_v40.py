@@ -86,8 +86,9 @@ for sc in SCEN:
               s["summary"]["LM-clean (planC eval)"]["mean"])
         check(f"{sc} mean diff", dif.mean(),
               s["paired"]["HF_vs_LM_clean"]["mean_diff"])
-        check(f"{sc} wilcoxon p", p,
-              s["paired"]["HF_vs_LM_clean"]["wilcoxon_p"], 1e-6)
+        # compare on the log scale: an absolute tolerance is vacuous for p < 1e-6
+        check(f"{sc} log10 wilcoxon p", math.log10(p),
+              math.log10(s["paired"]["HF_vs_LM_clean"]["wilcoxon_p"]), 1e-9)
         check(f"{sc} event rate", er.mean(),
               s["diagnostics"]["event_rate_mean"])
         check(f"{sc} wins", int((dif > 0).sum()),
