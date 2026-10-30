@@ -1,6 +1,6 @@
 # BayesPregMonitor
 
-> **Status (2026-10-26):** Two versions live here. **v4.0** (`results/v4.0/`, tag `v4.0-calibrated`) recalibrates the data-generating process (DGP) to a **realistic overall preeclampsia event rate of ~4%** at **N = 2,000**, adding two binary covariates (`age ≥ 33`, prior-preeclampsia history). The analysis (particle filter, multiple-imputation Cox, Plan-C iAUC) is unchanged except for passing the new covariates through. **v3.4** (tag `v3.4-archive`, the earlier `results/*.json`) used a DGP that produced an unrealistic **19–28%** event rate; its numbers are retained for history only and must not be compared in the same table with v4.0.
+> **Status (2026-10-31):** Two versions live here. **v4.0** (`results/v4.0/`, tag `v4.0-calibrated`) recalibrates the data-generating process (DGP) to a **realistic overall preeclampsia event rate of ~4%** at **N = 2,000**, adding two binary covariates (`age ≥ 33`, prior-preeclampsia history). The analysis (particle filter, multiple-imputation Cox, Plan-C iAUC) is unchanged except for passing the new covariates through. **v3.4** (tag `v3.4-archive`, the earlier `results/*.json`) used a DGP that produced an unrealistic **19–28%** event rate; its numbers are retained for history only and must not be compared in the same table with v4.0. A **secondary ML-comparator analysis** (`code/ml_benchmark_sym.py`, `results/ml/`) was added after `v4.0.1`; it is not part of any tag and changes no v4.0 number — see *Secondary analysis* below.
 
 ## v4.0 verified Plan C results (realistic ~4% event rate, N = 2,000, 80 paired replicates/scenario)
 
@@ -23,12 +23,53 @@ All four mean differences are positive, exclude zero, and survive Bonferroni cor
 - New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on its own `RandomState(seed+4)`, independent of the same replicate's other streams; see Limitations for cross-replicate overlap). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; reference values are being sought.**
 - Particle filter, M = 5 multiple-imputation Cox, and Plan-C evaluation are unchanged. Static Cox now uses all four covariates; the legacy Landmarking comparison still uses age and BMI only.
 
+## Secondary analysis: ML comparator (post-v4.0.1, not part of any tag)
+
+`code/ml_benchmark_sym.py` and `results/ml/` hold a comparison added **after** the `v4.0.1` tag. It asks a narrow question: **does the cadence effect — how much iAUC is gained by refreshing the risk score weekly rather than at landmarks — differ between the structured model and a flexible learner?** No v4.0 number is changed by this analysis; where the two disagree, `v4.0.1` governs.
+
+**Design.** Three arms on each of the 80 baseline replicates (seeds 42–121), all scored only on held-out subjects under **one shared five-fold subject-level partition**, and all evaluated at the same five windows (`22, 24, 26, 30, 34`) with `delta_t = 4` and `min_pairs = 5`:
+
+| Arm | What it is |
+|---|---|
+| `pf_in` | The v4.0.1 pipeline exactly: PF `seed+1000`, MI-Cox `seed+3000`, fitted on all N and scored on all N |
+| `pf_cv` | Same particles; MI-Cox refitted inside each training fold, scored on the held-out fold |
+| `gbm` | Pooled person-week `HistGradientBoostingClassifier` (4-week feature window + 4 baseline covariates), same held-out folds |
+
+The learner is deliberately un-tuned: `max_leaf_nodes = 3`, `max_iter = 100`, `learning_rate = 0.05`, `min_samples_leaf = 20`, `l2_regularization = 1.0`, `class_weight = "balanced"`, all fixed before the first run. `early_stopping = False` because scikit-learn's built-in early stopping splits by row and would place rows of the same subject on both sides of the validation split. The person-week design yields 64,795 rows and 296 positive rows (0.46%) — roughly four rows per event, so the independent information is still about 83 events, not 296.
+
+**Results (mean over 80 replicates).**
+
+| Arm | HF iAUC | LM-clean | mean Δ | replicates with Δ > 0 |
+|---|---|---|---|---|
+| `pf_in` | 0.7506 | 0.7409 | +0.0097 | 62/80 |
+| `pf_cv` | 0.7357 | 0.7250 | +0.0107 | 62/80 |
+| `gbm` | 0.7043 | 0.6927 | +0.0116 | 62/80 |
+
+`pf_in` reproduces the published baseline row above (0.7506 / 0.7409 / +0.0097) exactly. That is the check that the symmetric harness is wired to the original pipeline.
+
+- **Protocol symmetry matters.** Fitted and scored on all subjects, the structured arm returns 0.7506; cross-fitted, 0.7357 — an optimism of **+0.0148**. Only the cross-fitted figure enters the comparison below.
+- **The cadence effect is not distinguishable between the arms.** `gbm` Δ − `pf_cv` Δ = **+0.0009**, 95% CI **[−0.0030, +0.0048]**, learner larger in 40/80 (Wilcoxon p = 0.615). The interval excludes a difference larger than about 0.005 in either direction. **It does not establish equivalence** — Δ itself is about 0.01.
+- **The structured model keeps an absolute advantage.** Mean HF iAUC 0.7357 versus 0.7043, a paired gap of **+0.0314** (95% CI [+0.0264, +0.0364]), structured arm higher in 74/80.
+- **The learner's Δ is more dispersed**: per-replicate standard deviation 0.021 versus 0.015.
+- **62/80 is a coincidence of counts, not a shared pattern.** The two arms share only 52 of those wins, their per-replicate Δ correlate at 0.57, and their signs agree in 60/80.
+
+**What this does not show.** One data-generating family and one learner specification; the agreement in cadence effects is a result about this design, not evidence that cadence effects are model-invariant. The information set is not held fixed — the learner sees a fixed 4-week window while the filter sees the full observation history — so the 0.031 gap mixes model class with information window and this study cannot separate them. The gap **may partly reflect** the fixed, untuned specification and the short feature window; it is not attributed to model class. At roughly 80 events across five windows a flexible learner is expected to lose, which is a statement about events per variable at a low event rate, not a statement that machine learning does not work.
+
+**Reproduce.**
+
+```bash
+cd code
+python ml_benchmark_sym.py run 0 80 4   # replicates 0..79, 4 workers, resumable
+python ml_benchmark_sym.py summary      # reads ../results/ml/*.json
+```
+
 ## Limitations
 
 - Effects are small in absolute terms; very small paired p-values reflect paired-design power, not clinical magnitude.
 - **Replicate independence:** replicate k uses seeds 42+k (covariates), +1 (latent states), +2 (observations), +3 (events) and, new in v4.0, +4 (prior history), so neighbouring replicates share random-number lineages. Known overlaps: the latent-state initial draw of replicate k with the age/BMI draw of replicate k+1 (present since v3.4); and, introduced in v4.0, the prior-history draw of replicate k with the event uniforms of replicate k+1. The Wilcoxon test assumes independent pairs. The lag-1 autocorrelation of the paired difference across replicates is between -0.09 and +0.01 in the four scenarios (standard error under independence about 0.11); the effect on the p-values has not been quantified further. A stream-separation fix is planned for v4.1 and will regenerate all numbers.
 - The estimated latent-state coefficient is β_η ≈ 0.769–0.774 versus the generating γ = 0.8 (v3.4: 0.777–0.790); the reason for the difference is not investigated here and no causal explanation is claimed.
 - HRs and prior-history prevalence are assumptions pending external reference values.
+- The secondary ML analysis inherits all of the above and adds two of its own: a single DGP and a single untuned learner specification.
 
 ## Project structure
 
@@ -45,9 +86,11 @@ BayesPregMonitor/
 │   ├── verify_planC.py         # From-scratch Plan C check on v3.4 records
 │   ├── regression_v34.py       # v4.0-code vs all 160 committed v3.4 event rates
 │   ├── audit_v40.py            # Independent recomputation from raw v4.0 records
+│   ├── ml_benchmark_sym.py     # Secondary analysis: PF vs GBM under shared folds (post-v4.0.1)
 │   └── (diagnostic/plotting helpers)
 ├── results/
 │   ├── v4.0/                   # v4.0 calibrated run: chunks/ + merge_report
+│   ├── ml/                     # Secondary analysis: one JSON per replicate (seeds 42-121)
 │   └── *.json                  # archived outputs (v3.4 MC + older single-run/diagnostic); not comparable to v4.0
 ├── PLAN_C.md
 ├── BUGFIX_PLAN.md
@@ -87,6 +130,7 @@ Runtime is hardware-dependent (single-core, roughly 20–25 minutes per scenario
 
 ## Version history
 
+- **post-v4.0.1 (2026-10-31):** secondary ML-comparator analysis added (`code/ml_benchmark_sym.py`, `results/ml/`). Not tagged; no v4.0 number changes.
 - **v4.0.1 (2026-10-28):** documentation and audit-script fixes only; all numbers unchanged.
 - **v4.0 (2026-10-26):** realistic ~4% event rate, N = 2,000, two added risk-factor covariates; analysis unchanged.
 - **v3.4 (2026-10-22, tag `v3.4-archive`; tag `v1.2-planc`):** Plan C under a 19–28% event DGP — archived, do not cite for calibrated claims. Plan C fixed two design flaws (in-sample optimism; evaluation coinciding with model refresh). See `PLAN_C.md`.
