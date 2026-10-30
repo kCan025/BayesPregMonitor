@@ -1,5 +1,8 @@
 # Plan C — Cadence-Isolated Comparison (2026-10-22)
 
+> Note (2026-10-29): the numbers below come from the v3.4 DGP (N = 500, 19-28% event rate).
+> The calibrated v4.0 results (N = 2,000, ~4% event rate) are in README.md and results/v4.0/.
+
 ## Why the previous benchmarks cannot answer the cadence question
 
 Two successive landmark implementations were each found inadequate:

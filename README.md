@@ -15,12 +15,12 @@ HF uses the fresh filtered latent state η(t); LM-clean freezes η at the last l
 
 All four mean differences are positive, exclude zero, and survive Bonferroni correction (α = 0.0125). **The absolute effects are small (0.4–1.0 AUC points).** The CIs above are confidence intervals for the *paired mean*; the per-replicate Δ is much more spread out (roughly −0.02 to +0.04) and is not a confidence interval.
 
-**Realized event rates (80 replicates):** linear latent process 4.07% overall; nonlinear 4.14% (about 82 events/replicate, range 61–102). Subgroups: age ≥ 33 (n ≈ 320) 5.58% / 5.72%; age < 33 3.79% / 3.84%; prior preeclampsia (n ≈ 201) 9.82% / 9.84%; no prior history 3.43% / 3.50% (linear / nonlinear). The prior-history group has only ~20 events per replicate, so its **event rate** is reported but not subgroup discrimination. Every replicate produced a valid iAUC; in 11/80 (linear) and 5/80 (nonlinear) replicates, one early window had fewer than five cases and was dropped.
+**Realized event rates (80 replicates):** linear latent process 4.07% overall; nonlinear 4.14% (about 82 events/replicate, range 61–102). Subgroups: age ≥ 33 (n ≈ 320) 5.58% / 5.72%; age < 33 3.79% / 3.84%; prior preeclampsia (n ≈ 201) 9.82% / 9.84%; no prior history 3.43% / 3.50% (linear / nonlinear). The prior-history group has only ~20 events per replicate, so its **event rate** is reported but not subgroup discrimination. Every replicate produced a valid iAUC; in 11/80 (linear) and 5/80 (nonlinear) replicates, at least one evaluation window had fewer than five cases and was dropped.
 
 ## v4.0 DGP specification
 
 - Cohort **N = 2,000**, horizon T = 40 weeks; Weibull baseline hazard calibrated **separately per latent mode** to ~4% overall: λ = 0.0002176 (linear) and λ = 0.0001227 (nonlinear), shape k = 1.2.
-- New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on its own `RandomState(seed+4)`, independent of the same replicate's other streams; see Limitations for cross-replicate overlap). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; a sensitivity analysis over neighboring values is planned.**
+- New covariates appended after age and BMI (earlier random streams untouched): `age_ge33` (hazard ratio 1.5) and `prior_pe_history` (hazard ratio 3.0, prevalence 10%, drawn on its own `RandomState(seed+4)`, independent of the same replicate's other streams; see Limitations for cross-replicate overlap). **The hazard ratios and 10% prevalence are working assumptions, not literature estimates; reference values are being sought.**
 - Particle filter, M = 5 multiple-imputation Cox, and Plan-C evaluation are unchanged. Static Cox now uses all four covariates; the legacy Landmarking comparison still uses age and BMI only.
 
 ## Limitations
@@ -48,12 +48,26 @@ BayesPregMonitor/
 │   └── (diagnostic/plotting helpers)
 ├── results/
 │   ├── v4.0/                   # v4.0 calibrated run: chunks/ + merge_report
-│   └── *.json                  # v3.4 (pre-calibration) records, archived
+│   └── *.json                  # archived outputs (v3.4 MC + older single-run/diagnostic); not comparable to v4.0
 ├── PLAN_C.md
 ├── BUGFIX_PLAN.md
 ├── LICENSE                     # MIT
 └── README.md
 ```
+
+> **Single-run scripts.** `run_step1.py`, `run_step2.py` and `run_step3.py` each call
+> `simulate(seed=42)`, which now runs the v4.0 data-generating process, and they write to
+> the single-run files in `results/`. Re-running them overwrites those files. They are not
+> part of the v4.0 Monte Carlo pipeline.
+>
+> **Archived outputs.** The loose files in `results/` are not all v3.4. For example
+> `data_summary.json` records N = 500, lambda = 0.0008 and a 10.6% event rate, which matches
+> neither v3.4 (lambda = 0.0015, 19-28% event rate) nor v4.0 (~4% event rate).
+>
+> **Figures.** `code/plot_figures.py` reads the archived `results/monte_carlo_results.json`
+> and `results/decision_results.json` for Figures 2, 4 and 5, while Figure 3 comes from a
+> fresh `simulate(seed=42)` run. Re-running it therefore produces a figure set that mixes two
+> data-generating processes.
 
 ## Quick start
 
